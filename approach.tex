@@ -1,11 +1,112 @@
 \chapter[Modeling approach for realistic simulation of online reprocessing]{Modeling approach for realistic simulation of online reprocessing}
 
 \section{Reprocessing plant general concept}
+Removing specific chemical elements from a molten salt is a complicated task that requires intelligent design (e.g., chemical separations equipment design, fuel salt flows to equipment) and has a considerable economic cost. This section contains 
+general chemical processing plant and gas separation system brief overview. As 
+an example of generic reprocessing facility the reprocessing plant of single-fluid \gls{MSBR} is selected. 
+
+\subsection{Gas separation system}
+Volatile gaseous fission products (e.g. Kr, Xe) must be removed from the fuel salt to avoid reactor poisoning especially during starup and power maneuvering. This is particularly true for $^{135}$Xe, with its very large absorption cross section. Tritium, xenon, and krypton are sparged from the fuel salt by helium introduced in a bypass stream by a bubble generator and subsequently removed by a gas separator. Indeed, noble gases, because of their exceptional insolubility in the salt, will migrate promptly to any gaseous interface available. Because they form ideal-dilute mixture in salt (obey Henry's law), they will migrate in accordance with the conventional laws of mass transfer. If tiny helium bubbles are circulated with the fuel salt, they will absorb xenon and krypton fission products. The fission-product-rich bubbles of helium may then be separated from the salt and discharged to the off-gas system. Xenon migration to the circulating bubbles is in competition with xenon migration to the porous moderator graphite. The graphite is especially of concern because it absorbs xenon and holds it in the core which leads to parasitic neutron absorption. The 0.5\% target value for $^{135}$Xe poison fraction can be achieved when circulating helium bubbles 0.508mm in diameter \cite{robertson_conceptual_1971}. This is accomplished by bypassing 10\% of the fuel salt from the pump discharge through a bubble separator to remove the xenon bubbles and then back into the pump suction, as shown in Figure~\ref{fig:gas_removal_system}. The average residence time of a bubble in the fuel loop would be 10 full cycles.
+
+\begin{figure}[htp!] % replace 't' with 'b' to 
+  \centering
+  \includegraphics[width=\textwidth]{gas_separation.png}
+  \caption{Flow diagram for \gls{MSBR} reprocessing plant. Green line indicates 
+  gas separation and off-gas system \cite{robertson_conceptual_1971}.}
+  \label{fig:gas_removal_system}
+\end{figure}
+
+\subsection{Fuel salt chemical processing facility}
+All liquid-fueled \gls{MSR} designs involve varying levels of online fuel processing. Minimally, volatile gaseous fission products (e.g. Kr, Xe) escape from the fuel salt during routine reactor operation and must be captured. Additional systems might be used to enhance removal of those elements. Most designs also call for the removal of rare earth metals from the core since these metals act as neutron poisons. Some designs suggest a more complex list of elements to process (figure ~\ref{fig:periodic_tab}), including the temporary removal of protactinium from the salt or other regulation of the actinide inventory in the fuel salt \cite{ahmad_neutronics_2015}.
+
+In the single-fluid \gls{MSBR} thorium, uranium, 
+protactinium, and fission products are all mixed together in a single fluoride salt (FLiBe). Separation of thorium from lanthanide (atomic numbers 57 through 71) fission products is rather challenging because of their chemical similarities. 
+\begin{figure}[htp!] % replace 't' with 'b' to 
+  \centering
+  \vspace{-0.3em}
+  \includegraphics[width=\textwidth]{periodic_map.png}
+  \caption{Processing options for \gls{MSR} fuels \cite{ahmad_neutronics_2015}.}
+  \vspace{-0.6em}
+  \label{fig:periodic_tab}
+\end{figure}
+\FloatBarrier
+
+The principal scheme of \gls{MSBR} reprocessing facility concept is shown in Figure~\ref{fig:material_flow}. The fuel salt is first temporarily stored for cooling and decay of the shortest lived fission products, then directed to the primary fluorinator, where most of the uranium is removed by fluorination to UF$_6$. After that, the salt is routed to an extraction column where mixture containing metallic bismuth, lithium and thorium as reductants are contacted with the salt. The remaining uranium and protactinium are reductively extracted to the bismuth, leaving a salt that only contains fission products dissolved in carrier salt (base composition of LiF-BeF$_2$-ThF$_4$). The salt then goes through a reduction column where UF$_6$ is reduced to UF$_4$ in the salt, refueling it and preparing it for return to the reactor. Refill BeF$_2$ and ThF$_4$ are also added and all residual bismuth is removed from the salt. After a final cleanup step and valence adjustment, the purified salt returns to the reactor \cite{carter_design_1972,sorensen_one-fluid_2006}.
+\begin{figure}[htp!] % replace 't' with 'b' to 
+  \centering
+  \includegraphics[width=0.9\textwidth]{flowsheet.pdf}
+  \caption{Detailed block diagram of chemical processing scheme for single-fluid \gls{MSBR} \cite{robertson_conceptual_1971, sorensen_one-fluid_2006}.}
+  \label{fig:material_flow}
+\end{figure}
+
+The bismuth accommodating some uranium and protactinium is routed to a hydrofluorination column where the metallic solutes in the bismuth are oxidized into their fluoride forms in the presence of a decay salt. The decay salt, containing UF$_4$, PaF$_4$, and ThF$_4$ passes into a decay tank where $^{233}$Pa is decays to $^{233}$U. The uranium generated by protactinium decay is removed through fluorination to UF$_6$ and directed to the reduction column to refuel the purified fuel salt. A hydrofluorinator and a fluorinator can remove approximately \textbf{95\%} of the uranium from the stream.
+
+The fully processed salt, on its way back to the reactor, has uranium added from the protactinium decay tank at the rate required to maintain or adjust the uranium concentration in the reactor (and, consequently, control the reactivity). This is performed by sparging the salt with UF$_6$ and hydrogen to produce UF$_4$ in the salt and HF gas \cite{robertson_conceptual_1971}.
+
+The fuel salt stream from the protactinium isolation system contains only traces of protactinium and uranium (because it were separated in the system) but contains practically all of the rare earths. A share of this salt stream is bypassed to a reductive extraction process for removing rare earths. This method for rare-earth removal is based on differences in the extent to which the rare earths and thorium distribute between molten salt and liquid bismuth containing a reductant. Principal scheme of Rare Earths removal system is shown in Figure~\ref{fig:rare-earth-removal}. A molten salt flow which contains rare-earth fluorides is fed to the center of an extraction column. The salt flows countercurrent to a liquid bismuth stream which contains thorium and lithium. In the upper part of the column, a large fraction of the rare earths is reduced and transfers to the downflowing liquid metal stream. Below the feed point rare earths concentration is increased in the salt and metal streams in order to produce a concentration hight enough for disposal \cite{briggs_molten-salt_1969}.
+
+Molten salt leaving the top of the column contains low concentration of rare earths. Fraction of this flow is returned back to the reactor while the rest is sent to an electrolytic cell complex. The net effect of the complex is to push thorium and lithium into bismuth for use as extractant and to return extracted rare earths, entering the complex with bismuth from the bottom of the cascade, to the cascade as reflux, oxidizing them out of the metal and transferring them to the returning salt stream.
+
+Electrolytic oxidizer-reducer is required for reducing lithium and thorium fluorides into a bismuth cathode to prepare the metal streams fed to the extraction columns and for oxidizing extracted components from the metal streams leaving the columns \cite{mcneese_engineering_1971}. The electrolytic-cell complex consists of an electrolytic
+cell with contactors above and below it. Both the anode and the cathode of the cell are pools of flowing bismuth, and the electrolyte is salt that does not contain large amounts of rare earths or thorium. The cathode feeds lithium to the bismuth stream that flows into the
+lower contactor and extracts essentially all ($\approx$ 99\%) of the thorium out of the feed stream. The anode puts BiF$_3$ into the salt that flows into the upper contactor and oxidizes all of the rare earths out of the entering bismuth. 
+\begin{figure}[htbp!]
+  \centering
+        \includegraphics[width=0.45\textwidth]{rare-earths-removal-system.png}
+    \caption{Rare-Earth removal from a fuel salt by Reductuve Extraction \cite{briggs_molten-salt_1969}.}
+    \label{fig:rare-earth-removal}
+\end{figure}
+
+\subsection{Separation Efficiency}
+Rare earth removal efficiencies were calculated during Molten Salt Reactor Experiment for a range of operating conditions to establish the importance of number of stages, separation factor, metal-to-salt flow ratio, rare earth concentration in the discard stream, location of the feed point, and the fraction of ThF$_4$ which is reduced in the electrolytic oxidizer-reducer. The thorium and lithium concentrations in the bismuth stream fed to the extraction column were both 0.0016 mole fraction. 
+\begin{figure}[htbp!]
+    \begin{center}
+        \includegraphics[width=0.55\textwidth]{vol_flow_ratio.png}
+    \end{center}
+    \caption{Metal-to-Salt Volumetric Flow Ration in Opper Column (24-stage column) \cite{briggs_molten-salt_1969}.}
+    \label{fig:vol-flow-ratio}
+\end{figure}
+
+The optimum feed location was at the center of the column and all results to is for this feed
+location. System performance is shown in Figure~\ref{fig:vol-flow-ratio} for a range of Metal-to-Salt flow ratios and for rare-earth-thorium separation factors from 1.2 to 6. The fraction of the ThF$_4$ which is reduced in the electrolytic cell was 99\%. Operation with a bismuth flow rate of 15 gpm will result in a rare earth removal efficiency of 69\% (44-day removal time) for a separation factor of 2 and a removal efficiency of 31\% (95-day removal time) for a separation factor of 1.5.
+
+The effect of fraction of ThF$_4$ reduced in the electrolytic cell is shown in Figure~\ref{fig:th-reduction}. A significant decrease in removal efficiency results from the fraction of ThF$_4$ reduced being decreased from 99 to 90\%, and the system becomes ineffective if less than 50\% of the ThF$_4$ is reduced.  The separation factors are 1.3 for Eu, 1.7 for Pm, 1.8 for La, 2.0 for Sm, 3.0 for Nd, and 3.5 for Ce. The removal times range from about 225 days for Eu to 30 days for Nd and Ce (Table~\ref{tab:removal_time}). 
+\begin{figure}[htbp!]
+  \centering
+        \includegraphics[width=0.55\textwidth]{th_reduction.png}
+    \caption{Rare-Earth Removal System Performance as function of Bismuth Phase Flow Rate and the Thorium Removal in the Electrolytic Cell Complex \cite{briggs_molten-salt_1969}.}
+    \label{fig:th-reduction}
+\end{figure}
+\begin{table}[ht!]
+\caption{Removal cycle times for various rare earths \cite{briggs_molten-salt_1969}.}
+  \centering
+\begin{tabular}{c c c}
+\hline Rare  & Separation & Removal Time                        \\
+       Earth & Factor     & (days)								\\
+\hline Pm          & 1.7				& 63.8 					\\
+\hline Nd		   & 3.0                & 30.6 					\\
+\hline Sm		   & 2.0                & 43.5 					\\
+\hline La		   & 1.8                & 47.7 					\\
+\hline Eu		   & 1.3                & 222.0 				\\
+\hline Ce		   & 3.5                & 30.3 					\\
+\hline 
+\end{tabular}
+  		\label{tab:removal_time}
+\end{table}
+
+The rare earth, which determine the operating conditions for the removal system is promethium (which has a separation factor of 1.7), since it is the strongest neutron absorber. Lanthanum is less important, and the resulting removal time ($\approx$100 days) is satisfactory.
+The removal times for rare earths having separation factors greater than 2, such as neodymium and cerium, will be shorter than required.
 
 \section{Transatomic Power Reactor detailed reprocessing system structure}
 
 \section{SERPENT overview}
+SERPENT is a continuous-energy Monte Carlo neutronics software capable of solving the neutron transport problem by tracking individual neutrons within the problem geometry and using stochastic method to determine chain of events for each neutron \cite{leppanen_serpent_2015}. SERPENT has been under active development at the VTT Technical Research Centre of Finland since 2004, where it was initially conceived as a tool to simplify group constant generation in a high-fidelity Monte Carlo environment. SERPENT is now widely used transport code  with a growing user base. Now SERPENT used by more than 500 registered individuals in 155 organizations located in 37 countries around the world. The burnup calculation capability in SERPENT is based on built-in calculation routines, without using any external solvers. A restart feature allows performing fuel shuffling or applying any modifications in the input by dividing the calculation into several parts, which is crucial for online reprocessing simulations.
 
+The latest version, SERPENT 2, supports advanced geometries and has advanced burnup capabilities, including online refueling capabilities which are necessary for neutronic computations of pebble-bed reactors and liquid-fueled \glspl{MSR} \cite{aufiero_extended_2013}. Unfortunately, built-in online refueling features are still under active development and unavailable to ordinary users. Furthermore, recently multi-physics simulations using SERPENT 2 were demonstrated, i.e. coupled calculations with thermal-hydraulics, \gls{CFD} and fuel performance codes \cite{leppanen_numerical_2015}. Two-way coupling to thermal-hydraulics, \gls{CFD}, and fuel performance codes operates on two levels: internal coupling to built-in solvers for fuel behavior and thermal-hydraulics, and external coupling via a universal multi-physics interface. 
+
+SERPENT 2 can be effectively run in parallel on computer clusters and multi-core workstations. Parallelization is handled by thread-based OpenMP, which has the advantage that all processsors use shared memory space. Calculations can be divided into several nodes by distributed-memory \gls{MPI} parallelization. SERPENT 2  is an improvement upon SERPENT 1, and contains a complete redesign of memory management using hybrid OpenMP \cite{dagum_openmp_1998} + \gls{MPI} parallelization.  This hybrid parallelization is important in depletion calculations using computer clusters with multiple nodes, and allows to achieve significant speed-up in depletion calculations on computer clusters with more than 4'000 cores \cite{leppanen_serpent_2015}. 
+
+All calculations presented in this thesis were performed using SERPENT 2 version 2.1.30 on Blue Waters’ XE6 nodes. For cross section generation, JEFF-3.1.2 nuclear data library was employed \cite{oecd/nea_data_bank_jeff-3.1.2_2014}. 
 \section{Proposed simulation tool design}
 
 \section{MSR models development}
