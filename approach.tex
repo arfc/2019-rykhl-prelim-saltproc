@@ -1,10 +1,10 @@
 \chapter[Modeling approach for realistic simulation of online reprocessing]{Modeling approach for realistic simulation of online reprocessing}
 
 \section{Reprocessing plant general concept}
-All liquid-fueled \gls{MSR} designs involve varying levels of online fuel processing. Minimally, volatile gaseous fission products (e.g. Kr, Xe) escape from the fuel salt during routine reactor operation and must be captured. Additional systems might be used to enhance removal of those elements. Most designs also call for the removal of rare earth metals from the core since these metals act as neutron poisons. Some designs suggest a more complex list of elements to process (figure ~\ref{fig:periodic_tab}), including the temporary removal of protactinium from the salt or other regulation of the actinide inventory in the fuel salt \cite{ahmad_neutronics_2015}. This section 
+All liquid-fueled \gls{MSR} designs involve varying levels of online fuel processing. Minimally, volatile gaseous fission products (e.g. Kr, Xe) escape from the fuel salt during routine reactor operation and must be captured. Additional systems might be used to enhance removal of those elements. Most designs also call for the removal of rare earth metals from the core since these metals act as neutron poisons. Some designs suggest a more complex list of elements to process (figure~\ref{fig:periodic_tab}), including the temporary removal of protactinium from the salt or other regulation of the actinide inventory in the fuel salt \cite{ahmad_neutronics_2015}. This section 
 contains general chemical processing plant and gas separation system brief 
 overview. As an example of generic reprocessing facility the reprocessing plant 
-of single-fluid \gls{MSBR} is selected. 
+of single-fluid \gls{MSBR} was selected. 
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
   \includegraphics[width=\textwidth]{periodic_map.png}
@@ -56,20 +56,23 @@ computational code a mathematical model is required. Particularly, xenon
 extraction efficiency is needed to accurately model $^{135}$Xe removal in 
 a fuel salt 
 depletion simulations. The gain and loss terms for dissolved in fuel salt 
-xenon-135 atomic density are listed in tables~\ref{tab:xe_gain}, \ref{tab:xe_loss}. The stripping 
-efficiency for the pump bowl has been measured during \gls{MSRE} but \gls{ORNL} report only states range of it: from 50 to 100\% and mentioned that the results is not accurate \cite{kedl_development_1967}. $^{135}$Xe burnup and 
+xenon-135 atomic density are listed in tables~\ref{tab:xe_gain}, \ref{tab:xe_loss}. 
+The stripping 
+efficiency for the pump bowl has been measured during \gls{MSRE} but \gls{ORNL} report only states range of it (from 50 to 100\%) and mentioned that the results are not 
+accurate \cite{kedl_development_1967}. $^{135}$Xe burnup and 
 decay rates are relatively well known and can be estimated using neutronics 
 computer code. The mass transfer coefficient can be estimated from CFD-models but 
-there is lack of published information to inform accurate mathematical model. Previous 
-research by \gls{ORNL} \cite{kedl_development_1967, engel_xenon_1971} has concluded that efficiency of xenon removal ($\epsilon_{Xe}$) in gas separation system is 
-a function of many parameters:
+there is lack of published information to inform accurate mathematical model. 
+Previous research by \gls{ORNL} \cite{kedl_development_1967, engel_xenon_1971} has 
+concluded that efficiency of xenon removal ($\epsilon_{Xe}$) in gas separation 
+system is a function of many parameters:
 \begin{align}
 \epsilon_{Xe} = F (A, d_{He}, \dot{m}_{He}, \dot{m}_{salt}, h_b, T)
 \end{align}
 where $A$ is interface area of injected helium bubbles, $d_{He}$ is average diameter 
 of helium bubbles, $\dot{m}_{He}$ is helium gas mass flow rate, $\dot{m}_{salt}$ is 
 salt mass flow rate, $h_b$ is mass transfer coefficient for transferring xenon into 
-circulating helium bubbles, $T$ is temperature. 
+circulating helium bubbles, $T$ is the salt temperature. 
 \begin{table}[ht!]
 \caption{$^{135}$Xe production sources and principal rate constants involved
  (reproduced from \cite{kedl_development_1967}).}
@@ -94,7 +97,7 @@ it quickly decays to $^{135}$I with $\tau_{1/2}=19$ s & 			                    \
 \begin{tabularx}{\textwidth}{b | b}
 \hline \textbf{$^{135}$Xe loss mechanism}      & \textbf{Principal rate 
 parameters involved}  	\\
-\hline Decay of dissolved $^{135}$Xe  & Decay constant							\\
+\hline Decay of dissolved $^{135}$Xe ($\tau_{1/2}=9.1$ h)  & Decay constant							\\
 \hline $^{135}$Xe burnup              &  Neutron flux		 					\\
 dissolved xenon-135 burnup as it passes throught core  & 			            \\		\hline $^{135}$Xe transferred to off-gas system via xenon stripper & Stripping efficiency		\\
 \hline $^{135}$Xe transferred into circulating He bubbles; this xenon will eventually be burnup, decay, or stripped via bubble separator & Mass transfer coefficient, decay constant, neutron flux, bubble removing efficiency		\\
@@ -103,24 +106,26 @@ dissolved xenon-135 burnup as it passes throught core  & 			            \\		\hli
   		\label{tab:xe_loss}
 \end{table}
 
-Similar relationship for removal efficiency would be appropriate 
-for other volatile gases but coefficients for different gases are 
+Similar removal techniques and relationship for removal efficiency would be 
+appropriate 
+for other noble gases (e.g. Kr) but coefficients for different gases would be 
 different. To create realistic mathematical model medium-fidelity correlations with 
 coefficients for various volatile gases (but xenon is in focus) are needed. It can be 
 done experimentally or using CFD simulations. Current effort at University of 
  Illinois at Urbana-Champaign namely ``Enabling Load Following Capability in the 
-Transatomic Power MSR" has a goal to determine those correlations using CFD simulations 
-and verify it in small-scale experiment \cite{huff_enabling_2018}. Obtained correlations 
-can be used to inform realistic gases removal model in proposed SaltProc tool for 
-online reprocessing simulations.
+Transatomic Power MSR" \cite{huff_enabling_2018} has a goal to determine those 
+correlations using CFD simulations 
+and verify it in small-size experiments. Obtained mathematical model might be used 
+to inform realistic physic-based gases removal from fuel salt in proposed SaltProc 
+tool.
 
-\subsection{Fuel salt chemical processing facility}
+\subsection{Fuel salt chemical processing facility} \label{sec:chemical_processing}
 In the single-fluid \gls{MSBR} thorium, uranium, 
 protactinium, and fission products are all mixed together in a single fluoride salt (FLiBe). Separation of thorium from lanthanide (atomic numbers 57 through 71) fission products is rather challenging because of their chemical similarities. The principal scheme of \gls{MSBR} reprocessing facility concept is shown in Figure~\ref{fig:material_flow}. The fuel salt is first temporarily stored for cooling and decay of the shortest lived fission products, then directed to the primary fluorinator, where most of the uranium is removed by fluorination to UF$_6$. After that, the salt is routed to an extraction column where mixture containing metallic bismuth, lithium and thorium as reductants are contacted with the salt. The remaining uranium and protactinium are reductively extracted to the bismuth, leaving a salt that only contains fission products dissolved in carrier salt (base composition of LiF-BeF$_2$-ThF$_4$). The salt then goes through a reduction column where UF$_6$ is reduced to UF$_4$ in the salt, refueling it and preparing it for return to the reactor. Refill BeF$_2$ and ThF$_4$ are also added and all residual bismuth is removed from the salt. After a final cleanup step and valence adjustment, the purified salt returns to the reactor \cite{carter_design_1972,sorensen_one-fluid_2006}.
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
   \includegraphics[width=0.9\textwidth]{flowsheet.pdf}
-  \caption{Detailed block diagram of chemical processing scheme for single-fluid \gls{MSBR} \cite{robertson_conceptual_1971, sorensen_one-fluid_2006}.}
+  \caption{Simplified block diagram of chemical processing scheme for single-fluid \gls{MSBR} \cite{robertson_conceptual_1971, sorensen_one-fluid_2006}.}
   \label{fig:material_flow}
 \end{figure}
 
@@ -142,7 +147,7 @@ lower contactor and extracts essentially all ($\approx$ 99\%) of the thorium out
     \label{fig:rare-earth-removal}
 \end{figure}
 
-\subsection{Separation Efficiency}
+\subsection{Rare Earths Separation Efficiency} \label{sec:rare_earth_eff}
 Rare earth removal efficiencies were calculated during Molten Salt Reactor Experiment for a range of operating conditions to establish the importance of number of stages, separation factor, metal-to-salt flow ratio, rare earth concentration in the discard stream, location of the feed point, and the fraction of ThF$_4$ which is reduced in the electrolytic oxidizer-reducer. The thorium and lithium concentrations in the bismuth stream fed to the extraction column were both 0.0016 mole fraction. 
 \begin{figure}[htbp!]
     \begin{center}
@@ -180,92 +185,21 @@ The effect of fraction of ThF$_4$ reduced in the electrolytic cell is shown in F
 \end{table}
 
 The rare earth, which determine the operating conditions for the removal system is promethium (which has a separation factor of 1.7), since it is the strongest neutron absorber. Lanthanum is less important, and the resulting removal time ($\approx$100 days) is satisfactory.
-The removal times for rare earths having separation factors greater than 2, such as neodymium and cerium, will be shorter than required.
+The removal times for rare earths having separation factors greater than 2, such 
+as neodymium and cerium, will be shorter than required.
 
-\section{Transatomic Power Reactor overview}
-The \gls{TAP} concept is a 1250 MWt \gls{MSR} with an LiF-based uranium fuel salt 
-\cite{transatomic_power_corporation_technical_2016}. This concept uses 
-configurable zirconium hydride metal rods as a moderator while most of existing 
-\gls{MSR} usually propose high-density reactor graphite. From neutronics analysis 
-point, zirconium hydride offers a much higher neutron moderating density than graphite;
-much less zirconium hydride volume is needed to achieve a thermal energy spectrum similar to one obtained with graphite moderator. Finally, zirconium hydride has 
-much longer lifespan in heavy operational conditions (high temperature, large 
-neutron flux, chemically aggressive salt) than reactor graphite.
-
-In this section, the design characteristics and reprocessing plant design 
-are based on information presented in the \gls{TAP} white papers \cite{transatomic_power_corporation_technical_2016, transatomic_power_corporation_neutronics_2016}.
-
-\subsection{TAP design description}
-The \gls{TAP} design is very similar to original \gls{MSRE} design developed by \gls{ORNL} 
- \cite{haubenreich_experience_1970} but has two major innovations: the fuel salt composition 
-and moderator. The \gls{MSRE}'s MSRE’s LiF-BeF$_2$-ZrF$_4$-UF$_4$ salt has been substituted with 
-LiF-UF$_4$ salt which allows to increase the uranium concentration within the fuel salt from 0.9 to 
-27.5\% while mainaining relatively low melting point (490$^{\circ}$C compared with 434$^{\circ}$C 
-for original \gls{MSRE}'s salt) \cite{betzler_two-dimensional_2016}. The graphite has very high 
-thermal scattering cross section which make it perfect moderator but has few major drawbacks: 
-(1) the low lethargy gain per collision requires large volume of moderator to be present to reach criticality, which leads to larger core and obstructing the core power density; (2) even special 
-reactor-grade graphite has relatively high porosity, consequently, it holding gaseous \glspl{FP} 
-(e.g., tritium, xenon) in pores; (3) the reactor graphite lifespan in commercial reactor is about 
-10 years \cite{robertson_conceptual_1971}. To resolve these issues, \gls{TAP} concept uses another 
-moderator, namely, zirconium hydride, allowing more compact core and a significant increase in 
-power density. These two innovative design choices together with configurable moderator 
-(moderator-to-fuel ratio can be changed during regular maintenance shutdown), facilitating 
-the commercial deployment of this conceptual design in the current commercially available 
-5\% \gls{LEU} fuel cycle. 
-
-The \gls{TAP} \gls{MSR} primary loop contains the reactor vessel (including the zirconium
-hydride moderator rods with silicone carbide cladding), pumps, and primary heat exchanger. 
-Pumps in continuous regime circulate the LiF-(Act)F$_4$ fuel salt through the primary loop. 
-The pumps, vessels, tanks, and piping are made of a nickel-based alloy (analogous of Hastelloy-N 
-used in \gls{MSRE}), which is highly resistant to corrosion in various molten salt environments. 
-Inside the reactor vessel, in close proximity to the zirconium hydride moderator rods, the fuel
-salt is in a critical configuration and generates heat. Table~\ref{tab:tap_tab} contains details 
-of the \gls{TAP} system 
-design which are taken from technical white paper \cite{transatomic_power_corporation_technical_2016} 
-and a neutronics overview
- \cite{transatomic_power_corporation_neutronics_2016} as well as \gls{ORNL} analysis of \gls{TAP} 
-design \cite{betzler_two-dimensional_2016, betzler_assessment_2017}. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[h!]
-        \caption{Summary of principal data for \gls{TAP} \gls{MSR} \cite{transatomic_power_corporation_technical_2016, betzler_assessment_2017}. }
-        \begin{tabularx}{\textwidth}{ s  s}
-        \hline
-         Thermal capacity of reactor           		& 1250 MW(t)            \\ 
-         Net electrical output                 		& 520 MW(e) 			\\ 
-         Gross thermal efficiency        			& 44\%     				\\  
-         Outlet temperature							& 650$^{\circ}$C        \\ 
-		 Fuel salt components                       & LiF-UF$_4$			\\  
-         Uranium enrichment                         & 5\% 			        \\
-         Moderator				& Zirconium Hydride (ZrH$_{1.66}$) rods (with silicon carbide cladding) \\
-         Neutron Spectrum							& Thermal/Epithermal    \\
-\hline
-        \end{tabularx}
-        \label{tab:tap_tab}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{TAP core design}
-In the \gls{TAP} core fuel salt flows around moderator assemblies consisting of lattices of 
-movable zirconium hydride rods clad in a corrosion-resistant silicone carbide (figure~
-\ref{fig:tap-main-view}). The \gls{TAP}'s reactor pressure vessel is a cylinder with inner 
-radius 150 cm, 
-height 350 cm and wall thickness 5 cm made from nickel-based alloy. The moderator-to-fuel 
-ratio, or salt volume fraction (SVF), in the core is possible to vary during operation to 
-shift the spectrum from intermediate to thermal energies (from \gls{BOL} to \gls{EOL}, 
-respectively) to maximize fuel burnup. In practice, SVF can be varied by inserting 
-fixed-sized moderator rods via the bottom of the reactor vessel (for safety considerations), 
-similarly to moving the control rods in a \gls{BWR}, as shown in Figure~\ref{fig:tap-main-view}. 
-The authors claimed that a single shutdown rod should be enough for emergency shutdown because 
-the \gls{TAP} has very low excess of reactivity for startup and online refueling would keep it 
-critical. As an additional shutdown mechanism, moderator rod removal may be used to bringing 
-the core into a subcritical state \cite{transatomic_power_corporation_neutronics_2016}.
-\begin{figure}[ht!]
-  \centering
-    \hspace{+1.5in}
-        \includegraphics[width=0.55\textwidth]{tap_front_view.png}
-    \caption{\gls{TAP} \gls{MSR} schematic view showing movable moderator rod clusters and shutdown rod \cite{transatomic_power_corporation_technical_2016}.}
-    \label{fig:tap-main-view}
-\end{figure}
-\subsection{TAP detailed reprocessing system structure}
+Overall, based on experimental data from \gls{MSRE} chemistry-based mathematical 
+models can be formulated for rare earths separation efficiency. The analysis above 
+shown that efficiency of specific rare earth removal ($\epsilon_{RE}$) in chemical 
+processing plant is a function of many parameters:
+\begin{align}
+\epsilon_{RE} = F (A, \dot{m}_{Bi}, \dot{m}_{salt}, N, K)
+\end{align} 
+where $A$ is a metal-to-salt interface area, $\dot{m}_{Bi}$ is bismuth mass 
+flow rate, $\dot{m}_{salt}$ is salt mass flow rate, $N$ is the number of stages, 
+$K$ is mass transfer coefficient at the salt / Bi-Li interface. 
+This mathematical correlations can be used to inform realistic chemistry-based 
+depletion simulations with proposed SaltProc tool.
 
 \section{SERPENT overview}
 SERPENT is a continuous-energy Monte Carlo neutronics software capable of solving the neutron transport problem by tracking individual neutrons within the problem geometry and using stochastic method to determine chain of events for each neutron \cite{leppanen_serpent_2015}. SERPENT has been under active development at the VTT Technical Research Centre of Finland since 2004, where it was initially conceived as a tool to simplify group constant generation in a high-fidelity Monte Carlo environment. SERPENT is now widely used transport code  with a growing user base. Now SERPENT used by more than 500 registered individuals in 155 organizations located in 37 countries around the world. The burnup calculation capability in SERPENT is based on built-in calculation routines, without using any external solvers. A restart feature allows performing fuel shuffling or applying any modifications in the input by dividing the calculation into several parts, which is crucial for online reprocessing simulations.
@@ -274,11 +208,6 @@ The latest version, SERPENT 2, supports advanced geometries and has advanced bur
 
 SERPENT 2 can be effectively run in parallel on computer clusters and multi-core workstations. Parallelization is handled by thread-based OpenMP, which has the advantage that all processsors use shared memory space. Calculations can be divided into several nodes by distributed-memory \gls{MPI} parallelization. SERPENT 2  is an improvement upon SERPENT 1, and contains a complete redesign of memory management using hybrid OpenMP \cite{dagum_openmp_1998} + \gls{MPI} parallelization.  This hybrid parallelization is important in depletion calculations using computer clusters with multiple nodes, and allows to achieve significant speed-up in depletion calculations on computer clusters with more than 4'000 cores \cite{leppanen_serpent_2015}. 
 
-All calculations presented in this thesis were performed using SERPENT 2 version 2.1.30 on Blue Waters’ XE6 nodes. For cross section generation, JEFF-3.1.2 nuclear data library was employed \cite{oecd/nea_data_bank_jeff-3.1.2_2014}. 
+All calculations herein were performed using SERPENT 2 version 2.1.30 on Blue Waters’ XE6 nodes. For cross section generation, JEFF-3.1.2 nuclear data library was employed \cite{oecd/nea_data_bank_jeff-3.1.2_2014}. 
+
 \section{Proposed simulation tool design}
-
-\section{MSR models development}
-
-\section{Validation and verification approach}
-
-\section{Preliminary results}
