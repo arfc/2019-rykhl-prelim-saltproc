@@ -210,4 +210,161 @@ SERPENT 2 can be effectively run in parallel on computer clusters and multi-core
 
 All calculations herein were performed using SERPENT 2 version 2.1.30 on Blue Waters’ XE6 nodes. For cross section generation, JEFF-3.1.2 nuclear data library was employed \cite{oecd/nea_data_bank_jeff-3.1.2_2014}. 
 
-\section{Proposed simulation tool design}
+\section{Proposed simulation tool design and capabilities}
+First version of SaltProc Python tool for calculating \gls{MSR}'s fuel 
+composition evolution with taking into account an online reprocessing system 
+was developed as a part of my master's thesis \cite{rykhlevskii_advanced_2018, rykhlevskii_arfc/saltproc_2018}. The tool was designed to 
+expand SERPENT 2 depletion capabilities for modeling liquid-fueled \gls{MSR} 
+for continuous reprocessing. The Python package uses HDF5 
+\cite{the_hdf_group_hierarchical_1997} to store 
+data, and the PyNE Nuclear Engineering Toolkit \cite{scopatz_pyne_2012}
+for SEPRENT output file parsing and nuclide naming. SaltProc is an open-source tool 
+that uses a batch-wise approach to simulate continuous feeds and removals in 
+\glspl{MSR}. 
+
+Capabilities of developed tool 
+working together with Monte Carlo code SERPENT 2 was demonstrated for full-core 
+\gls{MSBR} design for simplified case with ideal removal efficiency (100\% of 
+mass for target elements removed) \cite{rykhlevskii_modeling_2019}. Unfortunately, 
+the code architecture and principal structure is not designed for flexible 
+implementation of sophisticated online reprocessing systems including realistic 
+physics/chemistry-based extraction efficiencies. Thus, complete refactoring of 
+SaltProc using \gls{OOP} needed to create comprehensive 
+generic tool to realistically model any \gls{MSR} reprocessing plant with 
+taking into account variable extraction efficiencies, mass balance between 
+the core and processing plant and reactivity control system.
+
+\subsection{Proposed software architecture}
+The Python toolkit will couple directly with SERPENT 2 input and output files, 
+to allow the reprocessing system to couple to depletion calculation. Exist 
+PyNE interfaces will be employed for SERPENT 2 output parse as well as 
+newly developed interfaces for input and output handling. Python 3 \gls{OOP} 
+standard features will be used to create flexible, user-friendly tool with 
+great potential for further improvement and collaboration. 
+Figure~\ref{fig:saltproc_class} shows tentative SaltProc class structure 
+ which includes 4 main classes:
+\begin{enumerate}
+	\item \textit{Depcode}. Contains attributes and methods for 
+	reading user's input file for depletion code, initial materials (e.g., 
+	fuel and/or fertile salt) composition, principal parameters for 
+	burnup simulation (e.g., neutron population and number of cycles for Monte 
+	Carlo), running depletion code. The proposed work will only support SERPENT 2 
+	Monte Carlo (only 
+	one instance of \textit{Depcode} will be instantiated) but in principle the 
+	toolkit can support any depletion code (i.e. OpenMC 
+	\cite{romano_openmc_2015}).
+\begin{figure}[ht!] % replace 't' with 'b' to \centering
+  \includegraphics[width=\textwidth]{saltproc_class_diagram.png}
+  \caption{Saltproc python package tentative class diagram with UML notation 
+  and examples of object instances.}
+  \label{fig:saltproc_class}
+\end{figure}
+	\item \textit{Simulation}. Runs SaltProc simulation step, 
+	initialize, write HDF5 database, track time and convert 
+	isotopic composition vector nuclides names from SERPENT to human 
+	readable format. Also this class will allow to restart simulation after 
+	fail by restoring data from HDF5 database or continue simulation for 
+	additional depletion time.
+	
+	\item \textit{MaterialFlow}. Each \textit{MaterialFlow} object 
+	will represent the material flowing between \textit{Process} objects. Object 
+	of this class will contain an isotopic composition vector (PyNE Material object 
+	initialized	from SERPENT output file \textbf{dep.m}), mass flow rate, 
+	temperature, density, volume, void fraction. Exist PyNE Material 
+	capabilities allows easily convert units of isotopic composition vector 
+	(e.g., from atomic density provided by SERPENT to mass fraction or absolute 
+	mass in desired units), decay 
+	material (i.e. to model \gls{MSBR} protactinium decay tank), calculate 
+	decay heat, activity and dose. The main idea of \textit{MaterialFlow} 
+	object is to pass detailed information about the salt starting from 
+	\gls{MSR} vessel outlet via various reprocessing facilities 
+	(\textit{Processes}) which modifying \textit{MaterialFlow} object before 
+	depleting the material in the next SERPENT burnup step.
+		
+	\item \textit{Process}. Each \textit{Process} object will represent a realistic 
+	fuel processing step characterized by its throughput rate, volumetric 
+	capacity, extraction efficiency for each target element (can be 
+	function of many parameters), waste streams 
+	and some other, specific for the particular process, parameters. Refueling 
+	\textit{Process} just injecting feed \textit{MaterialFlow} usually directly 
+	into the reactor core (e.g., adding fissile material with specific mass flow rate 
+	to \textit{MaterialFlow} after performing all removals).
+\end{enumerate}
+
+The proposed class structure will provide outstanding flexibility in simulating 
+various \glspl{MSR} designs. The library of various \textit{MaterialFlow} (e.g., 
+fuel salt flow, fertile salt flow, refueling salt flow) and \textit{Process} 
+(e.g., helium sparging facility, gas separator, lanthanide removal component) 
+objects will be created in this work to allow user quickly create a model of 
+desired reprocessing scheme. At runtime, the user will connect \textit{Process} 
+objects in series or parallel with \textit{Flow} objects to form a comprehensive 
+reprocessing system. The user also will be able to create his own 
+objects with desired set of attributes and methods and contribute back to the 
+code package using Github (https://github.com/arfc/saltproc).	
+	
+	
+
+\subsection{Tentative flowchart}
+Figure~\ref{fig:saltproc_flow} illustrates the online reprocessing simulation 
+algorithm coupling SaltProc and SERPENT 2. To perform a depletion step, 
+SaltProc reads a user-defined SERPENT 2 template file. This file contains input 
+cards with parameters such as geometry, material, isotopic composition, neutron 
+population, criticality cycles, total heating power, and boundary conditions.  
+After the depletion calculation, SaltProc reads the depleted fuel composition 
+file and stores the depleted composition isotopic vector in an HDF5 database 
+and \textit{MaterialFlow} object (\textbf{CoreOut} in 
+figure~\ref{fig:saltproc_flow}). This object contains isotopic composition 
+vector, total volume of material, mass flow rate, density and any other 
+parameters specified by user. For the simplest reprocessing case when all 
+facilities located in-line (100\% of total material flow goes through 
+chain of separation components), \textbf{CoreOut} flowing sequentially 
+between \textit{Processes} and each \textit{Process} removing mass fraction 
+of target elements with specified extraction efficiency. After that removed 
+material mass will be compensated by fresh fuel salt to maintain the salt 
+inventory in a primary loop constant. Finally, resulting isotopic composition 
+from \textbf{ReprocOut} object will be stored in HDF5 database and 
+dumped in new composition file for next SERPENT depletion run. 
+\begin{figure}[ht!] % replace 't' with 'b' to \centering
+  \includegraphics[width=1.05\textwidth]{saltproc_flowchart.pdf}
+  \caption{Tentative generic flow chart for new Saltproc python package.}
+  \label{fig:saltproc_flow}
+\end{figure}
+
+For more general case with multiple concurrent extraction processes separate 
+\textit{MaterialFlow} object will be created for each branch with user-defined 
+mass flow rate (e.g. 90\% of total mass flow rate flows via left branch and 
+10\% through right branch). Total volume and isotopic composition vector 
+for each \textit{MaterialFlow} object will be calculated as fraction of incoming 
+\textbf{CoreOut} flow. Then each \textit{MaterialFlow} object will be passed via 
+cascade of \textit{Processes} to separate selected chemical elements with 
+specific efficiency. Finally, left-hand-side branch \textit{MaterialFlow} object 
+will be merged with right-hand-side one and, similarly to previous case, fresh 
+fuel salt feed will compensate loss of mass in separation facilities and keep 
+fuel salt mass in a primary loop constant.
+
+This flow chart will allow simulating the operation of a complex, multi-zone, 
+multi-fluid \gls{MSR} and is sufficiently general to represent myriad reactor 
+systems. The refactored version of SaltProc only will store and edit the 
+isotopic composition of the fuel stream, which makes it a flexible tool to 
+model any geometry: an infinite medium, a unit cell, a multi-zone simplified 
+assembly, or a full core. This flexibiliity allows the user to perform 
+simulations of varying fidelity and computational intensity. SaltProc is an 
+open-source tool (but user needs installed SERPENT2 to use SaltProc), 
+available on Github. It will leverage unit tests and continuous integration 
+crucial for sustainable development. It will also have documentation
+generated through Sphinx document generator for ease of use. In summary, the 
+development approach of SaltProc focused on producing a generic, flexible and 
+expandable tool to give the SERPENT 2 Monte Carlo code the ability to conduct 
+advanced in-reactor fuel cycle analysis as well as simulate a myriad of 
+online refueling and fuel reprocessing systems.
+
+%\subsection{Reactivity control module}
+%In addition, SaltProc is able to define time-dependent material feed and 
+%removal rates to investigate their impacts. These rates need not be 
+%constant in SaltProc. They can be defined as piecewise functions or set to 
+%respond to conditions in the core. For instance, SaltProc might increase the 
+%fissile material feeding rate if the effective multiplication factor, 
+%$k_{eff}$, falls below a specific limit (e.g., 1.002).
+%These capabilities allow SaltProc to analyze fuel cycle of a generic 
+%liquid-fueled \gls{MSR}.
+
