@@ -28,28 +28,30 @@ nuclear reactor physics software, which were originally written primarily to
 simulate solid-fuel reactors. Thus, numerical simulation package that would be 
 able model nuclear reactors with circulating fuel should be developed to close 
 the gap.
-%, including reactivity control by adjusting fissile material 
-%injection, realistic, based on chemical model of processes, implementation of absorbers 
-%removal, and taking into account non-instantaneous nature of injection/removal 
-%processes and materials decay.
-
-%\section{Objectives}
 
 \section{Methodology}
-In this work the online reprocessing simulation package which expands the capability of the continuous-energy Monte Carlo Burnup calculation code, SERPENT2 
+In this work the online reprocessing simulation package, SaltProc, which expands the capability 
+of the continuous-energy Monte Carlo Burnup calculation code, SERPENT2 
 \cite{leppanen_serpent_2015}, for simulation liquid-fueled \gls{MSR} operation 
 will be developed. The package will 
-be able to control reactivity by adjusting fissile material injection, simulate realistic, 
-based on chemical model of processes, implementation of absorbers extraction, and 
+be able to simulate realistic, based on physics and chemistry correlations, 
+implementation of neutron poisons extraction, and 
 taking into account non-instantaneous nature of injection/removal processes 
-and materials decay. The ultimate 
-objective of this effort is to develop a generic open-source tool capable of 
-simulate a wide range of liquid-fueled systems including two-fluid and multi-region 
-designs, and validate it against exist modeling efforts.
+and materials decay. 
 
 Current online reprocessing simulation efforts have been systematized, investigated and reviewed in this work to identify desirable generic reprocessing code capabilities. 
-A preliminary set of key input and output parameters, software package structure, ....
- has been chosen that conceptually capture the fundamental online reprocessing  challenges. Specifically, batch-wise approach 
- 
-For validation and verification four liquid-fueled \glspl{MSR} concepts with different 
-design, reprocessing scheme and neutron spectrum have been selected.
+A preliminary set of key input and output parameters, software package architecture and 
+class structure, and required capabilities has been chosen 
+to conceptually capture the fundamental online reprocessing challenges. 
+
+To demonstrate capabilities and validate proposed simulation package, three 
+liquid-fueled \glspl{MSR} concepts with various fuel salt compositions, 
+number of salts (single- and two-fluid), neutron spectrum and 
+reprocessing schemes will be investigated. Specifically, demonstration 
+and validation effort will be focused on \gls{TAP} \gls{MSR} modeling 
+which is promising and relatively recent concept of commercial \gls{MSR}. 
+The results obtained with SaltProc will be verified against recent research 
+efforts discussed in Chapter 2. The ultimate objective of this effort is to 
+develop a generic open-source tool capable of 
+simulate a wide range of liquid-fueled systems including two-fluid and multi-region 
+designs, and validate it against exist modeling efforts.
