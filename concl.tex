@@ -10,39 +10,40 @@ removal rates (e.g., 100\% of target poison mass is extracted)
 for the nuclear system performance modeling. The Python 
 toolkit, SaltProc, directly coupled with SERPENT 2 Monte Carlo Burnup 
 code for liquid-fueled \gls{MSR} depletion simulation 
-including realistic online reprocessing plant to be developed 
+including realistic online reprocessing plant model to be developed 
 in this work. Proposed work will provide a currently unavailable 
 tool for fuel composition evolution analysis in \gls{MSR} with 
 an online reprocessing system involving multiple processes 
-that vary in their extraction efficiencies and rates. Finally, 
+that vary in their removal efficiencies and rates. Finally, 
 the tool capabilities will be demonstrated for few promising 
 \gls{MSR} designs including \gls{TAP}, 
-\gls{MSBR}, \gls{MSFR} and validated against exist in the 
-literature analysis.
+\gls{MSBR}, \gls{MSFR} and validated against results in the 
+literature.
 
  
 \section{Proposed Work and Simulations}
-A new SaltProc Python-based fuel cycle simulator, coupled with
+A new Python-based fuel cycle simulator, coupled with
 the SERPENT 2 Monte Carlo code, incorporating user-parametrized 
 components in the fuel salt processing system design will be 
-developed and validated in three stages. A demonstration stage will implement 
-an ‘no reprocessing’ \gls{MSR} structure which captures the 
+developed and validated in three stages. A demonstration stage will 
+implement ‘no reprocessing’ \gls{MSR} structure which captures the 
 fundamental code behavior of the components and integrated nuclear 
 system model. On this stage obtained simulation results will be 
-verified to SERPENT 2 results for stationary fuel salt which 
-might be useful for debugging in early stage of tool development.
-A base case stage will build upon the demonstration model by 
-adding simple poisons removal with constant extraction efficiency 
-and compensation fissile material feed and will be 
+verified against SERPENT 2 results for stationary fuel salt which 
+might be useful for debugging on the early stage of tool development.
+A base case phase will be build upon the demonstration model by 
+adding simple poisons removal with constant extraction efficiencies 
+and corresponding compensating fissile material feed. This case 
+results will be 
 verified with ChemTriton results for unit cell and full-core 
 geometry from recent \gls{ORNL} research 
 \cite{betzler_two-dimensional_2016, betzler_assessment_2017}.
-The final extension stage will build upon the base case by 
+The final extension stage will build be upon the base case by 
 implementing extending physics and chemistry correlations for 
 extraction efficiencies to capture impact of non-ideal 
-removal rates in the reactor performance modeling. These 
+removal rates on the reactor performance modeling. These 
 stages will be completed withing a test-driven software 
-development paradigm, will leverage unit tests and 
+development paradigm, leverage unit tests and 
 continuous integration for sustainable development. Finally, 
 collected during these stages data will be organized and 
 published in a \textit{.JSON} format data library for use 
@@ -82,7 +83,7 @@ model. It will allow to simulate \gls{MSR} system operation during
 longtime period and obtain resulting fuel salt isotopic composition. 
 After that, the result will be verified against fuels salt 
 composition obtained for the same depletion parameters and the 
-core geometry with pure SEPRENT 2 code because this case does not 
+core geometry with pure SEPRENT 2 output because this case does not 
 introduce any online processing challenges.
 
 At the subcomponent level, the demonstration will include information 
@@ -140,7 +141,9 @@ performance of each extension functionality as well as their
 integrated behavior. Validation against exist results for \gls{TAP} 
 obtained by ChemTriton \cite{betzler_two-dimensional_2016, 
 betzler_molten_2017} will also be performed for confidence 
-building.
+building. The high-fidelity full-core \gls{TAP} model for 
+SERPENT 2 has been developed already and described in detail 
+in section~\ref{sec:tap_model}.
 
 Additionally, the base case model will be used to estimate 
 effective 
@@ -152,10 +155,12 @@ of separated (with specified efficiency) neutron poisons.
 In case if it would go subcritical, additional reactivity 
 controlling subcomponent 
 will be implemented on extension stage. This subcomponent 
-will inject additional amount of fresh fuel when $k_{eff}$ 
-for the core drops below specific value (e.g., 1.01) and 
-repeats previous depletion step. This module will enable 
-maintain reactor critical during whole reactor lifetime.
+will inject additional amount of fissile material 
+when $k_{eff}$ for the core drops below specific value (e.g., 
+$k_{eff}<1.01$) and 
+repeat previous depletion step. This module will enable 
+maintain reactor critical during whole reactor 
+operation time.
  
 
 \subsection{Extensions Development}
@@ -169,15 +174,16 @@ and from experiments and CFD-simulations currently conducting at
 the University of Illinois at Urbana-Champaign \cite{huff_enabling_2018}.
 This milestone will result in a realistic online reprocessing system 
 model capable of modeling \gls{MSR} systems with realistically achievable 
-process rates and efficiencies as well as variable feed flows. 
+process rates and efficiencies as well as variable feed streams. 
 
 For realistic removal rates and efficiencies some fraction of neutron 
 poisons will stay in the fuel salt and deteriorate neutron economy. 
 Even with fresh salt feed compensation of poisons removal, 
 it will lead to slowly decreasing neutron multiplication factor and 
-eventually \gls{MSR} core becomes subcritical. The time before 
+eventually \gls{MSR} core will become subcritical. The time before 
 shutdown strongly dependent from reprocessing facilities performance 
-and will be evaluated for realistic \gls{TAP} processing plant in this 
+and will be evaluated for realistic \gls{TAP} processing plant model 
+in this 
 work. Depending on this time, additional extension will incorporate 
 reactivity control module which injecting more fissile material 
 into the core when reactor is close to subcritical state. In this 
@@ -187,11 +193,18 @@ in a primary loop.
 
 As the toolkit becomes capable of representing various reprocessing 
 concepts, these will be analyzed for different full-core 
-high-fidelity \gls{MSR} models discussed in Chapter 4. As discussed 
-before, these concepts will present different processing challenges 
-for various salt compositions, neutron spectra and designs. This 
-models input data will be collected and 
-published in a \textit{.JSON}-campatible database for use with the 
+high-fidelity \gls{MSR} models discussed in Chapter 4. 
+As discussed 
+before, these concepts will represent different processing challenges 
+for various salt compositions, neutron spectra and designs. 
+Notably, 
+\gls{MSBR} reprocessing plant design is more complex than \gls{TAP}'s 
+one because it contains additional to the base case protactinium 
+isolation system with protactinium decay tank. Thus, SaltProc 
+demonstration for \gls{MSBR} concept will allow test 
+fuel salt decaying using build-in PyNE capabilities. 
+These models input data will be collected and 
+published in a \textit{.JSON}-compatible database for use with the 
 Python package to encourage further research in this area.
 
 \subsection{Sensitivity Analysis}
@@ -215,4 +228,4 @@ work seeks to provide a tool which would be helpful to perform such
 analyses. Thus, some limited analysis of \gls{MSR} fuel cycle 
 performance will be performed to demonstrate that the tools developed 
 in this work can illustrate the sensitivity of processing plant 
-performance to conceptual system parameters.
+performance to conceptual nuclear system parameters.
