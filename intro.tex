@@ -6,7 +6,7 @@ Humankind has only a few ways to generate reliable, nonintermittent
 base load power: fossil fuel, hydroelectric, geothermal, and 
 nuclear energy. Because of increasing global warming and climate 
 change concerns, sources that have negligible CO$_2$ footprints 
-represent crucial measures for control global temperature change. 
+represent crucial measures for the control of global temperature change. 
 From an environmental viewpoint, hydro and nuclear power are 
 preferable ways to generate reliable power. Nevertheless, the 
 potential for hydro power is strictly limited by local geographical 
@@ -16,7 +16,7 @@ electricity demand is predicted to increase by 30\% \cite{noauthor_world_2017}. 
 proliferation, radioactive waste treatment, and competitiveness with 
 other sources of energy (i.e. renewables), a negative public attitude 
 to nuclear has formed in many developed countries, which makes it 
-challenging to advocate its zero emissions benefits.
+challenging to justify its zero emissions benefits.
 
 \glsentryfirstplural{MSR} are among the six advanced reactor 
 concepts that have been chosen by the Generation IV International 
@@ -38,7 +38,7 @@ in the primary loop, relatively high coolant temperature, outstanding
 neutron economy, a high level of inherent safety, reduced fuel 
 preprocessing, and the ability to continuously remove fission products 
 and add fissile and/or fertile elements without shutdown  \cite{leblanc_molten_2010}. The possibility of continuously removing 
-neutron poisons allows significantly increase fuel burnup and thus 
+neutron poisons allows for a significant increase in fuel burnup and thus 
 improves the resource utilization of \glspl{MSR}. Finally, the \gls{MSR} 
 also could be employed as a converter reactor for transmutation of 
 spent fuel from current \glspl{LWR}.
@@ -47,9 +47,9 @@ Recently, interest in \glspl{MSR} has resurged, with multiple new companies
 pursuing commercialization of \gls{MSR} designs\footnote{Examples 
 include liquid-fueled molten salt designs from Terrapower, Terrestrial, 
 ThorCon, Flibe, Copenhagen Atomics, etc.}. China's \gls{MSR} program 
-has been initiated in 2011 and promise to start-up 2MW$_{th}$ 
-liquid-fueled test \gls{MSR} (TMSR-LF1) in 2020, 10MW$_{th}$ 
-demonstration reactor (TMSR-LF2) in 2025, and gigawatt-level 
+was initiated in 2011 and promises to start-up a 2MW$_{th}$ 
+liquid-fueled test \gls{MSR} (TMSR-LF1) in 2020, a 10MW$_{th}$ 
+demonstration reactor (TMSR-LF2) in 2025, and a gigawatt-level 
 commercial reactor in 2050 \cite{zhang_review_2018}. The European 
 Union funds the Safety Assessment of the Molten Salt Fast Reactor 
 (SAMOFAR) project, in which several European research institutes and 
@@ -70,30 +70,30 @@ feed or removal of elements (e.g. fissile material injection into
 and \glspl{FP} extraction from the fuel salt) are put-of-scope for 
 most contemporary nuclear reactor physics software, which were 
 originally written primarily to simulate solid-fuel reactors. 
-Thus, numerical simulation package that would be able model nuclear 
-reactors with circulating fuel is needed to close the gap.
+Thus, a numerical simulation package that would be able to model 
+nuclear reactors with circulating fuel is needed to close the gap.
 
 \section{Methodology}
 The main objective of proposed work is developing the online 
 reprocessing simulation package, SaltProc, which expands the 
 capability of the continuous-energy Monte Carlo depletion 
 calculation code, SERPENT2 \cite{leppanen_serpent_2015}, for 
-simulation liquid-fueled \gls{MSR} systems. The SaltProc package 
-will be able to simulate realistic, based on physics- and 
-chemistry-driven correlations neutron poisons extraction, 
-and taking into account non-instantaneous 
-nature of injection/removal processes and materials decay. 
+liquid-fueled \glspl{MSR} simulations. The SaltProc package 
+will enable the simulation of neutron poisons extraction 
+based on physics- and chemistry-driven correlations. 
+Moreover, it will take into account the non-instantaneous 
+nature of injection/removal processes and material decay. 
 The ultimate objective of this effort is to develop a generic 
 open-source tool capable of simulate a wide range of 
 liquid-fueled systems including two-fluid and multi-region 
-designs, and validate it against exist modeling efforts. 
+designs, and validate it against existing modeling efforts. 
 Figure~\ref{fig:workflow_method} illustrates my previous 
 research effort and the proposed plan towards the objective 
 described above.
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
-		  \includegraphics[width=\textwidth]{workflow_for_methodology.pdf}
-  \caption{Workflow for completed (MS thesis) and proposed (Ph.D.) work 
+	\includegraphics[width=\textwidth]{workflow_for_methodology.pdf}
+  \caption{Workflow for completed (M.Sc. thesis) and proposed (Ph.D.) work 
   which includes the tool demonstration and validation for the \gls{TAP} 
   reactor, the \gls{MSBR}, and the \gls{MSFR}.}
   \label{fig:workflow_method}
@@ -110,7 +110,7 @@ Three perspective liquid-fueled \glspl{MSR} concepts among various
 fuel cycles, number of salts (single- and two-fluid), neutron 
 spectra and reprocessing schemes will be investigated to 
 demonstrate and validate proposed simulation package. Specifically, 
-demonstration and validation effort will be focused on \gls{TAP} 
+the demonstration and validation efforts will be focused on \gls{TAP} 
 \gls{MSR} which is relatively well described in the literature. 
 The results obtained with SaltProc will be verified against 
 recent online reprocessing efforts in the literature for the 
