@@ -1,6 +1,40 @@
-\chapter[Literature review]{Literature review}
+\chapter[Background information and literature review]{Background information and literature review}
 
 \section{Introduction}
+All liquid-fueled \gls{MSR} designs involve varying levels of online fuel processing. Minimally, volatile gaseous fission products (e.g. Kr, Xe) escape from the fuel salt during routine reactor operation and must be captured. Additional systems might be used to enhance removal of those elements. Most designs also call for the removal of rare earth metals from the core since these metals act as neutron poisons. Some designs suggest a more complex list of elements to process (figure~\ref{fig:periodic_tab}), including the temporary removal of protactinium from the salt or other regulation of the actinide inventory in the fuel salt \cite{ahmad_neutronics_2015}. This chapter contains a brief background 
+information about \gls{MSR} online reprocessing system and a literature review.
+\begin{figure}[htp!] % replace 't' with 'b' to 
+  \centering
+  \includegraphics[width=0.87\textwidth]{periodic_map.png}
+  \caption{Processing options for \gls{MSR} fuels (figure reproduced from 
+  Ahmed \emph{et al.} \cite{ahmad_neutronics_2015}).}
+  \label{fig:periodic_tab}
+\end{figure}
+
+\section{Online separations and feed}
+A liquid-fueled \gls{MSR} has online separations and/or feeds, where material 
+is moved to or from the core at all times (continuous) or at specific intervals 
+(batch). Contrarily, in a solid-fueled reactor, fission products and actinides 
+remain within the initial fuel material during and after operation until 
+reprocessing. The ability to perform online fuel salt reprocessing improves 
+the potential neutronic performance of liquied-fueled reactors. Firstly, it 
+is unnecessary for liquid-fueled reactors to operate with excess reactivity 
+because fissile material is continuously being added into the core. Secondly, 
+continuously removing fission products including strong absorbers (poisons) 
+should significantly improve fuel utilization and decrease parasitic 
+neutron absorption. Finally, neutronic parameters could be adjusted 
+``on-the-fly" without operational cycle interruption. Nevertheless, removal 
+of each element from the liquid fuel salt presents a unique challenge in 
+terms of chemical separation processes, storage and disposal of the 
+separated materials.
+
+Modeling liquid-fueled systems with existing neutron transport and 
+depletion tools is challenging because most of these tools are 
+designed for the solid-fueled reactors simulation. The fuel material 
+flows and potential online separations or feeds of specific elements 
+or nuclides are the main challenges of liquid-fueled systems. 
+
+\section{Literature review}
 Most contemporary nuclear reactor physics software is 
 unable to perform depletion calculations in an online 
 reprocessing regime. Furthermore, existing tools for 
@@ -67,7 +101,7 @@ heuer_towards_2014, sheu_depletion_2013, aufiero_extended_2013} provide some for
 and methods \cite{doligez_coupled_2014,heuer_towards_2014,aufiero_extended_2013,ahmad_neutronics_2015, 
 park_whole_2015,jeong_equilibrium_2016,rykhlevskii_modeling_2019,nuttin_potential_2005} use a set of all nuclides in depletion calculations. 
 
-\section{Batch-wise online reprocessing approach}
+\subsection{Batch-wise online reprocessing approach}
 Many liquid-fueled \gls{MSR} designs rely on online fuel processing in which  
 material moves to and from the core. That can be done continuously or at 
 specific time steps (batch-wise). In a modeling of the batch-wise approach, 
@@ -95,7 +129,7 @@ is not true for relatively long (few days) depletion simulation time steps.
 These assumptions for simulation of the nonstop online reprocessing process 
 tends to misrepresent depleted material composition.
 
-\section{Continuous online reprocessing approach}
+\subsection{Continuous online reprocessing approach}
 Accounting for continuous removal or addition presents a greater challenge 
 since it 
 requires adding a term to the Bateman equations. In SCALE/TRITON, 
@@ -187,7 +221,7 @@ transport characteristics in the different regions of the core. Therefore,
 online reprocessing tools and reactor physics codes should be tested 
 using high-precision full-core reactor core models.
 
-\section{Extraction efficiency}
+\subsection{Extraction efficiency}
 Chemical extraction of neutron poison from the fuel salt can be 
 done with extraction efficiency ($\epsilon$) which is defined as 
 follows:
@@ -230,7 +264,7 @@ Equation \ref{eq:real_lam} is an exponential extrapolation and has been
 used to estimate removal constant for the
 extraction term in the Bateman equations (\ref{eq:rem_term}) in references \cite{nuttin_potential_2005, betzler_implementation_2017, doligez_coupled_2014}.
 
-\section{Online reprocessing tool simulation flow charts}
+\subsection{Online reprocessing tool simulation flow charts}
 Liquid-fueled systems present a challenge to existing neutron transport 
 and depletion tools, which are typically designed to simulate 
 solid-fueled reactors. To handle the material flows, and the online 
