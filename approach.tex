@@ -317,8 +317,8 @@ fuel salt flow, fertile salt flow, refueling salt flow) and \textit{Process}
 objects will be created in this work to allow a user to quickly create a model 
 of a desired reprocessing scheme. At runtime, the user will connect 
 \textit{Process} objects in series or parallel with \textit{Flow} objects to 
-form a comprehensive reprocessing system. The user will be able to create 
-own objects with a desired set of attributes and methods and contribute back 
+form a comprehensive reprocessing system. The user will also be able to create 
+a custom object with desired attributes and methods, and contribute back 
 to the code package using Github (https://github.com/arfc/saltproc).	
 
 \subsection{Tentative flowchart}
@@ -336,11 +336,11 @@ parameters specified by user. For the simplest reprocessing case, when all
 facilities are located in-line (100\% of total material flow goes through 
 chain of separation components), the \textit{CoreOut} object is flowing 
 sequentially between \textit{Processes} and each \textit{Process} is 
-removing a mass fraction of target elements with specified extraction 
+removing mass fraction of target elements with specified extraction 
 efficiency. Afterward, the removed material mass will be compensated by 
-fresh fuel salt to maintain the salt inventory in a primary loop constant. 
-Finally, resulting isotopic composition from \textit{ReprocOut} object will 
-be stored in HDF5 database and dumped in new composition file for next 
+fresh fuel salt to maintain the salt inventory in a primary loop. 
+Finally, resulting isotopic composition from the \textit{ReprocOut} object will 
+be stored in HDF5 database and dumped in a new composition file for the next 
 SERPENT depletion run. 
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
   \includegraphics[width=1.05\textwidth]{saltproc_flowchart.pdf}
@@ -348,33 +348,33 @@ SERPENT depletion run.
   \label{fig:saltproc_flow}
 \end{figure}
 
-For more general case with multiple concurrent extraction processes separate 
-\textit{MaterialFlow} object will be created for each branch with user-defined 
+For a more general case with multiple concurrent extraction processes a separate 
+\textit{MaterialFlow} object will be created for each branch with a user-defined 
 mass flow rate (e.g. 90\% of total mass flow rate flows via left branch and 
 10\% through right branch). Total volume and isotopic composition vector 
-for each \textit{MaterialFlow} object will be calculated as fraction of incoming 
+for each \textit{MaterialFlow} object will be calculated as a fraction of incoming 
 \textit{CoreOut} flow. Then each \textit{MaterialFlow} object will be passed via 
-cascade of \textit{Processes} to separate selected chemical elements with 
-specific efficiency. Finally, left-hand-side branch \textit{MaterialFlow} object 
-will be merged with right-hand-side one and, similarly to previous case, fresh 
-fuel salt feed will compensate loss of mass in separation facilities and keep 
+a cascade of \textit{Processes} to separate selected chemical elements with 
+specific efficiency. Finally, the left-hand-side branch \textit{MaterialFlow} object 
+will be merged with the right-hand-side and similarly to previous case, fresh 
+fuel salt feed will compensate the loss of mass in separation facilities and keep 
 fuel salt mass in a primary loop constant.
 
 The class diagram (Figure~\ref{fig:saltproc_class}) will allow simulating 
 the operation of a complex, multi-zone, 
 multi-fluid \gls{MSR} and is sufficiently general to represent myriad reactor 
-systems. The refactored version of SaltProc only will store and edit the 
+systems. The refactored version of SaltProc will only store and edit the 
 isotopic composition of the fuel stream, which makes it a flexible tool to 
 model any geometry: an infinite medium, a unit cell, a multi-zone simplified 
 assembly, or a full core. This flexibiliity allows the user to perform 
 simulations of varying fidelity and computational intensity. SaltProc is an 
-open-source tool (but user needs installed SERPENT2 to use SaltProc), 
+open-source tool (but a user needs SERPENT2 installed to use SaltProc), 
 available on Github. It will leverage unit tests and continuous integration 
 crucial for sustainable development. It will also have documentation
-generated through Sphinx document generator for ease of use. In summary, the 
-development approach of SaltProc focused on producing a generic, flexible and 
+generated through Sphinx, a documentation generator, for ease of use. In summary, the 
+development approach of SaltProc is focused on producing a generic, flexible and 
 expandable tool to give the SERPENT 2 Monte Carlo code the ability to conduct 
-advanced in-reactor fuel cycle analysis as well as simulate a myriad of 
+advanced in-reactor fuel cycle analysis as well as simulate many 
 online refueling and fuel reprocessing systems.
 
 %\subsection{Reactivity control module}

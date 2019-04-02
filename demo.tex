@@ -1,20 +1,19 @@
 \chapter[Code demonstration and validation]{Code demonstration and validation}
 
 \section{Demonstration and Validation approach}
-The SaltProc after finishing development process will be tested for several 
+After finishing development, SaltProc will be tested for several 
 different \gls{MSR} concept designs. The concepts with various fuel salt 
 compositions, number of salts (single- and two-fluid), neutron spectrum and 
-reprocessing schemes will be investigated. In particular, demonstration 
-and validation activity will be focused on \gls{TAP} \gls{MSR} which is 
-promising and relatively recent concept of commercial \gls{MSR}. The results 
-obtained with SaltProc python package will be compared with recent research 
-efforts 
-discussed in Chapter 2 of current work (see table~\ref{tab:fs_codes}). 
+reprocessing schemes will be investigated. In particular, the demonstration 
+and validation activity will be focused on the \gls{TAP} \gls{MSR} which is a 
+promising and relatively recent concept of a commercial \gls{MSR}. The results 
+obtained with the SaltProc python package will be compared with recent research 
+efforts discussed in Chapter 2 of current work (see table~\ref{tab:fs_codes}). 
 Table~\ref{tab:msr_concepts} 
-contains tentative list of \gls{MSR} concepts which are selected for 
+contains a tentative list of \gls{MSR} concepts which are selected for 
 demonstration and validation proposes along with their principal design features. 
 Finally, a compatible \textit{.json} database with input examples of listed 
-concept models for use with the SaltProc will be released to encourage 
+concept models for use with SaltProc will be released to encourage 
 research efforts in online reprocessing simulations for various 
 \gls{MSR} designs.
 \begin{table}[!htb]
@@ -38,11 +37,12 @@ research efforts in online reprocessing simulations for various
 \section{Transatomic Power Reactor overview}
 The \gls{TAP} concept is a 1250 MW$_{th}$ \gls{MSR} with a LiF-based uranium fuel 
 salt \cite{transatomic_power_corporation_technical_2016}. This concept uses 
-configurable zirconium hydride metal rods as a moderator while most of existing 
-\glspl{MSR} usually propose high-density reactor graphite. From neutronics analysis 
+configurable zirconium hydride metal rods as the moderator while most of existing 
+\glspl{MSR} usually propose high-density reactor graphite. From a neutronics analysis 
 point, zirconium hydride offers a much higher neutron moderating density than graphite;
-much less zirconium hydride volume is needed to achieve a thermal energy spectrum similar to one obtained with graphite moderator. Finally, zirconium hydride has 
-much longer lifespan in extreme operational conditions (high temperature, large 
+much less zirconium hydride volume is needed to achieve a thermal energy spectrum 
+similar to one obtained with graphite moderator. Finally, zirconium hydride has a much 
+longer lifespan in extreme operational conditions (high temperature, large 
 neutron flux, chemically aggressive salt) than reactor graphite.
 
 In this section, the design characteristics and reprocessing plant design 
@@ -53,32 +53,30 @@ The \gls{TAP} design is very similar to original \gls{MSRE} design developed
 by \gls{ORNL} \cite{haubenreich_experience_1970} but has two major innovations: 
 the fuel salt composition and moderator. The \gls{MSRE}'s 
 LiF-BeF$_2$-ZrF$_4$-UF$_4$ salt has been substituted with LiF-UF$_4$ salt which 
-allows to increase the uranium concentration within the fuel salt from 0.9 to 
-27.5\% while mainaining relatively low melting point (490$^{\circ}$C compared 
-with 434$^{\circ}$C 
-for original \gls{MSRE}'s salt) \cite{betzler_two-dimensional_2016}. The 
-graphite has very high 
-thermal scattering cross section which make it perfect moderator but has 
-few major drawbacks: 
-(1) the low lethargy gain per collision requires large volume of moderator 
-to be present to reach criticality, which leads to larger core and obstructing 
+allows for an increase in the uranium concentration within the fuel salt from 0.9 to 
+27.5\% while maintaining a relatively low melting point (490$^{\circ}$C compared 
+with 434$^{\circ}$C for the original \gls{MSRE}'s salt) 
+\cite{betzler_two-dimensional_2016}. The graphite has a very high 
+thermal scattering cross section which makes it a perfect moderator but has 
+a few major drawbacks: 
+(1) the low lethargy gain per collision requires a large volume of moderator 
+to be present to reach criticality, which leads to a larger core and obstructs 
 the core power density; (2) even special 
-reactor-grade graphite has relatively high porosity, consequently, it holding 
+reactor-grade graphite has relatively high porosity, consequently, it holds
 gaseous \glspl{FP} 
-(e.g., tritium, xenon) in pores; (3) the reactor graphite lifespan in commercial 
+(e.g., tritium, xenon) in pores; (3) the reactor graphite lifespan in a commercial 
 reactor is about 10 years \cite{robertson_conceptual_1971}. To resolve these 
-issues, \gls{TAP} concept uses another 
-moderator, namely, zirconium hydride, allowing more compact core and a 
+issues, the \gls{TAP} concept uses another 
+moderator, namely, zirconium hydride, allowing for a more compact core and a 
 significant increase in power density. These two innovative design choices,  
-together with configurable moderator 
-(moderator-to-fuel ratio can be changed during regular maintenance shutdown),
- facilitating the commercial deployment of this conceptual design in the current 
+together with a configurable moderator 
+(moderator-to-fuel ratio can be changed during regular maintenance shutdown), 
+facilitate the commercial deployment of this conceptual design in the current 
 commercially available 5\% \gls{LEU} fuel cycle. 
 
 The \gls{TAP} \gls{MSR} primary loop contains the reactor core volume (including 
-the 
-zirconium hydride moderator rods with silicone carbide cladding), pumps, and 
-primary heat exchanger. Pumps in continuous regime circulate the LiF-(Act)F$_4$ 
+the zirconium hydride moderator rods with silicone carbide cladding), pumps, and 
+primary heat exchanger. Pumps circulate the LiF-(Act)F$_4$ 
 fuel salt through the primary loop. The pumps, vessels, tanks, and piping are 
 made of a nickel-based alloy (similar to Hastelloy-N\footnote{ Hastelloy-N is 
 very common in reactors now but have been studied and developed at \gls{ORNL} in 
@@ -119,23 +117,22 @@ In the \gls{TAP} core, fuel salt flows around moderator assemblies consisting
 of lattices of 
 movable zirconium hydride rods clad in a corrosion-resistant silicone carbide (figure~
 \ref{fig:tap-main-view}). The \gls{TAP} reactor pressure vessel is a cylinder 
-with inner 
-radius 150 cm, 
-height 350 cm and wall thickness 5 cm made of nickel-based alloy. The moderator-to-fuel 
-ratio, or salt volume fraction (SVF), in the core is possible to vary during operation to 
+with inner radius 150 cm, 
+height 350 cm and wall thickness 5 cm made of a nickel-based alloy. The moderator-to-fuel 
+ratio, or salt volume fraction (SVF), in the core can be varied during operation to 
 shift the spectrum from intermediate to thermal energies (from \gls{BOL} to \gls{EOL}, 
 respectively) to maximize fuel burnup. In practice, SVF can be varied by inserting 
 fixed-sized moderator rods via the bottom of the reactor vessel (for safety 
 considerations), similarly to moving the control rods in a \gls{BWR}, as shown in 
 Figure~\ref{fig:tap-main-view}. For the \gls{TAP} reactor, \gls{EOL} occurs when the 
 maximum number of moderator rods are inserted into the core and further injection of 
-fresh fuel salt does not change a criticality. Unmoderated salt flowing in annulus between the core and the vessel wall provides for a potential reduction in 
+fresh fuel salt does not change a criticality. Unmoderated salt is flowing in the annulus 
+between the core and the vessel wall provides for a potential reduction in 
 fast neutron flux at the vessel structural material. The authors claimed that a 
 single shutdown rod should be enough for emergency shutdown because 
-the \gls{TAP} has very low excess of reactivity for startup and online refueling would 
+the \gls{TAP} has a very low excess of reactivity for startup and online refueling would 
 keep it critical. As an additional shutdown mechanism, moderator rod removal may be used 
-to bringing 
-the core into a subcritical state \cite{transatomic_power_corporation_neutronics_2016}.
+to bring the core into a subcritical state \cite{transatomic_power_corporation_neutronics_2016}.
 
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
@@ -155,9 +152,9 @@ configuration at the expected reactor operational level when all
 control rods are fully withdrawn. Figure~\ref{fig:tap-serpent-elev} shows a 
 longitudinal section of the reactor. This model contains the moderator rods (with 
 silicon carbide cladding), pressure vessel, and inlet and outlet plena 
-(Table~\ref{tab:tap_model_param}). The control rod cluster is made using 
-\textbf{TRANS} SERPENT 2 feature which allows easy change control rod position 
-during burnup simulations if necessary. 
+(Table~\ref{tab:tap_model_param}). The control rod cluster is made using the
+\textbf{TRANS} SERPENT 2 feature which allows one to easily change the control rod 
+position during burnup simulations if necessary. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h!]
         \caption{Geometric parameters for the full-core 3D model of \gls{TAP} (reproduced from \cite{betzler_assessment_2017}). }
@@ -204,17 +201,17 @@ were generated using the built-in SERPENT plotter.}
 
 \subsection{TAP reprocessing system structure and simulation approach}
 The \gls{TAP} nuclear island contains \gls{FP} removal system. Gaseous \glspl{FP} are 
-continuously removed using off-gas system while liquid and solid \glspl{FP} are extracted 
-via chemical processing system. As these byproducts are gradually removed, a small quantity 
+continuously removed using an off-gas system while liquid and solid \glspl{FP} are extracted 
+via a chemical processing system. As these byproducts are gradually removed, a small quantity 
 of fresh fuel salt is regularly added to the primary loop. This process conserves a 
-constant fuel salt mass and keeps the reactor critical. In contrast with \gls{MSBR} 
-reprocessing system, \gls{TAP} does not need protactinium separation and isolation 
-system because it operates in uranium-based single-stage fuel cycle. The authors of 
-\gls{TAP} concept suggested three distinct fission product removal methods: 
+constant fuel salt mass and keeps the reactor critical. In contrast with the \gls{MSBR} 
+reprocessing system, \gls{TAP} does not need a protactinium separation and isolation 
+system because it operates in a uranium-based single-stage fuel cycle. The authors of 
+the \gls{TAP} concept suggested three distinct fission product removal methods: 
 \begin{enumerate}
 	\item \textbf{Off-Gas System} removes gaseous fission products such as krypton 
 and xenon, 
-which are then compressed and stored temporarily until they have decayed to background 
+which are then compressed and stored temporarily until they have decayed to the background 
 radiation level. Trace amounts of tritium are also removed and bottled in a liquid form 
 via the same process. In addition, the off-gas system also directly removes a small 
 fraction of the noble metals.
@@ -234,7 +231,7 @@ that of \gls{LWR} \gls{SNF}. This oxide waste comes out of the \gls{TAP} reproce
 plant in ceramic granules and can be sintered into another convenient form for storage.
 \end{enumerate}
 
-Table~\ref{tab:tap_reproc_methods} illustrates production rates and removal processes 
+Table~\ref{tab:tap_reproc_methods} illustrates production rates and a removal processes 
 for major fission products quantities generated per year by one 520 MW$_e$ power plant.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h!]
@@ -256,29 +253,29 @@ Lanthanides and others (Cr, Fe, Ni, Rb, Sr, Y, Zr, Cs, Ba, La, Ce, Pr,Nd, Pm, Sm
         \label{tab:tap_reproc_methods}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Figure~\ref{fig:tap-reproc} shows principal design of \gls{TAP} primary loop including 
-off-gas system, nickel mesh filter, and lanthanide chemical extraction facility.
-Similarly to \gls{MSBR}, off-gas system also based on simple process of 
-helium sparging through fuel salt with consequent gas bubbles removal before returning 
+Figure~\ref{fig:tap-reproc} shows a principal design of the \gls{TAP} primary loop including 
+an off-gas system, nickel mesh filter, and lanthanide chemical extraction facility.
+Similarly to \gls{MSBR}, an off-gas system is also based on simple process of 
+helium sparging through fuel salt with consequent gas bubbles removed before returning the 
 fuel salt back to the core. Nevertheless, one important difference must be noted: the
 \gls{MSBR} gas separation system suggested helium injection and subsequent 
-transport of the voids throughout the primary loop including core at least 10 full 
+transport of the voids throughout the primary loop including the core for at least 10 full 
 loops \cite{robertson_conceptual_1971}. It is significant concern to safe, stable 
 operation because the increase of void fraction in the fuel salt when it enters back 
 to the core 
 would cause unpredictable reactivity change. This drawback can be overcome by 
-using effective gas separator for stripping helium/xenon bubbles before 
-returning the salt back to primary loop (Figure~\ref{fig:tap-reproc}, blue 
+using an effective gas separator for stripping helium/xenon bubbles before 
+returning the salt back to a primary loop (Figure~\ref{fig:tap-reproc}, blue 
 block). Thus, Gabbard \cite{gabbard_development_1974} proposed design of 
 effective centrifugal gas separator which stripping gas from the salt using 
 centrifugal forces (Figure~\ref{fig:gabbard-separator}). The gas bubbles in 
-axial-flow centrifugal bubble 
+an axial-flow centrifugal bubble 
 separator would be driven toward the center-line by the radial pressure gradient 
 developed where it is removed through takeoff ports. The gas 
 separation efficiency through this method was demonstrated to be dependent on 
 salt flow rate but can be as large as 95\%. Gas removal efficiency was 
 measured for centrifugal gas separator
-under a wide variety of conditions and culminated in following equation for 
+under a wide variety of conditions and culminated in the following equation for 
 gas removal efficiency ($\epsilon_{g}$) \cite{gabbard_development_1974}:
 \begin{align} 
 \epsilon_g &= \frac{3338.1936 Q_g}{81.349 X Q_e P_{\gamma} + 3338.1936 Q_g} \label{eq:gas_eff}
