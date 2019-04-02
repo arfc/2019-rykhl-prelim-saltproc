@@ -280,12 +280,15 @@ salt flow rate but can be as large as 95\%. Gas removal efficiency was
 measured for centrifugal gas separator
 under a wide variety of conditions and culminated in following equation for 
 gas removal efficiency ($\epsilon_{g}$) \cite{gabbard_development_1974}:
-\begin{equation} \label{eq:gas_eff}
-\epsilon_g = \frac{3338.1936 Q_g}{81.349 X Q_e P_{\gamma} + 3338.1936 Q_g}
-\end{equation}
-where $Q_g$ is gas injection rate, Nm$^3$/h; 
-$Q_e$ is liquid flow rate, m$^3$/h; 
-$X$ is void fraction; $P_{\gamma}$ is absolute pressure, Pa. This correlation will 
+\begin{align} 
+\epsilon_g &= \frac{3338.1936 Q_g}{81.349 X Q_e P_{\gamma} + 3338.1936 Q_g} \label{eq:gas_eff}
+	\intertext{where} 
+	Q_g &= \mbox{the  gas injection rate, }Nm^3/h \nonumber \\
+	Q_e &= \mbox{the liquid flow rate, }m^3/h  \nonumber  \\
+	X   &= \mbox{the void fraction}  \nonumber				\\
+P_{\gamma}&= \mbox{the absolute pressure, Pa} \nonumber
+\end{align}
+This correlation will 
 be used to realistically model an online molten salt gas removal system using 
 a Python toolkit, SaltProc, developed as a part of my dissertation.
 \begin{figure}[htp!] % replace 't' with 'b' to 
@@ -325,18 +328,24 @@ fission products \gls{TAP} concept suggested employ a nickel mesh filter located
 in a bypass stream in the primary loop (Figure~\ref{fig:tap-reproc}, orange block). 
 The main idea of this filter is to create maze with large metal (nickel) 
 surface area. The fuel salt flowing through the filter and noble 
-metals will be accumulated on the filter surfaces. The removal efficiency 
-($\epsilon_{noble}$) can be 
-calculated as a function of the salt flow rate and filter interface area:
+metals will be accumulated on the filter surfaces. Conceptually, the 
+removal efficiency ($\epsilon_{noble}$) can be calculated as a function of 
+the salt flow rate and filter interface area:
 \begin{align} 
-\epsilon_{noble} &= F(\dot{m}_{salt}, A_f) \\
+\epsilon_{noble} &= F(\dot{m}_{salt}, A_f) \nonumber \\
 &= \frac{a A_f}{b \dot{m}_{salt} + c A_f} \label{eq:filter_eff}
+	\intertext{where} 
+	\dot{m}_{salt}&= \mbox{the salt mass flow rate} \nonumber \\
+	A_f&= \mbox{the filter inner surface area} \nonumber \\
+	a,b,c&= \mbox{the correlation coefficients}\nonumber 
 \end{align}
-where $\dot{m}_{salt}$ is fuel salt mass flow rate; $A_f$ is the filter inner 
-surface area (filter sizes and mesh pitch can be used to determine it); 
-$a, b, c$ are correlation coefficients which can be determined in experiments. 
-This form of correlation will be used 
-to inform online reprocessing model in SaltProc Python tool.
+In equation~\ref{eq:filter_eff}, the removal efficiency 
+($\epsilon_{noble}$) increases asymptotically towards $1.0$ as the filter 
+inner surface area ($A_f$) goes to infinity. Another way to increase 
+$\epsilon_{noble}$ is to reduce the salt mass flow rate ($\dot{m}_{salt}$).
+The correlation coefficients $a,b,c$ can be determined from experiments or 
+CFD-simulations. This form of correlation will be used to inform online 
+reprocessing model in SaltProc Python tool.
 
 This Liquid Metal Extraction process for \gls{TAP} concept has been adopted from 
 the \gls{MSBR} which was discussed in sections~\ref{sec:chemical_processing} and \ref{sec:rare_earth_eff}. Removal efficiency ($\epsilon_{RE}$) of this process 
@@ -347,12 +356,16 @@ The most recent
 research for LiF salt (for \gls{MSFR} concept) reported following form of 
 extraction efficiency correlation \cite{rodrigues_actinide/lanthanide_2015}:
 \begin{align} 
-\epsilon_{RE} &= \frac{1}{1+10^{\lambda}} \\
+\epsilon_{RE} &= \frac{1}{1+10^{\lambda}} \nonumber \\
 &= \frac{1}{1+10^{f(A, \dot{m}_{Bi}, \dot{m}_{salt}, N, K)}} \label{eq:re_eff}
+	\intertext{where}
+	A&= \mbox{a metal-to-salt interface area} \nonumber \\
+\dot{m}_{Bi}&= \mbox{bismuth mass flow rate} \nonumber \\
+\dot{m}_{salt}&= \mbox{the salt mass flow rate} \nonumber \\
+	N&= \mbox{the number of stages} \nonumber \\
+	K&= \mbox{the mass transfer coefficient at the salt/Bi-Li interface} \nonumber 
 \end{align}
-where $A$ is a metal-to-salt interface area, $\dot{m}_{Bi}$ is bismuth mass 
-flow rate, $\dot{m}_{salt}$ is salt mass flow rate, $N$ is the number of stages, 
-$K$ is mass transfer coefficient at the salt / Bi-Li interface. Correlations are 
+Correlations are 
 different for various lanthanides and can be determined from experimental data 
 and/or existing analytical models \cite{mcneese_engineering_1971, simon_-line_2008, rodrigues_actinide/lanthanide_2015, delpech_reactor_2009, delpech_possible_2012}.
 
