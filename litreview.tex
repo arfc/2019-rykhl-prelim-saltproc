@@ -53,33 +53,39 @@ approximate online refueling \cite{serp_molten_2014-1}.
 A summary of recent efforts is listed in table~\ref{tab:fs_codes}.
 \begin{table}[ht!]
 \caption{Tools and methods for liquid-fueled \glspl{MSR} fuel salt depletion analysis.}
-\begin{tabularx}{\textwidth}{s m a} 
-\hline Neutronics software  & \qquad Authors & Spectrum   \\
+\begin{tabularx}{\textwidth}{x s a a} 
+\hline Neutronics software  & \qquad\qquad\qquad Authors & Spectrum & Removal   \\
+        used for depletion  &                &          & efficiency  \\
 \hline
-\gls{MCNP}/REM \cite{noauthor_mcnp_2004,heuer_simulation_2010}  & Doligez 
+\gls{MCNP}/REM \cite{noauthor_mcnp_2004,heuer_simulation_2010}  & Nuttin \emph{et al.}, 2005; Doligez 
 \emph{et al.}, 2014; Heuer \emph{et al.}, 2014  
-\cite{doligez_coupled_2014,heuer_towards_2014}    & fast \\
+\cite{nuttin_potential_2005,doligez_coupled_2014,heuer_towards_2014}
+& thermal/ fast & ideal \\
 ERANOS \cite{ruggieri_eranos_2006}  & Fiorina \emph{et al.}, 2013 
-\cite{fiorina_investigation_2013}            & fast \\
+\cite{fiorina_preliminary_2012-1}            
+& fast & ideal \\
 KENO-IV/ORIGEN \cite{goluoglu_monte_2011,gauld_isotopic_2011}     & Sheu 
-\emph{et al.}, 2013 \cite{sheu_depletion_2013} & fast \\
+\emph{et al.}, 2013 \cite{sheu_depletion_2013} 
+& fast & ideal\\
 SERPENT2 \cite{leppanen_serpent_2015}  & Aufiero \emph{et al.}, 2013
-\cite{aufiero_extended_2013}; Ashraf \emph{et al.}, 2018\cite{ashraf_nuclear_2018} & fast \\
+\cite{aufiero_extended_2013}; Ashraf \emph{et al.}, 2018 \cite{ashraf_nuclear_2018} & fast & ideal \\
 DIF3D \cite{derstine_dif3d_1984} & Zhou \emph{et al.}, 2018 
-\cite{zhou_fuel_2018-1} & thermal/ fast \\
-\gls{MCNP}/REM  & Nuttin \emph{et al.} \cite{nuttin_potential_2005}&thermal  \\ 
+\cite{zhou_fuel_2018-1} 
+& thermal/ fast & ideal \\
 MCODE/ORIGEN2 \cite{xu_mcode_2008,croff_users_1980} & Ahmad \emph{et al.}, 
-2015 \cite{ahmad_neutronics_2015}   & thermal  \\
+2015 \cite{ahmad_neutronics_2015}   
+& thermal & ideal \\
 OpenMC/ORIGEN-S \cite{romano_openmc_2015,rearden_scale_2018}  & de Lanversin \emph{et al.}, 
-2017 \cite{de_troullioud_de_lanversin_toward_2017}   & thermal  \\
+2017 \cite{de_troullioud_de_lanversin_toward_2017}   
+& thermal & ideal\\
 \gls{MCNP}6/CINDER90 \cite{goorley_mcnp6_2013}     & Park \emph{et al.}, 2015; 
 Jeong \emph{et al.}, 2016 \cite{park_whole_2015, jeong_equilibrium_2016}& 
-thermal\\
+thermal & ideal \\
 SCALE/TRITON \cite{bowman_scale_2011,powers_new_2013}    & Powers \emph{et al.}, 
 2014; Betzler \emph{et al.}, 2017; \qquad Li \emph{et al.}, 2018
-\cite{powers_new_2013,powers_inventory_2014,betzler_molten_2017, li_optimization_2018} & thermal/ fast\\
-SERPENT2     & Rykhlevskii \emph{et al.}, 2017-2019 \cite{rykhlevskii_online_2017, rykhlevskii_full-core_2017, rykhlevskii_advanced_2018,rykhlevskii_modeling_2019} & 
-thermal\\
+\cite{powers_new_2013,powers_inventory_2014,betzler_molten_2017, li_optimization_2018} & thermal & ideal \\
+SERPENT2     & Rykhlevskii \emph{et al.}, 2017-19 \cite{rykhlevskii_online_2017, rykhlevskii_full-core_2017, rykhlevskii_advanced_2018,rykhlevskii_modeling_2019} & 
+thermal & ideal \\
 \hline
 \end{tabularx}
   \label{tab:fs_codes}
@@ -89,7 +95,19 @@ thermal\\
 References \cite{li_optimization_2018,de_troullioud_de_lanversin_toward_2017,doligez_coupled_2014,
 heuer_towards_2014, sheu_depletion_2013, aufiero_extended_2013} provide some form of reactivity control, 
 and methods \cite{doligez_coupled_2014,heuer_towards_2014,aufiero_extended_2013,ahmad_neutronics_2015, 
-park_whole_2015,jeong_equilibrium_2016,rykhlevskii_modeling_2019,nuttin_potential_2005} use a set of all nuclides in depletion calculations. 
+park_whole_2015,jeong_equilibrium_2016,rykhlevskii_modeling_2019,nuttin_potential_2005} use a set of all nuclides in depletion calculations. Batch-wise approach was used in 
+references \cite{powers_new_2013,powers_inventory_2014,betzler_molten_2017, 
+li_optimization_2018, park_whole_2015, jeong_equilibrium_2016,
+rykhlevskii_advanced_2018, rykhlevskii_modeling_2019},
+and references \cite{nuttin_potential_2005,doligez_coupled_2014,
+heuer_towards_2014, fiorina_preliminary_2012-1, sheu_depletion_2013,
+aufiero_extended_2013, zhou_fuel_2018-1, ahmad_neutronics_2015,
+de_troullioud_de_lanversin_toward_2017} are employed a continuous online 
+reprocessing approach. Finally, all published in the literature efforts 
+are considered ideal online \gls{FP} removal processing  (e.g., 
+\gls{FP} extraction efficiency is 100\%), and the proposed work goal is 
+to close the gap.
+
 
 \subsection{Batch-wise online reprocessing approach}
 Many liquid-fueled \gls{MSR} designs rely on online fuel processing in which  
