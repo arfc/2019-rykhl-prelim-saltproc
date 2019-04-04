@@ -6,7 +6,7 @@ task that requires intelligent design (e.g., chemical separations
 equipment design, fuel salt flows to equipment) and has a considerable 
 economic cost. This section contains a brief overview of general 
 chemical processing plant and a gas separation system. As an example 
-of generic reprocessing facility the reprocessing plant of single-fluid 
+of generic reprocessing facility the reprocessing plant of a single-fluid 
 \gls{MSBR} was selected.
 
 \subsection{Gas separation system}
@@ -26,7 +26,7 @@ the salt and discharged to the off-gas system. Xenon migration to the circulatin
 bubbles competes with xenon migration to the porous moderator graphite. 
 The graphite is especially of concern because it absorbs xenon and holds it in the 
 core which leads to parasitic neutron absorption. The 0.5\% target value for 
-$^{135}$Xe poison fraction can be achieved when circulating helium bubbles 
+$^{135}$Xe poison fraction can be achieved when circulating helium bubbles are 
 0.508mm in diameter \cite{robertson_conceptual_1971}. This is accomplished by 
 redirecting 10\% of the fuel salt flow from the pump discharge 
 through a bubble separator 
@@ -97,7 +97,7 @@ it quickly decays to $^{135}$I with $\tau_{1/2}=19$ s & 			                    \
 \end{table}
 \begin{table}[ht!]
 \caption{$^{135}$Xe loss terms and principal rate constants involved
- (reproduced from \cite{kedl_development_1967}).}
+ (reproduced from Kedl \emph{et al.} \cite{kedl_development_1967}).}
   \centering
 \begin{tabularx}{\textwidth}{b | b}
 \hline \textbf{$^{135}$Xe loss mechanism}      & \textbf{Principal rate 
@@ -129,7 +129,7 @@ In the single-fluid \gls{MSBR}, thorium, uranium,
 protactinium, and fission products are all mixed together in a single fluoride salt (FLiBe). The \gls{MSRE} demonstrated a liquid-liquid extraction process 
 for removing protactinium and uranium from molten fluoride salts. The method 
 is to exchange thorium and lithium dissolved in molten bismuth for the 
-components to be removed from the salt. Moreover, \gls{MSRE} reports 
+components to be removed from the salt. Moreover, the \gls{MSRE} reports 
 indicated that the extraction could be carried out rapidly and continuously 
 \cite{whatley_engineering_1970-1}.
 
@@ -138,7 +138,7 @@ The principal scheme of the \gls{MSBR} reprocessing facility concept is shown in
   \centering
   \includegraphics[width=0.9\textwidth]{flowsheet.pdf}
   \caption{Simplified block diagram of chemical processing scheme for single-fluid \gls{MSBR} (reproduced 
-  from Sorensen (\cite{sorensen_one-fluid_2006}). RE is a reducing agent.}
+  from Sorensen \cite{sorensen_one-fluid_2006}). RE is a reducing agent.}
   \label{fig:material_flow}
 \end{figure}
 
@@ -231,14 +231,14 @@ composition evolution taking into account an online reprocessing system
 was developed as a part of my M.Sc. thesis \cite{rykhlevskii_advanced_2018,
 rykhlevskii_arfc/saltproc_2018}. The tool was designed to 
 expand SERPENT 2 depletion capabilities for modeling liquid-fueled \gls{MSR} 
-for continuous reprocessing. SaltProc uses HDF5 
+for online reprocessing. SaltProc uses HDF5 
 \cite{the_hdf_group_hierarchical_1997} to store 
 data and uses the PyNE Nuclear Engineering Toolkit \cite{scopatz_pyne_2012}
 for SEPRENT output file parsing and nuclide naming. SaltProc is an 
-open-source python package that uses a batch-wise approach to simulate 
+open-source Python package that uses a batch-wise approach to simulate 
 continuous feeds and removals in \glspl{MSR}. 
 
-Capbilities of the developed tool, working with the Monte Carlo software 
+Capabilities of the developed tool, working with the Monte Carlo software 
 SERPENT 2, were demonstrated using the full-core MSBR design for a 
 simplified case with ideal removal efficiency (100\% of mass for target 
 elements removed) \cite{rykhlevskii_modeling_2019}. Unfortunately, 

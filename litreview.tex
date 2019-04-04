@@ -11,7 +11,7 @@ information about \gls{MSR} online reprocessing system and a literature review.
   \label{fig:periodic_tab}
 \end{figure}
 
-\section{Online separations and feed}
+\section{Online separations and feeds}
 A liquid-fueled \gls{MSR} has online separations and/or feeds, where material 
 is moved to or from the core at all times (continuous) or at specific intervals 
 (batch). Contrarily, in a solid-fueled reactor, fission products and actinides 
@@ -104,8 +104,8 @@ heuer_towards_2014, fiorina_preliminary_2012-1, sheu_depletion_2013,
 aufiero_extended_2013, zhou_fuel_2018-1, ahmad_neutronics_2015,
 de_troullioud_de_lanversin_toward_2017} are employed a continuous online 
 reprocessing approach. Finally, all published in the literature efforts 
-are considered ideal online \gls{FP} removal processing  (e.g., 
-\gls{FP} extraction efficiency is 100\%), and the proposed work goal is 
+are considered an ideal online fission product removal processing  (e.g., 
+extraction efficiency is 100\%), hence, the proposed work goal is 
 to close the gap.
 
 
@@ -125,10 +125,10 @@ reprocessing and deplete the fuel salt \cite{powers_new_2013}. Methods listed in
 references \cite{zhou_fuel_2018-1, sheu_depletion_2013,
 park_whole_2015, jeong_equilibrium_2016, powers_inventory_2014,
 betzler_molten_2017,rykhlevskii_modeling_2019} 
-as also employ a batch-wise approach. This approach has a few disadvantages. 
+are also employed a batch-wise approach. This approach has a few disadvantages. 
 First, this method assumes that material transfer from the reactor primary 
 loop to the reprocessing plant is discrete and instantaneous. In reality, 
-some small fraction of fuel salt is \textbf{continuously} flows to 
+some small fraction of fuel salt is \textbf{continuously} flows to the 
 reprocessing plant and approximately the same \textbf{continuous} material flow 
 is returning back to keep mass balance in a primary loop. Second, this approach 
 assumes that material accumulation in the core 
@@ -145,7 +145,7 @@ ORIGEN \cite{gauld_isotopic_2011} solves a set of Bateman equations using
 one-group averaged fluxes and cross-sections obtained from a transport 
 calculation. The Bateman equations that describe the rate of change of the 
 isotopes due to neutron induced reactions and decay processes can be 
-written in this form \cite{aufiero_extended_2013}:
+written in the following form \cite{aufiero_extended_2013}:
 \begin{align}
 \frac{dN_i}{dt} &= \bar{\Phi}\sum\limits_{j}N_{j}\sigma_{j \rightarrow 		i} - \bar{\Phi}\sum\limits_{j}N_{i}\sigma_{i \rightarrow j} + \sum					\limits_{j}	N_{j}\lambda_{j}b_{j \rightarrow i} - N_{i}\lambda_{i} \\
 & \qquad\qquad (1) \qquad\qquad\quad (2) \qquad\quad\qquad (3) \qquad\qquad (4) \nonumber
@@ -161,7 +161,7 @@ written in this form \cite{aufiero_extended_2013}:
 \end{align}
 
 The four terms on the right-hand side of the equation represent (1) the production rate of nuclide $i$ from irradiation, (2) the loss rate of nuclide $i$ due to irradiation, (3) the decay rate of nuclide $j$ into nuclide $i$, and (4) the loss rate of nuclide $i$ due to decay. Mentioned earlier, the deterministic codes  SCALE/TRITON and Monte Carlo codes MCNP, Shift, KENO-VI do not support 
-removal or feeds rates for depletion simulations.
+removal or feed rates for depletion simulations.
 
 Online fuel reprocessing can be explicitly introduced in the system of 
 equations by adding effective decay and transmutation terms for the 
@@ -172,7 +172,7 @@ adding a gain term on the right-hand side of the Bateman equations:
 \bar{\Phi}\sum\limits_{k=^{235}U}N_{k}\sigma_{k,c}  \label{eq:feed_term}
 \end{align}
 where $\sigma_{k,c}$ is the one-group capture cross section of feed 
-isotope (e.g. $^{235}$U).
+isotope (e.g., $^{235}$U).
 
 The removal of fission products is achieved by adding an explicit decay 
 term to the Bateman equations. For the generic fission product, $l$, 
@@ -185,7 +185,7 @@ where $\lambda_{l,removal}$ is the effective removal time constant of the partic
 Fiorina \emph{et al.} simulated \gls{MSFR} depletion with continuous fuel 
 salt reprocessing via introducing 
 ``reprocessing'' time constants into the ERANOS transport code 
-\cite{fiorina_investigation_2013}. Nuttin \emph{et al.} used a similar approach 
+\cite{fiorina_preliminary_2012-1}. Nuttin \emph{et al.} used a similar approach 
 to simulate online reprocessing with the MCNP Monte Carlo code for a 
 \gls{MSBR}-like reference 
 system with $^{232}$Th/$^{233}$U fuel \cite{nuttin_potential_2005}.
@@ -214,19 +214,19 @@ Nuttin \emph{et al.} broke up the reactor core geometry into three \gls{MCNP} ce
 one for salt channels, one for the salt plena above and below the core, and a 
 third cell for the annulus. Consequently, the two-region reactor core was 
 approximated by one region with averaged fuel/moderator ratio 
-\cite{nuttin_potential_2005}. Thus, Powers \emph{et 
+\cite{nuttin_potential_2005}. Similarly, Powers \emph{et 
 al.}, Betzler \emph{et al.}, and Jeong \emph{et al.} 
 \cite{powers_new_2013,powers_inventory_2014,betzler_modeling_2016, 
 betzler_molten_2017, jeong_development_2014, jeong_equilibrium_2016} used a 
-similar simplified unit-cell models. This approach 
+simplified unit-cell models. This approach 
 misrepresents the two-region breeder reactor concept. The unit-cell or one-region 
 models may produce reliable results for homogeneous reactor cores (i.e. 
 \gls{MSFR}, \gls{MOSART}) or for one-region single-fluid reactor designs (i.e. 
-\gls{MSRE}). However, many reactor concepts with sophisticated geometry (e.g. 
+\gls{MSRE}). However, many reactor concepts with sophisticated geometry (e.g., 
 two-region \gls{MSBR}, \gls{TAP} \gls{MSR} with irregular moderator pattern) must 
 be simulated using a whole-core model to accurately capture different neutron 
-transport characteristics in the different regions of the core. Therefore, 
-online reprocessing tools and reactor physics codes should be tested 
+transport characteristics in the different regions of the core. Therefore, in 
+general, the online reprocessing tools and reactor physics codes should be tested 
 using high-precision full-core reactor core models.
 
 \subsection{Extraction efficiency}
@@ -240,8 +240,12 @@ follows:
 	n_{ext} &= \mbox{the number of moles of the element M extracted}  \nonumber \\
 	n_{init}&= \mbox{the initial number of moles of the element M} \nonumber
 \end{align} 
-References \cite{rykhlevskii_modeling_2019, li_optimization_2018, de_troullioud_de_lanversin_toward_2017, park_whole_2015, sheu_depletion_2013} assumed extraction efficiency for all isotopes equal 100\% (e.g. 100\% of mass of target isotopes removed within the ``cycle times''\footnote{ The \gls{MSBR} program defined a ``cycle time" as the amount of 
-time required to reprocess entire salt ($T_r$) \cite{robertson_conceptual_1971}.}). 
+All references listed in Table~\ref{tab:fs_codes} are assumed an extraction efficiency
+ equal 100\% (e.g. 100\% of mass of target isotopes 
+removed within the ``cycle times''\footnote{ The \gls{MSBR} 
+program defined a ``cycle time" as the amount of 
+time required to reprocess entire salt ($T_r$) 
+\cite{robertson_conceptual_1971}.}). 
 Nuttin \emph{et al.} introduced separation efficiency ($\epsilon_e$) using the 
 equation below \cite{nuttin_potential_2005}:
 \begin{align}
@@ -251,7 +255,7 @@ where $dN_e$ is the extracted amount of element $e$;
 $N_{e, 0}$ is the initial inventory of the element $e$; 
 $dt$ is the time interval; 
 $T_r$ is the time needed to reprocess entire salt (cycle time). 
-Integration of both part of this equation leads to the
+Integration of both parts of this equation leads to the
 following expression for the amount of element $e$ after extraction:
 \begin{align}
 N_{e, 1} = N_{e, 0} e^{\frac{\epsilon_e}{T_r}t}
@@ -262,7 +266,7 @@ For the simplified case when the efficiency selected equals
 \begin{align} 
 \lambda_e = \epsilon_e / T_r  \label{eq:100_lam}
 \end{align}
-For the case with realistic separation efficiency (e.g. 99\% for 
+For the case with realistic separation efficiency (e.g., 99\% for 
 uranium extraction), the effective removal time constant for the 
 element $e$ can be expressed as \cite{nuttin_potential_2005}:
 \begin{align}  
@@ -310,13 +314,13 @@ $\epsilon_i$ is the
 extraction efficiency for $i^{th}$ element. There are few issues with 
 simplified ``black box'' model: 
 \begin{enumerate}
-	\item Previous work in the literature assumed than separation 
+	\item Previous work in the literature assumed that separation 
 efficiency vector is not changing with time and does not depend on reactor 
 operational parameters (separation efficiency might changes with temperature, 
 power level, current fuel salt isotope composition, etc).
 
 	\item Fuel salt in a reprocessing plant undergoes not a single but many 
-	separate processes (e.g. He bubbling, nickel mesh filter). Some of 
+	separate processes (e.g. He bubbling, nickel mesh filter, etc). Some of 
 	these processes can be done in parallel but many in series.
 	
 	\item Ignoring the decay of radioactive nuclides during processing in  
