@@ -1,39 +1,40 @@
 \chapter[Summary and Proposed Work]{Summary and Proposed Work}
 
 \section{Summary}
-The need of proposed work had been shown by a summary of the 
+The need for this work has been shown by a summary of the 
 current state of the art of \glspl{MSR} online reprocessing 
 simulator capabilities. The literature review in Chapter 2 
 concluded that most \gls{MSR} depletion simulators typically 
-assume ideal (rather than realistically constrained) poisons 
+assume ideal (rather than realistically constrained) poison 
 removal rates (e.g., 100\% of target poison mass is extracted) 
 for the nuclear system performance modeling. The Python 
-toolkit, SaltProc, directly coupled with SERPENT 2 Monte Carlo Burnup 
+toolkit, SaltProc, directly couples with the SERPENT 2 Monte 
+Carlo depletion 
 code for liquid-fueled \gls{MSR} depletion simulation 
-including realistic online reprocessing plant model to be developed 
-in this work. Proposed work will provide a currently unavailable 
-tool for fuel composition evolution analysis in \gls{MSR} with 
-an online reprocessing system involving multiple processes 
+including realistic online reprocessing system modeling. 
+The proposed work will provide a  
+tool for fuel composition evolution analysis in \glspl{MSR} with 
+online reprocessing involving multiple processes 
 that vary in their removal efficiencies and rates. Finally, 
 the tool capabilities will be demonstrated for few promising 
-\gls{MSR} designs including \gls{TAP}, 
-\gls{MSBR}, \gls{MSFR} and validated against results in the 
-literature.
+\gls{MSR} designs including the \gls{TAP}, 
+the \gls{MSBR}, and the \gls{MSFR} and will be validated against 
+results in the literature.
 
  
 \section{Proposed Work and Simulations}
-A new Python-based fuel cycle simulator, coupled with
+SaltProc, a new Python-based fuel cycle simulator, coupled with
 the SERPENT 2 Monte Carlo code, incorporating user-parametrized 
 components in the fuel salt processing system design will be 
 developed and validated in three stages. A demonstration stage will 
 implement ‘no reprocessing’ \gls{MSR} structure which captures the 
 fundamental code behavior of the components and integrated nuclear 
-system model. On this stage obtained simulation results will be 
+system model. In this stage, obtained simulation results will be 
 verified against SERPENT 2 results for stationary fuel salt which 
 might be useful for debugging on the early stage of tool development.
 A base case phase will be build upon the demonstration model by 
-adding simple poisons removal with constant extraction efficiencies 
-and corresponding compensating fissile material feed. This case 
+adding simple \gls{FP} removal with constant extraction efficiencies 
+and corresponding compensating fissile material feed. Base case 
 results will be 
 verified with ChemTriton results for unit cell and full-core 
 geometry from recent \gls{ORNL} research 
@@ -42,11 +43,11 @@ The final extension stage will build be upon the base case by
 implementing extending physics and chemistry correlations for 
 extraction efficiencies to capture impact of non-ideal 
 removal rates on the reactor performance modeling. These 
-stages will be completed withing a test-driven software 
-development paradigm, leverage unit tests and 
+stages will be completed during a test-driven software 
+development approach, will leverage unit tests and 
 continuous integration for sustainable development. Finally, 
-collected during these stages data will be organized and 
-published in a \textit{.JSON} format data library for use 
+data collected during these stages will be organized and 
+published in a \textit{.json} format data library for use 
 with the SaltProc Python package.
 \begin{figure}[ht!] % replace 't' with 'b' to force it to 
   \centering
@@ -55,47 +56,47 @@ with the SaltProc Python package.
   \label{fig:workflow}
 \end{figure}
 
-Additionally, sensitivity analysis for \gls{TAP} fuel processing 
+Additionally, sensitivity analysis for the \gls{TAP} fuel processing 
 system design will be performed to determine desirable ranges 
 for principal system parameters. Particularly, inputs to the 
 system model (e.g., components volumes, holdup capacities, helium 
-bubble size, etc) will be sampled randomly from appropriate 
+bubble size, etc) will be sampled from appropriate 
 distributions to obtain results (e.g., fuel utilization) in the 
-form of corresponding distributions. These data later can be used 
+form of corresponding distributions. These data later will be used
 to formulate design requirements and safety margins for 
-\gls{MSR}'s reprocessing system designers.
+\gls{MSR}'s reprocessing system.
 
 \subsection{Demonstration Case Development}
-The proposed tool preliminary class structure and flowchart are 
+The proposed tool class structure and flowchart are 
 described in detail in section~\ref{sec:tool_design}.
 A first milestone in the development of this toolkit will be a 
 principle demonstration of coupling with SERPENT 2 and 
 information passing schemes. That is, no removals or feeds 
 will be implemented in this demonstration stage. However, 
-the components models will be developed in such way that 
-they are capable of passing data about material (e.g., isotopic 
+the component models will be developed in such way that 
+they are capable of passing data about materials (e.g., isotopic 
 composition vector) via set of \textit{Processes} but this 
 processing system will not actually modify \textit{MaterialFlow} 
 (separation efficiency is to be set 0\%).
 
-The demonstration will produce a complete but 'empty' processing 
-model. It will allow to simulate \gls{MSR} system operation during 
-longtime period and obtain resulting fuel salt isotopic composition. 
-After that, the result will be verified against fuels salt 
-composition obtained for the same depletion parameters and the 
-core geometry with pure SEPRENT 2 output because this case does not 
-introduce any online processing challenges.
+The demonstration will produce a complete but `empty' processing 
+model. It will simulate \gls{MSR} system operation during 
+a long time period and obtain resulting fuel salt isotopic composition. 
+After that, the result will be verified against fuel salt 
+composition obtained with pure SEPRENT 2 output for the same 
+depletion parameters and the core geometry.% because this case does not 
+%introduce any online processing challenges.
 
 At the subcomponent level, the demonstration will include information 
-passing, bookkeeping, mass balance within and between the 
+passing, bookkeeping, and mass balance within and between the 
 subcomponents. Information passing between subcomponents 
 (\textit{Processes}) concerning nuclide concentration, mass flow rate 
 and total volume in \textit{MaterialFlow} will be implemented and tested. 
-A HDF5 output database structure will be defined and 
-bookeeping for writing isotopic composition vector, simulation 
-parameters and all relevant processing information.
+An HDF5 output database will contain 
+isotopic composition vectors, simulation 
+parameters, and all relevant processing information.
 
-This work will be developed with a test-driven development paradigm. 
+This work is developed with a test-driven development paradigm. 
 Specifically, before any new functionality is implemented, a suite of 
 tests is written which as closely define its expected behavior as 
 possible. The code is then written with the goal of passing the test 
@@ -104,111 +105,106 @@ comprehensively tested in parallel with its development.
 
 Test problems will help comprehensively define and confirm each unit 
 of the demonstration functionality. These problems will include very 
-basic information passing tests as well as more challenging multiple 
-components integration tests. Every unit of functionality
-within the toolkit should be tested as an integral part of development.
+basic, information-passing tests as well as more challenging multiple-
+component integration tests. Every unit of functionality
+within the toolkit will be tested as an integral part of development.
 
-When these unit test suite passes, validation efforts against results 
-in the literature will take place to demonstrate that the complete 
+When the unit test suite passes, validation efforts against results 
+in the literature will demonstrate that the complete 
 processing system model behaves in agreement with previous research 
-efforts. If it does not behave as expected, sensitivity analyses, 
-model abstraction, and computational development will be iterated 
-through until the model is validated.
+efforts \cite{rykhlevskii_advanced_2018, rykhlevskii_modeling_2019}. 
+If it does not behave as expected, sensitivity analyses, 
+model abstraction, and computational development will be iteratively 
+conducted until the model is validated.
 
 \subsection{Base Case Development}
 The next stage in this work will be the development of the base case. 
 This will build upon the demonstration processing system model by 
 implementing simplified physics for each of the subcomponents. This 
 will include constant non-ideal extraction efficiency which is 
-different for each target chemical element. Moreover, realistic 
-model of \gls{TAP} reprocessing plant involving multiple 
-processes (serial and parallel) will be implemented on this 
+different for each target chemical element. Moreover, a realistic 
+model of the conceptual \gls{TAP} reprocessing plant involving 
+multiple processes (serial and parallel) will be implemented on this 
 stage. 
 
 Additional information such as void fraction, helium 
-bubbles size and other component-specific users-defined 
-parameters will be added to demonstration case model.
+bubble size and other component-specific, user-defined 
+parameters will be added to the demonstration case model.
 Also this will include non-zero fuel salt feed which 
-compensate removed poisons mass loss in a primary loop.
+compensate the removed poisons mass loss in a primary loop.
 This milestone will result in a processing system model capable of 
 modeling various liquid-fueled \gls{MSR} with comprehensive 
-online reprocessing system but with constant, defined at runtime 
-separation efficiency.
+online reprocessing system but with constant separation efficiency, 
+defined at runtime.
 
 Unit testing, verification and validation will occur in a manner 
 very similar to the previous case. Unit tests will assess the 
 performance of each extension functionality as well as their 
-integrated behavior. Validation against exist results for \gls{TAP} 
-obtained by ChemTriton \cite{betzler_two-dimensional_2016, 
+integrated behavior. Validation against existing results for 
+\gls{TAP} obtained by ChemTriton \cite{betzler_two-dimensional_2016, 
 betzler_molten_2017} will also be performed for confidence 
 building. The high-fidelity full-core \gls{TAP} model for 
 SERPENT 2 has been developed already and described in detail 
 in section~\ref{sec:tap_model}.
 
-Additionally, the base case model will be used to estimate 
-effective 
+Additionally, the base case model will be used to estimate effective 
 multiplication factor ($k_{eff}$) dynamics for long-time 
-depletion simulations. Particularly, it will demonstrate 
-ability of \gls{TAP} system maintain critical state with 
-fresh salt feed rate equal rate of loss 
-of separated (with specified efficiency) neutron poisons. 
-In case if it would go subcritical, additional reactivity 
-controlling subcomponent 
-will be implemented on extension stage. This subcomponent 
-will inject additional amount of fissile material 
-when $k_{eff}$ for the core drops below specific value (e.g., 
-$k_{eff}<1.01$) and 
-repeat previous depletion step. This module will enable 
-maintain reactor critical during whole reactor 
-operation time.
+depletion simulations. Particularly, $k_{eff}$ change overtime 
+will demonstrate 
+ability of the \gls{TAP} system to maintain a critical state with a
+fresh salt feed rate equal separated neutron poison loss rate. 
+To avoid subcriticality, an additional reactivity 
+controlling subcomponent will be implemented on the extension stage. 
+This subcomponent 
+will inject additional fissile material 
+when $k_{eff}$ for the core drops below a specific value (e.g., 
+$k_{eff}<1.01$) and will then repeat the previous depletion step. 
+This module will enable maintenance of reactor criticality 
+throughout reactor operation.
  
-
-\subsection{Extensions Development}
-When the base case is established, a series of extensions 
-to these models will be pursued.
-This will build upon the base case processing model by 
-incorporating extraction efficiencies as a functions of 
-many parameters. Mathematical correlations for the efficiencies 
-will be taken from the literature \cite{gabbard_development_1974} 
-and from experiments and CFD-simulations currently conducting at 
+\subsection{Extension Development}
+When the base case is established, a series of extensions to 
+these models will be pursued. These will incorporate extraction 
+efficiencies as a function of many physical system design 
+parameters. Mathematical correlations for the efficiencies will 
+be taken from the literature \cite{gabbard_development_1974}, 
+experiments and from CFD-simulations currently being conducted at 
 the University of Illinois at Urbana-Champaign \cite{huff_enabling_2018}.
 This milestone will result in a realistic online reprocessing system 
 model capable of modeling \gls{MSR} systems with realistically achievable 
 process rates and efficiencies as well as variable feed streams. 
 
-For realistic removal rates and efficiencies some fraction of neutron 
-poisons will stay in the fuel salt and deteriorate neutron economy. 
-Even with fresh salt feed compensation of poisons removal, 
-it will lead to slowly decreasing neutron multiplication factor and 
-eventually \gls{MSR} core will become subcritical. The time before 
-shutdown strongly dependent from reprocessing facilities performance 
+For realistic removal rates and efficiencies, some fraction of neutron 
+poisons will remain in the fuel salt and deteriorate the neutron 
+economy. Even with fresh salt feed compensation of poison removal, 
+the neutron multiplication factor will slowly decrease and 
+eventually the \gls{MSR} core will become subcritical. The time before 
+shutdown strongly depends on reprocessing facility performance 
 and will be evaluated for realistic \gls{TAP} processing plant model 
-in this 
-work. Depending on this time, additional extension will incorporate 
-reactivity control module which injecting more fissile material 
-into the core when reactor is close to subcritical state. In this 
-case the fraction of irradiated fuel salt from the outlet of the 
-reactor vessel outlet will be removed to conserve mass balance 
-in a primary loop.
+in this work. Depending on time before shutdown, additional 
+extension will 
+incorporate a reactivity control module which injects more fissile 
+material into the core when the reactor is close to subcritical state. 
+In this case, the fraction of irradiated fuel salt from the outlet of 
+the reactor vessel will be removed to conserve mass balance in the 
+primary loop.
 
 As the toolkit becomes capable of representing various reprocessing 
 concepts, these will be analyzed for different full-core 
-high-fidelity \gls{MSR} models discussed in Chapter 4. 
-As discussed 
-before, these concepts will represent different processing challenges 
-for various salt compositions, neutron spectra and designs. 
-Notably, 
-\gls{MSBR} reprocessing plant design is more complex than \gls{TAP}'s 
-one because it contains additional to the base case protactinium 
-isolation system with protactinium decay tank. Thus, SaltProc 
-demonstration for \gls{MSBR} concept will allow test 
-fuel salt decaying using build-in PyNE capabilities. 
+high-fidelity \gls{MSR} models discussed in Chapter 4. As discussed, 
+these concepts will represent different processing challenges 
+for various salt compositions, neutron spectra, and designs. 
+Notably, the \gls{MSBR} reprocessing plant design is more complex 
+than \gls{TAP}'s because it contains an additional protactinium 
+isolation system with protactinium decay tank. Thus, a SaltProc 
+demonstration for the \gls{MSBR} concept will test material decay 
+in the protactinium decay tank using built-in PyNE capabilities. 
 These models input data will be collected and 
-published in a \textit{.JSON}-compatible database for use with the 
+published in a \textit{.json}-compatible database for use with the 
 Python package to encourage further research in this area.
 
 \subsection{Sensitivity Analysis}
-Experimental data for removal efficiencies are very limited and lacks 
+Experimental data for removal efficiencies is very limited and lack 
 fidelity of the correlations. Salt flow rate, system volume, 
 void fraction, helium bubble size (for volatile gases removal), 
 temperature, pressure, and material properties are uncertain due to 
@@ -218,14 +214,14 @@ uncertain or flexible model input parameters will be sampled randomly
 from an appropriate distribution to obtain corresponding output 
 distributions. These resulting distributions can be used to estimate 
 system components design and safety margins. Furthermore, it will 
-help identify highly uncertain parameters and find key performance 
-drivers for reprocessing system design.
+provide helpful insights to identify impactful parameters and 
+find key performance drivers for reprocessing system design.
 
-While it is out of the scope of this work to perform
-comprehensive analysis and optimization of various \glspl{MSR} 
-systems, this 
+While it is out of the scope of this work to perform comprehensive 
+analysis and optimization of various \glspl{MSR} systems, this 
 work seeks to provide a tool which would be helpful to perform such 
 analyses. Thus, some limited analysis of \gls{MSR} fuel cycle 
-performance will be performed to demonstrate that the tools developed 
-in this work can illustrate the sensitivity of processing plant 
-performance to conceptual nuclear system parameters.
+performance including estimation of breeding ratio, fuel utilization, 
+mass of waste disposed and recovered will be performed to demonstrate 
+that the tools developed in this work can illustrate the sensitivity 
+of processing plant performance to conceptual nuclear system parameters.

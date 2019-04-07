@@ -1,26 +1,25 @@
 \chapter[Code demonstration and validation]{Code demonstration and validation}
 
 \section{Demonstration and Validation approach}
-The SaltProc after finishing development process will be tested for several 
+After finishing development, SaltProc will be tested for several 
 different \gls{MSR} concept designs. The concepts with various fuel salt 
 compositions, number of salts (single- and two-fluid), neutron spectrum and 
-reprocessing schemes will be investigated. In particular, demonstration 
-and validation activity will be focused on \gls{TAP} \gls{MSR} which is 
-promising and relatively recent concept of commercial \gls{MSR}. The results 
-obtained with SaltProc python package will be compared with recent research 
-efforts 
-discussed in Chapter 2 of current work (see table~\ref{tab:fs_codes}). 
+reprocessing schemes will be investigated. In particular, the demonstration 
+and validation activity will be focused on the \gls{TAP} \gls{MSR} which is a 
+promising and relatively recent concept of a commercial \gls{MSR}. The results 
+obtained with the SaltProc python package will be compared with recent research 
+efforts discussed in Chapter 2 of current work (see table~\ref{tab:fs_codes}). 
 Table~\ref{tab:msr_concepts} 
-contains tentative list of \glspl{MSR} concepts which are selected for 
-demonstration and validation proposes and their principal design features. 
-Finally, a compatible \textit{.JSON} database with input examples of listed 
-concept models for use with the SaltProc will be released to encourage 
+contains a tentative list of \gls{MSR} concepts which are selected for 
+demonstration and validation proposes along with their principal design features. 
+Finally, a compatible \textit{.json} database with input examples of listed 
+concept models for use with SaltProc will be released to encourage 
 research efforts in online reprocessing simulations for various 
 \gls{MSR} designs.
 \begin{table}[!htb]
   \centering
-  \caption{Tentative list of \glspl{MSR} designs selected for SaltProc 
-  demonstration and validation and their principal parameters.}
+  \caption{Tentative list of \gls{MSR} designs selected for SaltProc 
+  demonstration and validation along with their principal parameters.}
   \label{tab:msr_concepts} 
   \begin{tabular}{p{0.25\textwidth} p{0.22\textwidth} p{0.22\textwidth} p{0.22\textwidth} } \toprule 
    Parameter & \gls{TAP} & \gls{MSBR} & \gls{MSFR}  \\ \midrule
@@ -36,13 +35,14 @@ research efforts in online reprocessing simulations for various
 \end{table}
 
 \section{Transatomic Power Reactor overview}
-The \gls{TAP} concept is a 1250 MWt \gls{MSR} with an LiF-based uranium fuel salt 
-\cite{transatomic_power_corporation_technical_2016}. This concept uses 
-configurable zirconium hydride metal rods as a moderator while most of existing 
-\glspl{MSR} usually propose high-density reactor graphite. From neutronics analysis 
+The \gls{TAP} concept is a 1250 MW$_{th}$ \gls{MSR} with a LiF-based uranium fuel 
+salt \cite{transatomic_power_corporation_technical_2016}. This concept uses 
+configurable zirconium hydride metal rods as the moderator while most of existing 
+\glspl{MSR} usually propose high-density reactor graphite. From a neutronics analysis 
 point, zirconium hydride offers a much higher neutron moderating density than graphite;
-much less zirconium hydride volume is needed to achieve a thermal energy spectrum similar to one obtained with graphite moderator. Finally, zirconium hydride has 
-much longer lifespan in heavy operational conditions (high temperature, large 
+much less zirconium hydride volume is needed to achieve a thermal energy spectrum 
+similar to one obtained with graphite moderator. Finally, zirconium hydride has a much 
+longer lifespan in extreme operational conditions (high temperature, large 
 neutron flux, chemically aggressive salt) than reactor graphite.
 
 In this section, the design characteristics and reprocessing plant design 
@@ -51,35 +51,34 @@ are based on information presented in the \gls{TAP} white papers \cite{transatom
 \subsection{TAP design description}
 The \gls{TAP} design is very similar to original \gls{MSRE} design developed 
 by \gls{ORNL} \cite{haubenreich_experience_1970} but has two major innovations: 
-the fuel salt composition and moderator. The \gls{MSRE}'s MSRE’s 
+the fuel salt composition and moderator. The \gls{MSRE}'s 
 LiF-BeF$_2$-ZrF$_4$-UF$_4$ salt has been substituted with LiF-UF$_4$ salt which 
-allows to increase the uranium concentration within the fuel salt from 0.9 to 
-27.5\% while mainaining relatively low melting point (490$^{\circ}$C compared 
-with 434$^{\circ}$C 
-for original \gls{MSRE}'s salt) \cite{betzler_two-dimensional_2016}. The 
-graphite has very high 
-thermal scattering cross section which make it perfect moderator but has 
-few major drawbacks: 
-(1) the low lethargy gain per collision requires large volume of moderator 
-to be present to reach criticality, which leads to larger core and obstructing 
+allows for an increase in the uranium concentration within the fuel salt from 0.9 to 
+27.5\% while maintaining a relatively low melting point (490$^{\circ}$C compared 
+with 434$^{\circ}$C for the original \gls{MSRE}'s salt) 
+\cite{betzler_two-dimensional_2016}. The graphite has a very high 
+thermal scattering cross section which makes it a perfect moderator but has 
+a few major drawbacks: 
+(1) the low lethargy gain per collision requires a large volume of moderator 
+to be present to reach criticality, which leads to a larger core and obstructs 
 the core power density; (2) even special 
-reactor-grade graphite has relatively high porosity, consequently, it holding 
+reactor-grade graphite has relatively high porosity, consequently, it holds
 gaseous \glspl{FP} 
-(e.g., tritium, xenon) in pores; (3) the reactor graphite lifespan in commercial 
+(e.g., tritium, xenon) in pores; (3) the reactor graphite lifespan in a commercial 
 reactor is about 10 years \cite{robertson_conceptual_1971}. To resolve these 
-issues, \gls{TAP} concept uses another 
-moderator, namely, zirconium hydride, allowing more compact core and a 
-significant increase in power density. These two innovative design choices 
-together with configurable moderator 
-(moderator-to-fuel ratio can be changed during regular maintenance shutdown),
- facilitating the commercial deployment of this conceptual design in the current 
+issues, the \gls{TAP} concept uses another 
+moderator, namely, zirconium hydride, allowing for a more compact core and a 
+significant increase in power density. These two innovative design choices,  
+together with a configurable moderator 
+(moderator-to-fuel ratio can be changed during regular maintenance shutdown), 
+facilitate the commercial deployment of this conceptual design in the current 
 commercially available 5\% \gls{LEU} fuel cycle. 
 
-The \gls{TAP} \gls{MSR} primary loop contains the reactor vessel (including the 
-zirconium hydride moderator rods with silicone carbide cladding), pumps, and 
-primary heat exchanger. Pumps in continuous regime circulate the LiF-(Act)F$_4$ 
+The \gls{TAP} \gls{MSR} primary loop contains the reactor core volume (including 
+the zirconium hydride moderator rods with silicone carbide cladding), pumps, and 
+primary heat exchanger. Pumps circulate the LiF-(Act)F$_4$ 
 fuel salt through the primary loop. The pumps, vessels, tanks, and piping are 
-made of a nickel-based alloy (analogous of Hastelloy-N\footnote{ Hastelloy-N is 
+made of a nickel-based alloy (similar to Hastelloy-N\footnote{ Hastelloy-N is 
 very common in reactors now but have been studied and developed at \gls{ORNL} in 
 a program that started in 1950s.}), which is highly resistant to corrosion in 
 various molten 
@@ -94,11 +93,12 @@ analysis of \gls{TAP}
 design \cite{betzler_two-dimensional_2016, betzler_assessment_2017}. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h!]
-        \caption{Summary of principal data for \gls{TAP} \gls{MSR} \cite{transatomic_power_corporation_technical_2016, betzler_assessment_2017}. }
+        \caption{Summary of principal data for \gls{TAP} \gls{MSR} 
+        (reproduced from \cite{transatomic_power_corporation_technical_2016, betzler_assessment_2017}). }
         \begin{tabularx}{\textwidth}{ s  s}
         \hline
-         Thermal capacity of reactor           		& 1250 MW(t)             \\ 
-         Net electrical output                 		& 520 MW(e) 			 \\ 
+         Thermal capacity of reactor           		& 1250 MW$_{th}  $       \\ 
+         Net electrical output                 		& 520 MW$_e  $ 			 \\ 
          Gross thermal efficiency        			& 44\%     				 \\  
          Outlet temperature							& 620$^{\circ}$C         \\ 
 		 Fuel salt components                   & LiF-UF$_4$				 \\  
@@ -113,74 +113,72 @@ design \cite{betzler_two-dimensional_2016, betzler_assessment_2017}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{TAP core design}
-In the \gls{TAP} core fuel salt flows around moderator assemblies consisting 
+In the \gls{TAP} core, fuel salt flows around moderator assemblies consisting 
 of lattices of 
-movable zirconium hydride rods clad in a corrosion-resistant silicone carbide (figure~
-\ref{fig:tap-main-view}). The \gls{TAP}'s reactor pressure vessel is a cylinder 
-with inner 
-radius 150 cm, 
-height 350 cm and wall thickness 5 cm made from nickel-based alloy. The moderator-to-fuel 
-ratio, or salt volume fraction (SVF), in the core is possible to vary during operation to 
-shift the spectrum from intermediate to thermal energies (from \gls{BOL} to \gls{EOL}, 
-respectively) to maximize fuel burnup. In practice, SVF can be varied by inserting 
-fixed-sized moderator rods via the bottom of the reactor vessel (for safety 
-considerations), similarly to moving the control rods in a \gls{BWR}, as shown in 
-Figure~\ref{fig:tap-main-view}. Fot the \gls{TAP} reactor, \gls{EOL} occurs when the 
-maximum number of moderator rods are inserted into the core and further injection of 
-fresh fuel salt does not change a critical configuration. Unmoderated salt flowing in annulus between the core and the vessel wall provides for a potential reduction in 
+movable zirconium hydride rods clad in a corrosion-resistant silicone carbide 
+(figure~\ref{fig:tap-main-view}). The \gls{TAP} reactor pressure vessel is a 
+cylinder with inner radius 150 cm, height 350 cm and wall thickness 5 cm made 
+of a nickel-based alloy. The moderator-to-fuel ratio, or salt volume fraction 
+(SVF), in the core can be varied during operation to 
+shift the spectrum from intermediate to thermal energies (from \gls{BOL} to 
+\gls{EOL}, respectively) to maximize fuel burnup. In practice, SVF can be 
+varied by inserting fixed-sized moderator rods via the bottom of the reactor 
+vessel (for safety considerations), similarly to moving the control rods in 
+a \gls{BWR}, as shown in Figure~\ref{fig:tap-main-view}. For the \gls{TAP} 
+reactor, \gls{EOL} occurs when the maximum number of moderator rods are 
+inserted into the core and further injection of fresh fuel salt does not 
+change a criticality. Unmoderated salt is flowing in the annulus 
+between the core and the vessel wall provides for a potential reduction in 
 fast neutron flux at the vessel structural material. The authors claimed that a 
 single shutdown rod should be enough for emergency shutdown because 
-the \gls{TAP} has very low excess of reactivity for startup and online refueling would 
-keep it critical. As an additional shutdown mechanism, moderator rod removal may be used 
-to bringing 
-the core into a subcritical state \cite{transatomic_power_corporation_neutronics_2016}.
-
+the \gls{TAP} has a very low excess of reactivity for startup and online 
+refueling would keep it critical. As an additional shutdown mechanism, 
+moderator rod removal may be used to bring the core into a subcritical state 
+\cite{transatomic_power_corporation_neutronics_2016}.
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
   		\hspace{+1.5in}
 		  \includegraphics[width=0.55\textwidth]{tap_front_view.png}
   \caption{\gls{TAP} \gls{MSR} schematic view showing movable moderator rod 
-  bundles and shutdown rod.}
+  bundles and shutdown rod (figure reproduced from Transatomic Power White Paper 
+\cite{transatomic_power_corporation_technical_2016}).}
   \label{fig:tap-main-view}
 \end{figure}
 
 \subsection{SERPENT 2 model} \label{sec:tap_model}
 Advanced geometry surfaces and transformation capabilities of SERPENT are employed 
 to represent \gls{TAP} core. 
-Figure~\ref{fig:tap-serpent-plan} shows the plan view of preliminary whole-core
+Figure~\ref{fig:tap-serpent-plan} shows the $XY$ section of preliminary whole-core
 configuration at the expected reactor operational level when all
-control rods are fully withdrawn. Figure~\ref{fig:tap-serpent-elev} shows the 
+control rods are fully withdrawn. Figure~\ref{fig:tap-serpent-elev} shows a 
 longitudinal section of the reactor. This model contains the moderator rods (with 
-silicon carbide cladding), pressure vessel, and inlet and outlet plenums 
-(Table~\ref{tab:tap_model_param}). The control rod cluster is made using 
-\textbf{TRANS} SERPENT 2 feature which allows easy change control rod position 
-during burnup simulations if necessary. The violet color represents zirconium 
-hydride, and the yellow represents fuel 
-salt. The blue color shows Hastelloy-N, a material used for the vessel wall, 
-and the white color is a air. 
-In this proposal, all figures of the core 
-were generated using the built-in SERPENT plotter.
+silicon carbide cladding), pressure vessel, and inlet and outlet plena 
+(Table~\ref{tab:tap_model_param}). The control rod cluster is made using the
+\textbf{TRANS} SERPENT 2 feature which allows one to easily change the control rod 
+position during burnup simulations if necessary. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h!]
-        \caption{Geometric parameters for the full-core 3D model of \gls{TAP} (reproduced from \cite{betzler_assessment_2017}). }
+        \caption{Geometric parameters for the full-core 3D model of 
+        \gls{TAP} (reproduced from Betzler \emph{et al.} \cite{betzler_assessment_2017}). }
           \centering
-        \begin{tabularx}{0.5\textwidth}{m x}
+        \begin{tabularx}{0.9\textwidth}{x x a x}
         \hline
-         \qquad \textbf{Parameter}        			& 			             \\ \hline
-         \quad \textit{Moderator rod}          		& 			 			 \\ 
-         Cladding thickness, cm      	  			& 0.10     				 \\  
-         Radius, cm				      	  			& 1.15     				 \\  
-         Length, cm				      	  			& 300.0    				 \\  
-         Pitch, cm				      	  			& 3.0    				 \\ \hline 
-         \quad \textit{Moderator assemblies}   		& 			 			 \\ 
-         Array					      	  			& 5 $\times$ 5			 \\  
-         Pitch, cm				      	  			& 15.0    				 \\  \hline
-         \quad \textit{Core}		          		& 			 			 \\ 
-         Assemblies   				   	  			& 268     				 \\  
-         Inner radius, cm		      	  			& 150.0    				 \\  
-         Plenum height, cm			   	  			& 25.0    				 \\  
-         Vessel wall thickness, cm     	  			& 5.0    				 \\             
-         \hline
+\textbf{Component} & \textbf{Parameter} & Value      		& Unit		             \\ \hline
+\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Moderator\\ rod\end{tabular}} 
+		 & Cladding thickness      	  			    & 0.10 & cm				 \\  
+         & Radius 				      	  			& 1.15 & cm				 \\  
+         & Length				      	  			& 3.0  & m				 \\  
+         & Pitch				      	  			& 3.0  & cm  			 \\ \hline 
+
+\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Moderator\\ assembly\end{tabular}} 
+         & Array				      	  			& 5 $\times$ 5 & rods$\times$rods \\  
+         & Pitch				      	  			& 15.0 & cm    				 \\  \hline
+
+\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Core\end{tabular}}          
+         & Assemblies  				   	  			& 268  & assemblies/core \\  
+         & Inner radius			      	  			& 1.5  & m    				 \\  
+         & Plenum height			   	  			& 25.0 & cm    				 \\  
+         & Vessel wall thickness     	  			& 5.0 & cm    				 \\ \hline            
         \end{tabularx}
         \label{tab:tap_model_param}
 \end{table}
@@ -188,29 +186,35 @@ were generated using the built-in SERPENT plotter.
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
 		  \includegraphics[width=\textwidth]{tap_plan_view.png}
-  \caption{Plan view of SERPENT 2 \gls{TAP} model with fully withdrawn control rods.}
+  \caption{An $XY$ section of the \gls{TAP} model at horizontal midplane 
+  with fully withdrawn control rods. The violet color represents zirconium 
+hydride, and the yellow represents fuel salt. The blue color shows 
+Hastelloy-N, a material used for the vessel wall, and the white color 
+is the air. In this proposal, all figures of the core 
+were generated using the built-in SERPENT plotter.}
   \label{fig:tap-serpent-plan}
 \end{figure}
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
 		  \includegraphics[width=\textwidth]{tap_elev_view.png}
-  \caption{Elevation view of SERPENT 2 \gls{TAP} model.}
+  \caption{An $XZ$ section of the \gls{TAP} model.}
   \label{fig:tap-serpent-elev}
 \end{figure}
 
 \subsection{TAP reprocessing system structure and simulation approach}
-The \gls{TAP} nuclear island contains \gls{FP} removal system. Gaseous \glspl{FP} are 
-continuously removed using off-gas system while liquid and solid \glspl{FP} are extracted 
-via chemical processing system. As these byproducts are gradually removed, a small quantity 
+The \gls{TAP} nuclear island contains \gls{FP} removal system. Gaseous 
+\glspl{FP} are continuously removed using an off-gas system while liquid 
+and solid \glspl{FP} are extracted via a chemical processing system. As 
+these byproducts are gradually removed, a small quantity 
 of fresh fuel salt is regularly added to the primary loop. This process conserves a 
-constant fuel salt mass and keeps the reactor critical. In contrast with \gls{MSBR} 
-reprocessing system, \gls{TAP} does not need protactinium separation and isolation 
-system because it operates in uranium-based single-stage fuel cycle. The authors of 
-\gls{TAP} concept suggested three distinct fission product removal methods: 
+constant fuel salt mass and keeps the reactor critical. In contrast with the \gls{MSBR} 
+reprocessing system, \gls{TAP} does not need a protactinium separation and isolation 
+system because it operates in a uranium-based single-stage fuel cycle. The authors of 
+the \gls{TAP} concept suggested three distinct fission product removal methods: 
 \begin{enumerate}
 	\item \textbf{Off-Gas System} removes gaseous fission products such as krypton 
 and xenon, 
-which are then compressed and stored temporarily until they have decayed to background 
+which are then compressed and stored temporarily until they have decayed to the background 
 radiation level. Trace amounts of tritium are also removed and bottled in a liquid form 
 via the same process. In addition, the off-gas system also directly removes a small 
 fraction of the noble metals.
@@ -218,22 +222,24 @@ fraction of the noble metals.
 solid fission 
 products as they plate out onto a nickel mesh filter located in a side stream in the 
 primary loop.
-	\item \textbf{Liquid Metal Extraction} separates lanthanides and other non-noble 
-metals which 
-remain primarily dissolved in the fuel salt. They generally have a lower capture cross 
+	\item \textbf{Liquid Metal Extraction}. Lanthanides and other non-noble 
+metals stay dissolved in the fuel salt. They generally have a lower capture cross 
 section and thus absorb fewer neutrons than $^{135}$Xe but their extraction is essential 
-to ensuring normal operation. In the \gls{TAP} lanthanides removal accomplishes via 
-a liquid-metal/molten salt extraction process similar to one developed for \gls{MSBR} 
+to ensuring normal operation. In the \gls{TAP} reactor, lanthanides removal is
+accomplished via 
+a liquid-metal/molten salt extraction process similar to that developed for \gls{MSBR} 
 by \gls{ORNL} \cite{robertson_conceptual_1971} and discussed in Chapter 3. The process 
 converts the dissolved lanthanides into a well-understood oxide waste form, similar to 
 that of \gls{LWR} \gls{SNF}. This oxide waste comes out of the \gls{TAP} reprocessing 
 plant in ceramic granules and can be sintered into another convenient form for storage.
 \end{enumerate}
 
-Table~\ref{tab:tap_reproc_methods} illustrates production rates and removal process for major fission products generate per year by one 520 MW$_e$ power plant.
+Table~\ref{tab:tap_reproc_methods} illustrates production rates and a removal processes 
+for major fission products quantities generated per year by one 520 MW$_e$ power plant.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h!]
-        \caption{Fission product removal methods and approximate average production rate for \gls{TAP} operating at 100\% power level (reproduced from 
+        \caption{Fission product removal methods and approximate average production 
+        rates for \gls{TAP} reactor operating at 100\% power level (reproduced from 
         \cite{transatomic_power_corporation_technical_2016}). }
           \centering
         \begin{tabularx}{\textwidth}{m s x x}
@@ -250,34 +256,41 @@ Lanthanides and others (Cr, Fe, Ni, Rb, Sr, Y, Zr, Cs, Ba, La, Ce, Pr,Nd, Pm, Sm
         \label{tab:tap_reproc_methods}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Figure~\ref{fig:tap-reproc} shows principal design of \gls{TAP} primary loop including 
-off-gas system, nickel mesh filter, and lanthanides extraction chemical facility.
-Overall, proposed fuel salt reprocessing approach is similar to one for \gls{MSBR} 
-discussed in Chapter 3. Particularly, off-gas system also based on simple process of 
-helium sparging through fuel salt with consequent gas bubbles removal before returning 
-fuel salt back to the core. Nevertheless, one important difference must be noted: 
+Figure~\ref{fig:tap-reproc} shows a principal design of the \gls{TAP} primary loop including 
+an off-gas system, nickel mesh filter, and lanthanide chemical 
+extraction facility. Similarly to \gls{MSBR}, an off-gas system is 
+also based on simple process of helium sparging through fuel salt 
+with consequent gas bubbles removed before returning the 
+fuel salt back to the core. Nevertheless, one important difference must be noted: the
 \gls{MSBR} gas separation system suggested helium injection and subsequent 
-transport of the voids throughout the primary loop including core at least 10 full 
-loops \cite{robertson_conceptual_1971}. It is significant concert to safe, stable 
-operation because increase of void fraction in the fuel salt when it enters back 
+transport of the voids throughout the primary loop including the core 
+for at least 10 full loops \cite{robertson_conceptual_1971}. It is 
+significant concern to safe, stable 
+operation because the increase of void fraction in the fuel salt when it enters back 
 to the core 
-would cause positive reactivity insertion. This drawback can be overcome by using 
-effective gas separator for stripping helium/xenon bubbles before returning the 
-salt back to primary loop (Figure~\ref{fig:tap-reproc}, blue block). An effective 
-method for 
-stripping gas from the salt using centrifugal forces was proposed by Gabbard \cite{gabbard_development_1974}. The gas bubbles in axial-flow centrifugal bubble 
+would cause unpredictable reactivity change. This drawback can be overcome by 
+using an effective gas separator for stripping helium/xenon bubbles before 
+returning the salt back to a primary loop (Figure~\ref{fig:tap-reproc}, blue 
+block). Thus, Gabbard \cite{gabbard_development_1974} proposed design of 
+effective centrifugal gas separator which stripping gas from the salt using 
+centrifugal forces (Figure~\ref{fig:gabbard-separator}). The gas bubbles in 
+an axial-flow centrifugal bubble 
 separator would be driven toward the center-line by the radial pressure gradient 
 developed where it is removed through takeoff ports. The gas 
 separation efficiency through this method was demonstrated to be dependent on 
-salt flow rate (which is limitation factor for in-line removal system) but 
-can be as large as 95\%. Gas removal efficiency was measured for this method 
-under a wide variety of conditions and culminated in following equation for 
+salt flow rate but can be as large as 95\%. Gas removal efficiency was 
+measured for centrifugal gas separator
+under a wide variety of conditions and culminated in the following equation for 
 gas removal efficiency ($\epsilon_{g}$) \cite{gabbard_development_1974}:
-\begin{equation} \label{eq:gas_eff}
-\epsilon_g = \frac{2116.8 Q_g}{X Q_e P_{\gamma} + 2116.8 Q_g}
-\end{equation}
-where $Q_g$ is gas injection rate, scfm; $Q_e$ is liquid flow rate, cfm; $X$ is 
-void fraction; $P_{\gamma}$ is absolute pressure, psf. This correlation will 
+\begin{align} 
+\epsilon_g &= \frac{3338.1936 Q_g}{81.349 X Q_e P_{\gamma} + 3338.1936 Q_g} \label{eq:gas_eff}
+	\intertext{where} 
+	Q_g &= \mbox{the  gas injection rate, }Nm^3/h \nonumber \\
+	Q_e &= \mbox{the liquid flow rate, }m^3/h  \nonumber  \\
+	X   &= \mbox{the void fraction}  \nonumber				\\
+P_{\gamma}&= \mbox{the absolute pressure, Pa} \nonumber
+\end{align}
+This correlation will 
 be used to realistically model an online molten salt gas removal system using 
 a Python toolkit, SaltProc, developed as a part of my dissertation.
 \begin{figure}[htp!] % replace 't' with 'b' to 
@@ -287,54 +300,83 @@ a Python toolkit, SaltProc, developed as a part of my dissertation.
   nickel filter (orange) and liquid metal extraction system (green) (reproduced from \cite{transatomic_power_transatomic_2019}).}
   \label{fig:tap-reproc}
 \end{figure}
+\begin{figure}[htp!] % replace 't' with 'b' to 
+  \centering
+		  \includegraphics[width=0.87\textwidth]{gabbard_separator.png}
+  \caption{Axial flow centrifugal gas bubble separator (figure reproduced 
+  from Gabbard \emph{et al.} \cite{gabbard_development_1974}).}
+  \label{fig:gabbard-separator}
+\end{figure}
 
 Moreover, current research activity at University of Illinois at Urbana-Champaign 
 ``Enabling Load Following Capability in the Transatomic Power MSR" has a goal 
-to obtain similar correlation for xenon removal efficiency for a prototypic 
-gas stripping system using CFD modeling and set of small-scale experiments. This 
-correlation will be also applied to \gls{TAP} depletion simulation to demonstrate capabilities of SaltProc tool to simulate realistic (rather than ideal 
-\cite{transatomic_power_corporation_neutronics_2016, betzler_two-dimensional_2016,  betzler_assessment_2017}) \gls{TAP} 
-system operation. In the same way, experimental and/or CFD correlations for gases 
-removal efficiency will be valid for \gls{TAP}, \gls{MSBR} and any other \gls{MSR} 
+to obtain a similar correlation for xenon removal efficiency for a prototypic 
+gas stripping system using CFD modeling and a set of small-scale experiments. This 
+correlation will be also applied to \gls{TAP} reactor depletion simulation to 
+demonstrate SaltProc capabilities to simulate realistic (rather than ideal 
+\cite{transatomic_power_corporation_neutronics_2016, 
+betzler_two-dimensional_2016,  betzler_assessment_2017}) \gls{TAP} nuclear 
+system operation. In the same way, experimental and/or CFD correlations for gas  
+removal efficiency will be valid for \gls{TAP} reactor, \gls{MSBR}, and any other 
+\gls{MSR} 
 (e.g. \gls{MSFR}) because these concepts uses FLi or FLiBe as fuel salt.
 
-Noble and semi-noble metal solid fission products tends to plate out onto metal 
+Noble and semi-noble metal solid fission products are tends to plate out onto metal 
 surfaces including piping, heat exchanger tubes, reactor vessel inner surface, etc. 
 Previous research by \gls{ORNL} \cite{robertson_conceptual_1971} reported that 
 about 50\% of noble and semi-noble metals would plate out inside \gls{MSBR} 
-systems without any special treatment. To improve extraction efficiency for this 
-fission products \gls{TAP} concept suggested employ a nickel mesh filter located 
+systems without any special treatment. To improve extraction efficiency of this 
+fission products, the \gls{TAP} concept suggested to employ a 
+nickel mesh filter located 
 in a bypass stream in the primary loop (Figure~\ref{fig:tap-reproc}, orange block). 
-The main idea of this filter is to create large maze with large metal (nickel) 
-surface area. The fuel salt flowing slowly through the filter and noble 
-metals are accumulated on the filter surfaces. The removal efficiency 
-($\epsilon_{noble}$) can be 
-calculated as a function of the salt flow rate and filter interface area:
-\begin{equation} \label{eq:filter_eff}
-\epsilon_{noble} = F(\dot{m}_{salt}, A_f) = \frac{a A_f}{b \dot{m}_{salt} + c A_f}
-\end{equation}
-where $\dot{m}_{salt}$ is fuel salt mass flow rate; $A_f$ is the filter inner 
-surface area (filter sizes and mesh pitch can be used to determine it); 
-$a, b, c$ are correlation coefficients. This form of correlation will be used 
-to inform online reprocessing model in SaltProc Python tool.
+The main idea of this filter is to create a maze with large metal (nickel) 
+surface area. The fuel salt flowing through the filter and noble 
+metals will be accumulated on the filter surfaces. Conceptually, the 
+removal efficiency ($\epsilon_{noble}$) can be calculated as a function of 
+the salt flow rate and filter interface area:
+\begin{align} 
+\epsilon_{noble} &= F(\dot{m}_{salt}, A_f) \nonumber \\
+&= \frac{a A_f}{b \dot{m}_{salt} + c A_f} \label{eq:filter_eff}
+	\intertext{where} 
+	\dot{m}_{salt}&= \mbox{the salt mass flow rate} \nonumber \\
+	A_f&= \mbox{the filter inner surface area} \nonumber \\
+	a,b,c&= \mbox{the correlation coefficients}\nonumber 
+\end{align}
+In equation~\ref{eq:filter_eff}, the removal efficiency 
+($\epsilon_{noble}$) increases asymptotically towards $1.0$ as the filter 
+inner surface area ($A_f$) goes to infinity. Another way to increase 
+$\epsilon_{noble}$ is to reduce the salt mass flow rate ($\dot{m}_{salt}$).
+The correlation coefficients $a,b,c$ can be determined from experiments or 
+CFD-simulations. This form of correlation will be used to inform online 
+reprocessing model in the SaltProc Python tool.
 
-Liquid Metal Extraction process for \gls{TAP} concept has been taken from 
-\gls{MSBR} which was discussed in sections~\ref{sec:chemical_processing} and \ref{sec:rare_earth_eff}. Removal efficiency ($\epsilon_{RE}$) of this process is function 
-of fuel salt mass flow rate, liquid bismuth mass flow rate, interfacial areas 
-between salt and metal, and mass transfer coefficient. The most recent 
-research for LiF salt (for \gls{MSFR} concept) reported following form of 
-extraction efficiency correlation \cite{rodrigues_actinide/lanthanide_2015}:
-\begin{equation} \label{eq:re_eff}
-\epsilon_{RE} = \frac{1}{1+10^{\lambda}} = \frac{1}{1+10^{f(A, \dot{m}_{Bi}, \dot{m}_{salt}, N, K)}}
-\end{equation}
-where $A$ is a metal-to-salt interface area, $\dot{m}_{Bi}$ is bismuth mass 
-flow rate, $\dot{m}_{salt}$ is salt mass flow rate, $N$ is the number of stages, 
-$K$ is mass transfer coefficient at the salt / Bi-Li interface. Correlations are 
+This Liquid Metal Extraction process for \gls{TAP} concept has been adopted from 
+the \gls{MSBR} which was discussed in sections~\ref{sec:chemical_processing} and \ref{sec:rare_earth_eff}. Removal efficiency ($\epsilon_{RE}$) of this process 
+is the function of fuel salt mass flow rate, liquid bismuth mass flow 
+rate, interfacial areas 
+between salt and metal, and mass transfer coefficient for each noble metal species. 
+The most recent 
+research for LiF salt (for the \gls{MSFR} concept) reported the 
+following form of extraction efficiency correlation 
+\cite{rodrigues_actinide/lanthanide_2015}:
+\begin{align} 
+\epsilon_{RE} &= \frac{1}{1+10^{\lambda}} \nonumber \\
+&= \frac{1}{1+10^{f(A, \dot{m}_{Bi}, \dot{m}_{salt}, N, K)}} \label{eq:re_eff}
+	\intertext{where}
+	A&= \mbox{a metal-to-salt interface area} \nonumber \\
+\dot{m}_{Bi}&= \mbox{bismuth mass flow rate} \nonumber \\
+\dot{m}_{salt}&= \mbox{the salt mass flow rate} \nonumber \\
+	N&= \mbox{the number of stages} \nonumber \\
+	K&= \mbox{the mass transfer coefficient at the salt/Bi-Li interface} \nonumber 
+\end{align}
+Correlations are 
 different for various lanthanides and can be determined from experimental data 
 and/or existing analytical models \cite{mcneese_engineering_1971, simon_-line_2008, rodrigues_actinide/lanthanide_2015, delpech_reactor_2009, delpech_possible_2012}.
 
-In fact, due to similarities in reprocessing schemes, \gls{TAP} project reported almost 
-the same set of elements for removal and similar effective cycle times as was suggested 
+In fact, due to similarities in reprocessing schemes,the \gls{TAP} project reported 
+almost 
+the same set of elements for removal and similar effective cycle times 
+as suggested 
 for \gls{MSBR} (Table~\ref{tab:reprocessing_list}). The \gls{TAP} neutronics whitepaper 
 specifies additional low-probability fission products and gases that should be 
 removed during operation. These elements are categorized into the previously 
@@ -370,11 +412,13 @@ defined processing groups, but the removal rates of most of these elements
           \vspace{-0.9em}
 \end{table}
 
-Details of gas removal and fuel reprocessing systems have historically been conceptual 
-and liquid-fueled system designers including \gls{TAP} usually assumes ideal (rather 
-than realistically constrained) removal efficiencies for reactor performance simulations.
+Details of gas removal and fuel reprocessing systems have historically 
+been conceptual and liquid-fueled system designers including the \gls{TAP} 
+usually assumed ideal (rather than realistically constrained) removal 
+efficiencies for reactor performance simulations.
 Based on detailed data from this section (Table~\ref{tab:reprocessing_list}) and 
-correlations~\ref{eq:gas_eff},\ref{eq:filter_eff},\ref{eq:re_eff} the realistic 
+correlations described by equations~\ref{eq:gas_eff}, 
+\ref{eq:filter_eff}, \ref{eq:re_eff} the realistic 
 online reprocessing system and reactor model will be created to capture the dynamics 
 of fuel composition evolution during reactor operation.
 
@@ -382,18 +426,21 @@ of fuel composition evolution during reactor operation.
 \section{Preliminary results}
 The ability of liquid-fueled systems to continuously remove fission products and add 
 fissile and/or fertile elements is the main challenge for depletion simulations. 
-First version of SaltProc takes into account online separations and feeds using the 
+The first version of SaltProc took into account online separations and feeds using the 
 SERPENT 2 continuous-energy Monte Carlo neutron transport and depletion code 
-\cite{rykhlevskii_arfc/saltproc_2018}. Developed as a part of master thesis, this 
-version of tool only able to leverage ideal 
-removals (e.g., 100\% of target isotope mass extracted). Capabilities of this tool 
-has been demonstrated for full-core \gls{MSBR} model \cite{rykhlevskii_modeling_2019}. 
+\cite{rykhlevskii_arfc/saltproc_2018}. Developed as a part of my master thesis, the
+first version of the tool only was able to leverage ideal 
+removals (e.g., 100\% of target isotope mass extracted). The capabilities of 
+SaltProc was demonstrated for full-core \gls{MSBR} model \cite{rykhlevskii_modeling_2019}. 
 Key findings from this effort are presented in section~\ref{sec:msbr_reproc}.
 
-Additionally to high-precision whole-core \gls{MSBR} model, as a part of 
-proposed dissertation research, full-core model of 
+Additionally to a high-precision whole-core \gls{MSBR} model, as a part of 
+the proposed dissertation research, a full-core model of the 
 \gls{TAP} \gls{MSR} (section~\ref{sec:tap_model}) was developed to 
-demonstrate SaltProc capabilities and cross-verify it against previous research.
+demonstrate SaltProc capabilities and cross-verify it against previous research. 
+Section~\ref{sec:msbr_reproc} will summarize a preliminary work and results 
+obtained from applying a previous version of SaltProc to the \gls{MSBR} core and 
+reprocessing plant.
 
 \subsection{MSBR online reprocessing analysis} \label{sec:msbr_reproc}
 The \gls{MSBR} vessel has a diameter of 680 cm and a height of 610 cm. It 
@@ -408,21 +455,21 @@ solid cylindrical graphite reflector and the vessel wall. The central zone,
 zone I, in which 13\% of the volume is fuel salt and 87\% graphite, is
 composed of 1,320 graphite cells, 2 graphite control rods, and 2 
 safety\footnote{ These rods needed for emergency shutdown only.} rods. The 
-under-moderated zone, zone II, with 37\% fuel salt, and radial reflector, 
+under-moderated zone, zone II, with 37\% of fuel salt, and the radial reflector, 
 surrounds the zone I core region and serves to diminish neutron leakage. Zones 
 I and II are surrounded radially and axially by fuel salt 
 (figure~\ref{fig:serpent_zoneII}). This space for fuel is necessary for 
 injection and flow of molten salt.
 \begin{figure}[hbp!] % replace 't' with 'b' to \centering
   \includegraphics[width=\textwidth]{view_serpent.png}
-  \caption{Plan and elevation views of SERPENT 2 \gls{MSBR} model developed in 
-  this work.}
+  \caption{$XY$ (left) and $XZ$ (right) views of SERPENT 2 \gls{MSBR} model 
+(figure reproduced from \cite{rykhlevskii_full-core_2017}).}
   \label{fig:serpent_plan_view}
 \end{figure}
 \begin{figure}[t!] % replace 't' with 'b' to \centering
   \includegraphics[width=\textwidth]{ser_zone_II.png}
   \caption{Detailed view of \gls{MSBR} two zone model. 
-          Yellow represents fuel salt, purple represents graphite, and aqua represents the reactor vessel.}
+          Yellow represents fuel salt, purple represents graphite, and aqua represents the reactor vessel. Figure reproduced from \cite{rykhlevskii_full-core_2017}.}
   \label{fig:serpent_zoneII}
 \end{figure}
 
@@ -436,27 +483,27 @@ would produce $^{234}$Pa and $^{234}$U, neither of which are useful as fuel.
 Accordingly, $^{233}$Pa is continuously 
 removed from the fuel salt into a protactinium decay tank to allow $^{233}$Pa 
 to decay to $^{233}$U without the corresponding negative neutronic impact. The reactor 
-reprocessing system must separate $^{233}$Pa from the molten-salt fuel over 3 
+reprocessing system must separate $^{233}$Pa from the molten salt fuel over 3 
 days, hold it while $^{233}$Pa decays into $^{233}$U, and return it back to the 
 primary loop. This feature allows the reactor to avoid neutron losses to 
 protactinium, lowers in-core fission product inventory, and increases the 
-efficiency of $^{233}$U breeding. Upper part of table~\ref{tab:reprocessing_list} 
-summarizes full list of nuclides and the ``cycle times''\footnote{ The \gls{MSBR} 
+efficiency of $^{233}$U breeding. An upper part of table~\ref{tab:reprocessing_list} 
+summarizes a full list of nuclides and the ``cycle times''\footnote{ The \gls{MSBR} 
 program defined a ``cycle time" as the amount of time required to remove 100\% of 
 a target nuclide from a fuel 
 salt \cite{robertson_conceptual_1971}.} used for modeling salt treatment and 
 separations \cite{robertson_conceptual_1971}. 
-The removal rates vary among nuclides in this reactor concept which dictate the 
+The removal rates vary among nuclides in this reactor concept and dictate the 
 necessary resolution of depletion calculations. If the depletion time intervals 
 are very short, an enormous number of depletion steps are required to obtain 
 the equilibrium composition. On the other hand, if the depletion  calculation 
 time interval is too long, the impact of short-lived fission products is not 
 captured. To compromise, a 3 day time interval was selected for depletion 
 calculations to correlate with the removal interval of 
-$^{233}$Pa and $^{232}$Th was continuously added to maintain the initial mass 
+$^{233}$Pa, and $^{232}$Th was continuously added to maintain the initial mass 
 fraction of $^{232}$Th.
 
-Figures~\ref{fig:keff}, \ref{fig:keff_zoomed} show the effective multiplication factors 
+Figures~\ref{fig:keff} and \ref{fig:keff_zoomed} show the effective multiplication factors 
 obtained using SaltProc and SERPENT2. The effective multiplication factors were 
 calculated after removing fission products listed in 
 Table~\ref{tab:reprocessing_list} and adding the fertile material at the end of 
@@ -467,13 +514,15 @@ online reprocessing strategy.
   \centering
   \includegraphics[width=\textwidth]{keff.png}
   \caption{Effective multiplication factor dynamics for full-core \gls{MSBR} 
-  model over a 60-year reactor operation lifetime.}
+  model over a 60-year reactor operation lifetime (reproduced from 
+  \cite{rykhlevskii_modeling_2019}).}
   \label{fig:keff}
 \end{figure}
 \begin{figure}[ht!] 
   \centering
   \includegraphics[width=\textwidth]{keff_zoomed.png}
-  \caption{Zoomed effective multiplication factor for 150-EFPD time interval.}
+  \caption{Zoomed effective multiplication factor for 150-EFPD time interval 
+  (reproduced from \cite{rykhlevskii_modeling_2019}).}
   \label{fig:keff_zoomed}
 \end{figure}
 
@@ -482,7 +531,7 @@ of the cycle (there is fresh fuel composition at the first step). Next, it
 computes the new fuel salt composition at the end of a 3-day depletion. The 
 corresponding effective multiplication factor is much smaller than the previous 
 one. Finally, SERPENT calculates $k_{eff}$ for the depleted composition after 
-applying feeds and removals. The $K_{eff}$ increases accordingly since major reactor 
+applying feeds and removals. The $k_{eff}$ increases accordingly since major reactor 
 poisons (e.g. Xe, Kr) are removed, while fresh fissile material ($^{233}$U) 
 from the protactinium decay tank is added.  
 
@@ -493,43 +542,43 @@ $\approx$1.02 at equilibrium after approximately 6 years of irradiation.
 
 Loading initial fuel salt composition into the \gls{MSBR} core leads to a 
 supercritical configuration (Figure ~\ref{fig:fp_removal}). After reactor 
-startup, the effective multiplication factor for the case with volatile gases 
-and noble metals removal is approximately 7500 pcm  higher than for case with 
-no fission products removal. This significant impact on the reactor core is
-achieved due to immediate removal (20 sec cycle time) and high absorption cross 
-section of Xe, Kr, Mo, and other noble metals removed. The effect of rare earth 
-element removal is considerable a few months after startup and reached 
+startup, the effective multiplication factor for the case with volatile gas 
+and noble metal removal is approximately 7500 pcm  higher than for the case with 
+no fission product removal. This significant impact on the reactor core is
+achieved due to immediate removal (20 sec cycle time) of elements with a high 
+absorption cross section (e.g., Xe, Kr, Mo). The effect of rare earth 
+element removal was considerable a few months after startup and reached 
 approximately 5500 pcm after 10 years of operation. The rare earth elements were 
 removed at a slower rate (50-day cycle time). Moreover, 
 Figure~\ref{fig:fp_removal} demonstrates that batch-wise removal of strong 
-absorbers every 3 days did not necessarily leads to fluctuation in results 
-but rare earth elements removal every 50 days causes an approximately 600 pcm jump 
+absorbers every 3 days did not necessarily lead to fluctuation in results 
+but rare earth element removal every 50 days caused an approximately 600 pcm jump 
 in reactivity.
 
 The effective multiplication factor of the core reduces gradually over 
 operation time because the fissile material ($^{233}$U) continuously depletes 
-from the fuel salt due to fission while fission products 
-accumulate in the fuel salt simultaneously. Eventually, without fission products removal, 
+from the fuel salt due to fission while fission products simultaneously
+accumulate in the fuel salt. Eventually, without fission product removal, 
 the reactivity decreases to the subcritical state after approximately 500 and 
-1300 days of operation for cases with no removal and volatile gases \& noble 
-metals removal, respectively. The time when the simulated core reaches 
+1300 days of operation for cases with no removal and volatile gas \& noble 
+metal removal, respectively. The time when the simulated core reaches 
 subcriticality ($k_{eff}<$1.0) for full-core model) is called the core lifetime. 
-Therefore, removing fission products provides with significant neutronic benefit 
+Therefore, removing fission products provides significant neutronic benefit 
 and enables a longer core lifetime.
 \begin{figure}[ht!] % replace 't' with 'b' to force it to 
   \centering
   \includegraphics[width=\textwidth]{keff_rem_cases.png} 
   \caption{Calculated effective multiplication factor for full-core \gls{MSBR} 
 model with removal of various fission product groups over 10 years of 
-operation.}
+operation (reproduced from \cite{rykhlevskii_modeling_2019}).}
   \label{fig:fp_removal}
 \end{figure}
 
-This preliminary results have been demonstrate SaltProc's capability to find 
+These preliminary results have demonstrated SaltProc's capability to find 
 the equilibrium fuel salt 
 composition (where equilibrium is defined as when the number densities of major 
-isotopes vary by less than 1\% over several years). Additionally this results
-has been show benefits of continuous fission products removal for 
-thermal \gls{MSR} design. Developed full-core high-fidelity benchmark model 
-of the \gls{MSBR} will be employed for new version of SaltProc demonstration 
-and validation. 
+isotopes vary by less than 1\% over several years). Additionally these results
+was showed benefits of a continuous fission product removal for 
+thermal \gls{MSR} design. A full-core high-fidelity benchmark model 
+of the \gls{MSBR} will be employed for demonstration and validation of a new 
+version of SaltProc.
