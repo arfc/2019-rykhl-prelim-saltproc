@@ -78,22 +78,24 @@ Thus, a numerical simulation package able to model
 nuclear reactors with circulating fuel is needed to close the gap.
 
 \section{Methodology}
-The main objective of proposed work is developing the online 
-reprocessing simulation package, SaltProc, which expands the 
-capability of the continuous-energy Monte Carlo depletion 
-calculation code, SERPENT2 \cite{leppanen_serpent_2015}, for 
-liquid-fueled \glspl{MSR} simulations. The SaltProc package 
+The main objective of the proposed work is to develop the online 
+reprocessing simulation package, SaltProc, which couples with 
+the continuous-energy Monte Carlo depletion 
+calculation code, SERPENT2 \cite{leppanen_serpent_2015}, 
+for liquid-fueled \gls{MSR} simulations. The SaltProc package 
 will enable the simulation of neutron poisons extraction 
-based on physics- and chemistry-driven correlations. 
+based on mechanical and chemical models of fuel processing 
+components. 
 Moreover, it will take into account the non-instantaneous 
 nature of injection/removal processes and material decay. 
 The ultimate objective of this effort is to develop a generic 
-open-source tool capable of simulate a wide range of 
-liquid-fueled systems including two-fluid and multi-region 
+open-source tool capable of simulating a wide range of 
+liquid-fueled systems including two-fluid, multi-region 
 designs, and validate it against existing modeling efforts. 
-Figure~\ref{fig:workflow_method} illustrates my previous 
-research effort and the proposed plan towards the objective 
-described above.
+Figure~\ref{fig:workflow_method} illustrates 
+the proposed plan towards the ultimate objective 
+including my previous research effort towards and after 
+master's degree.
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
 	\includegraphics[width=\textwidth]{workflow_for_methodology.pdf}
@@ -103,19 +105,27 @@ described above.
   \label{fig:workflow_method}
 \end{figure}
 
-In this work current published online reprocessing simulation efforts 
-have been systematized, investigated and reviewed to identify desirable 
-generic reprocessing code capabilities. A preliminary set of key input 
-and output parameters, software package architecture and class 
-structure, and required capabilities has been chosen to conceptually 
-capture the fundamental online reprocessing challenges. 
+In Chapter 2 of this work, current published online reprocessing 
+simulation efforts have been systematized, investigated and 
+reviewed to identify desirable generic reprocessing tool capabilities. 
+A preliminary set of key input 
+and output parameters, software package architecture, and class 
+structure are defined in Chapter 3 to realistically model a generic  
+online reprocessing system. 
 
-Three perspective liquid-fueled \gls{MSR} concepts among various 
-fuel cycles, number of salts (single- and two-fluid), neutron 
-spectra and reprocessing schemes will be investigated to 
-demonstrate and validate proposed simulation package. Specifically, 
-the demonstration and validation efforts will be focused on the \gls{TAP} 
-\gls{MSR} which is relatively well described in the literature. 
-The results obtained with SaltProc will be verified against 
-recent online reprocessing efforts in the literature for the 
-\gls{TAP} reactor, the \gls{MSBR}, and the \gls{MSFR}. 
+In Chapter 4, the proposed simulation package will be demonstrated and 
+verified for three perspectives liquid-fueled \gls{MSR} with different 
+key characteristics: fuel salt composition, number of salts (single- 
+and two-fluid), neutron spectra, and reprocessing schemes. Specifically, 
+these demonstration and verification efforts will focus on the \gls{TAP} 
+\gls{MSR} because it well analyzed in the literature. 
+SaltProc results will be verified against recent online reprocessing 
+efforts in the literature for the \gls{TAP} reactor, the \gls{MSBR}, 
+and the \gls{MSFR}. 
+
+Chapter 5 will summarize the conclusions reached concerning the 
+appropriate mechanical and chemical models of fuel processing 
+components to utilize in the online reprocessing plant simulation. 
+Moreover, phases of the proposed work will be described in detail. 
+Finally, remaining future work and expected contributions to the 
+nuclear community will be summarized.
