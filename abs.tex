@@ -4,16 +4,15 @@ particularly \glspl{MSR}, has resurged with multiple new companies
 pursuing \gls{MSR} commercialization. To further develop these \gls{MSR} 
 concepts, researchers need simulation tools for analyzing liquid-fueled 
 \gls{MSR} depletion and fuel processing. However, current nuclear reactor 
-physics software is unable to perform a depletion calculations for a 
+physics software is unable to perform depletion calculations for 
 reactor systems with online separations and feeds. This work proposes to 
-develop a Python package, SaltProc, which couples 
+develop a Python package, SaltProc. SaltProc couples 
 with the Monte Carlo code, SERPENT2 to realistically simulate a generic 
 \gls{MSR} online reprocessing system by modeling the changing isotopic 
-composition of \gls{MSR} fuel salt. The SaltProc package will enable 
-the simulation of neutron poisons extraction based on physics- and 
-chemistry-driven correlations rather than assuming ideal 
-removal efficiency. A few perspective liquid-fueled 
-\gls{MSR} concepts among various fuel cycles, number of salts
-(single- and two-fluid), neutron spectra and reprocessing schemes 
-will be investigated to demonstrate and validate proposed simulation 
-package.
+composition of \gls{MSR} fuel salt. Current models in the literature 
+assumed ideal extraction efficiencies. This work will implement chemical 
+and physical models of fuel processing components appearing in various 
+\gls{MSR} schemes. 
+SaltProc capabilities will be demonstrated and validated for a few 
+promising liquid-fueled \gls{MSR} designs with different fuel salt 
+composition, neutron spectra and reprocessing schemes.
