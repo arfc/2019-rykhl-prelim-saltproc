@@ -168,7 +168,7 @@ Reactivity control & \multicolumn{2}{c}{continuous adjustment of fissile materia
   \label{tab:msr_codes}
 \end{table}
 
-Two main online reprocessing simulation approaches commonly used in the 
+Two main online reprocessing simulation approaches are commonly used in the 
 literature: materials move to and from the core continuously or at specific 
 time steps (batch-wise). In the batch-wise approach, the burnup simulation 
 stops at a given time and restarts with a new liquid fuel composition 
@@ -255,3 +255,36 @@ simulation package, SaltProc, which expands the capability of the
 continuous-energy Monte Carlo 
 Burnup calculation code, Serpent 2, for simulation liquid-fueled \gls{MSR} 
 operation is proposed in this Chapter.
+
+\subsection{Operational and safety parameters evolution}
+In contrast with conventional solid-fueled reactors, which are completely 
+replace the fuel every 4-5 years\footnote{For the most common 18-month cycle, 
+during refueling personnel removing 1/3 of the fuel assemblies, re-arranging 
+other assemblies, and loading fresh fuel into the core. Thus, any fuel 
+assembly is kept in the core at most $3\times 18=54$ months.}, the initial 
+fuel salt batch stays in the \gls{MSR} reactor primary loop during whole 
+lifetime. Therefore, some \glspl{FP}, not captured by fuel  reprocessing 
+system, and transuranic elements\footnote{The chemical elements with atomic 
+numbers greater than uranium (92).} are accumulating in the fuel salt. 
+continuous changing of fuel salt composition have a significant influence on 
+the neutron energy spectrum and, consequently, affects the reactor behavior 
+and rises significant safety concerns.
+
+Nuttin {et al.} studied evolution of key safety parameter: temperature  
+coefficient at start-up and at equilibrium state. The temperature coefficient 
+quantify reactivity changes due to accidental temperature increase in the 
+core and was calculated in that work as:
+\begin{align}
+& \qquad\qquad \alpha = \frac{k_{1200} - k_{900}}{\delta T} 
+\intertext{where}
+k_{900}, k_{1200}  &= \mbox{the multiplication coefficient for 900K and 1200K} \nonumber \\
+\delta T &= 1200K-900K \nonumber
+\end{align}
+That work showed negative and decreasing with time fuel salt temperature 
+coefficient ($-1.5$ and $-1.0pcm/K$ at start-up and at equilibrium state, 
+respectively), but positive total temperature coefficient which did not 
+change during reactor operation ($\approx+0.8pcm/K$).
+
+\subsection{Transatomic Power Reactor design overview}
+
+\subsection{Chapter Conclusion}
