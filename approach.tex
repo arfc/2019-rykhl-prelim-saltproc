@@ -1,128 +1,172 @@
-\chapter[Modeling approach for realistic simulation of online reprocessing]{Modeling approach for realistic simulation of online reprocessing}
-
-\section{Reprocessing plant general concept}
+\chapter[Online reprocessing modeling and safety analysis]{Online reprocessing 
+modeling and safety analysis}
+\section{Fuel salt reprocessing plant overview}
 Removing specific chemical elements from a molten salt is a complicated 
-task that requires intelligent design (e.g., chemical separations 
-equipment design, fuel salt flows to equipment) and has a considerable 
-economic cost. This section contains a brief overview of general 
-chemical processing plant and a gas separation system. As an example 
-of generic reprocessing facility the reprocessing plant of a single-fluid 
-\gls{MSBR} was selected.
+task that requires intelligent design (e.g., chemical separations equipment 
+design, fuel salt flows to equipment) and has a considerable economic cost. 
+This section contains a brief overview of fuel reprocessing system of generic 
+\gls{MSR}.
 
 \subsection{Gas separation system}
-Volatile gaseous fission products (e.g. Kr, Xe) must be removed from the fuel salt 
-to avoid reactor poisoning especially during starup and power maneuvering. This is 
-particularly true for $^{135}$Xe, with its very large neutron capture cross 
-section (2.65$\times$10$^6$ b). Conceptually, tritium, xenon, and krypton 
-can be removed from the fuel salt by helium bubbles introduced in a stream 
-by a bubble generator and subsequently removed 
-by a gas separator (figure~\ref{fig:gas_removal_system}). Indeed, noble gases, because of their exceptional insolubility 
-in the salt, will migrate promptly to any gaseous interface available. Because 
-they form an ideal-dilute mixture in salt (obey Henry's law), they will migrate in 
-accordance with the conventional laws of mass transfer. If tiny helium bubbles 
-are circulated with the fuel salt, they will absorb xenon and krypton fission 
-products. The fission-product-rich bubbles of helium may then be separated from 
-the salt and discharged to the off-gas system. Xenon migration to the circulating 
-bubbles competes with xenon migration to the porous moderator graphite. 
-The graphite is especially of concern because it absorbs xenon and holds it in the 
-core which leads to parasitic neutron absorption. The 0.5\% target value for 
-$^{135}$Xe poison fraction can be achieved when circulating helium bubbles are 
-0.508mm in diameter \cite{robertson_conceptual_1971}. This is accomplished by 
-redirecting 10\% of the fuel salt flow from the pump discharge 
-through a bubble separator 
-to remove the xenon bubbles and then back into the pump suction. The average 
-residence time of a bubble in the fuel loop would be 10 full cycles. Investigation 
-for the \gls{MSBR} has shown that helium babble size was approximately 25\% of the 
-throat width (blue circle on figure~\ref{fig:bubble_separator}) and was independent 
-of the gas flow rate \cite{robertson_conceptual_1971}. Consequently, it is possible 
-to regulate helium bubble size by changing throat width in the bubble generator.
+Gaseous fission products (e.g. Kr, Xe) must be removed from the fuel salt 
+to avoid reactor poisoning especially during starup and power maneuvering. 
+This is particularly true for $^{135}$Xe, with its very large neutron capture 
+cross section (2.65$\times$10$^6$ b). The $^{135}$Xe ultimate yield from 
+fission is about 6.4\%, most of this is from fission-produced $^{135}$I and 
+$^{135}$Te decay (table~\ref{tab:xe_gain}). Noble gas (tritium, xenon, and 
+krypton) can be removed from the fuel salt as follows: (1) a bubble generator 
+injects helium bubbles in the salt stream; (2) noble gas mitigate promptly 
+to the helium bubbles because of their exceptional insolubility in the salt; 
+(3) a gas separator removes the fission-product-rich bubbles fromthe salt 
+and discharged it to the off-gas system. Diagram~\ref{fig:xe_diagram} shows 
+the main ways of xenon production, accumulation, and removal in the typical 
+\gls{MSR}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ht!]
+	\caption{$^{135}$Xe production sources and principal rate constants 
+		involved
+		(reproduced from Kedl \emph{et al.} \cite{kedl_development_1967}).}
+	\centering
+	\begin{tabularx}{\textwidth}{b  b}
+		\hline \textbf{$^{135}$Xe gain mechanism} & \textbf{Principal rate 
+			parameters involved}  	\\ \hline 
+		Direct from fission & $\nu \Sigma_f \gamma_{^{135}Xe}\phi$ (for 
+		$^{235}$U fission) \\ 
+		yield $\gamma_{^{135}Xe}=0.003$ & \\ \hline
+		$^{135}$I decay       & $\nu \Sigma_f \gamma_{^{135}I}\phi$ (for 
+		$^{235}$U fission) \\
+		yield $\gamma_{^{135}Xe}=0.036$, it decays to $^{135}$Xe with 
+		$\tau_{1/2}=6.68$ h & 			                    \\		\hline
+		$^{135}$Te decay      & 
+		$\nu \Sigma_f \gamma_{^{135}Te}\phi$ (for $^{235}$U fission) \\
+		yield $\gamma_{^{135}Xe}=0.025$, 
+		it quickly decays to $^{135}$I with $\tau_{1/2}=19$ s 
+		& 			                    \\	\hline 
+	\end{tabularx}
+	\label{tab:xe_gain}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Figure~\ref{fig:gas_removal_system} shows principal design of the \gls{MSBR} 
+gas separation system. Helium bubbles of specific size are introduced in a 
+salt stream via the primary pump bowl; these bubbles absorbed noble gas 
+before being separated from the salt by a gas separator. The \gls{ORNL} proved 
+that the \gls{MSBR} gas separation system can remove up to 99.5\% of 
+$^{135}$Xe. Such a exceptional separation efficiency can be achieved by 
+injecting helium bubbles of $d=0.508$ mm, and redirecting 10\% of the fuel 
+salt flow from the pump discharge through a bubble separator to remove the 
+xenon bubbles and then back into the pump suction. Robertson \emph{et al.} 
+reported that helium bubble size was approximately 25\% of the 
+throat width (blue circle on figure~\ref{fig:bubble_separator}) and was 
+independent of the gas flow rate \cite{robertson_conceptual_1971}. 
+Consequently, it is possible to regulate helium bubble size by changing throat 
+width in the bubble generator.
 \begin{figure}[htp!] % replace 't' with 'b' to 
-  \centering
-  \includegraphics[width=\textwidth]{gas_separation.png}
-  \caption{Schematic flow diagram of the \gls{MSBR} off-gas system (figure 
-  reproduced from Robertson \emph{et al.} \cite{robertson_conceptual_1971}).}
-  \label{fig:gas_removal_system}
+	\centering
+	\includegraphics[width=\textwidth]{xe_diagram.pdf}
+	\caption{Schematic $^{135}$Xe circulation diagram in a generic \gls{MSR}. 
+	The $\epsilon_m$ is the migration efficiency of $^{135}$Xe to the helium 
+	bubbles and $\epsilon_{es}$ is the gas separation efficiency in the 
+	entrainment separator. The orange color represents the active core region, 
+	the blue color represents the gas separation system, and the gray color is 
+	moderator in the core,}
+	\label{fig:xe_diagram}
 \end{figure}
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
-  \includegraphics[width=\textwidth]{msbr_bubble_generator.png}
+  \includegraphics[width=\textwidth]{gas_separation.png}
+  \caption{Schematic flow diagram of the \gls{MSBR} gas separation system 
+  (figure reproduced from Robertson \emph{et al.} 
+  \cite{robertson_conceptual_1971}).}
+  \label{fig:gas_removal_system}
+\end{figure}
+\begin{figure}[t] % replace 't' with 'b' to 
+  \centering
+  \includegraphics[width=0.8\textwidth]{msbr_bubble_generator.png}
   \caption{Preliminary concept of \gls{MSBR} bubble generator (figure 
   reproduced from Robertson \emph{et al.} \cite{robertson_conceptual_1971}). 
   The blue circle shows 
   throat width, which determines bubble size.}
   \label{fig:bubble_separator}
 \end{figure}
+\begin{table}[b]
+	\caption{$^{135}$Xe loss terms and principal rate constants involved
+		(reproduced from Kedl \emph{et al.} \cite{kedl_development_1967}).}
+	\centering
+	\begin{tabularx}{\textwidth}{b b}
+		\hline \textbf{$^{135}$Xe loss mechanism}      & \textbf{Principal 
+		rate 
+			parameters involved}  	\\
+		\hline Decay of dissolved $^{135}$Xe ($\tau_{1/2}=9.1$ h)  & Decay 
+		constant	($\lambda$)		\\
+		\hline $^{135}$Xe burnup              &  Neutron flux 
+		($\Phi$)		 					\\
+		dissolved xenon-135 burnup as it passes throught core  
+		& 			            \\		\hline $^{135}$Xe transferred to 
+		off-gas system via xenon stripper & Stripping efficiency 
+		($\epsilon$)		\\
+		\hline $^{135}$Xe transferred into circulating He bubbles; this xenon 
+		will eventually be burnup, decay, or stripped via bubble separator & 
+		Mass transfer coefficient ($h$), decay constant ($\lambda$), 
+		neutron flux ($\phi$), bubble removing efficiency ($\epsilon$)		\\
+		\hline 
+	\end{tabularx}
+	\label{tab:xe_loss}
+\end{table}
 
-To inform physics-based, numerical simulation of volatile gas removal 
-a mathematical model is required. Particularly, a model of xenon extraction 
-efficiency as a function of sparger design parameters is needed to accurately 
-model $^{135}$Xe removal in a fuel salt 
-depletion simulations. The gain and loss terms for $^{135}$Xe dissolved in the fuel 
-salt are listed in tables~\ref{tab:xe_gain} and \ref{tab:xe_loss}. 
-The stripping efficiency for the pump bowl has been measured during the \gls{MSRE} but 
-the \gls{ORNL} report only states its range (from 50 to 100\%) and mentioned that the 
-results are not accurate \cite{kedl_development_1967}. $^{135}$Xe burnup and 
-decay rates are well known. The mass transfer coefficient for transferring xenon into 
-helium bubbles can be estimated from CFD-models but published information is 
-insufficient to inform an accurate mathematical model. 
-Previous research by \gls{ORNL} \cite{kedl_development_1967, engel_xenon_1971} has 
-concluded that xenon removal efficiency ($\epsilon_{Xe}$) in a gas separation 
-system is a function of many parameters:
+To realistically model the gas separation system, a mathematical model 
+describing noble gas extraction efficiency dynamics during reactor operation 
+is required. Particularly, a model of xenon extraction efficiency as a 
+function of a sparger design parameters is needed to accurately model 
+$^{135}$Xe removal in a fuel salt depletion simulation. The gain and loss 
+terms for $^{135}$Xe dissolved in the fuel salt are listed in 
+Tables~\ref{tab:xe_gain} and \ref{tab:xe_loss}. The stripping efficiency for 
+the xenon in the pump bowl has been measured during the \gls{MSRE} but the 
+technical report ORNL-4069 by Kedl-Houtzeel only stated its range (from 50 to 
+100\%) and mentioned that the results are not accurate 
+\cite{kedl_development_1967}. $^{135}$Xe burnup and decay rates are well 
+known. 
+
+Previous research by \gls{ORNL} \cite{peebles_removal_1968} has reported xenon 
+removal efficiency ($\epsilon_{Xe}$) in a gas separation system as a function 
+of many parameters:
 \begin{align}
-& \qquad\qquad\qquad\qquad\qquad \epsilon_{Xe} = F (A, d_{He}, \dot{m}_{He}, \dot{m}_{salt}, h_b, T)
+& \qquad\qquad \epsilon_{Xe} = \frac{1-e^{-\beta}}{1+\alpha}
 	\intertext{where}
- 	A      &= \mbox{the interface area of the injected helium bubbles} \nonumber \\
- 	d_{He} &= \mbox{the average diameter of helium bubbles} \nonumber \\
- 	\dot{m}_{He} &= \mbox{the helium gas mass flow rate} \nonumber \\
- 	\dot{m}_{salt}&= \mbox{the salt mass flow rate} \nonumber \\
- 	h_b &= \mbox{the mass transfer coefficient for transferring xenon into circulating helium bubbles} \nonumber \\
- 	T &= \mbox{the salt temperature} \nonumber
+ 	\alpha &= \frac{RTQ_{salt}}{HQ_{He}} \\
+ 	\beta &= \frac{K_L a A_C L (1+\alpha)}{Q_{salt}} \\
+ 	R &= \mbox{universal gas constant} \nonumber \\
+ 	T &= \mbox{salt temperature} \nonumber \\
+ 	Q_{salt}&= \mbox{volumetric salt flow rate} \nonumber \\
+ 	Q_{He}&= \mbox{volumetric helium flow rate} \nonumber \\
+ 	H &= \mbox{Henry's law constant for solute gas} \nonumber \\
+ 	a &= \mbox{gas-liquid interfacial area} \nonumber \\
+ 	A_C &= \mbox{contactor cross section} \nonumber \\
+ 	L &= \mbox{contactor length} \nonumber \\
+  	K_L &= \mbox{liquid phase mass transfer coefficient} \nonumber
 \end{align}
-\begin{table}[ht!]
-\caption{$^{135}$Xe production sources and principal rate constants involved
- (reproduced from Kedl \emph{et al.} \cite{kedl_development_1967}).}
-  \centering
-\begin{tabularx}{\textwidth}{b | b}
-\hline \textbf{$^{135}$Xe gain mechanism}      & \textbf{Principal rate 
-parameters involved}  	\\
-\hline Direct from Fission   & (Fission rate) $\times$ 0.3\% (for $^{235}$U fission) \\
-\hline $^{135}$I decay       & (Fission rate) $\times$ 3.6\% (for $^{235}$U fission) \\
-iodine-135 generation rate is 3.6\%, 
-it decays to $^{135}$Xe with $\tau_{1/2}=6.68$ h & 			                    \\		\hline $^{135}$Te decay      & (Fission rate) $\times$ 2.5\% (for $^{235}$U fission) \\
-tellurium-135 generation rate is 2.5\%, 
-it quickly decays to $^{135}$I with $\tau_{1/2}=19$ s & 			                    \\					
-\hline 
-\end{tabularx}
-  		\label{tab:xe_gain}
-\end{table}
-\begin{table}[ht!]
-\caption{$^{135}$Xe loss terms and principal rate constants involved
- (reproduced from Kedl \emph{et al.} \cite{kedl_development_1967}).}
-  \centering
-\begin{tabularx}{\textwidth}{b | b}
-\hline \textbf{$^{135}$Xe loss mechanism}      & \textbf{Principal rate 
-parameters involved}  	\\
-\hline Decay of dissolved $^{135}$Xe ($\tau_{1/2}=9.1$ h)  & Decay constant	($\lambda$)		\\
-\hline $^{135}$Xe burnup              &  Neutron flux ($\Phi$)		 					\\
-dissolved xenon-135 burnup as it passes throught core  & 			            \\		\hline $^{135}$Xe transferred to off-gas system via xenon stripper & Stripping efficiency ($\epsilon$)		\\
-\hline $^{135}$Xe transferred into circulating He bubbles; this xenon will eventually be burnup, decay, or stripped via bubble separator & Mass transfer coefficient ($h$), decay constant ($\lambda$), 
-neutron flux ($\Phi$), bubble removing efficiency ($\epsilon$)		\\
-\hline 
-\end{tabularx}
-  		\label{tab:xe_loss}
-\end{table}
+Most of input parameters for that correlation are obvious and easy to obtain 
+from the system component design. The mass transfer coefficient for 
+transferring xenon into helium bubbles ($K_L$) can be estimated from 
+experiment or CFD-model but published information is insufficient to inform an 
+accurate mathematical model\footnote{Peebles \emph{et al.} reported the mass 
+transfer coefficient for the \gls{MSBR} salt (LiF-BeF$_2$-ThF$_4$-UF$_4$) but 
+at stationary flow conditions. While it is out of the scope of this work to 
+accurately estimate mass transfer coefficient, this work seeks to provide tool 
+which will allow user to specify any mathematical model for a separation 
+efficiency.}.
 
 This technique would be applicable to other noble gases (e.g. Kr) but the 
-correlation coefficients are different. 
-To create a realistic mathematical model, correlations with 
-coefficients for various volatile gases (particularly xenon) are needed. These 
-correlations can be obtained experimentally or using CFD simulations. 
-Current efforts at the University of Illinois at Urbana-Champaign namely, ``Enabling 
-Load Following Capability in the Transatomic Power MSR" \cite{huff_enabling_2018}, 
-have a goal to determine those correlations using CFD simulations 
-and verify it in small-size experiments. 
-As a result, the obtained mathematical model might be used to inform realistic 
-physics-based gas removal from fuel salt in the proposed SaltProc tool.
+correlation coefficients would be different. To create a realistic 
+mathematical model, an interfacial mass transfer coefficients for various 
+volatile gases (particularly xenon) are needed. These coefficients can be 
+obtained experimentally or using CFD simulations. Current effort at the 
+University of Illinois at Urbana-Champaign namely, ``Enabling 
+Load Following Capability in the Transatomic Power MSR" 
+\cite{huff_enabling_2018}, have a goal to determine the coefficients using CFD 
+simulations and verify them in small experiments. As a result, the obtained 
+mathematical model for a gas removal efficiency will be used to inform 
+realistic physics-based fuel reprocessing model in the proposed SaltProc tool.
 
 \subsection{Fuel salt chemical processing facility} \label{sec:chemical_processing}
 In the single-fluid \gls{MSBR}, thorium, uranium, 

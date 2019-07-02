@@ -247,7 +247,7 @@ with static ``black box'' model assumptions in the literature:
 	long-term depletion simulation might require a time-dependent extraction 
 	efficiency vector.
 	\item The separation efficiency independent of the reactor operational 
-	parameters but the efficiency might changes with temperature, power level, 
+	parameters but the efficiency might depend on temperature, power level, 
 	current fuel salt isotope composition, and material mass flow rate.
 	\item All reprocessing plant components are treated as a single component 
 	but the fuel salt in a reprocessing plant undergoes many separate components 
@@ -345,10 +345,16 @@ engineering simulation challenges presented by new reactor designs.
 \paragraph{Realistic fuel reprocessing system model instead of ``black box''.} 
 Major approximations in fuel reprocessing parameters deteriorates fuel salt 
 composition predictions; evolution of safety parameters accuracy is toughly 
-related to fuel salt composition. Realistic fuel reprocessing system model will 
-allow to optimize reprocessing component parameters, collect detailed data about 
-waste streams, advance the reprocessing system design.
-\paragraph{Constant extraction efficiency.}
+related to fuel salt composition. Realistic fuel reprocessing system model 
+will allow to optimize reprocessing component parameters, collect detailed 
+data about waste streams, advance the reprocessing system design.
+\paragraph{Variable extraction efficiency.} Most of research efforts in the 
+literature assumed ideal 100\% extraction efficiency which stayed constant 
+during whole reactor lifetime. But realistically the efficiency is 
+time-dependent and changes with respect to operational parameters: 
+temperature, power level, salt composition, etc. Thus, ability to set up 
+dynamic separation efficiency must be added in \gls{MSR} simulation tools to 
+advance depletion calculations.
 \paragraph{Reactivity control.} Reconfigurable moderator configuration in the 
 \gls{TAP} core presents a challenge because the core geometry changes with 
 respect to time. The reactivity control module which adjusts the core geometry 
@@ -360,5 +366,5 @@ significantly shift neutron energy spectrum. Neutron energy hardening might
 worsen the core safety during operation. The impact of the fuel salt evolution 
 on the \gls{MSR} safety parameters must be carefully investigated and reported.
 
-The proposed work will hopefully overcome these issues and demonstrate the tool 
-capabilities for promising \gls{TAP} \gls{MSR} concept.
+The proposed work will hopefully overcome these issues and demonstrate the 
+tool capabilities for promising \gls{TAP} \gls{MSR} concept.
