@@ -150,19 +150,30 @@ system design. A summary of recent efforts is listed in
 table~\ref{tab:msr_codes}.
 \begin{table}[t]
 \fontsize{9}{11}\selectfont
-\caption{Tools and methods for liquid-fueled \glspl{MSR} fuel salt depletion analysis.}
+\caption{Tools and methods for liquid-fueled \glspl{MSR} fuel salt depletion 
+analysis.}
 \begin{tabularx}{\textwidth}{X X X X X} 
 \hline 
-&Nuttin \emph{et al.}, 2005 \cite{nuttin_potential_2005}& Aufiero \emph{et al.}, 2013 \cite{aufiero_extended_2013} & Betzler \emph{et al.}, 2018 \cite{betzler_fuel_2018}&Proposed work \\ [12pt]
+&Nuttin \emph{et al.}, 2005 \cite{nuttin_potential_2005}& Aufiero \emph{et al.}, 
+2013 \cite{aufiero_extended_2013} & Betzler \emph{et al.}, 2018 
+\cite{betzler_fuel_2018}&Proposed work \\ [12pt]
 \hline
-Neutron transport software & \gls{MCNP} & Serpent 2 & SCALE6.2 & Serpent 2 \\ [12pt]
-Neutron transport method & \multicolumn{2}{c}{Monte Carlo continuous energy} & Deterministic discrete ordinates & Monte Carlo continuous energy \\ [12pt]
-Burnup software & REM (in-house) code & Serpent 2 & ORIGEN-S & Serpent 2 \\ [12pt]
+Neutron transport software & \gls{MCNP} & Serpent 2 & SCALE6.2 & Serpent 2 \\ 
+[12pt]
+Neutron transport method & \multicolumn{2}{c}{Monte Carlo continuous energy} & 
+Deterministic discrete ordinates & Monte Carlo continuous energy \\ [12pt]
+Burnup software & REM (in-house) code & Serpent 2 & ORIGEN-S & Serpent 2 \\ 
+[12pt]
 Geometry model & three cells & full-core 3D & unit cell & full-core 3D\\ [12pt]
-\gls{FP} removal/feed  & continuous &continuous & batch-wise & batch-wise\\ [12pt]
-Separation efficiency &\multicolumn{3}{c}{constant, must be determine by user before simulation} & dynamic \\ [12pt]
-Fuel reprocessing plant & \multicolumn{3}{c}{single component, ``black'' box model} & realistic multi-component model\\ [12pt]
-Reactivity control & \multicolumn{2}{c}{continuous adjustment of fissile material injection} & batch injection of fissile material & periodical adjustment of geometry and fissile material injection\\
+\gls{FP} removal/feed  & continuous &continuous & batch-wise & batch-wise\\ 
+[12pt]
+Separation efficiency &\multicolumn{3}{c}{constant, must be determine by user 
+before simulation} & dynamic \\ [12pt]
+Fuel reprocessing plant & \multicolumn{3}{c}{single component, ``black'' box 
+model} & realistic multi-component model\\ [12pt]
+Reactivity control & \multicolumn{2}{c}{continuous adjustment of fissile 
+material injection} & batch injection of fissile material & periodical 
+adjustment of geometry and fissile material injection\\
 \hline
 \end{tabularx}
   \label{tab:msr_codes}
@@ -239,13 +250,13 @@ with static ``black box'' model assumptions in the literature:
 	parameters but the efficiency might changes with temperature, power level, 
 	current fuel salt isotope composition, and material mass flow rate.
 	\item All reprocessing plant components are treated as a single component 
-	but the fuel salt in a reprocessing plant undergoes many separate components  
+	but the fuel salt in a reprocessing plant undergoes many separate components 
 	(e.g. helium bubbling, nickel mesh filter, etc) which target specific 
 	elements. Some of these components can be connected in series, parallel, or 
 	series-parallel. The ``black box'' model (only single process) requires 
-	massive pre-simulation analytic work from the user to calculate lumped separation 
-	efficiency vector before a simulation is run and cannot be adjusted during 
-	simulation.	
+	massive pre-simulation analytic work from the user to calculate lumped 
+	separation 	efficiency vector before a simulation is run and cannot be 
+	adjusted during simulation.	
 \end{enumerate}
 
 Some of tools listed in table~\ref{tab:msr_codes} used major approximations 
@@ -257,34 +268,97 @@ Burnup calculation code, Serpent 2, for simulation liquid-fueled \gls{MSR}
 operation is proposed in this Chapter.
 
 \subsection{Operational and safety parameters evolution}
-In contrast with conventional solid-fueled reactors, which are completely 
-replace the fuel every 4-5 years\footnote{For the most common 18-month cycle, 
+In contrast with conventional solid-fueled reactors, which are require a 
+complete fuel replacement every 4-5 years\footnote{For the most common 
+18-month cycle, 
 during refueling personnel removing 1/3 of the fuel assemblies, re-arranging 
 other assemblies, and loading fresh fuel into the core. Thus, any fuel 
 assembly is kept in the core at most $3\times 18=54$ months.}, the initial 
 fuel salt batch stays in the \gls{MSR} reactor primary loop during whole 
-lifetime. Therefore, some \glspl{FP}, not captured by fuel  reprocessing 
-system, and transuranic elements\footnote{The chemical elements with atomic 
-numbers greater than uranium (92).} are accumulating in the fuel salt. 
-continuous changing of fuel salt composition have a significant influence on 
+lifetime. Therefore, the fuel salt accumulating \glspl{FP}, not captured 
+by fuel  reprocessing system, and transuranic elements\footnote{The chemical 
+elements with atomic numbers greater than uranium (92).}. 
+Continuous variation of fuel salt composition have a significant influence on 
 the neutron energy spectrum and, consequently, affects the reactor behavior 
 and rises significant safety concerns.
 
 Nuttin {et al.} studied evolution of key safety parameter: temperature  
-coefficient at start-up and at equilibrium state. The temperature coefficient 
+coefficient, and estimated it at start-up and at equilibrium state. The 
+temperature coefficient 
 quantify reactivity changes due to accidental temperature increase in the 
 core and was calculated in that work as:
 \begin{align}
 & \qquad\qquad \alpha = \frac{k_{1200} - k_{900}}{\delta T} 
 \intertext{where}
-k_{900}, k_{1200}  &= \mbox{the multiplication coefficient for 900K and 1200K} \nonumber \\
+k_{900}, k_{1200}  &= \mbox{the multiplication coefficient for 900K and 1200K} 
+\nonumber \\
 \delta T &= 1200K-900K \nonumber
 \end{align}
-That work showed negative and decreasing with time fuel salt temperature 
+That work showed negative and decreasing during reactor operation fuel 
+temperature 
 coefficient ($-1.5$ and $-1.0pcm/K$ at start-up and at equilibrium state, 
-respectively), but positive total temperature coefficient which did not 
-change during reactor operation ($\approx+0.8pcm/K$).
+respectively); they also reported positive and invariable with respect to time 
+total 
+temperature coefficient ($\approx+0.8pcm/K$) \cite{nuttin_potential_2005}. 
+Recently, Park and colleagues expanded Nuttin' approach to a full-core 
+high-fidelity \gls{MSBR} model and estimated safety parameters evolution over 20 
+years of operation. These calculations showed relatively large negative total 
+temperature coefficient during 20 years of the reactor operation; the 
+coefficient magnitude weaken from $-3.21$ to $-1.41pcm/K$ at start-up and at 
+equilibrium composition, respectively. Additionally, that work reported control 
+rod effectiveness deterioration due to neutron spectrum hardening during reactor 
+operation \cite{park_whole_2015}. 
 
-\subsection{Transatomic Power Reactor design overview}
+More recently, Betzler \emph{et al.} reported key safety parameters evolution 
+for \gls{TAP} \gls{MSR}: the fuel reactivity coefficient at \gls{BOL} and 15 
+years from \gls{BOL} are negative and decreasing slowly  over the reactor 
+lifetime; the moderator reactivity coefficient is small and positive at 
+\gls{BOL}, and became negative after 15 years of operation. Overall, thermal 
+feedback seems to be stronger in the \gls{TAP} reactor and deteriorates 
+insignificantly during the reactor operation. Notably, authors ignored materials 
+densities change with temperature to simplify temperature coefficients 
+calculation (e.g., only  Doppler broadening has been taken into account). The 
+researchers also calculated total worth of all control rods in the \gls{TAP} 
+core at start-up only \cite{betzler_assessment_2017}. 
+
+The evolution of control rod worth in the \gls{TAP} was never reported in the 
+literature before. The proposed work will illuminate evolution of major safety 
+parameters (fuel, moderator and total temperature coefficient, void reactivity 
+coefficient, control rod worth) for the \gls{TAP} \gls{MSR} at various moments 
+during the reactor operation.
+%during 60 years of reactor lifetime. Additionally, impact of neutron poisons 
+accumulation in the fuel salt during short-term transients (i.e. load-following) 
+on safety characteristics will be investigated.
 
 \subsection{Chapter Conclusion}
+The State-of-the-Art software packages and methods for depletion analysis of 
+liquid-fueled \gls{MSR} and evolution of safety parameters are reviewed in this 
+Chapter. Based on this summary, I have identified few possible directions for 
+the \gls{MSR} tools improvement:
+\paragraph{Reproducibility/code availability.} Only Serpent built-in online 
+reprocessing feature is included in distribution package and widely available 
+for use; other mentioned tools are developed inside research institutions or 
+universities and unaccessible for external users. In the era of GitHub 
+\cite{github_github_2015} and international scientific collaboration, open and 
+reproducible software practices must be implemented to resolve nuclear 
+engineering simulation challenges presented by new reactor designs.
+\paragraph{Realistic fuel reprocessing system model instead of ``black box''.} 
+Major approximations in fuel reprocessing parameters deteriorates fuel salt 
+composition predictions; evolution of safety parameters accuracy is toughly 
+related to fuel salt composition. Realistic fuel reprocessing system model will 
+allow to optimize reprocessing component parameters, collect detailed data about 
+waste streams, advance the reprocessing system design.
+\paragraph{Constant extraction efficiency.}
+\paragraph{Reactivity control.} Reconfigurable moderator configuration in the 
+\gls{TAP} core presents a challenge because the core geometry changes with 
+respect to time. The reactivity control module which adjusts the core geometry 
+to maintain criticality would be a great capability for simulating a new, more 
+advanced \gls{MSR} concepts and a short-term transients.
+\paragraph{Safety characteristics evolution during reactor operation.} The 
+\glspl{MSR} fuel salt  accumulates \gls{FP} and transuranic elements which 
+significantly shift neutron energy spectrum. Neutron energy hardening might 
+worsen the core safety during operation. The impact of the fuel salt evolution 
+on the \gls{MSR} safety parameters must be carefully investigated and reported.
+
+The proposed work will hopefully overcome these issues and demonstrate the tool 
+capabilities for promising \gls{TAP} \gls{MSR} concept.
