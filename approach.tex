@@ -4,16 +4,18 @@ modeling and safety analysis}
 Removing specific chemical elements from a molten salt is a complicated 
 task that requires intelligent design (e.g., chemical separations equipment 
 design, fuel salt flows to equipment) and has a considerable economic cost. 
-This section contains a brief overview of fuel reprocessing system of generic 
-\gls{MSR}.
+This section contains a brief overview of a generic \gls{MSR} fuel salt  
+reprocessing system.
 
 \subsection{Gas separation system}
-Gaseous fission products (e.g. Kr, Xe) must be removed from the fuel salt 
+Gaseous fission products (e.g., Kr, Xe) must be removed from the fuel salt 
 to avoid reactor poisoning especially during startup and power maneuvering. 
 This is particularly true for $^{135}$Xe, with its very large neutron capture 
-cross section (2.65$\times$10$^6$ b). The $^{135}$Xe ultimate yield from 
-fission is about 6.4\%, most of this is from fission-produced $^{135}$I and 
-$^{135}$Te decay (table~\ref{tab:xe_gain}). Noble gas (tritium, xenon, and 
+cross section ($\approx10^6\dots10^7$ b in a thermal energy range). The 
+$^{135}$Xe 
+ultimate yield from fission is about 6.4\%, most of this is from 
+fission-produced $^{135}$I and $^{135}$Te decay (table~\ref{tab:xe_gain}). 
+Noble gas (tritium, xenon, and 
 krypton) can be removed from the fuel salt as follows: (1) a bubble generator 
 injects helium bubbles in the salt stream; (2) noble gas mitigate promptly 
 to the helium bubbles because of their exceptional insolubility in the salt; 
@@ -31,15 +33,15 @@ the main ways of xenon production, accumulation, and removal in the typical
 	\begin{tabularx}{\textwidth}{b  b}
 		\hline \textbf{$^{135}$Xe gain mechanism} & \textbf{Principal rate 
 			parameters involved}  	\\ \hline 
-		Direct from fission & $\nu \Sigma_f \gamma_{^{135}Xe}\phi$ (for 
+		Direct from fission & $\Sigma_f \gamma_{^{135}Xe}\phi$ (for 
 		$^{235}$U fission) \\ 
 		yield $\gamma_{^{135}Xe}=0.003$ & \\ \hline
-		$^{135}$I decay       & $\nu \Sigma_f \gamma_{^{135}I}\phi$ (for 
+		$^{135}$I decay     & $\Sigma_f \gamma_{^{135}I}\phi$ (for 
 		$^{235}$U fission) \\
 		yield $\gamma_{^{135}Xe}=0.036$, it decays to $^{135}$Xe with 
 		$\tau_{1/2}=6.68$ h & 			                    \\		\hline
-		$^{135}$Te decay      & 
-		$\nu \Sigma_f \gamma_{^{135}Te}\phi$ (for $^{235}$U fission) \\
+		$^{135}$Te decay    & $\Sigma_f \gamma_{^{135}Te}\phi$ (for $^{235}$U 
+		fission) \\
 		yield $\gamma_{^{135}Xe}=0.025$, 
 		it quickly decays to $^{135}$I with $\tau_{1/2}=19$ s 
 		& 			                    \\	\hline 
@@ -52,16 +54,16 @@ Figure~\ref{fig:gas_removal_system} shows principal design of the \gls{MSBR}
 gas separation system. Helium bubbles of specific size are introduced in a 
 salt stream via the primary pump bowl; these bubbles absorbed noble gas 
 before being separated from the salt by a gas separator. The \gls{ORNL} proved 
-that the \gls{MSBR} gas separation system can remove up to 99.5\% of 
-$^{135}$Xe. Such a exceptional separation efficiency can be achieved by 
-injecting helium bubbles of $d=0.508$ mm, and redirecting 10\% of the fuel 
-salt flow from the pump discharge through a bubble separator to remove the 
-xenon bubbles and then back into the pump suction. Robertson \emph{et al.} 
-reported that helium bubble size was approximately 25\% of the 
-throat width (blue circle on figure~\ref{fig:bubble_separator}) and was 
-independent of the gas flow rate \cite{robertson_conceptual_1971}. 
-Consequently, it is possible to regulate helium bubble size by changing throat 
-width in the bubble generator.
+that the \gls{MSBR} gas separation system can remove up to 99.44\% of 
+$^{135}$Xe \cite{briggs_molten-salt_1969}. Such a exceptional separation 
+efficiency can be achieved by injecting helium bubbles of $d=0.508$ mm, and 
+redirecting 10\% of the fuel salt flow from the pump discharge through a 
+bubble separator to remove the xenon bubbles and then back into the pump 
+suction. Robertson \emph{et al.} reported that helium bubble size was 
+approximately 25\% of the throat width (blue circle on 
+figure~\ref{fig:bubble_separator}) and was independent of the gas flow rate 
+\cite{robertson_conceptual_1971}. Consequently, it is possible to regulate 
+helium bubble size by changing throat width in the bubble generator.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{xe_diagram.pdf}
@@ -70,7 +72,7 @@ width in the bubble generator.
 	bubbles and $\epsilon_{es}$ is the gas separation efficiency in the 
 	entrainment separator. The orange color represents the active core region, 
 	the blue color represents the gas separation system, and the gray color is 
-	moderator in the core,}
+	moderator in the core. Fission yields listed for $^{235}$U.}
 	\label{fig:xe_diagram}
 \end{figure}
 \begin{figure}[htp!] % replace 't' with 'b' to 
@@ -81,9 +83,9 @@ width in the bubble generator.
   \cite{robertson_conceptual_1971}).}
   \label{fig:gas_removal_system}
 \end{figure}
-\begin{figure}[t] % replace 't' with 'b' to 
+\begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
-  \includegraphics[width=0.75\textwidth]{msbr_bubble_generator.png}
+  \includegraphics[width=0.77\textwidth]{msbr_bubble_generator.png}
   \caption{Preliminary concept of \gls{MSBR} bubble generator (figure 
   reproduced from Robertson \emph{et al.} \cite{robertson_conceptual_1971}). 
   The blue circle shows throat width, which determines bubble size.}
@@ -128,9 +130,9 @@ technical report ORNL-4069 by Kedl-Houtzeel only stated its range (from 50 to
 \cite{kedl_development_1967}. $^{135}$Xe burnup and decay rates are well 
 known. 
 
-Previous research by \gls{ORNL} \cite{peebles_removal_1968} has reported xenon 
-removal efficiency ($\epsilon_{Xe}$) in a gas separation system as a function 
-of many parameters:
+Peebles \emph{et al.} in ORNL-TM-2245 has reported xenon removal efficiency 
+($\epsilon_{Xe}$) in a gas separation system as a function of many parameters 
+\cite{peebles_removal_1968}:
 \begin{align}
 & \qquad\qquad \epsilon_{Xe} = \frac{1-e^{-\beta}}{1+\alpha}
 	\intertext{where}
@@ -151,11 +153,11 @@ from the system component design. The mass transfer coefficient for
 transferring xenon into helium bubbles ($K_L$) can be estimated from 
 experiment or CFD-model but published information is insufficient to inform an 
 accurate mathematical model\footnote{Peebles \emph{et al.} reported the mass 
-transfer coefficient for the \gls{MSBR} salt (LiF-BeF$_2$-ThF$_4$-UF$_4$) but 
-at stationary flow conditions. While it is out of the scope of this work to 
-accurately estimate mass transfer coefficient, this work seeks to provide tool 
-which will allow user to specify any mathematical model for a separation 
-efficiency.}.
+transfer coefficient correlation for the \gls{MSBR} salt 
+(LiF-BeF$_2$-ThF$_4$-UF$_4$) but for limited case. While it is out of the 
+scope of this work to accurately estimate mass transfer coefficient, this work 
+seeks to provide tool which will allow user to specify any mathematical model 
+for a separation efficiency.}.
 
 This technique would be applicable to other noble gases (e.g. Kr) but the 
 correlation coefficients would be different. To create a realistic 
@@ -176,9 +178,10 @@ have relatively high solubility in the carrier salt and must be removed by
 chemical extraction. 
 
 Protactinium presents another challenge for thorium-fueled 
-\glspl{MSR}\footnote{The $^{232}$Th in the fuel salt absorbs thermal neutrons 
-and produces $^{233}$Pa which then decays into the fissile $^{233}$U.} (e.g., 
-\gls{MSBR}, \gls{MOSART}), since it has a large absorption
+\glspl{MSR}\footnote{$^{232}$Th in the fuel salt absorbs thermal neutrons 
+and produces $^{233}$Pa which then decays into the fissile $^{233}$U 
+($\tau_{1/2}=26.967d$).} (e.g., 
+\gls{MSBR}, \gls{MSFR}), since it has a large absorption
 cross section in  
 the thermal energy spectrum. Accordingly, $^{233}$Pa is continuously removed 
 from the fuel salt into a protactinium
@@ -279,165 +282,226 @@ chemistry-based mathematical formula for \glspl{FP} separation efficiency,
 this work seeks to provide a flexible tool that would be able to simulate 
 chemical processes in a high-detailed level.
 
-\section{SERPENT overview}
-SERPENT is a continuous-energy Monte Carlo neutronics software capable of solving the neutron transport problem by tracking individual neutrons within the problem geometry and using stochastic method to determine chain of events for each neutron \cite{leppanen_serpent_2015}. SERPENT has been under active development at the VTT Technical Research Centre of Finland since 2004, where it was initially conceived as a tool to simplify group constant generation in a high-fidelity Monte Carlo environment. SERPENT is now widely used transport code  with a growing user base. Now SERPENT used by more than 500 registered individuals in 155 organizations located in 37 countries around the world. The burnup calculation capability in SERPENT is based on built-in calculation routines, without using any external solvers. A restart feature allows performing fuel shuffling or applying any modifications in the input by dividing the calculation into several parts, which is crucial for online reprocessing simulations.
+\section{Serpent overview}
+Serpent is a continuous-energy Monte Carlo neutronics software capable of 
+solving the neutron transport problem by tracking individual neutrons within 
+the problem geometry and using stochastic method to determine chain of events 
+for each neutron \cite{leppanen_serpent_2015}. Serpent has been under active 
+development at the VTT Technical Research Centre of Finland since 2004, where 
+it was initially conceived as a tool to simplify group constant generation in 
+a high-fidelity Monte Carlo environment. Serpent is now widely used transport 
+code  with a growing user base. Now Serpent used by more than 500 registered 
+individuals in 155 organizations located in 37 countries around the world. The 
+burnup calculation capability in Serpent is based on built-in calculation 
+routines, without using any external solvers. A restart feature allows 
+performing fuel shuffling or applying any modifications in the input by 
+dividing the calculation into several parts, which is crucial for online 
+reprocessing simulations.
 
-The latest version, SERPENT 2, supports advanced geometries and has advanced burnup capabilities, including online refueling capabilities which are necessary for neutronic computations of pebble-bed reactors and liquid-fueled \glspl{MSR} \cite{aufiero_extended_2013}. Unfortunately, built-in online refueling features are still under active development and unavailable to ordinary users. Furthermore, recently multi-physics simulations using SERPENT 2 were demonstrated, including  calculations with thermal-hydraulics, \gls{CFD} and fuel performance codes \cite{leppanen_numerical_2015}. Two-way coupling to thermal-hydraulics, \gls{CFD}, and fuel performance codes operates on two levels: internal coupling to built-in solvers for fuel behavior and thermal-hydraulics and external coupling via a universal multi-physics interface. 
+The latest version, Serpent 2, supports advanced geometries and has advanced 
+burnup capabilities, including online refueling capabilities which are 
+necessary for neutronic computations of pebble-bed reactors and liquid-fueled 
+\glspl{MSR} \cite{aufiero_extended_2013}. Unfortunately, built-in online 
+refueling features are still under active development and unavailable to 
+ordinary users. Furthermore, recently multi-physics simulations using Serpent  
+2 were demonstrated, including  calculations with thermal-hydraulics, 
+\gls{CFD} and fuel performance codes \cite{leppanen_numerical_2015}. Two-way 
+coupling to thermal-hydraulics, \gls{CFD}, and fuel performance codes operates 
+on two levels: internal coupling to built-in solvers for fuel behavior and 
+thermal-hydraulics and external coupling via a universal multi-physics 
+interface. 
 
-SERPENT 2 can be effectively run in parallel on computer clusters and multi-core workstations. Parallelization is handled by thread-based OpenMP, which enables all processsors to use shared memory space. Calculations can be divided into several nodes by distributed-memory \gls{MPI} parallelization. SERPENT 2  is an improvement upon SERPENT 1, and contains a complete redesign of memory management using hybrid OpenMP \cite{dagum_openmp_1998} + \gls{MPI} parallelization.  This hybrid parallelization is important in depletion calculations using computer clusters with multiple nodes, and allows to achieve significant speed-up in depletion calculations on computer clusters with more than 4'000 cores \cite{leppanen_serpent_2015}. 
+Serpent 2 can be effectively run in parallel on computer clusters and 
+multi-core workstations. Parallelization is handled by thread-based OpenMP, 
+which enables all processsors to use shared memory space. Calculations can be 
+divided into several nodes by distributed-memory \gls{MPI} parallelization. 
+Serpent 2  is an improvement upon Serpent 1, and contains a complete redesign 
+of memory management using hybrid OpenMP \cite{dagum_openmp_1998} + \gls{MPI} 
+parallelization.  This hybrid parallelization is important in depletion 
+calculations using computer clusters with multiple nodes, and allows to 
+achieve significant speed-up in depletion calculations on computer clusters 
+with more than 4'000 cores \cite{leppanen_serpent_2015}. 
 
-All calculations herein were performed using SERPENT 2 version 2.1.30 on Blue Waters’ XE6 nodes. For cross section generation, the JEFF-3.1.2 nuclear data library was employed based on entirely open cross section data 
+All calculations herein were performed using Serpent 2 version 2.1.31 on Blue 
+Waters’ XE6 nodes. For cross section generation, the JEFF-3.1.2 nuclear data 
+library was employed based on entirely open cross section data 
 \cite{oecd/nea_data_bank_jeff-3.1.2_2014}. 
 
 \section{Proposed simulation tool design and capabilities} \label{sec:tool_design}
 The first version of the SaltProc Python tool for calculating \gls{MSR} fuel 
 composition evolution taking into account an online reprocessing system 
-was developed as a part of my M.Sc. thesis \cite{rykhlevskii_advanced_2018,
-rykhlevskii_arfc/saltproc_2018}. The tool was designed to 
-expand SERPENT 2 depletion capabilities for modeling liquid-fueled \gls{MSR} 
-for online reprocessing. SaltProc uses HDF5 
+was developed in 2018 as a part of M.S. thesis \cite{rykhlevskii_advanced_2018,
+	rykhlevskii_arfc/saltproc_2018}. The tool was designed to 
+expand Serpent 2 depletion capabilities for modeling liquid-fueled \gls{MSR} 
+with online fuel reprocessing system. SaltProc v1 uses HDF5 
 \cite{the_hdf_group_hierarchical_1997} to store 
 data and uses the PyNE Nuclear Engineering Toolkit \cite{scopatz_pyne_2012}
-for SEPRENT output file parsing and nuclide naming. SaltProc is an 
+for Serpent 2 output file parsing and nuclide naming. SaltProc v1 is an 
 open-source Python package that uses a batch-wise approach to simulate 
 continuous feeds and removals in \glspl{MSR}. 
 
+SaltProc v1 only allows 100\% separation efficiency for 
+either specific elements or groups of elements (e.g., Processing Groups as 
+described in 
+Table~\ref{tab:reprocessing_list}) at the end of the specific cycle time. 
+This simplification neglects the reality that the salt spends appreciable time 
+out of the core, in the primary loop pipes and the heat exchanger. This 
+approach 
+works well for fast-removing elements (gases, noble metals) 
+which should be removed each depletion step. Unfortunately, 
+for the elements with longer cycle times (i.e. rare earths should be removed 
+every 50 days) this simplified approach leads to oscillatory behavior of all
+major parameters \cite{rykhlevskii_modeling_2019}. 
+
 Capabilities of the developed tool, working with the Monte Carlo software 
-SERPENT 2, were demonstrated using the full-core MSBR design for a 
+Serpent 2, were demonstrated using the full-core MSBR design for a 
 simplified case with ideal removal efficiency (100\% of mass for target 
-elements removed) \cite{rykhlevskii_modeling_2019}. Unfortunately, 
-the code architecture and principal structure was not designed for 
+elements removed) \cite{rykhlevskii_modeling_2019}. The preliminary version of 
+SaltProc architecture and principal structure was not designed for 
 flexible implementation of sophisticated online reprocessing systems 
 including realistic physics/chemistry-based extraction efficiencies. 
-Thus, complete refactoring of SaltProc using \gls{OOP} is needed to 
-create a comprehensive generic tool to realistically model any \gls{MSR} 
-reprocessing plant while taking into account variable extraction 
-efficiencies, mass balance between the core and processing plant and 
-reactivity control system.
 
-\subsection{Proposed software architecture}
-The SaltProc v2 Python toolkit will couple directly with SERPENT 2 input 
-and output files, 
-to allow the reprocessing system to couple to depletion calculation. 
-Existing PyNE interfaces will be employed for SERPENT 2 output parsing as 
+We completely re-factored SaltProc v1 using \gls{OOP} to create a 
+comprehensive generic tool to realistically model any \gls{MSR} 
+reprocessing plant while taking into account non-ideal or variable extraction 
+efficiencies, and mass balance between the core and processing plant.
+
+\subsection{SaltProc v2.0+ architecture}
+The SaltProc v2.0+ Python toolkit coupled directly with Serpent 2 input 
+and output files, to allow the reprocessing system couples to depletion 
+calculation. 
+Existing PyNE interfaces are employed for Serpent output parsing as 
 well as newly developed interfaces for input and output handling. 
-Python 3 \gls{OOP} 
-standard features will be used to create a flexible, user-friendly tool with 
-great potential for further improvement and collaboration. 
-Figure~\ref{fig:saltproc_class} shows the proposed SaltProc class structure 
- which includes 4 main classes:
-\begin{enumerate}
-	\item \textit{Depcode}. Contains attributes and methods for 
-	reading the user's input file for the depletion software, initial 
-	material (e.g., fuel and/or fertile salt) composition, principal 
-	parameters for 
-	burnup simulation (e.g., neutron population and number of cycles for Monte 
-	Carlo), running the depletion code. The proposed work will only 
-	support SERPENT 2 Monte Carlo (only 
-	one instance of \textit{Depcode} will be instantiated) but in principle the 
-	toolkit can support any depletion code (i.e. OpenMC 
-	\cite{romano_openmc_2015}).
+Python 3 \gls{OOP} standard features is used to create a flexible, 
+user-friendly tool with great potential for further improvement and 
+collaboration. 
+Figure~\ref{fig:saltproc_class} shows the SaltProc v2.0+ class structure 
+which includes 4 main classes:
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
-  \includegraphics[width=\textwidth]{saltproc_class_diagram.png}
-  \caption{Saltproc python package tentative class diagram with UML notation 
-  and examples of object instances.}
-  \label{fig:saltproc_class}
+	\includegraphics[width=1.07\textwidth]{saltproc_class_diagram.png}
+	\vspace{-0.35in}
+	\caption{SaltProc v2.0+ python package class diagram in UML notation 
+		and examples of object instances.}
+	\label{fig:saltproc_class}
 \end{figure}
-	\item \textit{Simulation}. Runs SaltProc simulation step, 
-	create, write HDF5 database, track time and convert 
-	isotopic composition vector nuclide names from SERPENT to human 
-	readable format. Also this class will allow simulation restart after 
-	failure by restoring data from the HDF5 database and continue simulation 
-	for additional depletion time.
-	
-	\item \textit{MaterialFlow}. Each \textit{MaterialFlow} object 
-	will represent the material flowing between \textit{Process} objects. 
-	The object of this class will contain an isotopic composition vector 
-	(PyNE Material object 
-	initialized	from SERPENT output file \textbf{dep.m}), mass flow rate, 
-	temperature, density, volume, and void fraction. Existing PyNE Material 
-	capabilities allows on to easily convert the units of isotopic 
-	composition vector (e.g., from atomic density provided by SERPENT to 
-	mass fraction or absolute mass in desired units), decay material 
-	(i.e. model the \gls{MSBR} protactinium decay tank), calculate 
-	decay heat, activity and dose. The main idea of the \textit{MaterialFlow} 
-	object is to pass detailed information about the salt starting at the 
-	\gls{MSR} vessel outlet throughout reprocessing facilities 
-	(\textit{Processes}), which are modifying the \textit{MaterialFlow} 
-	object before depleting the material in the next SERPENT burnup step.
-		
-	\item \textit{Process}. Each \textit{Process} object will represent a 
-	realistic fuel processing step characterized by its throughput rate, 
-	volumetric capacity, extraction efficiency for each target element (can be 
-	function of many parameters), waste streams, and other parameters specific to 		the particular process. Refueling 
-	\textit{Process} injects feed \textit{MaterialFlow} usually directly 
-	into the reactor core (e.g., adding fissile material with specific mass flow 		rate to \textit{MaterialFlow} after performing all removals).
-\end{enumerate}
+\paragraph{Depcode.}Contains attributes and methods for 
+reading the user's input file for the depletion software, initial 
+material (e.g., fuel and/or fertile salt) composition, principal 
+parameters for 
+burnup simulation (e.g., neutron population and number of cycles for Monte 
+Carlo neutron transport), and running the depletion code.
+\paragraph{Simulation.} Runs Serpent depletion step, 
+creates and writes HDF5 database, tracks time and converts 
+isotopic composition vector nuclide names from Serpent to human-readable 
+format.
+\paragraph{MaterialFlow.}Each \textit{MaterialFlow} object 
+represents the material flowing between \textit{Process} objects. 
+All instances of this class contain an isotopic composition vector 
+(PyNE Material object initialized from Serpent output file 
+\textbf{dep.m}), mass flow rate, 
+temperature, density, volume, and void fraction. Existing PyNE Material 
+capabilities allows to easily convert the units of isotopic 
+composition vector (e.g., from atomic density provided by Serpent to 
+a mass fraction or absolute mass in desired units), decay material 
+(i.e. model the \gls{MSBR} protactinium decay tank), calculate 
+decay heat, activity, and dose. The main idea of the \textit{MaterialFlow} 
+object is to pass detailed information about the salt starting at the 
+\gls{MSR} vessel outlet throughout reprocessing components 
+(\textit{Processes}), which modify the \textit{MaterialFlow} 
+object before depleting the material in the next Serpent burnup step.
+\paragraph{Process.}Each \textit{Process} object represents a 
+realistic fuel processing step characterized by its throughput rate, 
+volumetric capacity, extraction efficiency for each target element (can be 
+a function of many parameters), waste streams, and other parameters specific 
+to the particular process. Feed	\textit{Process} injects fresh fuel salt 
+\textit{MaterialFlow} directly into the reactor core (e.g., adding fissile 
+material with a specific mass flow rate to \textit{MaterialFlow} after 
+performing all removals).
 
-The proposed class structure will provide outstanding flexibility in simulating 
-various \gls{MSR} designs. A library of various \textit{MaterialFlow} (e.g., 
+The proposed class structure provides outstanding flexibility in simulating 
+various \gls{MSR} fuel processing system designs. A library of various 
+\textit{MaterialFlow} (e.g., 
 fuel salt flow, fertile salt flow, refueling salt flow) and \textit{Process} 
 (e.g., helium sparging facility, gas separator, lanthanide removal component) 
-objects will be created in this work to allow a user to quickly create a model 
+objects will be created to allow a user to quickly create a model 
 of a desired reprocessing scheme. At runtime, the user will connect 
-\textit{Process} objects in series or parallel with \textit{Flow} objects to 
-form a comprehensive reprocessing system. The user will also be able to create 
-a custom object with desired attributes and methods, and contribute back 
-to the code package using Github (https://github.com/arfc/saltproc).	
+\textit{Process} objects in series or parallel with \textit{MaterialFlow} 
+objects to form a comprehensive reprocessing system. The user will also be 
+able to create custom objects with desired attributes and methods, and 
+contribute back to the code package using GitHub (https://github.com/ 
+arfc/saltproc).	
 
-\subsection{Tentative flowchart}
+\subsection{SaltProc v2.0+ flowchart}
 Figure~\ref{fig:saltproc_flow} illustrates the online reprocessing simulation 
-algorithm coupling SaltProc and SERPENT 2. To perform a depletion step, 
-SaltProc reads a user-defined SERPENT 2 template file. This file contains input 
- parameters such as geometry, material, isotopic composition, neutron 
-population, criticality cycles, total heating power, and boundary conditions.  
-After the depletion calculation, SaltProc reads the depleted fuel composition 
-file and stores the depleted composition isotopic vector in an HDF5 database 
-and \textit{MaterialFlow} object (\textit{CoreOut} in 
+algorithm coupling SaltProc v2.0+ and Serpent. To perform a depletion step, 
+SaltProc v2.0+ reads a user-defined Serpent template file. This file contains 
+input 
+parameters such as geometry, material, isotopic composition, neutron 
+population, criticality cycles, total heating power, and boundary conditions. 
+SaltProc v2.0+ fills in the template file and runs Serpent single-step 
+depletion. 
+After the depletion calculation, SaltProc v2.0+ reads the depleted fuel 
+composition 
+file into \textit{MaterialFlow} object (\textit{core\textunderscore outlet} in 
 figure~\ref{fig:saltproc_flow}). This object contains an isotopic composition 
-vector, total volume of material, mass flow rate, density and any other 
-parameters specified by user. For the simplest reprocessing case, when all 
-facilities are located in-line (100\% of total material flow goes through 
-chain of separation components), the \textit{CoreOut} object is flowing 
+vector, total volume of material, total mass, mass flow rate, density, 
+temperature, 
+void fraction, etc. For the simplest reprocessing case, when all fuel 
+processing components are located in-line 
+(100\% of total material flow goes through 
+a chain of separation components), the \textit{core\textunderscore outlet} 
+object is flowing 
 sequentially between \textit{Processes} and each \textit{Process} is 
-removing mass fraction of target elements with specified extraction 
-efficiency. Afterward, the removed material mass will be compensated by 
+removing a mass fraction of target elements with specified extraction 
+efficiency. Afterward, the removed material mass is compensated by 
 fresh fuel salt to maintain the salt inventory in a primary loop. 
-Finally, resulting isotopic composition from the \textit{ReprocOut} object will 
-be stored in HDF5 database and dumped in a new composition file for the next 
-SERPENT depletion run. 
+Finally, resulting isotopic composition after reprocessing is stored in 
+HDF5 database and dumped in a new composition file for the next 
+Serpent depletion run. SaltProc v2.0+ also stores in database isotopic 
+composition 
+before reprocessing and waste stream from each fuel processing component. 
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
-  \includegraphics[width=1.05\textwidth]{saltproc_flowchart.pdf}
-  \caption{Tentative generic flow chart for new Saltproc python package.}
-  \label{fig:saltproc_flow}
+	\centering
+	\includegraphics[width=1.03\textwidth]{saltproc_flowchart.pdf}
+	\vspace{-0.35in}
+	\caption{SaltProc v2.0+ python package flow chart.}
+	\label{fig:saltproc_flow}
 \end{figure}
 
-For a more general case with multiple concurrent extraction processes a separate 
-\textit{MaterialFlow} object will be created for each branch with a user-defined 
+For a more general case with multiple concurrent extraction processes, a 
+separate 
+\textit{MaterialFlow} object is created for each branch with a user-defined 
 mass flow rate (e.g. 90\% of total mass flow rate flows via left branch and 
-10\% through right branch). Total volume and isotopic composition vector 
-for each \textit{MaterialFlow} object will be calculated as a fraction of incoming 
-\textit{CoreOut} flow. Then each \textit{MaterialFlow} object will be passed via 
-a cascade of \textit{Processes} to separate selected chemical elements with 
-specific efficiency. Finally, the left-hand-side branch \textit{MaterialFlow} object 
-will be merged with the right-hand-side and similarly to previous case, fresh 
-fuel salt feed will compensate the loss of mass in separation facilities and keep 
+10\% through a right branch). The total mass and isotopic composition vector 
+for each \textit{MaterialFlow} object is calculated as a fraction of incoming 
+\textit{core\textunderscore outlet} flow. Then each \textit{MaterialFlow} 
+object is 
+passed via a cascade of \textit{Processes} to separate selected chemical 
+elements with 
+specific efficiency. Finally, the left-hand-side branch \textit{MaterialFlow} 
+object is
+merged with the right-hand-side and similarly to the previous case, fresh 
+fuel salt feed compensate the loss of mass in separation facilities and keep 
 fuel salt mass in a primary loop constant.
 
-The class diagram (Figure~\ref{fig:saltproc_class}) will allow simulating 
+The class diagram (Figure~\ref{fig:saltproc_class}) allows to model 
 the operation of a complex, multi-zone, 
 multi-fluid \gls{MSR} and is sufficiently general to represent myriad reactor 
-systems. The refactored version of SaltProc will only store and edit the 
+systems. The refactored version of SaltProc stores and edit the 
 isotopic composition of the fuel stream, which makes it a flexible tool to 
 model any geometry: an infinite medium, a unit cell, a multi-zone simplified 
-assembly, or a full core. This flexibiliity allows the user to perform 
-simulations of varying fidelity and computational intensity. SaltProc is an 
-open-source tool (but a user needs SERPENT2 installed to use SaltProc), 
-available on Github. It will leverage unit tests and continuous integration 
-crucial for sustainable development. It will also have documentation
-generated through Sphinx, a documentation generator, for ease of use. In summary, the 
-development approach of SaltProc is focused on producing a generic, flexible and 
-expandable tool to give the SERPENT 2 Monte Carlo code the ability to conduct 
+assembly, or a full core. This flexibility allows the user to perform 
+simulations of varying fidelity and computational intensity. SaltProc v2.0+ is 
+an 
+open-source tool (but a user needs Serpent installed to use SaltProc v2.0+), 
+available on Github. It leverage unit and continuous tests  
+crucial for sustainable development \cite{krekel_pytest_2004}. It will also 
+have documentation generated through Sphinx, a documentation generator, for 
+ease 
+of use \cite{brandl_sphinx_2009}. In summary, the 
+development approach of SaltProc v2.0+ is focused on producing a generic, 
+flexible and 
+expandable tool to give the Serpent 2 Monte Carlo code the ability to conduct 
 advanced in-reactor fuel cycle analysis as well as simulate many 
 online refueling and fuel reprocessing systems.
 
