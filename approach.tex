@@ -160,16 +160,18 @@ seeks to provide tool which will allow user to specify any mathematical model
 for a separation efficiency.}.
 
 This technique would be applicable to other noble gases (e.g. Kr) but the 
-correlation coefficients would be different. To create a realistic 
-mathematical model, an interfacial mass transfer coefficients for various 
-volatile gases (particularly xenon) are needed. These coefficients can be 
-obtained experimentally or using CFD simulations. Current effort at the 
-University of Illinois at Urbana-Champaign namely, ``Enabling Load Following Capability in the Transatomic Power \gls{MSR}" \cite{huff_enabling_2018}, have a goal to determine the coefficients using CFD simulations and verify them in small experiments. As a result, the obtained mathematical model for a gas removal efficiency will be used to inform 
-realistic physics-based fuel reprocessing model in the proposed SaltProc tool.
+mass transfer coefficients would be different. Current effort at the 
+University of Illinois at Urbana-Champaign namely, ``Enabling Load Following 
+Capability in the Transatomic Power \gls{MSR}" \cite{huff_enabling_2018}, have 
+a goal to determine mass transfer coefficients for various gaseous \glspl{FP}  
+using CFD simulations and verify them in small experiments. As a result, the 
+obtained mathematical model for a gas removal efficiency will be used to 
+inform realistic physics-based fuel reprocessing model in the proposed 
+SaltProc tool.
 
 \subsection{Fuel salt chemical processing facility} \label{sec:chemical_processing}
 Additionally to noble gas (e.g., Xe, Kr), the fuel salt reprocessing system  
-must extract other \gls{FP}: noble/semi-noble metals and lanthanides. They  
+must extract other \glspl{FP}: noble/semi-noble metals and lanthanides. They  
 generally have a relatively low capture cross section and thus absorb fewer 
 neutrons than $^{135}$Xe, but their removal is crucial to guarantee normal  
 operation. Some fraction of noble and semi-noble solid fission products are 
@@ -180,23 +182,18 @@ chemical extraction.
 Protactinium presents another challenge for thorium-fueled 
 \glspl{MSR}\footnote{$^{232}$Th in the fuel salt absorbs thermal neutrons 
 and produces $^{233}$Pa which then decays into the fissile $^{233}$U 
-($\tau_{1/2}=26.967d$).} (e.g., 
-\gls{MSBR}, \gls{MSFR}), since it has a large absorption
-cross section in  
-the thermal energy spectrum. Accordingly, $^{233}$Pa is continuously removed 
-from the fuel salt into a protactinium
-decay tank to allow $^{233}$Pa to decay 
-to $^{233}$U without poisoning the reactor. This feature allows the 
-thorium-fueled \gls{MSR} to avoid neutron losses
-to protactinium, keeps 
-fission products to a very low level, and increases the
-efficiency of 
-$^{233}$U breeding. 
+($\tau_{1/2}=26.967d$).} (e.g., \gls{MSBR}, \gls{MSFR}), since it has a large 
+absorption cross section in  the thermal energy spectrum. Accordingly, 
+$^{233}$Pa is continuously removed from the fuel salt into a protactinium
+decay tank to allow $^{233}$Pa to decay to $^{233}$U without poisoning the 
+reactor. This feature allows the thorium-fueled \gls{MSR} to avoid neutron 
+losses to protactinium, keeps fission products to a very low level, and 
+increases the efficiency of $^{233}$U breeding. 
 
 Many authors reported liquid-liquid reductive extraction process as a best 
-option for removing uranium and soluble fission products from 
+option for removing protactinium and soluble fission products from 
 molten fluoride salts \cite{briggs_molten-salt_1969, delpech_molten_2010, 
-doligez_coupled_2014}. In that process the uranium or lanthanides can be 
+doligez_coupled_2014}. In that process the protactinium or lanthanides can be 
 selectively stripped from the salt into liquid bismuth due to different 
 chemical potentials. Moreover, the \gls{MSRE} studies indicated that the 
 extraction could be carried out rapidly and continuously  
@@ -219,7 +216,7 @@ purified salt returns to the reactor \cite{carter_design_1972,
 sorensen_one-fluid_2006}.
 \begin{figure}[htp!] % replace 't' with 'b' to 
   \centering
-  \includegraphics[width=0.9\textwidth]{flowsheet.pdf}
+  \includegraphics[width=1.05\textwidth]{flowsheet.pdf}
   \caption{Simplified block diagram of chemical processing scheme for 
   single-fluid \gls{MSBR} (reproduced from Sorensen 
   \cite{sorensen_one-fluid_2006}). \emph{RE} is a reducing agent.}
@@ -264,8 +261,8 @@ to produce a concentration high enough for disposal
 	\centering
 	\includegraphics[width=0.45\textwidth]{rare-earths-removal-system.png}
 	\caption{Rare earth removal from a fuel salt by reductive extraction 
-	(figure 
-		reproduced from Briggs \emph{et al.} \cite{briggs_molten-salt_1969}).}
+	(figure reproduced from Briggs \emph{et al.} 
+	\cite{briggs_molten-salt_1969}).}
 	\label{fig:rare-earth-removal}
 \end{figure}
 
@@ -340,67 +337,54 @@ for Serpent 2 output file parsing and nuclide naming. SaltProc v1 is an
 open-source Python package that uses a batch-wise approach to simulate 
 continuous feeds and removals in \glspl{MSR}. 
 
-SaltProc v1 only allows 100\% separation efficiency for 
-either specific elements or groups of elements (e.g., Processing Groups as 
-described in 
-Table~\ref{tab:reprocessing_list}) at the end of the specific cycle time. 
-This simplification neglects the reality that the salt spends appreciable time 
-out of the core, in the primary loop pipes and the heat exchanger. This 
-approach 
-works well for fast-removing elements (gases, noble metals) 
-which should be removed each depletion step. Unfortunately, 
-for the elements with longer cycle times (i.e. rare earths should be removed 
-every 50 days) this simplified approach leads to oscillatory behavior of all
-major parameters \cite{rykhlevskii_modeling_2019}. 
+SaltProc v1 only allows 100\% separation efficiency for either specific 
+elements or groups of elements at the end of the specific ``cycle 
+time''\footnote{The \gls{MSBR} program defined ``cycle time'' as the time 
+required to remove 100\% of a target nuclide from a fuel salt 
+\cite{robertson_conceptual_1971}.}. Capabilities of the developed tool, 
+working with the Monte Carlo software Serpent 2, were demonstrated using the 
+full-core MSBR design for a simplified case with ideal removal efficiency 
+(100\% of mass for target elements removed) \cite{rykhlevskii_modeling_2019}. 
+The SaltProc v1 architecture and principal structure was not designed for 
+flexible implementation of sophisticated online reprocessing systems including 
+realistic variable extraction efficiencies. 
 
-Capabilities of the developed tool, working with the Monte Carlo software 
-Serpent 2, were demonstrated using the full-core MSBR design for a 
-simplified case with ideal removal efficiency (100\% of mass for target 
-elements removed) \cite{rykhlevskii_modeling_2019}. The preliminary version of 
-SaltProc architecture and principal structure was not designed for 
-flexible implementation of sophisticated online reprocessing systems 
-including realistic physics/chemistry-based extraction efficiencies. 
+For the proposed work, SaltProc v1 will be completely re-factored using 
+\gls{OOP} to create a comprehensive generic tool to realistically model 
+complex \gls{MSR} fuel reprocessing system while taking into account 
+variable extraction efficiencies, time-dependent core geometry, mass balance 
+between the core and the reprocessing plant.
 
-We completely re-factored SaltProc v1 using \gls{OOP} to create a 
-comprehensive generic tool to realistically model any \gls{MSR} 
-reprocessing plant while taking into account non-ideal or variable extraction 
-efficiencies, and mass balance between the core and processing plant.
-
-\subsection{SaltProc v2.0+ architecture}
-The SaltProc v2.0+ Python toolkit coupled directly with Serpent 2 input 
+\subsection{Proposed software architecture}
+The SaltProc v2.0+ Python toolkit will couple directly with Serpent 2 input 
 and output files, to allow the reprocessing system couples to depletion 
-calculation. 
-Existing PyNE interfaces are employed for Serpent output parsing as 
-well as newly developed interfaces for input and output handling. 
-Python 3 \gls{OOP} standard features is used to create a flexible, 
+calculation. Existing PyNE interfaces will be employed for Serpent output 
+parsing as well as newly developed interfaces for input and output handling. 
+Python 3 \gls{OOP} standard features will be used to create a flexible, 
 user-friendly tool with great potential for further improvement and 
-collaboration. 
-Figure~\ref{fig:saltproc_class} shows the SaltProc v2.0+ class structure 
-which includes 4 main classes:
+collaboration. Figure~\ref{fig:saltproc_class} shows the proposed SaltProc 
+v2.0+ class structure which includes 4 main classes:
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
-	\includegraphics[width=1.07\textwidth]{saltproc_class_diagram.png}
-	\vspace{-0.35in}
+	\includegraphics[width=1.03\textwidth]{saltproc_class_diagram.png}
+	\vspace{-0.15in}
 	\caption{SaltProc v2.0+ python package class diagram in UML notation 
 		and examples of object instances.}
 	\label{fig:saltproc_class}
 \end{figure}
-\paragraph{Depcode.}Contains attributes and methods for 
-reading the user's input file for the depletion software, initial 
-material (e.g., fuel and/or fertile salt) composition, principal 
-parameters for 
-burnup simulation (e.g., neutron population and number of cycles for Monte 
-Carlo neutron transport), and running the depletion code.
-\paragraph{Simulation.} Runs Serpent depletion step, 
-creates and writes HDF5 database, tracks time and converts 
-isotopic composition vector nuclide names from Serpent to human-readable 
-format.
+\paragraph{Depcode.}Contains attributes and methods for reading the user's 
+input file for the depletion software, initial material (e.g., fuel and/or 
+fertile salt) composition, principal parameters for burnup simulation (e.g., 
+neutron population and number of cycles for Monte Carlo neutron transport), 
+and running the depletion code.
+\paragraph{Simulation.}Runs Serpent depletion step, creates and writes HDF5 
+database, tracks time and converts isotopic composition vector nuclide names 
+from Serpent to human-readable format.
 \paragraph{MaterialFlow.}Each \textit{MaterialFlow} object 
 represents the material flowing between \textit{Process} objects. 
 All instances of this class contain an isotopic composition vector 
-(PyNE Material object initialized from Serpent output file 
-\textbf{dep.m}), mass flow rate, 
-temperature, density, volume, and void fraction. Existing PyNE Material 
-capabilities allows to easily convert the units of isotopic 
+(PyNE Material object initialized from Serpent output file \textbf{dep.m}), 
+mass flow rate, temperature, density, volume, and void fraction. Existing PyNE 
+Material capabilities allows to easily convert the units of isotopic  
 composition vector (e.g., from atomic density provided by Serpent to 
 a mass fraction or absolute mass in desired units), decay material 
 (i.e. model the \gls{MSBR} protactinium decay tank), calculate 
@@ -419,91 +403,78 @@ material with a specific mass flow rate to \textit{MaterialFlow} after
 performing all removals).
 
 The proposed class structure provides outstanding flexibility in simulating 
-various \gls{MSR} fuel processing system designs. A library of various 
-\textit{MaterialFlow} (e.g., 
-fuel salt flow, fertile salt flow, refueling salt flow) and \textit{Process} 
-(e.g., helium sparging facility, gas separator, lanthanide removal component) 
-objects will be created to allow a user to quickly create a model 
-of a desired reprocessing scheme. At runtime, the user will connect 
-\textit{Process} objects in series or parallel with \textit{MaterialFlow} 
-objects to form a comprehensive reprocessing system. The user will also be 
-able to create custom objects with desired attributes and methods, and 
-contribute back to the code package using GitHub (https://github.com/ 
-arfc/saltproc).	
+various \gls{MSR} fuel processing system designs. A library of various  
+\textit{MaterialFlow} (e.g., fuel salt flow, fertile salt flow, refueling salt 
+flow) and \textit{Process} (e.g., helium sparging facility, gas separator, 
+lanthanide removal component) objects will be created to allow a user to 
+quickly create a model of a desired reprocessing scheme. At runtime, the user 
+will connect \textit{Process} objects in series or parallel with 
+\textit{MaterialFlow} objects to form a comprehensive reprocessing system. The 
+user will also be able to create custom objects with desired attributes and 
+methods, and contribute back to the code package using GitHub 
+(https://github.com/arfc/saltproc).	
 
-\subsection{SaltProc v2.0+ flowchart}
-Figure~\ref{fig:saltproc_flow} illustrates the online reprocessing simulation 
-algorithm coupling SaltProc v2.0+ and Serpent. To perform a depletion step, 
-SaltProc v2.0+ reads a user-defined Serpent template file. This file contains 
-input 
-parameters such as geometry, material, isotopic composition, neutron 
-population, criticality cycles, total heating power, and boundary conditions. 
-SaltProc v2.0+ fills in the template file and runs Serpent single-step 
-depletion. 
-After the depletion calculation, SaltProc v2.0+ reads the depleted fuel 
-composition 
-file into \textit{MaterialFlow} object (\textit{core\textunderscore outlet} in 
-figure~\ref{fig:saltproc_flow}). This object contains an isotopic composition 
-vector, total volume of material, total mass, mass flow rate, density, 
-temperature, 
-void fraction, etc. For the simplest reprocessing case, when all fuel 
-processing components are located in-line 
-(100\% of total material flow goes through 
-a chain of separation components), the \textit{core\textunderscore outlet} 
-object is flowing 
-sequentially between \textit{Processes} and each \textit{Process} is 
-removing a mass fraction of target elements with specified extraction 
-efficiency. Afterward, the removed material mass is compensated by 
+\subsection{Tentative flowchart}
+Figure~\ref{fig:saltproc_flow} illustrates the proposed online reprocessing 
+simulation algorithm coupling SaltProc v2.0+ and Serpent. To perform a 
+depletion step, SaltProc v2.0+ reads a user-defined Serpent template file. 
+This file contains input parameters such as geometry, material, isotopic 
+composition, neutron population, criticality cycles, total heating power, and 
+boundary conditions. SaltProc v2.0+ fills in the template file and runs 
+Serpent single-step depletion. After the depletion calculation, SaltProc v2.0+ 
+reads the depleted fuel composition file into \textit{MaterialFlow} object  
+(\textit{core\textunderscore outlet} in figure~\ref{fig:saltproc_flow}). This 
+object contains an isotopic composition vector, total volume of material, 
+total mass, mass flow rate, density, temperature, void fraction, etc. For the 
+simplest reprocessing case, when all fuel processing components are located 
+in-line (100\% of total material flow goes through a chain of separation 
+components), the \textit{core\textunderscore outlet} 
+object is flowing sequentially between \textit{Processes} and each 
+\textit{Process} is removing a mass fraction of target elements with specified 
+extraction efficiency. Afterward, the removed material mass is compensated by 
 fresh fuel salt to maintain the salt inventory in a primary loop. 
 Finally, resulting isotopic composition after reprocessing is stored in 
 HDF5 database and dumped in a new composition file for the next 
-Serpent depletion run. SaltProc v2.0+ also stores in database isotopic 
-composition 
-before reprocessing and waste stream from each fuel processing component. 
+Serpent depletion run. SaltProc v2.0+ also stores in database isotopic  
+composition before reprocessing and waste stream from each fuel processing 
+component. 
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
 	\centering
-	\includegraphics[width=1.03\textwidth]{saltproc_flowchart.pdf}
-	\vspace{-0.35in}
-	\caption{SaltProc v2.0+ python package flow chart.}
+	\includegraphics[width=1.05\textwidth]{saltproc_flowchart.pdf}
+	\vspace{-0.15in}
+	\caption{Tentative generic flow chart for SaltProc v2.0+ python package.}
 	\label{fig:saltproc_flow}
 \end{figure}
 
 For a more general case with multiple concurrent extraction processes, a 
-separate 
-\textit{MaterialFlow} object is created for each branch with a user-defined 
-mass flow rate (e.g. 90\% of total mass flow rate flows via left branch and 
-10\% through a right branch). The total mass and isotopic composition vector 
-for each \textit{MaterialFlow} object is calculated as a fraction of incoming 
-\textit{core\textunderscore outlet} flow. Then each \textit{MaterialFlow} 
-object is 
-passed via a cascade of \textit{Processes} to separate selected chemical 
-elements with 
-specific efficiency. Finally, the left-hand-side branch \textit{MaterialFlow} 
-object is
-merged with the right-hand-side and similarly to the previous case, fresh 
-fuel salt feed compensate the loss of mass in separation facilities and keep 
-fuel salt mass in a primary loop constant.
+separate \textit{MaterialFlow} object is created for each branch with a 
+user-defined mass flow rate (e.g. 90\% of total mass flow rate flows via left 
+branch and 10\% throughout a right branch). The total mass and isotopic 
+composition vector for each \textit{MaterialFlow} object is calculated as a 
+fraction of incoming \textit{core\textunderscore outlet} flow. Then each 
+\textit{MaterialFlow} object is passed via a cascade of \textit{Processes} to 
+separate selected chemical elements with specific efficiency. Finally, the 
+left-hand-side branch \textit{MaterialFlow} object is merged with the 
+right-hand-side and similarly to the previous case, fresh fuel salt feed 
+compensate the loss of mass in separation facilities and keep fuel salt mass 
+in a primary loop constant.
 
-The class diagram (Figure~\ref{fig:saltproc_class}) allows to model 
-the operation of a complex, multi-zone, 
-multi-fluid \gls{MSR} and is sufficiently general to represent myriad reactor 
-systems. The refactored version of SaltProc stores and edit the 
-isotopic composition of the fuel stream, which makes it a flexible tool to 
-model any geometry: an infinite medium, a unit cell, a multi-zone simplified 
-assembly, or a full core. This flexibility allows the user to perform 
-simulations of varying fidelity and computational intensity. SaltProc v2.0+ is 
-an 
-open-source tool (but a user needs Serpent installed to use SaltProc v2.0+), 
-available on Github. It leverage unit and continuous tests  
-crucial for sustainable development \cite{krekel_pytest_2004}. It will also 
-have documentation generated through Sphinx, a documentation generator, for 
-ease 
-of use \cite{brandl_sphinx_2009}. In summary, the 
-development approach of SaltProc v2.0+ is focused on producing a generic, 
-flexible and 
-expandable tool to give the Serpent 2 Monte Carlo code the ability to conduct 
-advanced in-reactor fuel cycle analysis as well as simulate many 
-online refueling and fuel reprocessing systems.
+The class diagram (Figure~\ref{fig:saltproc_class}) allows to model the 
+operation of a complex, multi-zone, multi-fluid \gls{MSR} and is sufficiently 
+general to represent myriad reactor systems. The re-factored version of 
+SaltProc will only store and edit the isotopic composition of the fuel stream, 
+which makes it a flexible tool to model any geometry: an infinite medium, a 
+unit cell, a multi-zone simplified assembly, or a full core. This flexibility 
+allows the user to perform simulations of varying fidelity and computational 
+intensity. SaltProc v2.0+ is an open-source tool (but a user needs Serpent 
+2.1.31 installed to use SaltProc v2.0+), available on Github. It leverage unit 
+and continuous tests  crucial for sustainable development  
+\cite{krekel_pytest_2004}. It will also have documentation generated through 
+Sphinx, a documentation generator, for ease of use \cite{brandl_sphinx_2009}. 
+In summary, the development approach of SaltProc v2.0+ is focused on producing 
+a generic, flexible and expandable tool to give the Serpent 2 Monte Carlo code 
+the ability to conduct advanced in-reactor fuel cycle analysis as well as 
+simulate many online refueling and fuel reprocessing systems.
 
 %\subsection{Reactivity control module}
 %In addition, SaltProc will be able to define time-dependent material feed and 
@@ -515,3 +486,165 @@ online refueling and fuel reprocessing systems.
 %These capabilities allow SaltProc to analyze fuel cycle of a generic 
 %liquid-fueled \gls{MSR}.
 
+\section{Preliminary results}
+Developed as a part of my master thesis, the first version of the tool only 
+was able to leverage ideal removals (e.g., 100\% of target isotope mass 
+extracted). The capabilities of SaltProc was demonstrated for full-core 
+\gls{MSBR} model \cite{rykhlevskii_modeling_2019}. 
+Subsection~\ref{sec:msbr_reproc} summarized a preliminary work and results 
+obtained from applying a previous version of SaltProc to the \gls{MSBR} core 
+and reprocessing plant.
+
+\subsection{MSBR online reprocessing analysis} \label{sec:msbr_reproc}
+The \gls{MSBR} vessel has a diameter of 680 cm and a height of 610 cm. It 
+contains a molten fluoride fuel-salt mixture that generates heat in the active 
+core region and transports that heat to the primary heat exchanger by way of 
+the primary salt pump. In the active core region, the fuel salt flows through 
+channels in moderating and reflecting graphite blocks.  
+Figure~\ref{fig:serpent_plan_view} shows the configuration of the 
+\gls{MSBR} vessel, including the ``fission" (zone I) and ``breeding" 
+(zone II) regions inside the vessel. The core has two radial zones bounded by 
+a solid cylindrical graphite reflector and the vessel wall. The central zone, 
+zone I, in which 13\% of the volume is fuel salt and 87\% graphite, is
+composed of 1,320 graphite cells, 2 graphite control rods, and 2 
+safety\footnote{ These rods needed for emergency shutdown only.} rods. The 
+under-moderated zone, zone II, with 37\% of fuel salt, and the radial 
+reflector, surrounds the zone I core region and serves to diminish neutron 
+leakage. Zones I and II are surrounded radially and axially by fuel salt 
+(figure~\ref{fig:serpent_zoneII}). This space for fuel is necessary for 
+injection and flow of molten salt.
+\begin{figure}[ht!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{view_serpent.png}
+	\caption{$XY$ (left) and $XZ$ (right) views of Serpent \gls{MSBR} model 
+		(figure reproduced from \cite{rykhlevskii_full-core_2017}).}
+	\label{fig:serpent_plan_view}
+\end{figure}
+\begin{figure}[hb!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.7\textwidth]{ser_zone_II.png}
+	\caption{Detailed view of \gls{MSBR} two zone model. 
+		Yellow represents fuel salt, purple represents graphite, and aqua 
+		represents the reactor vessel. Figure reproduced from 
+		\cite{rykhlevskii_full-core_2017}.}
+	\label{fig:serpent_zoneII}
+\end{figure}
+
+The \gls{MSBR} design requires online reprocessing to remove neutron gaseous 
+\glspl{FP} (Xe, Kr) and noble metals (e.g., Se, Nb, Mo) every 20 seconds. 
+$^{233}$Pa is continuously removed from the fuel salt into a protactinium 
+decay tank to allow $^{233}$Pa to decay to $^{233}$U without the corresponding 
+negative neutronics impact. This feature allows the reactor to avoid neutron 
+losses to protactinium, lowers in-core fission product inventory, and 
+increases the efficiency of $^{233}$U breeding. 
+Table~\ref{tab:reprocessing_list_msbr} summarizes a full list of 
+nuclides and the cycle time used for modeling salt treatment and separations 
+\cite{robertson_conceptual_1971}. The removal rates vary among nuclides in 
+this reactor concept and dictate the necessary resolution of depletion 
+calculations. If the depletion time intervals are very short, an enormous 
+number of depletion steps are required to obtain the equilibrium composition. 
+On the other hand, if the depletion  calculation time interval is too long, 
+the impact of short-lived fission products is not captured. To compromise, a 3 
+day time interval was selected for depletion calculations to correlate with 
+the removal interval of $^{233}$Pa, and $^{232}$Th was continuously added to 
+maintain the initial mass fraction of $^{232}$Th.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ht!]
+	\caption{The cycle times for protactinium and fission 
+		products removal (reproduced from Robertson \emph{et al.} 
+		\cite{robertson_conceptual_1971}).}
+	\begin{tabularx}{\textwidth}{x  s  x}
+		\hline Processing group & \qquad\qquad\qquad Nuclides & Cycle time (at 
+		full power) \\ \hline Rare earths & Y, La, Ce, Pr, Nd, Pm, Sm, 
+		Gd & 50 days \\ \qquad & Eu & 500 days \\ Noble metals & Se, 
+		Nb, Mo, Tc, Ru, Rh, Pd, Ag, Sb, Te & 20 sec \\
+		Seminoble metals & Zr, Cd, In, Sn & 200 days \\
+		Gases & Kr, Xe & 20 sec \\ Volatile fluorides & Br, I & 60 days \\
+		Discard & Rb, Sr, Cs, Ba & 3435 days \\ 
+		%Salt discard & Th, Li, Be, F & 3435 days \\ 
+		Protactinium & $^{233}$Pa & 3 days \\ Higher 
+		nuclides & $^{237}$Np, $^{242}$Pu & 16 years \\  \hline
+	\end{tabularx}
+	\label{tab:reprocessing_list_msbr}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Figures~\ref{fig:keff} and \ref{fig:keff_zoomed} show the effective 
+multiplication factors obtained using SaltProc and Serpent. The effective 
+multiplication factors were calculated after removing fission products listed 
+in Table~\ref{tab:reprocessing_list_msbr} and adding the fertile material at 
+the end of cycle time (3 days for this work). The effective multiplication 
+factor fluctuates significantly as a result of the batch-wise nature of this 
+online reprocessing strategy. 
+\begin{figure}[ht!] 
+	\centering
+	\includegraphics[width=0.9\textwidth]{keff.png}
+	\caption{Effective multiplication factor dynamics for full-core \gls{MSBR} 
+		model over a 60-year reactor operation lifetime (reproduced from 
+		\cite{rykhlevskii_modeling_2019}).}
+	\label{fig:keff}
+\end{figure}
+\begin{figure}[ht!] 
+	\centering
+	\includegraphics[width=\textwidth]{keff_zoomed.png}
+	\caption{Zoomed effective multiplication factor for 150-EFPD time interval 
+		(reproduced from \cite{rykhlevskii_modeling_2019}).}
+	\label{fig:keff_zoomed}
+\end{figure}
+
+First, Serpent calculates the effective multiplication factor for the 
+beginning of the cycle (there is fresh fuel composition at the first step). 
+Next, it computes the new fuel salt composition at the end of a 3-day 
+depletion. The corresponding effective multiplication factor is much smaller 
+than the previous one. Finally, Serpent calculates $k_{eff}$ for the depleted 
+composition after applying feeds and removals. The $k_{eff}$ increases 
+accordingly since major reactor poisons (e.g. Xe, Kr) are removed, while fresh 
+fissile material ($^{233}$U) from the protactinium decay tank is added.  
+
+Additionally, the presence of rubidium, strontium, cesium, and barium in the 
+core are disadvantageous to reactor physics. 
+Overall, the effective multiplication factor gradually decreases from 1.075 to 
+$\approx$1.02 at equilibrium after approximately 6 years of irradiation. 
+
+Loading initial fuel salt composition into the \gls{MSBR} core leads to a 
+supercritical configuration (Figure ~\ref{fig:fp_removal}). After reactor 
+startup, the effective multiplication factor for the case with volatile gas 
+and noble metal removal is approximately 7500 pcm  higher than for the case 
+with no fission product removal. This significant impact on the reactor core is
+achieved due to immediate removal (20 sec cycle time) of elements with a high 
+absorption cross section (e.g., Xe, Kr, Mo). The effect of rare earth 
+element removal was considerable a few months after startup and reached 
+approximately 5500 pcm after 10 years of operation. The rare earth elements 
+were removed at a slower rate (50-day cycle time). Moreover, 
+Figure~\ref{fig:fp_removal} demonstrates that batch-wise removal of strong 
+absorbers every 3 days did not necessarily lead to fluctuation in results 
+but rare earth element removal every 50 days caused an approximately 600 pcm 
+jump in reactivity.
+
+The effective multiplication factor of the core reduces gradually over 
+operation time because the fissile material ($^{233}$U) continuously depletes 
+from the fuel salt due to fission while fission products simultaneously
+accumulate in the fuel salt. Eventually, without fission product removal, 
+the reactivity decreases to the subcritical state after approximately 500 and 
+1300 days of operation for cases with no removal and volatile gas \& noble 
+metal removal, respectively. The time when the simulated core reaches 
+subcriticality ($k_{eff}<$1.0) for full-core model) is called the core 
+lifetime. 
+Therefore, removing fission products provides significant neutronic benefit 
+and enables a longer core lifetime.
+\begin{figure}[t] % replace 't' with 'b' to force it to 
+	\centering
+	\includegraphics[width=\textwidth]{keff_rem_cases.png} 
+	\caption{Calculated effective multiplication factor for full-core 
+	\gls{MSBR} model with removal of various fission product groups over 10 
+	years of operation (reproduced from \cite{rykhlevskii_modeling_2019}).}
+	\label{fig:fp_removal}
+\end{figure}
+
+These preliminary results have demonstrated SaltProc's capability to find 
+the equilibrium fuel salt composition (where equilibrium is defined as when 
+the number densities of major isotopes vary by less than 1\% over several 
+years). Additionally these results was showed benefits of a continuous fission 
+product removal for thermal \gls{MSR} design. A full-core high-fidelity 
+benchmark model of the \gls{MSBR} will be employed for demonstration and 
+validation of a new version of SaltProc.
