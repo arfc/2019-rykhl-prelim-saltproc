@@ -133,7 +133,7 @@ known.
 Peebles \emph{et al.} in ORNL-TM-2245 has reported xenon removal efficiency 
 ($\epsilon_{Xe}$) in a gas separation system as a function of many parameters 
 \cite{peebles_removal_1968}:
-\begin{align}
+\begin{align}\label{eq:gas_eff}
 & \qquad\qquad \epsilon_{Xe} = \frac{1-e^{-\beta}}{1+\alpha}
 	\intertext{where}
  	\alpha &= \frac{RTQ_{salt}}{HQ_{He}} \\
@@ -349,7 +349,7 @@ The SaltProc v1 architecture and principal structure was not designed for
 flexible implementation of sophisticated online reprocessing systems including 
 realistic variable extraction efficiencies. 
 
-For the proposed work, SaltProc v1 will be completely re-factored using 
+For the proposed work, SaltProc v1 will be completely refactored using 
 \gls{OOP} to create a comprehensive generic tool to realistically model 
 complex \gls{MSR} fuel reprocessing system while taking into account 
 variable extraction efficiencies, time-dependent core geometry, mass balance 
@@ -461,7 +461,7 @@ in a primary loop constant.
 
 The class diagram (Figure~\ref{fig:saltproc_class}) allows to model the 
 operation of a complex, multi-zone, multi-fluid \gls{MSR} and is sufficiently 
-general to represent myriad reactor systems. The re-factored version of 
+general to represent myriad reactor systems. The refactored version of 
 SaltProc will only store and edit the isotopic composition of the fuel stream, 
 which makes it a flexible tool to model any geometry: an infinite medium, a 
 unit cell, a multi-zone simplified assembly, or a full core. This flexibility 
@@ -551,7 +551,8 @@ maintain the initial mass fraction of $^{232}$Th.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]
 	\caption{The cycle times for protactinium and fission 
-		products removal (reproduced from Robertson \emph{et al.} 
+		products removal from the \gls{MSBR} (reproduced from Robertson 
+		\emph{et al.} 
 		\cite{robertson_conceptual_1971}).}
 	\begin{tabularx}{\textwidth}{x  s  x}
 		\hline Processing group & \qquad\qquad\qquad Nuclides & Cycle time (at 
