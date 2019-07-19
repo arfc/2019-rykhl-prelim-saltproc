@@ -7,7 +7,7 @@ literature; thus, cross-code verification with ChemTRITON/SCALE is possible
 \cite{betzler_assessment_2017}. The demonstration will be performed for two 
 timescales:
 \paragraph{Long-term.} The reactor lifetime-long (e.g., 40 years) depletion 
-simulation will be be performed with moderate time resolution (e.g., 30-day 
+simulation will be performed with moderate time resolution (e.g., 30-day 
 depletion step). The results obtained with SaltProc v2.0+ will be compared 
 with recent efforts discussed in Chapter 2, more specifically with Betzler 
 \emph{et al.}  \cite{betzler_assessment_2017}. That validation effort will 
@@ -15,10 +15,9 @@ help to ensure that SaltProc v2.0+ solution is correct for the case with ideal
 extraction efficiency.
 \paragraph{Short-term (transient).} The 7-day-long depletion simulation with 
 changing, load following core power will be performed with the fine time 
-resolution (e.g, 5-min depletion step). The depletion calculation for the 
-\gls{TAP} in load following regime would capture effects of xenon poisoning 
-and evaluate benefit of using online gas removal system.
-
+resolution (e.g., 5-min depletion step). The depletion calculation for the 
+\gls{TAP} in load following regime would capture the effects of xenon 
+poisoning and evaluate the benefit of using an online gas removal system.
 
 Additionally, a compatible \textit{.json} database with input examples of 
 various fuel reprocessing system configurations for use with SaltProc v2.0+ 
@@ -85,20 +84,14 @@ facilitate the commercial deployment of this conceptual design in the current
 commercially available 5\% \gls{LEU} fuel cycle. 
 
 The \gls{TAP} \gls{MSR} primary loop contains the reactor core volume 
-(including 
-the zirconium hydride moderator rods with silicone carbide cladding), pumps, 
-and 
-primary heat exchanger. Pumps circulate the LiF-(Act)F$_4$ 
-fuel salt through the primary loop. The pumps, vessels, tanks, and piping are 
-made of a nickel-based alloy (similar to Hastelloy-N\footnote{ Hastelloy-N is 
-	very common in reactors now but have been studied and developed at 
-	\gls{ORNL} in 
-	a program that started in 1950s.}), which is highly resistant to corrosion 
-	in 
-various molten 
-salt environments. 
-Inside the reactor vessel, in close proximity to the zirconium hydride 
-moderator 
+(including the zirconium hydride moderator rods with silicon carbide 
+cladding), pumps, and primary heat exchanger. Pumps circulate the 
+LiF-(Act)F$_4$ fuel salt through the primary loop. The pumps, vessels, tanks, 
+and piping are made of a nickel-based alloy (similar to Hastelloy-N\footnote{ 
+Hastelloy-N is very common in reactors now but have been studied and 
+developed at \gls{ORNL} in a program that started in the 1950s.}), which is 
+highly resistant to corrosion in various molten salt environments. Inside the 
+reactor vessel, near the zirconium hydride moderator 
 rods, the fuel salt is in a critical configuration and generates heat. 
 Table~\ref{tab:tap_tab} contains details of the \gls{TAP} system 
 design which are taken from technical white paper 
@@ -168,10 +161,10 @@ inserting fixed-sized moderator rods via the bottom of the reactor vessel (for
 safety considerations), similarly to moving the control rods in a \gls{BWR}, 
 as shown in Figure~\ref{fig:tap-main-view}. For the \gls{TAP} reactor, 
 \gls{EOL} occurs when the maximum number of moderator rods are inserted into 
-the core and further injection of fresh fuel salt does not change a 
-criticality. Unmoderated salt is flowing in the annulus between the core and 
+the core, and a further injection of fresh fuel salt does not change a 
+criticality. Unmoderated salt is flowing in the annulus between the core, and 
 the vessel wall provides for a potential reduction in fast neutron flux at the 
-vessel structural material 
+vessel structural material  
 \cite{transatomic_power_corporation_neutronics_2016}.
 
 \subsection{Serpent 2 full-core model} \label{sec:tap_model}
@@ -185,7 +178,7 @@ This model contains the moderator rods with silicon carbide cladding, pressure
 vessel, and inlet and outlet plena (Table~\ref{tab:tap_model_param}). Fuel 
 salt flows around rectangular moderator assemblies consisting of lattices of 
 small-diameter zirconium hydride rods in a corrosion-resistant material. The 
-\gls{SVF} for model herein is 0.907268 which means the modeled core is 
+\gls{SVF} for model herein is 0.907268, which means the modeled core is 
 under-moderated and has intermediate spectrum.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
@@ -213,7 +206,7 @@ under-moderated and has intermediate spectrum.
 	\label{fig:tap-serpent-elev-zoom}
 \end{figure}
 
-To represent reactivity control system the model has: (1) control rod guide 
+To represent reactivity control system, the model has: (1) control rod guide 
 tubes made of nickel-based alloy; (2) control rods represented as hollow 
 70-30\% Gd$_2$O$_3$-Al$_2$O$_3$ cylinders with a thin Hastelloy-N coating 
 \cite{betzler_assessment_2017}; (3) air inside guide tubes and control rods. 
@@ -263,10 +256,10 @@ k_{eff}/k_{eff}$.}.
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The control rod cluster is modeled using the \textbf{TRANS} Serpent 2 feature 
-which allows easily change the control rods position during simulation. 
+The control rod cluster is modeled using the \textbf{TRANS} Serpent 2 feature, 
+which allows easily to change the control rods position during the simulation. 
 Herein I assumed that all control rods are fully withdrawn from the core 
-(figure~\ref{fig:tap-serpent-elev-zoom}) but for future investigation control 
+(figure~\ref{fig:tap-serpent-elev-zoom}), but for future investigation control 
 rods position may vary. In this report, all figures of the core were 
 generated using the built-in Serpent plotter.
 
@@ -285,14 +278,14 @@ product removal methods \cite{transatomic_power_corporation_neutronics_2016}:
 and xenon, which are then compressed and stored temporarily until they have 
 decayed to the background radiation level. Trace amounts of tritium are also 
 removed and bottled in a liquid form via the same process. Also, the off-gas 
-system also directly removes a small fraction of the noble metals.
+system directly removes a small fraction of the noble metals.
 \paragraph{Metal Plate-Out/Filtration:} Removes noble and semi-noble metal 
 solid fission products as they plate out onto a nickel mesh filter located in 
 a side stream in the primary loop.
 \paragraph{Liquid Metal Extraction:} Lanthanides and other non-noble metals 
 stay dissolved in the fuel salt. They generally have a lower capture cross 
-section and thus absorb fewer neutrons than $^{135}$Xe but their extraction is 
-essential to ensuring normal operation. In the \gls{TAP} reactor, lanthanides 
+section and thus absorb fewer neutrons than $^{135}$Xe, but their extraction 
+is essential to ensure normal operation. In the \gls{TAP} reactor, lanthanides 
 removal is accomplished via a liquid-metal/molten salt extraction process 
 similar to that developed for \gls{MSBR} by \gls{ORNL}  
 \cite{robertson_conceptual_1971}. The process converts the dissolved 
@@ -302,18 +295,18 @@ plant in ceramic granules and can be sintered into another convenient form for
 storage.
 
 Figure~\ref{fig:tap-reproc} shows a principal design of the \gls{TAP} primary 
-loop including an off-gas system, nickel mesh filter, and lanthanide chemical 
+loop, including an off-gas system, nickel mesh filter, and lanthanide chemical 
 extraction facility. Similarly to \gls{MSBR}, an off-gas system is also based 
 on a simple process of helium sparging through fuel salt with consequent gas 
-bubbles removed before returning the fuel salt back to the core. Nevertheless, 
-one important difference must be noted: the \gls{MSBR} gas separation system 
+bubbles removed before returning the fuel salt to the core. Nevertheless, 
+one crucial difference must be noted: the \gls{MSBR} gas separation system 
 suggested helium injection and subsequent transport of the voids throughout 
-the primary loop, including the core for at least 10 full loops 
+the primary loop, including the core for at least ten full loops 
 \cite{robertson_conceptual_1971}. It is a significant concern to safe, stable 
 operation because the increase of void fraction in the fuel salt when it 
 enters back to the core would cause unpredictable reactivity change. This 
 drawback can be overcome by using an effective gas separator for stripping 
-helium/xenon bubbles before returning the salt back to a primary loop 
+helium/xenon bubbles before returning the salt to a primary loop 
 (Figure~\ref{fig:tap-reproc}, blue block). 
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
@@ -332,16 +325,16 @@ that about 50\% of noble and semi-noble metals would plate out inside
 \gls{MSBR} systems without any special treatment. To improve the extraction 
 efficiency of these fission products, the \gls{TAP} concept suggested 
 employing a nickel mesh filter located in a bypass stream in the primary loop 
-(Figure~\ref{fig:tap-reproc}, orange block). 
-The main idea of this filter is to create a maze with large metal (nickel) 
-surface area. The fuel salt flowing throughout the filter and noble 
-metals plate-out on the filter internal surface. 
+(Figure~\ref{fig:tap-reproc}, orange block). The main idea of this filter is 
+to create a maze with large metal (nickel) surface area. The fuel salt is  
+flowing throughout the filter and noble metals plate-out on the internal  
+filter surface. 
 
 This Liquid Metal Extraction process for the \gls{TAP} concept has been 
 adopted from the \gls{MSBR}. The \gls{MSRE} demonstrated a liquid-liquid 
 extraction process for removing rare earths and lanthanides from fuel salt and 
 estimated efficiency of this process. Removal efficiency ($\epsilon_{RE}$) of  
-this process is the function of fuel salt mass flow rate, liquid bismuth mass 
+this process is the function of salt mass flow rate, liquid bismuth mass 
 flow rate, interfacial areas between salt and metal, and mass transfer 
 coefficient for each noble metal species. The most recent research for LiF 
 salt (for the \gls{MSFR} concept) reported the following form of extraction 
@@ -361,7 +354,7 @@ experimental data and/or existing analytical models
 \cite{mcneese_engineering_1971, delpech_possible_2012, 
 rodrigues_actinide/lanthanide_2015}.
 
-In fact, due to similarities in reprocessing schemes,the \gls{TAP} project 
+In fact, due to similarities in reprocessing schemes, the \gls{TAP} project 
 reported almost the same set of elements for removal and similar effective 
 cycle times as suggested for \gls{MSBR} (Table~\ref{tab:reprocessing_list}). 
 The \gls{TAP} neutronics whitepaper specifies additional low-probability 
@@ -421,11 +414,11 @@ usually assumed ideal (rather than realistically constrained) removal
 efficiencies for reactor performance simulations. For the  proposed work, the 
 realistic online reprocessing system and reactor model will be created to 
 capture the dynamics of fuel composition evolution during reactor operation. 
-Gases removal efficiency will be represented in that model as variable, 
+Gases removal efficiency will be represented in that model as a variable, 
 described using mathematical correlation from Chapter 2 
-(see Equation~\ref{eq:gas_eff}). For the other \glspl{FP} a  
+(see Equation~\ref{eq:gas_eff}). For the other \glspl{FP}, a  
 fixed\footnote{Published information about dynamics of extraction efficiency 
-during reactor operation for seminoble metals, volatile flourides and rare 
+during reactor operation for seminoble metals, volatile fluorides, and rare 
 earths is insufficient to inform a variable removal efficiency.}, non-ideal 
 extraction efficiency based on cycle time from the  
 table~\ref{tab:reprocessing_list} will be used in the fuel reprocessing model.
@@ -455,8 +448,8 @@ in-line because estimated full loop time for the fuel salt is about
 To remove all volatile gases every 20 sec the fuel reprocessing system must 
 operate with 100\% of the core throughout flow rate and exceptional 
 efficiency. For the demonstration case herein to achieve required cycle time, 
-I assumed xenon, krypton, and hydrogen extraction efficiencies for the sparger 
-and entrainment separator are equal 60\% and 97\%, respectively.
+I assumed that xenon, krypton, and hydrogen extraction efficiencies for the 
+sparger and entrainment separator are equal to 60\% and 97\%, respectively.
 
 The nickel filter in the \gls{TAP} concept is designed to extract noble metals 
 and volatile fluorides. Similarly to volatile gases, noble metals must be 
