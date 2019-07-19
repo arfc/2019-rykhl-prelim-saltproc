@@ -4,16 +4,15 @@ modeling and safety analysis}
 Removing specific chemical elements from a molten salt is a complicated 
 task that requires intelligent design (e.g., chemical separations equipment 
 design, fuel salt flows to equipment) and has a considerable economic cost. 
-This section contains a brief overview of a generic \gls{MSR} fuel salt  
+This section contains a brief overview of a generic \gls{MSR} fuel salt 
 reprocessing system.
 
 \subsection{Gas separation system}
 Gaseous fission products (e.g., Kr, Xe) must be removed from the fuel salt 
-to avoid reactor poisoning especially during startup and power maneuvering. 
-This is particularly true for $^{135}$Xe, with its very large neutron capture 
+to avoid reactor poisoning, especially during startup and power maneuvering. 
+This is particularly true for $^{135}$Xe, with its extensive neutron capture 
 cross section ($\approx10^6\dots10^7$ b in a thermal energy range). The 
-$^{135}$Xe 
-ultimate yield from fission is about 6.4\%, most of this is from 
+$^{135}$Xe ultimate yield from fission is about 6.4\%, most of this is from 
 fission-produced $^{135}$I and $^{135}$Te decay (table~\ref{tab:xe_gain}). 
 Noble gas (tritium, xenon, and 
 krypton) can be removed from the fuel salt as follows: (1) a bubble generator 
@@ -51,19 +50,19 @@ the main ways of xenon production, accumulation, and removal in the typical
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Figure~\ref{fig:gas_removal_system} shows principal design of the \gls{MSBR} 
-gas separation system. Helium bubbles of specific size are introduced in a 
+gas separation system. Helium bubbles of a specific size are introduced in a 
 salt stream via the primary pump bowl; these bubbles absorbed noble gas 
 before being separated from the salt by a gas separator. The \gls{ORNL} proved 
 that the \gls{MSBR} gas separation system can remove up to 99.44\% of 
-$^{135}$Xe \cite{briggs_molten-salt_1969}. Such a exceptional separation 
-efficiency can be achieved by injecting helium bubbles of $d=0.508$ mm, and 
+$^{135}$Xe \cite{briggs_molten-salt_1969}. Such an exceptional separation 
+efficiency can be achieved by injecting helium bubbles of $d=0.508$mm and 
 redirecting 10\% of the fuel salt flow from the pump discharge through a 
 bubble separator to remove the xenon bubbles and then back into the pump 
 suction. Robertson \emph{et al.} reported that helium bubble size was 
 approximately 25\% of the throat width (blue circle on 
 figure~\ref{fig:bubble_separator}) and was independent of the gas flow rate 
-\cite{robertson_conceptual_1971}. Consequently, it is possible to regulate 
-helium bubble size by changing throat width in the bubble generator.
+\cite{robertson_conceptual_1971}. Consequently, it is possible to regulate the 
+helium bubble size by changing the throat width in the bubble generator.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{xe_diagram.pdf}
@@ -120,11 +119,11 @@ helium bubble size by changing throat width in the bubble generator.
 To realistically model the gas separation system, a mathematical model 
 describing noble gas extraction efficiency dynamics during reactor operation 
 is required. Particularly, a model of xenon extraction efficiency as a 
-function of a sparger design parameters is needed to accurately model 
+function of sparger design parameters is needed to accurately model 
 $^{135}$Xe removal in a fuel salt depletion simulation. The gain and loss 
 terms for $^{135}$Xe dissolved in the fuel salt are listed in 
 Tables~\ref{tab:xe_gain} and \ref{tab:xe_loss}. The stripping efficiency for 
-the xenon in the pump bowl has been measured during the \gls{MSRE} but the 
+the xenon in the pump bowl has been measured during the \gls{MSRE}, but the 
 technical report ORNL-4069 by Kedl-Houtzeel only stated its range (from 50 to 
 100\%) and mentioned that the results are not accurate 
 \cite{kedl_development_1967}. $^{135}$Xe burnup and decay rates are well 
@@ -148,18 +147,18 @@ Peebles \emph{et al.} in ORNL-TM-2245 has reported xenon removal efficiency
  	L &= \mbox{contactor length} \nonumber \\
   	K_L &= \mbox{liquid phase mass transfer coefficient} \nonumber
 \end{align}
-Most of input parameters for that correlation are obvious and easy to obtain 
-from the system component design. The mass transfer coefficient for 
+Most of the input parameters for that correlation are obvious and easy to 
+obtain from the system component design. The mass transfer coefficient for 
 transferring xenon into helium bubbles ($K_L$) can be estimated from 
 experiment or CFD-model but published information is insufficient to inform an 
 accurate mathematical model\footnote{Peebles \emph{et al.} reported the mass 
 transfer coefficient correlation for the \gls{MSBR} salt 
 (LiF-BeF$_2$-ThF$_4$-UF$_4$) but for limited case. While it is out of the 
 scope of this work to accurately estimate mass transfer coefficient, this work 
-seeks to provide tool which will allow user to specify any mathematical model 
-for a separation efficiency.}.
+seeks to provide a tool which will allow the user to specify any mathematical 
+model for a separation efficiency.}.
 
-This technique would be applicable to other noble gases (e.g. Kr) but the 
+This technique would apply to other noble gases (e.g., Kr) but the 
 mass transfer coefficients would be different. Current effort at the 
 University of Illinois at Urbana-Champaign namely, ``Enabling Load Following 
 Capability in the Transatomic Power \gls{MSR}" \cite{huff_enabling_2018}, have 
@@ -169,15 +168,15 @@ obtained mathematical model for a gas removal efficiency will be used to
 inform realistic physics-based fuel reprocessing model in the proposed 
 SaltProc tool.
 
-\subsection{Fuel salt chemical processing facility} \label{sec:chemical_processing}
-Additionally to noble gas (e.g., Xe, Kr), the fuel salt reprocessing system  
+\subsection{Fuel chemical processing facility} \label{sec:chemical_processing}
+Additionally, to noble gas (e.g., Xe, Kr), the fuel salt reprocessing system  
 must extract other \glspl{FP}: noble/semi-noble metals and lanthanides. They  
 generally have a relatively low capture cross section and thus absorb fewer 
 neutrons than $^{135}$Xe, but their removal is crucial to guarantee normal  
 operation. Some fraction of noble and semi-noble solid fission products are 
-plate out onto a internal surfaces of the primary loop equipment. Lanthanides 
-have relatively high solubility in the carrier salt and must be removed by 
-chemical extraction. 
+plate out onto the internal surfaces of the primary loop equipment. 
+Lanthanides have relatively high solubility in the carrier salt and must be 
+removed by chemical extraction. 
 
 Protactinium presents another challenge for thorium-fueled 
 \glspl{MSR}\footnote{$^{232}$Th in the fuel salt absorbs thermal neutrons 
@@ -193,7 +192,7 @@ increases the efficiency of $^{233}$U breeding.
 Many authors reported liquid-liquid reductive extraction process as a best 
 option for removing protactinium and soluble fission products from 
 molten fluoride salts \cite{briggs_molten-salt_1969, delpech_molten_2010, 
-doligez_coupled_2014}. In that process the protactinium or lanthanides can be 
+doligez_coupled_2014}. In that process, the protactinium or lanthanides can be 
 selectively stripped from the salt into liquid bismuth due to different 
 chemical potentials. Moreover, the \gls{MSRE} studies indicated that the 
 extraction could be carried out rapidly and continuously  
@@ -201,16 +200,16 @@ extraction could be carried out rapidly and continuously
 
 The principal scheme of the \gls{MSBR} reprocessing facility concept is shown 
 in Figure~\ref{fig:material_flow}. The fuel salt is first temporarily stored 
-for cooling and decay of the shortest lived fission products, then directed to 
+for cooling and decay of the shortest-lived fission products, then directed to 
 the primary fluorinator. There most of the uranium is removed by fluorination 
 to UF$_6$. After that, the salt is routed to an extraction column where the 
-mixture containing metallic bismuth, lithium and thorium as reductants is 
+mixture containing metallic bismuth, lithium, and thorium as reductants is 
 contacted with the salt. The remaining uranium and protactinium are 
 reductively extracted to a bismuth solution, leaving a salt that only contains 
 fission products dissolved in carrier salt (base composition 
 LiF-BeF$_2$-ThF$_4$). The salt then goes through a reduction column where 
 UF$_6$ is reduced to UF$_4$ in the salt and preparing it for return to the 
-reactor. BeF$_2$ and ThF$_4$ are also added and all residual bismuth is 
+reactor. BeF$_2$ and ThF$_4$ are also added, and all residual bismuth is 
 removed from the salt. After a final cleanup step and valence adjustment, the 
 purified salt returns to the reactor \cite{carter_design_1972, 
 sorensen_one-fluid_2006}.
@@ -231,7 +230,7 @@ products. Uranium produced after $^{233}$Pa decay is extracted and directed
 back into the reactor. Decay salt is the precursor for the waste salt as it 
 was periodically discarded every 220 days.}. The decay salt, containing 
 UF$_4$, PaF$_4$, and ThF$_4$, passed into a decay tank where $^{233}$Pa is 
-decays to $^{233}$U. The uranium generated by protactinium decay is removed 
+decaying to $^{233}$U. The uranium generated by protactinium decay is removed 
 through fluorination to UF$_6$ and directed to the reduction column to refuel 
 the purified fuel salt. A hydrofluorinator and a fluorinator can remove 
 approximately 95\% of the uranium from the stream 
@@ -267,14 +266,14 @@ to produce a concentration high enough for disposal
 \end{figure}
 
 Molten salt leaving the top of the column contains a dilute concentration of 
-rare earths. A fraction of this flow is returned back to the reactor while the 
+rare earths. A fraction of this flow is returned to the reactor while the 
 rest is sent to an electrolytic cell complex. The net effect of the complex is 
 to push thorium and lithium into bismuth and to return extracted rare earths, 
 entering the complex with bismuth from the bottom of the cascade, to the 
 cascade as reflux, oxidizing them out of the metal and transferring them to 
 the returning salt stream.
 
-While it is out of the scope of proposed work to derive accurate 
+While it is out of the scope of proposed work to derive the accurate 
 chemistry-based mathematical formula for \glspl{FP} separation efficiency, 
 this work seeks to provide a flexible tool that would be able to simulate 
 chemical processes in a high-detailed level.
@@ -326,7 +325,7 @@ library was employed based on entirely open cross section data
 
 \section{Proposed simulation tool design and capabilities} \label{sec:tool_design}
 The first version of the SaltProc Python tool for calculating \gls{MSR} fuel 
-composition evolution taking into account an online reprocessing system 
+composition evolution, taking into account an online reprocessing system 
 was developed in 2018 as a part of M.S. thesis \cite{rykhlevskii_advanced_2018,
 	rykhlevskii_arfc/saltproc_2018}. The tool was designed to 
 expand Serpent 2 depletion capabilities for modeling liquid-fueled \gls{MSR} 
@@ -345,15 +344,15 @@ required to remove 100\% of a target nuclide from a fuel salt
 working with the Monte Carlo software Serpent 2, were demonstrated using the 
 full-core MSBR design for a simplified case with ideal removal efficiency 
 (100\% of mass for target elements removed) \cite{rykhlevskii_modeling_2019}. 
-The SaltProc v1 architecture and principal structure was not designed for 
-flexible implementation of sophisticated online reprocessing systems including 
-realistic variable extraction efficiencies. 
+The SaltProc v1 architecture and the principal structure was not designed for 
+flexible implementation of sophisticated online reprocessing systems, 
+including realistic variable extraction efficiencies. 
 
 For the proposed work, SaltProc v1 will be completely refactored using 
 \gls{OOP} to create a comprehensive generic tool to realistically model 
 complex \gls{MSR} fuel reprocessing system while taking into account 
-variable extraction efficiencies, time-dependent core geometry, mass balance 
-between the core and the reprocessing plant.
+variable extraction efficiencies, time-dependent core geometry, the mass 
+balance between the core and the reprocessing plant.
 
 \subsection{Proposed software architecture}
 The SaltProc v2.0+ Python toolkit will couple directly with Serpent 2 input 
@@ -387,7 +386,7 @@ mass flow rate, temperature, density, volume, and void fraction. Existing PyNE
 Material capabilities allows to easily convert the units of isotopic  
 composition vector (e.g., from atomic density provided by Serpent to 
 a mass fraction or absolute mass in desired units), decay material 
-(i.e. model the \gls{MSBR} protactinium decay tank), calculate 
+(i.e., model the \gls{MSBR} protactinium decay tank), calculate 
 decay heat, activity, and dose. The main idea of the \textit{MaterialFlow} 
 object is to pass detailed information about the salt starting at the 
 \gls{MSR} vessel outlet throughout reprocessing components 
@@ -411,7 +410,7 @@ quickly create a model of a desired reprocessing scheme. At runtime, the user
 will connect \textit{Process} objects in series or parallel with 
 \textit{MaterialFlow} objects to form a comprehensive reprocessing system. The 
 user will also be able to create custom objects with desired attributes and 
-methods, and contribute back to the code package using GitHub 
+methods and contribute back to the code package using GitHub 
 (https://github.com/arfc/saltproc).	
 
 \subsection{Tentative flowchart}
@@ -448,7 +447,7 @@ component.
 
 For a more general case with multiple concurrent extraction processes, a 
 separate \textit{MaterialFlow} object is created for each branch with a 
-user-defined mass flow rate (e.g. 90\% of total mass flow rate flows via left 
+user-defined mass flow rate (e.g., 90\% of total mass flow rate flows via left 
 branch and 10\% throughout a right branch). The total mass and isotopic 
 composition vector for each \textit{MaterialFlow} object is calculated as a 
 fraction of incoming \textit{core\textunderscore outlet} flow. Then each 
