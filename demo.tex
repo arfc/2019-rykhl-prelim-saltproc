@@ -4,12 +4,26 @@ After refactoring, redesign, and implementation of the new capabilities
 mentioned in Chapter 3, SaltProc v2.0+ will be tested for the \gls{TAP} 
 \gls{MSR}. I selected the \gls{TAP} concept because it is well analyzed in the 
 literature; thus, cross-code verification with ChemTRITON/SCALE is possible 
-\cite{betzler_assessment_2017}. The results obtained with SaltProc v2.0+ will 
-be compared with recent efforts discussed in Chapter 2 (see  
-table~\ref{tab:msr_codes}). Finally, a compatible \textit{.json} database with 
-input examples of various fuel reprocessing system configurations for use with 
-SaltProc v2.0+ will be released to encourage research efforts in online 
-reprocessing simulations for various \gls{MSR} designs.
+\cite{betzler_assessment_2017}. The demonstration will be performed for two 
+timescales:
+\paragraph{Long-term.} The reactor lifetime-long (e.g., 40 years) depletion 
+simulation will be be performed with moderate time resolution (e.g., 30-day 
+depletion step). The results obtained with SaltProc v2.0+ will be compared 
+with recent efforts discussed in Chapter 2, more specifically with Betzler 
+\emph{et al.}  \cite{betzler_assessment_2017}. That validation effort will 
+help to ensure that SaltProc v2.0+ solution is correct for the case with ideal 
+extraction efficiency.
+\paragraph{Short-term (transient).} The 7-day-long depletion simulation with 
+changing, load following core power will be performed with the fine time 
+resolution (e.g, 5-min depletion step). The depletion calculation for the 
+\gls{TAP} in load following regime would capture effects of xenon poisoning 
+and evaluate benefit of using online gas removal system.
+
+
+Additionally, a compatible \textit{.json} database with input examples of 
+various fuel reprocessing system configurations for use with SaltProc v2.0+ 
+will be released to encourage research efforts in online reprocessing 
+simulations for various \gls{MSR} designs.
 
 \section{TRANSATOMIC POWER Molten Salt Reactor concept}
 The \gls{TAP} concept is a 1250 MW$_{th}$ \gls{MSR} with a LiF-based uranium 
@@ -417,13 +431,14 @@ extraction efficiency based on cycle time from the
 table~\ref{tab:reprocessing_list} will be used in the fuel reprocessing model.
 
 \section{Preliminary results}
-\subsection{SaltProc v2.0+ demonstration for TAP reactor}
+\subsection{TAP long-term demonstration case}
 I thoroughly analyzed the original \gls{TAP} reprocessing system design 
 (figure~\ref{fig:tap-reproc}) and neutron poisons removal rates  
 (table~\ref{tab:reprocessing_list}) to determine suitable reprocessing 
 scheme for SaltProc v2.0+ demonstration (figure~\ref{fig:demo-repro-scheme}). 
 That demonstration case assumed fixed, non-ideal ($<100$\%) removal 
-efficiencies and static geometry with constant \gls{SVF} during operation.
+efficiencies and static geometry with constant \gls{SVF} during 13 years of 
+operation.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.93\textwidth]{demo_reprocessing_scheme.png}
@@ -583,6 +598,6 @@ m_{before} &= \mbox{mass of the isotope right before  reprocessing}
 For the iodine approach is similar, but the extraction efficiency of iodine in 
 the nickel filter is only 5\%. Figure~\ref{fig:xe-i} shows that SaltProc v2.0+ 
 extraction module correctly removes target isotopes with specified extraction 
-efficiency: SaltProc and expected mass match. Overall, the \gls{TAP} fuel 
+efficiency: SaltProc and expected mass match. Notably, the \gls{TAP} fuel 
 reprocessing system simulated with SaltProc v2.0+ allows keeping $^{135}$Xe 
 inventory in the core during operation on 100\% power as low as 1g.

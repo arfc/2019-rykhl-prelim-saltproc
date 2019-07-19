@@ -19,6 +19,8 @@
 \usepackage{caption}  % allows center figures caption
 \usepackage{booktabs} % nice rules (thick lines) for tables
 \usepackage{array}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\captionsetup{width=1.0\textwidth,font={bf,normalsize},skip=0.3cm,within=none,justification=centering}
 \usepackage{rotating}
 \usepackage{tabularx}
 \newcolumntype{b}{>{\hsize=1.0\hsize}X}
@@ -146,7 +148,7 @@
 \include{intro}	% for INTRODUCTION in "intro.tex"
 \include{approach}
 \include{demo}
-\include{safety}
+%\include{safety}
 %\include{concl}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
