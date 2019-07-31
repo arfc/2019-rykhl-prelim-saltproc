@@ -1,6 +1,6 @@
 \chapter[Online reprocessing modeling and safety analysis]{Online reprocessing 
 modeling and safety analysis}
-\section{Fuel salt reprocessing plant overview}
+\section{Fuel salt reprocessing plant overview} \label{sec:reproc-plant}
 Removing specific chemical elements from a molten salt is a complicated 
 task that requires intelligent design (e.g., chemical separations equipment 
 design, fuel salt flows to equipment) and has a considerable economic cost. 
@@ -196,7 +196,7 @@ doligez_coupled_2014}. In that process, the protactinium or lanthanides can be
 selectively stripped from the salt into liquid bismuth due to different 
 chemical potentials. Moreover, the \gls{MSRE} studies indicated that the 
 extraction could be carried out rapidly and continuously  
-\cite{whatley_engineering_1970-1}.
+\cite{whatley_engineering_1970}.
 
 The principal scheme of the \gls{MSBR} reprocessing facility concept is shown 
 in Figure~\ref{fig:material_flow}. The fuel salt is first temporarily stored 
@@ -282,7 +282,7 @@ chemical processes in a high-detailed level.
 Serpent is a continuous-energy Monte Carlo neutronics software capable of 
 solving the neutron transport problem by tracking individual neutrons within 
 the problem geometry and using stochastic method to determine chain of events 
-for each neutron \cite{leppanen_serpent_2015}. Serpent has been under active 
+for each neutron \cite{leppanen_serpent_2014}. Serpent has been under active 
 development at the VTT Technical Research Centre of Finland since 2004, where 
 it was initially conceived as a tool to simplify group constant generation in 
 a high-fidelity Monte Carlo environment. Serpent is now widely used transport 
@@ -316,14 +316,15 @@ of memory management using hybrid OpenMP \cite{dagum_openmp_1998} + \gls{MPI}
 parallelization.  This hybrid parallelization is important in depletion 
 calculations using computer clusters with multiple nodes, and allows to 
 achieve significant speed-up in depletion calculations on computer clusters 
-with more than 4'000 cores \cite{leppanen_serpent_2015}. 
+with more than 4'000 cores \cite{leppanen_serpent_2014}. 
 
 All calculations herein were performed using Serpent 2 version 2.1.31 on Blue 
 Waters’ XE6 nodes. For cross section generation, the JEFF-3.1.2 nuclear data 
 library was employed based on entirely open cross section data 
-\cite{oecd/nea_data_bank_jeff-3.1.2_2014}. 
+\cite{oecd/nea_jeff-3.1.2_2014}. 
 
-\section{Proposed simulation tool design and capabilities} \label{sec:tool_design}
+\section{Proposed simulation tool design and capabilities} 
+\label{sec:tool_design}
 The first version of the SaltProc Python tool for calculating \gls{MSR} fuel 
 composition evolution, taking into account an online reprocessing system 
 was developed in 2018 as a part of M.S. thesis \cite{rykhlevskii_advanced_2018,
