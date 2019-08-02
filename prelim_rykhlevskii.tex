@@ -15,12 +15,13 @@
 %\usepackage{epsfig}  % for figures
 \usepackage{graphicx}  % another package that works for figures
 \usepackage{multirow}
+\usepackage{enumitem}
 \usepackage{placeins}
 \usepackage{caption}  % allows center figures caption
 \usepackage{booktabs} % nice rules (thick lines) for tables
 \usepackage{array}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
-\captionsetup{width=1.0\textwidth,font={normalsize},skip=0.3cm,within=none,justification=centering}
+%\captionsetup{width=1.0\textwidth,font={normalsize},skip=0.3cm,within=none,justification=centering}
 \usepackage{rotating}
 \usepackage{tabularx}
 \newcolumntype{b}{>{\hsize=1.0\hsize}X}
@@ -145,9 +146,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % INSERT REAL CONTENT HERE
 %
-%\include{intro}	% for INTRODUCTION in "intro.tex"
-%\include{approach}
-%\include{demo}
+\include{intro}	% for INTRODUCTION in "intro.tex"
+\include{approach}
+\include{demo}
 \include{safety}
 \include{concl}
 

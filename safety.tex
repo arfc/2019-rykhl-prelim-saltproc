@@ -6,9 +6,9 @@
 The main physical principle underlying the reactor temperature feedback is an 
 expansion of heated material. When the fuel salt temperature increases, the 
 density of the salt decreases, but at the same time, the total volume of fuel 
-salt in the core remains constant because it is bounded by the graphite. When 
-the graphite temperature increases, the density of graphite decreases, 
-creating additional space for fuel salt. 
+salt in the core remains constant because it is bounded by the vessel. When 
+the moderator rods temperature increases, the density of zirconium hydride 
+decreases, creating additional space for fuel salt. 
 
 Chapter 2, equation~\ref{eq:feedback} defined Total or Isothermal Temperature 
 Coefficient (ITC) which expresses the dependence of the core reactivity on the 
@@ -22,16 +22,30 @@ coefficient (FTC), I will perturbing only the fuel salt temperature to 800K
 and 1000K while fixing the moderator temperature at 900K (base case).  
 Likewise, the moderator temperature coefficient (MTC) would be found by 
 perturbing the moderator temperature from 900K to 800K and 1000K, while the 
-fuel temperature is fixed at 900K. Fuel and Moderator Temperature Coefficients 
-for decreasing temperature would be useful for analyzing following transients 
+fuel temperature is fixed at 900K. 
+
+The range of temperature perturbation for the TC calculation has been selected 
+based on operational parameters. The \gls{TAP} \gls{MSR} operates between 773 
+and 973K (500-700$^o$C), which is far below the salt boiling point of 
+approximately 1473K. The salt freezes if temperature drops below 773K. At the 
+other end of the temperature spectrum, temperature greater than 973K passively 
+melt a freeze plug, which drains the fuel salt from the reactor vessel to the  
+drain tanks. The drain tanks has subcritical configuration with a high free 
+surface area to readily dissipate heat by passive cooling 
+\cite{transatomic_power_corporation_technical_2016}. Thus, calculating 
+temperature coefficients in temperature range from 800 to 1000K seems to be 
+conservative enough to capture outcome most of the accident transients.
+
+Fuel and Moderator Temperature Coefficients for the temperature in range 
+from 800 to 900K would be useful for analyzing following transients 
 related with sudden fuel salt cooling: 
 \begin{itemize}
 	\item increase in heat removal by the secondary system;
 	\item increase in the fuel salt flow rate;
 	\item planned reactor shutdown.
 \end{itemize}
-Temperature coefficients for increasing temperature would be used for other  
-transients related the system heat up: 
+Temperature coefficients for the temperature in range from 900 to 1000K 
+would be used for transients related with the salt overheat: 
 \begin{itemize}
 	\item loss-of-coolant accident (LOCA) ;
 	\item loss-of-flow accident (LOFA);
@@ -41,12 +55,21 @@ transients related the system heat up:
 Thus, temperature coefficients will be calculated separately for heating up 
 and cooling. My dissertation will include following  cases: 
 \begin{enumerate}
-	\item FTC: Temperature of fuel salt rising from 900K to 1000K; decreasing 
-	from 900K to 800K, the moderator temperature is fixed at 900K.
-	\item MTC: Temperature of graphite rising from 900K to 1000K; decreasing 
-	from 900K to 800K, the fuel temperature is fixed at 900K.
-	\item ITC: Whole reactor temperature rising from 900K to 1000K; decreasing 
-	from 900K to 800K.
+	\item FTC (moderator rods temperature is fixed at 900K):
+		\begin{enumerate}[label=(\alph*)]
+			\item temperature of the salt rising from 900 to 1000K;
+			\item temperature of the salt decreasing from 900 to 800K.
+		\end{enumerate}
+	\item MTC (the fuel salt temperature is fixed at 900K): 
+		\begin{enumerate}[label=(\alph*)]
+			\item temperature of the moderator rising from 900 to 1000K;
+			\item temperature of the fuel declining from 900 to 800K.
+		\end{enumerate}
+	\item ITC: 
+		\begin{enumerate}[label=(\alph*)]
+			\item whole reactor temperature increasing from 900 to 1000K;
+			\item whole reactor temperature decreasing from 900 to 800K;
+		\end{enumerate}
 \end{enumerate}
 In the first case, changes in the fuel temperature will impact cross section 
 temperature (Doppler broadening) and fuel density but the geometry is 
@@ -55,14 +78,15 @@ changes with respect to temperature as follows \cite{janz_molten_1974}:
 \begin{align}\label{eq:salt-den}
 \rho_{salt}(T[K]) &= 6.105 - 12.720\times10^4 T \quad [g/cm^3]
 \end{align}
-In contrast, when the moderator temperature changes, the density, cross 
-section temperature, and the geometry change due to thermal expansion of the 
-solid zirconium hydride (ZrH$_{1.66}$) rods. Accordingly, the new moderator 
-density will be calculated using a linear temperature expansion coefficient of 
-$2.734\times10^{-5}$K$^{-1}$ \cite{yamanaka_thermal_1999}. A new geometry 
-input for Serpent 2, which takes into account displacement of the moderator  
-surfaces, will be created based on this information. Finally, temperature 
-coefficient for each case will be calculated separately as follows:
+In contrast, when the moderator temperature changing, the density, cross 
+section temperature, and the geometry are changing also due to thermal 
+expansion of the solid zirconium hydride (ZrH$_{1.66}$) rods. Accordingly, the 
+new moderator density and sizes will be calculated using a linear temperature 
+expansion coefficient of $2.734\times10^{-5}$K$^{-1}$ 
+\cite{yamanaka_thermal_1999}. A new geometry input for Serpent 2, which takes 
+into account displacement of the moderator  surfaces, will be created based on 
+this information. Finally, temperature coefficient for each case will be 
+calculated separately as follows:
 \begin{align}
 \alpha &= \frac{k_{eff}(T_{i+1}) - k_{eff}(T_i)}{k_{eff}(T_{i+1}) 
 k_{eff}(T_{i}) (T_{i+1} - T_i)}
@@ -183,14 +207,14 @@ Table~\ref{tab:tcoef} summarizes temperature effects on reactivity in the
 temperature coefficient is $-0.693$ and $-0.116$ pcm $\Delta k/k\cdot K^{-1}$ 
 when perturbing the salt temperature from 900K to 800K and from 900K to 1000K, 
 respectively. The MTC and ITC is negative and relatively large for both 
-perturbations. All three temperature coefficients when perturbing from 900K to 
+cases. All three temperature coefficients when perturbing from 900K to 
 1000K did not matched coefficients when perturbing from 900K to 800K because 
-cross sections in library are nonlinear with respect to temperature.
+cross sections are nonlinear with respect to temperature.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]
-	\caption{Temperature coefficients of reactivity for initial fuel salt 
-		composition for different temperature variations.}
+	\caption{Temperature coefficients for the \gls{TAP} reactor at startup for 
+	different temperature perturbations.}
 	\begin{tabularx}{\textwidth}{ X  r r } \hline
 		Reactivity coefficient     & From 900 to 800K [pcm/K] & From 900 to 
 		1000K [pcm/K]                  \tabularnewline  \hline
@@ -220,6 +244,6 @@ provides a reactivity worth of $1110\pm9.7$ pcm (1.1\%) at \gls{BOL}. The
 control rods worth would be expected to become more negative during operation 
 because spectrum thermalizes and absorbing material (gadolinium) absorption 
 cross section is larger in a thermal energy range. At the same time, that 
-effect would be counteracted by the actinides - particularly, plutonium - 
-accumulation in the core. Thus, control rod worth dynamics must be estimated 
-during the reactor lifetime.
+effect would be counteracted by the actinides (particularly, plutonium) 
+accumulation in the core. Thus, control rod worth change during the reactor 
+operation must be estimated.
