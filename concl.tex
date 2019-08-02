@@ -86,10 +86,10 @@ SaltProc v2.0+ should switch to next geometry: (1) after specific simulation
 interval (e.g., 18 months which is a common maintenance/refueling shutdown 
 interval for \glspl{LWR}); (2) effective multiplication factor reaches 
 specific value (e.g., $1.0<k_{eff} < 1.01$). Additionally, SaltProc v2.0+ will 
-correct total fuel salt inventory in a primary loop accordingly. The 
-adjustable geometry capability will allow to realistically simulate long-term 
-(60 yeas) operation of the \gls{TAP} to obtain accurate fuel salt composition 
-at different moments during operation.
+correct the total fuel salt inventory in a primary loop to compensate the core 
+geometry change. The adjustable geometry capability will allow to 
+realistically simulate long-term (60 yeas) operation of the \gls{TAP} to 
+obtain accurate fuel salt composition at different moments during operation.
 
 Obtained at Stage 2 results will be used for code-to-code verification with  
 ChemTriton/Shift results for full-core \gls{TAP} geometry from the most recent 
@@ -98,28 +98,22 @@ confidence building. Notably, the fuel salt composition evolution during the
 \gls{TAP} reactor operation and corresponding core geometry are determinative  
 for all next stages.
 
+This work is developed with a test-driven development paradigm. Specifically, 
+before any new functionality is implemented, a suite of tests is written which 
+as closely define its expected behavior as possible. The code is then written 
+with the goal of passing the test suite. In this way, the tool developed in 
+this work is expected to be comprehensively tested in parallel with its 
+development. Thus, after code-to-code verification with ChemTriton/Shift 
+multiple-component integration test will be added to the test harness to make 
+sure that future changes in the code will not break previous functionality.
 
+Test problems will help comprehensively define and confirm each unit 
+of the demonstration functionality. These problems will include very 
+basic, information-passing tests as well as more challenging multiple-
+component integration tests. Every unit of functionality
+within the toolkit will be tested as an integral part of development.
 
-The final extension stage will build be upon the base case by 
-implementing extending physics and chemistry correlations for 
-extraction efficiencies to capture impact of non-ideal 
-removal rates on the reactor performance modeling. These 
-stages will be completed during a test-driven software 
-development approach, will leverage unit tests and 
-continuous integration for sustainable development. Finally, 
-data collected during these stages will be organized and 
-published in a \textit{.json} format data library for use 
-with the SaltProc Python package.
-
-Additionally, sensitivity analysis for the \gls{TAP} fuel processing 
-system design will be performed to determine desirable ranges 
-for principal system parameters. Particularly, inputs to the 
-system model (e.g., components volumes, holdup capacities, helium 
-bubble size, etc) will be sampled from appropriate 
-distributions to obtain results (e.g., fuel utilization) in the 
-form of corresponding distributions. These data later will be used
-to formulate design requirements and safety margins for 
-\gls{MSR}'s reprocessing system.
+\section{Stage 3: variable xenon extraction rate}
 
 \subsection{Demonstration Case Development}
 The proposed tool class structure and flowchart are 
@@ -280,3 +274,25 @@ performance including estimation of breeding ratio, fuel utilization,
 mass of waste disposed and recovered will be performed to demonstrate 
 that the tools developed in this work can illustrate the sensitivity 
 of processing plant performance to conceptual nuclear system parameters.
+
+
+The final extension stage will build be upon the base case by 
+implementing extending physics and chemistry correlations for 
+extraction efficiencies to capture impact of non-ideal 
+removal rates on the reactor performance modeling. These 
+stages will be completed during a test-driven software 
+development approach, will leverage unit tests and 
+continuous integration for sustainable development. Finally, 
+data collected during these stages will be organized and 
+published in a \textit{.json} format data library for use 
+with the SaltProc Python package.
+
+Additionally, sensitivity analysis for the \gls{TAP} fuel processing 
+system design will be performed to determine desirable ranges 
+for principal system parameters. Particularly, inputs to the 
+system model (e.g., components volumes, holdup capacities, helium 
+bubble size, etc) will be sampled from appropriate 
+distributions to obtain results (e.g., fuel utilization) in the 
+form of corresponding distributions. These data later will be used
+to formulate design requirements and safety margins for 
+\gls{MSR}'s reprocessing system.
