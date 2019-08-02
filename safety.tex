@@ -160,13 +160,7 @@ approximately 140$^{o}$C temperature difference between the reactor inlet and
 outlet. To take into account effect of the gas presence in the fuel salt, I 
 will split the reactor core model into few axial regions with different 
 corresponding salt density (figure~\ref{fig:axial-offset}).
-\begin{figure}[b!] % replace 't' with 'b' to 
-	\includegraphics[width=\textwidth]{axial_offset.png}
-	\caption{Preliminary schematic view showing the \gls{TAP} model divided to 
-	multiple axial layers with different densities of the salt. Assumed linear 
-	temperature growth from the bottom to the top.}
-	\label{fig:axial-offset}
-\end{figure}
+
 The ideal gas law must be employed to find density of the fuel salt with gas 
 bubbles\footnote{Assuming we know the bubble number and size from the 
 component design.} 
@@ -192,6 +186,14 @@ T$_0$,
 T_0, T_i &= \mbox{temperature of the salt in a lower and i$^{th}$ axial layer} 
 \nonumber
 \end{align}
+\begin{figure}[bth!] % replace 't' with 'b' to 
+	\includegraphics[width=\textwidth]{axial_offset.png}
+	\caption{Preliminary schematic view showing the \gls{TAP} model divided to 
+		multiple axial layers with different densities of the salt. Assumed 
+		linear 
+		temperature growth from the bottom to the top.}
+	\label{fig:axial-offset}
+\end{figure}
 
 Using equations~\ref{eq:salt-den},\ref{eq:he-vol-change}, density of the  
 salt/helium mixture in each axial layer ($\rho_i$) will be calculated. 
