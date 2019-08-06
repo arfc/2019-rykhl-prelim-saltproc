@@ -145,15 +145,40 @@ reprocessing system model capable of modeling \gls{MSR} systems with
 parameterized, realistically achievable process rates and extraction  
 efficiencies.
 
-To test the ability for \gls{TAP} reactor to operate in a load-following 
-regime, short-term (1 week) depletion with the core power changing in range 
-0-100\% with ramp rate 10\%/min will be simulated with SaltProc v2.0+. The 
-depletion step time for this simulation will be varied in a range from 1 to 60 
-min to compromise between accuracy of the result and cost. It is expected that 
-load-following performance will be better in the \gls{BOL} because neutron 
-energy spectrum thermalizes during the reactor operation. Thus, short-term 
-load-following simulation will be repeated for the \gls{BOL}, 1 year after the 
-startup, middle of life, and the \gls{EOL}.
+To test the \gls{TAP} reactor ability to operate in a load-following 
+regime, short-term (3 days) depletion with the core power changing in range 
+0-100\% with ramp rate 10\%/min (to be competitive with natural gas peaking 
+plants, which ramp at or above 10\% of their capacity) will be simulated using 
+SaltProc v2.0+. Figure~\ref{fig:load} shows selected load curve to demonstrate 
+worst-case scenario of load-following:
+\begin{enumerate}
+	\item Startup with fresh fuel and operating on 100\% of \gls{HFP}level 
+	for 40 hours to reach $^{135}$Xe/$^{135}$I equilibrium;
+	\item Load-following power drop (0.1 \gls{HFP}/min), from \gls{HFP} 
+	to \gls{HZP};
+	\item Shutdown for 8 hours\footnote{At startup. Time after shutdown when 
+	$^{135}$Xe concentration would reach maximum value greatly depends on 
+	neutron energy spectrum which in the \gls{TAP} concept changes 
+	significantly during operation.} to reach the $^{135}$Xe peak;
+	\item Load-following power rise (0.1 \gls{HFP}/min), from \gls{HZP} 
+	to \gls{HFP}.
+\end{enumerate}
+This scenario can be considered as backing up solar power withnuclear on a 
+high-solar penetration grid (e.g., in California).
+\begin{figure}[bth!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{load_curve.png}
+	\caption{Tentative load curve for short-term load-following depletion 
+	simulation for the \gls{TAP} reactor using SaltProc v2.0+.}
+	\label{fig:load}
+\end{figure}
+
+The depletion step time for short-term simulation will be varied in a range 
+from 1 to 60 min to compromise between accuracy of the result and 
+computational cost. It is expected that load-following performance will be 
+better at the \gls{BOL} because neutron energy spectrum thermalizes during the 
+reactor operation. Thus, short-term load-following simulation will be repeated 
+for the \gls{BOL}, middle of life, and the \gls{EOL}.
 
 Additionally, sensitivity analysis of input parameters in the xenon extraction 
 correlation will be conducted to determine parameters(e.g., mass transfer 
