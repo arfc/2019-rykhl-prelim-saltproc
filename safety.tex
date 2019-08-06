@@ -12,13 +12,13 @@ decreases, creating additional space for fuel salt.
 
 Chapter 2, equation~\ref{eq:feedback} defined Total or Isothermal Temperature 
 Coefficient (ITC) which expresses the dependence of the core reactivity on the 
-combined effects of fuel and moderator temperature. But fuel and moderator 
-temperature are rarely equal because fuel heats up much faster than moderator; 
-thus, the fuel temperature coefficient (FTC) and the moderator temperature 
-coefficient (MTC) should be calculated separately. In the base 
-case, the fuel salt and the moderator temperatures are fixed at 900K which is  
-operational temperature in the core. To determine the fuel salt temperature 
-coefficient (FTC), I will perturbing only the fuel salt temperature to 800K 
+combined effects of fuel and moderator temperature. However, fuel and 
+moderator temperature are rarely equal because fuel heats up much faster than 
+moderator; thus, the fuel temperature coefficient (FTC) and the moderator 
+temperature coefficient (MTC) should be calculated separately. In the base 
+case, the fuel salt and the moderator temperatures are fixed at 900K, which is 
+an operational temperature in the core. To determine the fuel salt temperature 
+coefficient (FTC), I will be perturbing only the fuel salt temperature to 800K 
 and 1000K while fixing the moderator temperature at 900K (base case).  
 Likewise, the moderator temperature coefficient (MTC) would be found by 
 perturbing the moderator temperature from 900K to 800K and 1000K, while the 
@@ -27,24 +27,24 @@ fuel temperature is fixed at 900K.
 The range of temperature perturbation for the TC calculation has been selected 
 based on operational parameters. The \gls{TAP} \gls{MSR} operates between 773 
 and 973K (500-700$^o$C), which is far below the salt boiling point of 
-approximately 1473K. The salt freezes if temperature drops below 773K. At the 
-other end of the temperature spectrum, temperature greater than 973K passively 
-melt a freeze plug, which drains the fuel salt from the reactor vessel to the  
-drain tanks. The drain tanks has subcritical configuration with a high free 
-surface area to readily dissipate heat by passive cooling 
+approximately 1473K. The salt freezes if the temperature drops below 773K. At 
+the other end of the temperature spectrum, the temperature higher than 973K 
+passively melt a freeze plug, which drains the fuel salt from the reactor 
+vessel to the drain tanks. The drain tanks have a subcritical configuration 
+with a high free surface area to readily dissipate heat by passive cooling 
 \cite{transatomic_power_corporation_technical_2016}. Thus, calculating 
-temperature coefficients in temperature range from 800 to 1000K seems to be 
-conservative enough to capture outcome most of the accident transients.
+temperature coefficients in the temperature range from 800 to 1000K seems to 
+be conservative enough to capture outcome most of the accident transients.
 
-Fuel and Moderator Temperature Coefficients for the temperature in range 
-from 800 to 900K would be useful for analyzing following transients 
-related with sudden fuel salt cooling: 
+Fuel and Moderator Temperature Coefficients for the temperature in the range 
+from 800 to 900K would be useful for analyzing following transients related 
+with sudden fuel salt cooling: 
 \begin{itemize}
 	\item increase in heat removal by the secondary system;
 	\item increase in the fuel salt flow rate;
 	\item planned reactor shutdown.
 \end{itemize}
-Temperature coefficients for the temperature in range from 900 to 1000K 
+Temperature coefficients for the temperature in the range from 900 to 1000K 
 would be used for transients related with the salt overheat: 
 \begin{itemize}
 	\item loss-of-coolant accident (LOCA) ;
@@ -53,7 +53,7 @@ would be used for transients related with the salt overheat:
 	\item  station blackout (SBO).
 \end{itemize}
 Thus, temperature coefficients will be calculated separately for heating up 
-and cooling. My dissertation will include following  cases: 
+and cooling. My dissertation will include the following cases: 
 \begin{enumerate}
 	\item FTC (moderator rods temperature is fixed at 900K):
 		\begin{enumerate}[label=(\alph*)]
@@ -72,20 +72,20 @@ and cooling. My dissertation will include following  cases:
 		\end{enumerate}
 \end{enumerate}
 In the first case, changes in the fuel temperature will impact cross section 
-temperature (Doppler broadening) and fuel density but the geometry is 
+temperature (Doppler broadening) and fuel density, but the geometry is 
 unchanged because the fuel is a liquid. The density of fuel salt 
 changes with respect to temperature as follows \cite{janz_molten_1974}:
 \begin{align}\label{eq:salt-den}
 \rho_{salt}(T[K]) &= 6.105 - 12.720\times10^4 T \quad [g/cm^3]
 \end{align}
-In contrast, when the moderator temperature changing, the density, cross 
-section temperature, and the geometry are changing also due to thermal 
+In contrast, when the moderator temperature is changing, the density, cross 
+section temperature, and the geometry are also changing due to thermal 
 expansion of the solid zirconium hydride (ZrH$_{1.66}$) rods. Accordingly, the 
 new moderator density and sizes will be calculated using a linear temperature 
 expansion coefficient of $2.734\times10^{-5}$K$^{-1}$ 
 \cite{yamanaka_thermal_1999}. A new geometry input for Serpent 2, which takes 
 into account displacement of the moderator  surfaces, will be created based on 
-this information. Finally, temperature coefficient for each case will be 
+this information. Finally, the temperature coefficient for each case will be 
 calculated separately as follows:
 \begin{align}
 \alpha &= \frac{k_{eff}(T_{i+1}) - k_{eff}(T_i)}{k_{eff}(T_{i+1}) 
@@ -95,7 +95,8 @@ k_{eff} &= \mbox{effective multiplication factor} \nonumber \\
 T_i &= \mbox{fuel salt temperature in (800K, 1000K)} \nonumber
 \end{align}
 By propagating the $k_{eff}$ statistical error provided by Serpent 2, 
-uncertainty for each temperature coefficient will be obtain using formula:
+uncertainty for each temperature coefficient will be obtained using the  
+formula:
 \begin{align}
 \delta\alpha &= \abs{\frac{1}{T_{i+1} - T_i}} \sqrt{\frac{\delta 
 k_{eff}^2(T_{i+1})}{k_{eff}^4(T_{i+1})}  
@@ -105,13 +106,13 @@ k_{eff}^2(T_{i+1})}{k_{eff}^4(T_{i+1})}
 \nonumber
 \end{align}
 Notably, other sources of uncertainty are neglected, such as cross section 
-measurement error and approximations inherent in the equations of state 
+measurement error and approximations inherent in the equations of the state 
 providing both the salt and moderator density dependence on temperature. 
 
 \subsection{Reactivity control system rod worth}
-In the \gls{TAP} concept control rods perform two main functions: to shutdown 
+In the \gls{TAP} concept control rods perform two main functions: to shut down 
 the reactor at any point during operation by introducing sufficient negative 
-reactivity, and to control excess of reactivity after moderator rod 
+reactivity and to control the excess of reactivity after moderator rod 
 reconfiguration during regular maintenance. In an accident, the control rods 
 would be dropped down into the core. The reactivity worth of the control rods  
 will be calculated for various positions to separately estimate the worth of 
@@ -141,8 +142,8 @@ from Serpent output}
 \subsection{Axial Offset} \label{sec:axial-offset}
 \gls{AOA} refers to a neutron flux depression in the top of a nuclear reactor 
 core, which complicates the reactor operation. This problem occurs in  
-\gls{PWR} plants and leads to variety of problems: increased local power 
-peaking factors, lower that expected burnup and decreased control rod worth.
+\gls{PWR} plants and leads to a variety of problems: increased local power 
+peaking factors, lower than expected burnup and decreased control rod worth.
 The Axial Offset is defined as:
 \begin{align}
 & \qquad\qquad\qquad A/O  = \frac{p_{top} - p_{bottom}}{p_{top} + p_{bottom}}
@@ -152,17 +153,17 @@ of the core} \nonumber
 \end{align}
 
 For the case of the \gls{TAP} \gls{MSR}, off-gas system components (e.g., 
-sparger, entrainment separator) are introducing small bubbles of an inert gas 
+sparger, entrainment separator) are introducing small bubbles of inert gas 
 (helium) into the fuel salt during operation. These helium bubbles when enters 
 into the core would introduce unpredictable reactivity. Moreover, the diameter 
-of the bubbles would raise from the bottom to the top of the core because of 
+of the bubbles would rise from the bottom to the top of the core because of 
 approximately 140$^{o}$C temperature difference between the reactor inlet and 
-outlet. To take into account effect of the gas presence in the fuel salt, I 
-will split the reactor core model into few axial regions with different 
+outlet. To take into account the effect of the gas present in the fuel salt, 
+I will split the reactor core model into a few axial regions with different 
 corresponding salt density (figure~\ref{fig:axial-offset}).
 
-The ideal gas law must be employed to find density of the fuel salt with gas 
-bubbles\footnote{Assuming we know the bubble number and size from the 
+The ideal gas law must be employed to find the density of the fuel salt with 
+gas bubbles\footnote{Assuming we know the bubble number and size from the 
 component design.} 
 in it:
 \begin{align}
@@ -174,9 +175,9 @@ n &= \mbox{number of moles of the gas} \nonumber \\
 R &= 8.31 \frac{J}{K\cdot mol} \nonumber \\
 T &= \mbox{temperature of the gas} \nonumber
 \end{align}
-Assuming pressure in the vessel maintained fixed and number of moles of the 
-helium is constant, the helium volume change related with temperature change  
-can be defined as:
+Assuming pressure in the vessel maintained fixed, and  the number of moles of 
+the helium is constant, the helium volume change related to temperature 
+change can be defined as:
 \begin{align}\label{eq:he-vol-change}
 &\qquad\qquad\qquad V^{He}_i = \frac{V^{He}_0}{T_0} T_i
 \intertext{where}
@@ -208,10 +209,10 @@ Table~\ref{tab:tcoef} summarizes temperature effects on reactivity in the
 \gls{TAP} core calculated for initial fuel salt composition. The fuel 
 temperature coefficient is $-0.693$ and $-0.116$ pcm $\Delta k/k\cdot K^{-1}$ 
 when perturbing the salt temperature from 900K to 800K and from 900K to 1000K, 
-respectively. The MTC and ITC is negative and relatively large for both 
+respectively. The MTC and ITC are negative and relatively large for both 
 cases. All three temperature coefficients when perturbing from 900K to 
-1000K did not matched coefficients when perturbing from 900K to 800K because 
-cross sections are nonlinear with respect to temperature.
+1000K did not match coefficients when perturbing from 900K to 800K because 
+cross sections are nonlinear with temperature.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]

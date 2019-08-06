@@ -33,7 +33,7 @@ Chapter details each Stage of the proposed work.
  \FloatBarrier
  
  
-\section{Stage 1: basic online reprocessing demonstration}
+\section{Stage 1: Basic online reprocessing demonstration}
 At this stage \gls{MSR} online reprocessing capabilities has been reviewed and 
 summarized (Chapter 1). SaltProc v1 was demonstrated for simplified burnup 
 calculation for the \gls{MSBR} as a part of my M.Sc. thesis 
@@ -125,7 +125,7 @@ this stage model will demonstrate a key feature of the \gls{TAP} \gls{MSR} -
 adjusting the moderator rods configuration - which is necessarily to maintain 
 the reactor critical during 60 years lifetime. 
 
-\section{Stage 3: variable xenon extraction rate}
+\section{Stage 3: Variable xenon extraction rate}
 When the Stage 2 is established, a series of extensions to these models will 
 be pursued. These will incorporate extraction efficiencies as a function of 
 many physical system design parameters (e.g., void fraction in the salt, 
@@ -181,13 +181,35 @@ reactor operation. Thus, short-term load-following simulation will be repeated
 for the \gls{BOL}, middle of life, and the \gls{EOL}.
 
 Additionally, sensitivity analysis of input parameters in the xenon extraction 
-correlation will be conducted to determine parameters(e.g., mass transfer 
-coefficient) range when load-following is actually possible for the \gls{TAP} 
+correlation will be conducted to determine parameters (e.g., mass transfer 
+coefficient, helium sparging rate, gas-liquid interfacial area) range when 
+load-following is actually possible for the \gls{TAP} 
 reactor in a worst-case scenario of power demand. These multiple inputs 
 incorporating user-parametrized components in the fuel salt processing 
 system will be collected and published in a \textit{.json}-compatible database 
 for use with the SaltProc v2.0+ to encourage further research in this area.
 
+\section{Stage 4: Prototype design for the Xe removal system}
+As the model becomes capable of incorporating user-parametrized components 
+with correlation-based extraction efficiency for helium sparging component, 
+suitable sparger design will be determined and described. This design 
+parameters will be based on parameters range (i.e., helium sparging rate) 
+obtained on previous Stage. The ultimate objective of the design is to ensure 
+load-following operation during most of the operation period when minimizing 
+the fuel salt inventory. That is, constrained optimization problem have to be 
+solved to minimize total fuel salt volume outside of the core. The target 
+design parameters for the sparger including but not limited to: the volume of 
+sparger, helium flow rate, salt flow rate, and free liquid surface area.
+
+Additionally, nuclear criticality safety analysis will be performed using 
+MCNP6 \cite{werner_mcnp6._2018} to make sure that selected sparger design has  
+subcritical configuration. If the desired sparger configuration is 
+supercritical, fission gas removal system would contain multiple spargers of 
+smaller size. Minimized total fuel salt volume and sparger size are expected 
+to be smaller at the \gls{BOL} and increasing steadily when neutron energy 
+spectrum becomes softer.
+
+\section{Stage 5: \gls{TAP} Safety Analysis}
 
 \section{stuff}
 For realistic removal rates and efficiencies, some fraction of neutron poisons 
