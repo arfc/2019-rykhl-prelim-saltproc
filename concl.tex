@@ -126,31 +126,30 @@ adjusting the moderator rods configuration - which is necessarily to maintain
 the reactor critical during 60 years lifetime. 
 
 \section{Stage 3: Variable xenon extraction rate}
-When the Stage 2 is established, a series of extensions to these models will 
+When the Stage 2 is established, a series of extensions to Stage 2 model will 
 be pursued. These will incorporate extraction efficiencies as a function of 
 many physical system design parameters (e.g., void fraction in the salt, 
 helium bubble size). Mathematical correlations for the efficiencies will be 
 taken from the literature \cite{peebles_removal_1968, 
-gabbard_development_1974} and from CFD-simulations currently being conducted 
+gabbard_development_1974} and from CFD simulations currently being conducted 
 at the University of Illinois at Urbana-Champaign \cite{huff_enabling_2018}. 
-For demonstration proposes, removal efficiency for xenon only will be defined 
-as a function of liquid phase mass transfer coefficient, gas-liquid 
-interfacial area and temperature (Section~\ref{sec:gas-separ}) because of 
-limited experimental data provided in the listed literature. For other 
-elements from the \gls{TAP} reprocessing scheme 
-(table~\ref{tab:reprocessing_list}), removal efficiencies will be defined 
-based on the removal rates from the table, assuming time-independent 
-extraction efficiency. This milestone will result in a realistic online 
-reprocessing system model capable of modeling \gls{MSR} systems with 
-parameterized, realistically achievable process rates and extraction  
-efficiencies.
+For demonstration proposes, just xenon removal efficiency will be defined as a 
+function of many parameters (Section~\ref{sec:gas-separ}) due to 
+limited data provided in the listed literature. For other fission products  
+from the \gls{TAP} reprocessing scheme (table~\ref{tab:reprocessing_list}), 
+removal efficiencies will be defined based on the removal rates from the 
+table, assuming time-independent extraction efficiency. This milestone will 
+result in a realistic online reprocessing system model capable of modeling 
+\gls{MSR} systems with parameterized, realistically achievable process rates 
+and extraction efficiencies.
 
-To test the \gls{TAP} reactor ability to operate in a load-following 
-regime, short-term (3 days) depletion with the core power changing in range 
-0-100\% with ramp rate 10\%/min (to be competitive with natural gas peaking 
-plants, which ramp at or above 10\% of their capacity) will be simulated using 
-SaltProc v2.0+. Figure~\ref{fig:load} shows selected load curve to demonstrate 
-worst-case scenario of load-following:
+Another anticipated extension will test the \gls{TAP} reactor ability to 
+operate in a load-following regime. Short-term (3 days) depletion using 
+SaltProc v2.0+ will be performed with the core power changing in range 0-100\% 
+with ramp rate 10\%/min (to be competitive with natural gas peaking plants, 
+which ramp at or above 10\% of their capacity) \cite{huff_enabling_2018}. 
+Figure~\ref{fig:load} shows selected load curve to demonstrate worst-case 
+scenario of load-following:
 \begin{enumerate}
 	\item Startup with fresh fuel and operating on 100\% of \gls{HFP}level 
 	for 40 hours to reach $^{135}$Xe/$^{135}$I equilibrium;
@@ -158,7 +157,7 @@ worst-case scenario of load-following:
 	to \gls{HZP};
 	\item Shutdown for 8 hours\footnote{At startup. Time after shutdown when 
 	$^{135}$Xe concentration would reach maximum value greatly depends on 
-	neutron energy spectrum which in the \gls{TAP} concept changes 
+	neutron energy spectrum which for the \gls{TAP} concept changes 
 	significantly during operation.} to reach the $^{135}$Xe peak;
 	\item Load-following power rise (0.1 \gls{HFP}/min), from \gls{HZP} 
 	to \gls{HFP}.
@@ -174,16 +173,17 @@ high-solar penetration grid (e.g., in California).
 \end{figure}
 
 The depletion step time for short-term simulation will be varied in a range 
-from 1 to 60 min to compromise between accuracy of the result and 
-computational cost. It is expected that load-following performance will be 
-better at the \gls{BOL} because neutron energy spectrum thermalizes during the 
-reactor operation. Thus, short-term load-following simulation will be repeated 
-for the \gls{BOL}, middle of life, and the \gls{EOL}.
+from 1 to 60 min to find a compromise between accuracy and computational cost. 
+It is expected that load-following performance will be better at the \gls{BOL} 
+because neutron energy spectrum thermalizes during the reactor operation. 
+Thus, short-term load-following simulation will be repeated for the \gls{BOL}, 
+the middle of life, and the \gls{EOL} to assess the \gls{TAP} concept  
+performance in a load-following regime during whole rector lifetime.
 
 Additionally, sensitivity analysis of input parameters in the xenon extraction 
 correlation will be conducted to determine parameters (e.g., mass transfer 
-coefficient, helium sparging rate, gas-liquid interfacial area) range when 
-load-following is actually possible for the \gls{TAP} 
+coefficient, helium sparging rate, gas-liquid interfacial area, temperature) 
+range when load-following is actually possible for the \gls{TAP} 
 reactor in a worst-case scenario of power demand. These multiple inputs 
 incorporating user-parametrized components in the fuel salt processing 
 system will be collected and published in a \textit{.json}-compatible database 
@@ -194,233 +194,97 @@ As the model becomes capable of incorporating user-parametrized components
 with correlation-based extraction efficiency for helium sparging component, 
 suitable sparger design will be determined and described. This design 
 parameters will be based on parameters range (i.e., helium sparging rate) 
-obtained on previous Stage. The ultimate objective of the design is to ensure 
-load-following operation during most of the operation period when minimizing 
-the fuel salt inventory. That is, constrained optimization problem have to be 
-solved to minimize total fuel salt volume outside of the core. The target 
-design parameters for the sparger including but not limited to: the volume of 
-sparger, helium flow rate, salt flow rate, and free liquid surface area.
+obtained from previous Stage. The ultimate objective of the design is to 
+ensure load-following operation during most of the operation period when 
+minimizing the fuel salt inventory. That is, constrained optimization problem 
+have to be solved to minimize total fuel salt volume outside of the core. The 
+target design parameters for the sparger including but not limited to: the 
+volume of sparger, helium flow rate, salt flow rate, and geometry.
 
 Additionally, nuclear criticality safety analysis will be performed using 
 MCNP6 \cite{werner_mcnp6._2018} to make sure that selected sparger design has  
-subcritical configuration. If the desired sparger configuration is 
-supercritical, fission gas removal system would contain multiple spargers of 
-smaller size. Minimized total fuel salt volume and sparger size are expected 
-to be smaller at the \gls{BOL} and increasing steadily when neutron energy 
-spectrum becomes softer.
+subcritical configuration. If the sparger geometry obtained during 
+optimization process is supercritical, fission gas removal system would 
+contain multiple spargers of smaller size connected in parallel. Minimized 
+total fuel salt volume and sparger size are expected to be smaller at the 
+\gls{BOL} and increasing steadily when neutron energy spectrum becomes softer.
 
 \section{Stage 5: \gls{TAP} Safety Analysis}
+The objective of this Stage is to characterize neutronics limits related to 
+load following. This will be achieved by high-fidelity simulations with 
+Serpent 2 Monte Carlo code. Specifically, changes in safety parameters 
+(Section~\ref{sec:safety-param}) will be evaluated for two time-frames:
+\begin{enumerate}
+	\item Long-time-scale changes in safety parameters should not compromise 
+	the \gls{TAP} \gls{MSR} safety.
+	\item Load-following operation at various moments of lifetime (e.g., at
+	startup, at the middle of life, at the end of life) must not results in 
+	significant changes in safety parameters.
+\end{enumerate}
+Section~\ref{sec:safety-param-res} shown preliminary calculations of  
+temperature coefficients and reactivity control system worth for the \gls{TAP} 
+at startup. Next step will be developing multi-layer geometry in Serpent with 
+non-uniform axial density distribution to estimate the power axial offset. 
+Afterwards, safety parameters will be calculated at the \gls{BOL}, the middle 
+of life and the \gls{EOL} (fuel salt composition and moderator rods 
+configuration) to capture these parameters variation in a long-time-scale. 
+Validation against previous work in a collaboration between Transatomic Power 
+and ORNL \cite{betzler_assessment_2017, betzler_fuel_2018} will also be 
+performed for confidence building. If feasible, additional analysis for 
+different xenon removal efficiency (i.e., in range from 0 to 100\%) will be 
+performed to capture effect of $^{135}$Xe concentration in the core on safety.
 
-\section{stuff}
-For realistic removal rates and efficiencies, some fraction of neutron poisons 
-will remain in the fuel salt and deteriorate the neutron economy. Even with 
-fresh salt feed compensation of poison removal, the neutron multiplication 
-factor will slowly decrease and eventually the \gls{MSR} core will become 
-subcritical. The time before 
-shutdown strongly depends on reprocessing facility performance 
-and will be evaluated for realistic \gls{TAP} processing plant model 
-in this work. Depending on time before shutdown, additional 
-extension will 
-incorporate a reactivity control module which injects more fissile 
-material into the core when the reactor is close to subcritical state. 
-In this case, the fraction of irradiated fuel salt from the outlet of 
-the reactor vessel will be removed to conserve mass balance in the 
-primary loop.
-
-As the toolkit becomes capable of representing various reprocessing 
-concepts, these will be analyzed for different full-core 
-high-fidelity \gls{MSR} models discussed in Chapter 4. As discussed, 
-these concepts will represent different processing challenges 
-for various salt compositions, neutron spectra, and designs. 
-Notably, the \gls{MSBR} reprocessing plant design is more complex 
-than \gls{TAP}'s because it contains an additional protactinium 
-isolation system with protactinium decay tank. Thus, a SaltProc 
-demonstration for the \gls{MSBR} concept will test material decay 
-in the protactinium decay tank using built-in PyNE capabilities. 
-These models input data will be collected and 
-published in a \textit{.json}-compatible database for use with the 
-Python package to encourage further research in this area.
-
-
-
-\subsection{Demonstration Case Development}
-The proposed tool class structure and flowchart are 
-described in detail in section~\ref{sec:tool_design}.
-A first milestone in the development of this toolkit will be a 
-principle demonstration of coupling with SERPENT 2 and 
-information passing schemes. That is, no removals or feeds 
-will be implemented in this demonstration stage. However, 
-the component models will be developed in such way that 
-they are capable of passing data about materials (e.g., isotopic 
-composition vector) via set of \textit{Processes} but this 
-processing system will not actually modify \textit{MaterialFlow} 
-(separation efficiency is to be set 0\%).
-
-The demonstration will produce a complete but `empty' processing 
-model. It will simulate \gls{MSR} system operation during 
-a long time period and obtain resulting fuel salt isotopic composition. 
-After that, the result will be verified against fuel salt 
-composition obtained with pure SEPRENT 2 output for the same 
-depletion parameters and the core geometry.% because this case does not 
-%introduce any online processing challenges.
-
-At the subcomponent level, the demonstration will include information 
-passing, bookkeeping, and mass balance within and between the 
-subcomponents. Information passing between subcomponents 
-(\textit{Processes}) concerning nuclide concentration, mass flow rate 
-and total volume in \textit{MaterialFlow} will be implemented and tested. 
-An HDF5 output database will contain 
-isotopic composition vectors, simulation 
-parameters, and all relevant processing information.
-
-This work is developed with a test-driven development paradigm. 
-Specifically, before any new functionality is implemented, a suite of 
-tests is written which as closely define its expected behavior as 
-possible. The code is then written with the goal of passing the test 
-suite. In this way, the tool developed in this work is expected to be
-comprehensively tested in parallel with its development.
-
-Test problems will help comprehensively define and confirm each unit 
-of the demonstration functionality. These problems will include very 
-basic, information-passing tests as well as more challenging multiple-
-component integration tests. Every unit of functionality
-within the toolkit will be tested as an integral part of development.
-
-When the unit test suite passes, validation efforts against results 
-in the literature will demonstrate that the complete 
-processing system model behaves in agreement with previous research 
-efforts \cite{rykhlevskii_advanced_2018, rykhlevskii_modeling_2019}. 
-If it does not behave as expected, sensitivity analyses, 
-model abstraction, and computational development will be iteratively 
-conducted until the model is validated.
-
-\subsection{Base Case Development}
-The next stage in this work will be the development of the base case. 
-This will build upon the demonstration processing system model by 
-implementing simplified physics for each of the subcomponents. This 
-will include constant non-ideal extraction efficiency which is 
-different for each target chemical element. Moreover, a realistic 
-model of the conceptual \gls{TAP} reprocessing plant involving 
-multiple processes (serial and parallel) will be implemented on this 
-stage. 
-
-Additional information such as void fraction, helium 
-bubble size and other component-specific, user-defined 
-parameters will be added to the demonstration case model.
-Also this will include non-zero fuel salt feed which 
-compensate the removed poisons mass loss in a primary loop.
-This milestone will result in a processing system model capable of 
-modeling various liquid-fueled \gls{MSR} with comprehensive 
-online reprocessing system but with constant separation efficiency, 
-defined at runtime.
-
-Unit testing, verification and validation will occur in a manner 
-very similar to the previous case. Unit tests will assess the 
-performance of each extension functionality as well as their 
-integrated behavior. Validation against existing results for 
-\gls{TAP} obtained by ChemTriton \cite{betzler_two-dimensional_2017, 
-betzler_molten_2017} will also be performed for confidence 
-building. The high-fidelity full-core \gls{TAP} model for 
-SERPENT 2 has been developed already and described in detail 
-in section~\ref{sec:tap_model}.
-
-Additionally, the base case model will be used to estimate effective 
-multiplication factor ($k_{eff}$) dynamics for long-time 
-depletion simulations. Particularly, $k_{eff}$ change overtime 
-will demonstrate 
-ability of the \gls{TAP} system to maintain a critical state with a
-fresh salt feed rate equal separated neutron poison loss rate. 
-To avoid subcriticality, an additional reactivity 
-controlling subcomponent will be implemented on the extension stage. 
-This subcomponent 
-will inject additional fissile material 
-when $k_{eff}$ for the core drops below a specific value (e.g., 
-$k_{eff}<1.01$) and will then repeat the previous depletion step. 
-This module will enable maintenance of reactor criticality 
-throughout reactor operation.
- 
-\subsection{Extension Development}
-When the base case is established, a series of extensions to 
-these models will be pursued. These will incorporate extraction 
-efficiencies as a function of many physical system design 
-parameters. Mathematical correlations for the efficiencies will 
-be taken from the literature \cite{gabbard_development_1974}, 
-experiments and from CFD-simulations currently being conducted at 
-the University of Illinois at Urbana-Champaign \cite{huff_enabling_2018}.
-This milestone will result in a realistic online reprocessing system 
-model capable of modeling \gls{MSR} systems with realistically achievable 
-process rates and efficiencies as well as variable feed streams. 
-
-For realistic removal rates and efficiencies, some fraction of neutron 
-poisons will remain in the fuel salt and deteriorate the neutron 
-economy. Even with fresh salt feed compensation of poison removal, 
-the neutron multiplication factor will slowly decrease and 
-eventually the \gls{MSR} core will become subcritical. The time before 
-shutdown strongly depends on reprocessing facility performance 
-and will be evaluated for realistic \gls{TAP} processing plant model 
-in this work. Depending on time before shutdown, additional 
-extension will 
-incorporate a reactivity control module which injects more fissile 
-material into the core when the reactor is close to subcritical state. 
-In this case, the fraction of irradiated fuel salt from the outlet of 
-the reactor vessel will be removed to conserve mass balance in the 
-primary loop.
-
-As the toolkit becomes capable of representing various reprocessing 
-concepts, these will be analyzed for different full-core 
-high-fidelity \gls{MSR} models discussed in Chapter 4. As discussed, 
-these concepts will represent different processing challenges 
-for various salt compositions, neutron spectra, and designs. 
-Notably, the \gls{MSBR} reprocessing plant design is more complex 
-than \gls{TAP}'s because it contains an additional protactinium 
-isolation system with protactinium decay tank. Thus, a SaltProc 
-demonstration for the \gls{MSBR} concept will test material decay 
-in the protactinium decay tank using built-in PyNE capabilities. 
-These models input data will be collected and 
-published in a \textit{.json}-compatible database for use with the 
-Python package to encourage further research in this area.
-
-\subsection{Sensitivity Analysis}
-Experimental data for removal efficiencies is very limited and lack 
-fidelity of the correlations. Salt flow rate, system volume, 
-void fraction, helium bubble size (for volatile gases removal), 
-temperature, pressure, and material properties are uncertain due to 
-limited experimental data. These information will impact the 
-processing system extraction efficiencies. As a part of this work, 
-uncertain or flexible model input parameters will be sampled randomly 
-from an appropriate distribution to obtain corresponding output 
-distributions. These resulting distributions can be used to estimate 
-system components design and safety margins. Furthermore, it will 
-provide helpful insights to identify impactful parameters and 
-find key performance drivers for reprocessing system design.
-
-While it is out of the scope of this work to perform comprehensive 
-analysis and optimization of various \glspl{MSR} systems, this 
-work seeks to provide a tool which would be helpful to perform such 
-analyses. Thus, some limited analysis of \gls{MSR} fuel cycle 
-performance including estimation of breeding ratio, fuel utilization, 
-mass of waste disposed and recovered will be performed to demonstrate 
-that the tools developed in this work can illustrate the sensitivity 
-of processing plant performance to conceptual nuclear system parameters.
+To analyze the impact of load-following operation on \gls{TAP} concept 
+safety, safety parameters calculations will be repeated for the load-following 
+transient. Load-following operation must not result in sufficient increase of 
+the temperature coefficients to obtain positive or near-positive net 
+reactivity feedback. Specifically, the combination of fuel and moderator 
+temperature coefficients must remain strongly negative for all times during 
+operation. Additionally, the reactivity worth of control rods must be  
+sufficient to shut down the reactor at any point during transient.
 
 
-The final extension stage will build be upon the base case by 
-implementing extending physics and chemistry correlations for 
-extraction efficiencies to capture impact of non-ideal 
-removal rates on the reactor performance modeling. These 
-stages will be completed during a test-driven software 
-development approach, will leverage unit tests and 
-continuous integration for sustainable development. Finally, 
-data collected during these stages will be organized and 
-published in a \textit{.json} format data library for use 
-with the SaltProc Python package.
+\section{Conclusions}
+Details of gas removal and fuel salt processing systems in liquid-fuled 
+\glspl{MSR} have been conceptual rather than concrete over 
+decades. Usually, researchers assume ideal rather that realistically 
+constrained poison extraction efficiency for the purposes of reactor 
+performance calculations. This work will more realistically model an online 
+molten salt processing system with the focus on a gas removal system of the 
+prospective \gls{TAP} \gls{MSR}. Developed as a part of this work, a Python 
+toolkit, SaltProc, which couples directly with Serpent 2, will capture 
+evolution of fuel salt composition during reactor operation with an online 
+fuel processing system.
 
-Additionally, sensitivity analysis for the \gls{TAP} fuel processing 
-system design will be performed to determine desirable ranges 
-for principal system parameters. Particularly, inputs to the 
-system model (e.g., components volumes, holdup capacities, helium 
-bubble size, etc) will be sampled from appropriate 
-distributions to obtain results (e.g., fuel utilization) in the 
-form of corresponding distributions. These data later will be used
-to formulate design requirements and safety margins for 
-\gls{MSR}'s reprocessing system.
+Modeling and simulation of online reprocessing system in the \gls{MSR} have 
+shown promise in past research. Our work on simulating online fuel 
+reprocessing for the thorium-fueled \gls{MSBR} yielded interesting results. 
+Additionally, that work has demonstrated notable neutron energy spectrum shift 
+and corresponding changes in safety parameters. 
+Another work also showed promise results in modeling simplified fuel 
+processing system for the \gls{TAP} \gls{MSR}. These simulations motivate 
+future work in modeling advanced liquid-fueled \gls{MSR} plant designs.
+
+To establish a feasible system design for molten salt fuel reprocessing, more 
+advanced model of the \gls{TAP} \gls{MSR} system with adjustable core geometry 
+and realistically achievable extraction efficiencies will be developed. 
+Extended SaltProc v2.0+ will realistically capture the dynamics of fuels salt 
+composition changes with higher accuracy. SaltProc v2.0+ will also be employed 
+to simulate the \gls{TAP} \gls{MSR} behavior in short-term transients to 
+determine the feasibility of load following. Additionally, input parameters 
+such as flow rates, bubble size, and void fraction will be varied to determine 
+range of these parameters when load following is possible for the \gls{TAP} 
+concept.
+
+In addition to these simulations, a number of extension are suggested to 
+advance our preliminary work. First, the feasible design parameters of the 
+sparger, key component of the \gls{TAP} gas removal system, will be optimized 
+through sensitivity analysis of geometry and system conditions. To guarantee 
+nuclear criticality safety, MCNP6 simulation will be performed to define an 
+appropriate sparger geometry. The second effort will focus on safety 
+parameters evolution in the \gls{TAP} reactor during lifetime (60 years),  
+when moderator rods configuration discretely changes. Finally, dynamics of the 
+safety parameters will be investigated for a short-term case with fixed 
+moderator configuration: load following for 3 days with worst-case scenario of 
+the power level change. 
+
