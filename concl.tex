@@ -2,27 +2,27 @@
 simulations}
 
 \section{Summary}
-The need for this work has been shown by a summary of the current state of the 
+This work need has been shown by a summary of the current state of the 
 art of \glspl{MSR} depletion simulator capabilities. The literature review in 
 Chapter 1 concluded that most \gls{MSR} depletion simulators typically assume 
 ideal (rather than realistically constrained) poison removal rates for the 
 nuclear system performance modeling. Moreover, most of the simulators assumed 
-constant extraction efficiency vector which must be determined by the user in 
-the input file and cannot be function of other parameters. The Python toolkit, 
-SaltProc v2.0+, will directly couples with the SERPENT 2 Monte Carlo depletion 
-code for liquid-fueled \gls{MSR} depletion simulation to enable realistic 
-online reprocessing system modeling. The SaltProc v2.0+ indented to be a 
-generic tool for fuel composition evolution analysis in \gls{MSR} with taking 
-into account complex fuel salt reprocessing system. Such reprocessing system 
-may consists of multiple components with variable removal efficiency and rate.
-Moreover, these components can be connected in series, parallel, or 
-series-parallel which will be accurately treated in the SaltProc v2.0+. 
-Section~\ref{sec:reproc-plant} details generic design of the fuel salt 
-reprocessing system. Section~\ref{sec:tool_design} describes SaltProc v2.0+ 
-architecture and design that is demanded to successfully model comprehensive 
-liquid-fueled \gls{MSR} with online fuel reprocessing system. 
+constant extraction efficiency vector, which must be determined by the user in 
+the input file and cannot be a function of other parameters. The Python 
+toolkit, SaltProc v2.0+, will directly couples with the SERPENT 2 Monte Carlo 
+depletion code for liquid-fueled \gls{MSR} depletion simulation to enable 
+realistic online reprocessing system modeling. The SaltProc v2.0+ indented to 
+be a universal tool for fuel composition evolution analysis in \gls{MSR} with 
+taking into account the complex fuel salt reprocessing system. Such 
+reprocessing system may consist of multiple components with variable removal 
+efficiency and rate. Moreover, these components can be connected in series, 
+parallel, or series-parallel, which will be accurately treated in the SaltProc 
+v2.0+. Section~\ref{sec:reproc-plant} details the generic design of the fuel 
+salt reprocessing system. Section~\ref{sec:tool_design} describes SaltProc 
+v2.0+ architecture and design that is demanded to successfully model 
+comprehensive liquid-fueled \gls{MSR} with online fuel reprocessing system. 
 
-An outline of this work is shown in Figure~\ref{fig:workflow}. Current  
+Figure~\ref{fig:workflow} shows an outline of this work. Current  
 Chapter details each Stage of the proposed work.
  \begin{sidewaysfigure}[ht!] % replace 't' with 'b' to force it to 
  	\centering
@@ -34,13 +34,13 @@ Chapter details each Stage of the proposed work.
  
  
 \section{Stage 1: Basic online reprocessing demonstration}
-At this stage \gls{MSR} online reprocessing capabilities has been reviewed and 
-summarized (Chapter 1). SaltProc v1 was demonstrated for simplified burnup 
-calculation for the \gls{MSBR} as a part of my M.Sc. thesis 
-\cite{rykhlevskii_advanced_2018} and published paper 
+At this Stage, \gls{MSR} online reprocessing capabilities have been reviewed 
+and summarized (Chapter 1). SaltProc v1 was demonstrated for simplified burnup 
+calculation for the \gls{MSBR} as a part of my M.Sc. thesis  
+\cite{rykhlevskii_advanced_2018} and published paper  
 \cite{rykhlevskii_modeling_2019}. These efforts illuminated depletion of the 
 fuel salt in the \gls{MSBR} for 60 years of operation with taking into account 
-following processes:
+the following processes:
 \begin{enumerate}
 	\item \glspl{FP} removal from the salt with fixed, ideal extraction 
 	efficiency (the fuel reprocessing system removed 100\% of target poison).
@@ -50,9 +50,9 @@ following processes:
 	inventory constant.
 \end{enumerate}
 Additionally, the effect of removing fission product from the fuel salt has 
-been investigating separately for different group of \glspl{FP} (e.g., noble 
-gases, noble ans seminoble metals, rare earth elements). As expected, removing 
-fission products provide with significant neutronic benefit and enables a 
+investigated separately for a different group of \glspl{FP} (noble gases, 
+noble and seminoble metals, rare earth elements). As expected, removing  
+fission products provides with significant neutronic benefit and enables a 
 longer core lifetime. Section~\ref{sec:pre-results-msbr} described key 
 findings after completing Stage 1.
 
@@ -69,32 +69,32 @@ preliminary results of Stage 2. Stage 2 demonstration case has following
 advantages over Stage 1:
 \begin{itemize}
 	\item SaltProc v1 (Stage 1) approximated the fuel salt reprocessing system 
-	as a single ``black'' box, which removes entire mass (100\% removal 
+	as a single ``black'' box, which removes the entire mass (100\% removal 
 	efficiency) of processed elements at once. In contrast, SaltProc v2.0+ 
-	treats the fuel reprocessing system as complex structure of components 
-	each removing specific set of elements with specific extraction 
+	treats the fuel reprocessing system as a complex structure of components, 
+	each removing a specific set of elements with specific extraction 
 	efficiency. 
 	\item SaltProc v2.0+ inherently checks mass conservation at each depletion 
-	step and dynamically calculates feed stream to maintain the salt inventory 
-	constant.
+	step and dynamically calculates feed stream to maintain the fuel salt 
+	inventory constant.
 	\item SaltProc v2.0+ tracks waste stream from each component.
 \end{itemize}
 
-Foremost future effort on this Stage is to implement capability of switching 
-between multiple Serpent geometries during simulation. For the \gls{TAP} 
-concept the number of moderator rods in the core varies from 1332 at the 
-startup to 6700 at the \gls{EOL}. The user will have an option to choose when 
-SaltProc v2.0+ should switch to next geometry: (1) after specific depletion  
-time (e.g., 18 months which is a common maintenance/refueling 
+The foremost future effort on this Stage is to implement the capability of 
+switching between multiple Serpent geometries during simulation. For the 
+\gls{TAP} concept the number of moderator rods in the core varies from 1332 at 
+the startup to 6700 at the \gls{EOL}. The user will have an option to choose 
+when SaltProc v2.0+ should switch to next geometry: (1) after specific 
+depletion  time (e.g., 18 months which is a common maintenance/refueling 
 shutdown interval for \glspl{LWR}); (2) effective multiplication factor 
-reaches specific value (e.g., $1.0<k_{eff} < 1.01$). Additionally, SaltProc 
+reaches specific value (e.g., $1.00<k_{eff} < 1.002$). Additionally, SaltProc 
 v2.0+ will correct the total fuel salt inventory in a primary loop to 
-compensate the core geometry change. That is, after each moderator rods  
-reconfiguration, excess of the fuel salt will be virtually ``drained'' in 
-a separate tank, and this tank inventory will be stored in the database. 
-Overall, the adjustable geometry capability will allow to realistically 
-simulate long-term (60 years) operation of the \gls{TAP} reactor to obtain 
-accurate fuel salt composition at different moments during operation.
+compensate for the core geometry change. That is, after each moderator rods  
+reconfiguration, excess of the fuel salt will be ``drained'' in a separate 
+tank, and this tank inventory will be stored in the database. Overall, the 
+adjustable geometry capability will allow to realistically simulate long-term 
+(60 years) operation of the \gls{TAP} reactor to obtain accurate fuel salt 
+composition at different moments during operation.
 
 Obtained at Stage 2 results will be used for code-to-code verification with  
 ChemTriton/Shift results for full-core \gls{TAP} core geometry from the most 
@@ -104,16 +104,16 @@ the \gls{TAP} reactor operation and corresponding core geometry are
 determinative for all next stages.
 
 This work is developed with a test-driven development paradigm. Specifically, 
-before any new functionality is implemented, a suite of tests is written which 
-as closely define its expected behavior as possible. The code is then written 
-with the goal of passing the test suite. In this way, the tool developed in 
-this work is expected to be comprehensively tested in parallel with its 
-development. Thus, after code-to-code verification with ChemTriton/Shift 
-multiple-component integration test will be added to the test harness to make 
-sure that future changes in the code will not break previous functionality.
+before any new functionality is implemented, a suite of tests is written, 
+which as carefully define its expected behavior as possible. The code is then 
+written to pass the test suite. In this way, the tool developed in this work 
+is expected to be comprehensively tested in parallel with its development. 
+Thus, after code-to-code verification with ChemTriton/Shift multiple-component 
+integration test will be added to the test harness to make sure that future 
+changes in the code will not break previous functionality.
 
 Test problems will help comprehensively define and confirm each unit of the 
-demonstration functionality. These problems will include very basic, 
+demonstration functionality. These problems will include fundamental, 
 information-passing tests as well as more challenging multiple-component 
 integration tests. Every unit of functionality within the toolkit will be 
 tested as an integral part of development.
@@ -122,16 +122,16 @@ This milestone will result in a processing system model capable of simulating
 various liquid-fueled \gls{MSR} with multi-component fuel reprocessing system 
 but with constant separation efficiency, defined at runtime. Additionally, 
 this stage model will demonstrate a key feature of the \gls{TAP} \gls{MSR} - 
-adjusting the moderator rods configuration - which is necessarily to maintain 
+adjusting the moderator rods configuration - which is necessary to maintain 
 the reactor critical during 60 years lifetime. 
 
 \section{Stage 3: Variable xenon extraction rate}
-When the Stage 2 is established, a series of extensions to Stage 2 model will 
+When Stage 2 is established, a series of extensions to the Stage 2 model will 
 be pursued. These will incorporate extraction efficiencies as a function of 
 many physical system design parameters (e.g., void fraction in the salt, 
 helium bubble size). Mathematical correlations for the efficiencies will be 
 taken from the literature \cite{peebles_removal_1968, 
-gabbard_development_1974} and from CFD simulations currently being conducted 
+gabbard_development_1974} and CFD simulations currently being conducted 
 at the University of Illinois at Urbana-Champaign \cite{huff_enabling_2018}. 
 For demonstration proposes, just xenon removal efficiency will be defined as a 
 function of many parameters (Section~\ref{sec:gas-separ}) due to 
@@ -140,7 +140,7 @@ from the \gls{TAP} reprocessing scheme (table~\ref{tab:reprocessing_list}),
 removal efficiencies will be defined based on the removal rates from the 
 table, assuming time-independent extraction efficiency. This milestone will 
 result in a realistic online reprocessing system model capable of modeling 
-\gls{MSR} systems with parameterized, realistically achievable process rates 
+\gls{MSR} systems with parameterized, realistically achievable process rates,  
 and extraction efficiencies.
 
 Another anticipated extension will test the \gls{TAP} reactor ability to 
@@ -176,14 +176,14 @@ The depletion step time for short-term simulation will be varied in a range
 from 1 to 60 min to find a compromise between accuracy and computational cost. 
 It is expected that load-following performance will be better at the \gls{BOL} 
 because neutron energy spectrum thermalizes during the reactor operation. 
-Thus, short-term load-following simulation will be repeated for the \gls{BOL}, 
-the middle of life, and the \gls{EOL} to assess the \gls{TAP} concept  
-performance in a load-following regime during whole rector lifetime.
+Thus, the short-term load-following simulation will be repeated for the 
+\gls{BOL}, the middle of life, and the \gls{EOL} to assess the \gls{TAP} 
+concept performance in a load-following regime during whole reactor lifetime.
 
 Additionally, sensitivity analysis of input parameters in the xenon extraction 
 correlation will be conducted to determine parameters (e.g., mass transfer 
 coefficient, helium sparging rate, gas-liquid interfacial area, temperature) 
-range when load-following is actually possible for the \gls{TAP} 
+range when load-following is possible for the \gls{TAP} 
 reactor in a worst-case scenario of power demand. These multiple inputs 
 incorporating user-parametrized components in the fuel salt processing 
 system will be collected and published in a \textit{.json}-compatible database 
@@ -192,9 +192,9 @@ for use with the SaltProc v2.0+ to encourage further research in this area.
 \section{Stage 4: Prototype design for the Xe removal system}
 As the model becomes capable of incorporating user-parametrized components 
 with correlation-based extraction efficiency for helium sparging component, 
-suitable sparger design will be determined and described. This design 
+suitable sparger design will be determined and described. These design 
 parameters will be based on parameters range (i.e., helium sparging rate) 
-obtained from previous Stage. The ultimate objective of the design is to 
+obtained from the previous Stage. The ultimate objective of the design is to 
 ensure load-following operation during most of the operation period when 
 minimizing the fuel salt inventory. That is, constrained optimization problem 
 have to be solved to minimize total fuel salt volume outside of the core. The 
@@ -202,8 +202,8 @@ target design parameters for the sparger including but not limited to: the
 volume of sparger, helium flow rate, salt flow rate, and geometry.
 
 Additionally, nuclear criticality safety analysis will be performed using 
-MCNP6 \cite{werner_mcnp6._2018} to make sure that selected sparger design has  
-subcritical configuration. If the sparger geometry obtained during 
+MCNP6 \cite{werner_mcnp6._2018} to make sure that the selected sparger design 
+has a subcritical configuration. If the sparger geometry obtained during the 
 optimization process is supercritical, fission gas removal system would 
 contain multiple spargers of smaller size connected in parallel. Minimized 
 total fuel salt volume and sparger size are expected to be smaller at the 
@@ -211,80 +211,81 @@ total fuel salt volume and sparger size are expected to be smaller at the
 
 \section{Stage 5: \gls{TAP} Safety Analysis}
 The objective of this Stage is to characterize neutronics limits related to 
-load following. This will be achieved by high-fidelity simulations with 
+load following. High-fidelity simulations will achieve this goal with the 
 Serpent 2 Monte Carlo code. Specifically, changes in safety parameters 
 (Section~\ref{sec:safety-param}) will be evaluated for two time-frames:
 \begin{enumerate}
 	\item Long-time-scale changes in safety parameters should not compromise 
 	the \gls{TAP} \gls{MSR} safety.
-	\item Load-following operation at various moments of lifetime (e.g., at
-	startup, at the middle of life, at the end of life) must not results in 
+	\item Load-following operation at various moments of a lifetime (e.g., at
+	startup, at the middle of life, at the end of life) must not result in 
 	significant changes in safety parameters.
 \end{enumerate}
 Section~\ref{sec:safety-param-res} shown preliminary calculations of  
 temperature coefficients and reactivity control system worth for the \gls{TAP} 
 at startup. Next step will be developing multi-layer geometry in Serpent with 
 non-uniform axial density distribution to estimate the power axial offset. 
-Afterwards, safety parameters will be calculated at the \gls{BOL}, the middle 
-of life and the \gls{EOL} (fuel salt composition and moderator rods 
+Afterward, safety parameters will be calculated at the \gls{BOL}, the middle 
+of life, and the \gls{EOL} (fuel salt composition and moderator rods 
 configuration) to capture these parameters variation in a long-time-scale. 
 Validation against previous work in a collaboration between Transatomic Power 
 and ORNL \cite{betzler_assessment_2017, betzler_fuel_2018} will also be 
 performed for confidence building. If feasible, additional analysis for 
-different xenon removal efficiency (i.e., in range from 0 to 100\%) will be 
-performed to capture effect of $^{135}$Xe concentration in the core on safety.
+different xenon removal efficiency (i.e., in the range from 0 to 100\%) will 
+be performed to capture the effect of $^{135}$Xe concentration in the core on 
+safety.
 
-To analyze the impact of load-following operation on \gls{TAP} concept 
+To analyze the impact of the load-following operation on \gls{TAP} concept 
 safety, safety parameters calculations will be repeated for the load-following 
-transient. Load-following operation must not result in sufficient increase of 
-the temperature coefficients to obtain positive or near-positive net 
-reactivity feedback. Specifically, the combination of fuel and moderator 
+transient. The load-following operation must not result in a sufficient 
+increase in the temperature coefficients to obtain positive or near-positive 
+net reactivity feedback. Specifically, the combination of fuel and moderator 
 temperature coefficients must remain strongly negative for all times during 
 operation. Additionally, the reactivity worth of control rods must be  
-sufficient to shut down the reactor at any point during transient.
+sufficient to shut down the reactor at any point during the transient.
 
 
 \section{Conclusions}
-Details of gas removal and fuel salt processing systems in liquid-fuled 
+Details of gas removal and fuel salt processing systems in liquid-fueled 
 \glspl{MSR} have been conceptual rather than concrete over decades. Usually, 
 researchers assume ideal rather than realistically constrained poison 
-extraction efficiency for the purposes of reactor performance calculations. 
+extraction efficiency for reactor performance calculations. 
 This work will more realistically model an online molten salt processing 
 system with the focus on a gas removal system of the prospective \gls{TAP} 
 \gls{MSR}. Developed as a part of this work, a Python toolkit, SaltProc, which 
-couples directly with Serpent 2 Monte Carlo burnup software, will capture 
+couples directly with Serpent 2 Monte Carlo burnup software, will capture the 
 evolution of fuel salt composition during reactor operation with an online 
 fuel processing system.
 
-Modeling and simulation of online reprocessing system in the \gls{MSR} have 
-shown promise in past research. Our work on simulating online fuel 
+Modeling and simulation of the online reprocessing system in the \gls{MSR} 
+have shown promise in past research. Our work on simulating online fuel  
 reprocessing for the thorium-fueled \gls{MSBR} yielded interesting results: 
 notable neutron energy spectrum shift and corresponding changes in safety 
 parameters during operation. Another work also showed promise results in 
-modeling simplified fuel processing system for the \gls{TAP} \gls{MSR}. These 
-simulations motivate future work in modeling advanced liquid-fueled \gls{MSR} 
-plant designs.
+modeling a simplified fuel processing system for the \gls{TAP} \gls{MSR}. 
+These simulations motivate future work in modeling advanced liquid-fueled 
+\gls{MSR} plant designs.
 
-To establish a feasible system design for molten salt fuel reprocessing, more 
-advanced model of the \gls{TAP} \gls{MSR} system with adjustable core geometry 
-and realistically achievable extraction efficiencies will be developed. 
-Extended SaltProc v2.0+ will realistically capture the dynamics of fuels salt 
-composition changes with higher accuracy. SaltProc v2.0+ will also be employed 
-to simulate the \gls{TAP} \gls{MSR} behavior in short-term transients to 
-determine the feasibility of load following. Additionally, input parameters 
-such as flow rates, bubble size, and void fraction will be varied to determine 
-range of these parameters when load following is possible for the \gls{TAP} 
-concept.
+To establish a feasible system design for molten salt fuel reprocessing, a 
+more advanced model of the \gls{TAP} \gls{MSR} system with adjustable core 
+geometry and realistically achievable extraction efficiencies will be 
+developed. Extended SaltProc v2.0+ will realistically capture the dynamics of 
+fuels salt composition changes with higher accuracy. SaltProc v2.0+ will also 
+be employed to simulate the \gls{TAP} \gls{MSR} behavior in short-term 
+transients to determine the feasibility of load following. Additionally, input 
+parameters such as flow rates, bubble size, and the void fraction will be 
+varied to determine the range of these parameters when the load following is 
+possible for the \gls{TAP} concept.
 
-In addition to these simulations, a number of extension are suggested to 
+In addition to these simulations, several extensions are suggested to 
 advance our preliminary work. First, the feasible design parameters of the 
-sparger, key component of the \gls{TAP} gas removal system, will be optimized 
-through sensitivity analysis of geometry and system conditions. To guarantee 
-nuclear criticality safety, MCNP6 simulation will be performed to define an 
-appropriate sparger geometry. The second effort will focus on safety 
+sparger, critical component of the \gls{TAP} gas removal system, will be 
+optimized through sensitivity analysis of geometry and system conditions. To 
+guarantee criticality safety, MCNP6 simulation will be performed to define an 
+appropriate sparger geometry. The second effort will focus on safety  
 parameters evolution in the \gls{TAP} reactor during lifetime (60 years),  
 when moderator rods configuration discretely changes. Finally, dynamics of the 
 safety parameters will be investigated for a short-term case with fixed 
-moderator configuration: load following for 3 days with worst-case scenario of 
-the power level change. 
+moderator configuration: load following for three days with the worst-case 
+scenario of the power level change. 
 
