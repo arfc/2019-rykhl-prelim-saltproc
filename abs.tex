@@ -3,17 +3,20 @@ base-load power, interest in advanced nuclear energy technologies,
 particularly \glspl{MSR}, has resurged with multiple new companies 
 pursuing \gls{MSR} commercialization. To further develop these \gls{MSR} 
 concepts, researchers need simulation tools for analyzing liquid-fueled 
-\gls{MSR} depletion and fuel processing. However, current nuclear reactor 
-physics software is unable to perform depletion calculations for 
-reactor systems with online separations and feeds. This work proposes to 
-develop a Python package, SaltProc. SaltProc couples 
-with the Monte Carlo code, SERPENT2 to realistically simulate a generic 
-\gls{MSR} online reprocessing system by modeling the changing isotopic 
-composition of \gls{MSR} fuel salt. Current models in the literature 
-assumed ideal extraction efficiencies. This work will implement mechanical 
-and chemical 
-models of fuel processing components appearing in various 
-\gls{MSR} schemes. 
-SaltProc capabilities will be demonstrated and validated for a few 
-promising liquid-fueled \gls{MSR} designs with different fuel salt 
-composition, neutron spectra and reprocessing schemes.
+\gls{MSR} depletion and fuel processing. Current \gls{MSR} modeling efforts in 
+the literature usually assume ideal (e.g., 100\% of neutron poison being 
+removed) rather than realistically constrained removal efficiency. This work 
+proposes to create a Python package, SaltProc, which will implement 
+realistically constrained extraction efficiency of fission product based on 
+physical models of fuel processing components appearing in various \gls{MSR} 
+systems. To demonstrate capabilities of SaltProc, the \gls{TAP} concept will 
+be simulated to capture evolution of fuel salt composition during reactor 
+operation with realistic, physics-driven model of an online fuel reprocessing 
+system. SaltProc will be also applied to determine feasibility and safety of 
+load following for the \gls{TAP} system. This proposal outlines extensions to 
+this work including investigating safety parameters (temperature coefficients, 
+shutdown margin, power axial offset) evolution over a 60-year reactor 
+operation lifetime and during short-term load-following transients.
+
+
+
