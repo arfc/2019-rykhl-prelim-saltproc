@@ -9,17 +9,17 @@ ideal (rather than realistically constrained) poison removal rates for the
 nuclear system performance modeling. Moreover, most of the simulators assumed 
 constant extraction efficiency vector, which must be determined by the user in 
 the input file and cannot be a function of other parameters. The Python 
-toolkit, SaltProc v2.0+, will directly couples with the SERPENT 2 Monte Carlo 
+toolkit, SaltProc v1.0, will directly couples with the SERPENT 2 Monte Carlo 
 depletion code for liquid-fueled \gls{MSR} depletion simulation to enable 
-realistic online reprocessing system modeling. The SaltProc v2.0+ indented to 
+realistic online reprocessing system modeling. The SaltProc v1.0 indented to 
 be a universal tool for fuel composition evolution analysis in \gls{MSR} with 
 taking into account the complex fuel salt reprocessing system. Such 
 reprocessing system may consist of multiple components with variable removal 
 efficiency and rate. Moreover, these components can be connected in series, 
 parallel, or series-parallel, which will be accurately treated in the SaltProc 
-v2.0+. Section~\ref{sec:reproc-plant} details the generic design of the fuel 
+v1.0. Section~\ref{sec:reproc-plant} details the generic design of the fuel 
 salt reprocessing system. Section~\ref{sec:tool_design} describes SaltProc 
-v2.0+ architecture and design that is demanded to successfully model 
+v1.0 architecture and design that is demanded to successfully model 
 comprehensive liquid-fueled \gls{MSR} with online fuel reprocessing system. 
 
 Figure~\ref{fig:workflow} shows an outline of this work. Current  
@@ -35,8 +35,8 @@ Chapter details each Stage of the proposed work.
  
 \section{Stage 1: Basic online reprocessing demonstration}
 At this Stage, \gls{MSR} online reprocessing capabilities have been reviewed 
-and summarized (Chapter 1). SaltProc v1 was demonstrated for simplified burnup 
-calculation for the \gls{MSBR} as a part of my M.Sc. thesis  
+and summarized (Chapter 1). SaltProc v0.1 was demonstrated for simplified 
+burnup calculation for the \gls{MSBR} as a part of my M.Sc. thesis  
 \cite{rykhlevskii_advanced_2018} and published paper  
 \cite{rykhlevskii_modeling_2019}. These efforts illuminated depletion of the 
 fuel salt in the \gls{MSBR} for 60 years of operation with taking into account 
@@ -56,11 +56,11 @@ fission products provides with significant neutronic benefit and enables a
 longer core lifetime. Section~\ref{sec:pre-results-msbr} described key 
 findings after completing Stage 1.
 
-\section{Stage 2: SaltProc v2.0+ demonstration and validation for the TAP}
+\section{Stage 2: SaltProc v1.0 demonstration and validation for the TAP}
 Simulating realistic multi-component fuel reprocessing system is important for 
-calculating an accurate fuel salt composition. SaltProc v1 was completely 
+calculating an accurate fuel salt composition. SaltProc v0.1 was completely 
 refactored for modeling a complicated salt reprocessing system. To demonstrate 
-SaltProc v2.0+ capabilities, we have created a full-core \gls{TAP} 
+SaltProc v1.0 capabilities, we have created a full-core \gls{TAP} 
 \gls{MSR} model in Serpent 2 \cite{chaube_tap_2019} which was described in a 
 detail in Section~\ref{sec:tap_model}. Moreover, the multi-component fuel 
 reprocessing system of the \gls{TAP} was developed on this stage 
@@ -68,27 +68,28 @@ reprocessing system of the \gls{TAP} was developed on this stage
 preliminary results of Stage 2. Stage 2 demonstration case has following 
 advantages over Stage 1:
 \begin{itemize}
-	\item SaltProc v1 (Stage 1) approximated the fuel salt reprocessing system 
+	\item SaltProc v0.1 (Stage 1) approximated the fuel salt reprocessing 
+	system 
 	as a single ``black'' box, which removes the entire mass (100\% removal 
-	efficiency) of processed elements at once. In contrast, SaltProc v2.0+ 
+	efficiency) of processed elements at once. In contrast, SaltProc v1.0 
 	treats the fuel reprocessing system as a complex structure of components, 
 	each removing a specific set of elements with specific extraction 
 	efficiency. 
-	\item SaltProc v2.0+ inherently checks mass conservation at each depletion 
+	\item SaltProc v1.0 inherently checks mass conservation at each depletion 
 	step and dynamically calculates feed stream to maintain the fuel salt 
 	inventory constant.
-	\item SaltProc v2.0+ tracks waste stream from each component.
+	\item SaltProc v1.0 tracks waste stream from each component.
 \end{itemize}
 
 The foremost future effort on this Stage is to implement the capability of 
 switching between multiple Serpent geometries during simulation. For the 
 \gls{TAP} concept the number of moderator rods in the core varies from 1332 at 
 the startup to 6700 at the \gls{EOL}. The user will have an option to choose 
-when SaltProc v2.0+ should switch to next geometry: (1) after specific 
+when SaltProc v1.0 should switch to next geometry: (1) after specific 
 depletion  time (e.g., 18 months which is a common maintenance/refueling 
 shutdown interval for \glspl{LWR}); (2) effective multiplication factor 
 reaches specific value (e.g., $1.00<k_{eff} < 1.002$). Additionally, SaltProc 
-v2.0+ will correct the total fuel salt inventory in a primary loop to 
+v1.0 will correct the total fuel salt inventory in a primary loop to 
 compensate for the core geometry change. That is, after each moderator rods  
 reconfiguration, excess of the fuel salt will be ``drained'' in a separate 
 tank, and this tank inventory will be stored in the database. Overall, the 
@@ -145,13 +146,14 @@ and extraction efficiencies.
 
 Another anticipated extension will test the \gls{TAP} reactor ability to 
 operate in a load-following regime. Short-term (3 days) depletion using 
-SaltProc v2.0+ will be performed with the core power changing in range 0-100\% 
+SaltProc v1.0 will be performed with the core power changing in range 0-100\% 
 with ramp rate 10\%/min (to be competitive with natural gas peaking plants, 
 which ramp at or above 10\% of their capacity) \cite{huff_enabling_2018}. 
 Figure~\ref{fig:load} shows selected load curve to demonstrate worst-case 
 scenario of load-following:
 \begin{enumerate}
-	\item Startup with fresh fuel and operating on 100\% of \gls{HFP}level 
+	\item Startup with fresh fuel and operating on 100\% of \gls{HFP}
+level 
 	for 40 hours to reach $^{135}$Xe/$^{135}$I equilibrium;
 	\item Load-following power drop (0.1 \gls{HFP}/min), from \gls{HFP} 
 	to \gls{HZP};
@@ -162,13 +164,14 @@ scenario of load-following:
 	\item Load-following power rise (0.1 \gls{HFP}/min), from \gls{HZP} 
 	to \gls{HFP}.
 \end{enumerate}
-This scenario can be considered as backing up solar power withnuclear on a 
+This scenario can be considered as backing up solar power with
+nuclear on a 
 high-solar penetration grid (e.g., in California).
 \begin{figure}[bth!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.8\textwidth]{load_curve.png}
 	\caption{Tentative load curve for short-term load-following depletion 
-	simulation for the \gls{TAP} reactor using SaltProc v2.0+.}
+	simulation for the \gls{TAP} reactor using SaltProc v1.0.}
 	\label{fig:load}
 \end{figure}
 
@@ -187,7 +190,7 @@ range when load-following is possible for the \gls{TAP}
 reactor in a worst-case scenario of power demand. These multiple inputs 
 incorporating user-parametrized components in the fuel salt processing 
 system will be collected and published in a \textit{.json}-compatible database 
-for use with the SaltProc v2.0+ to encourage further research in this area.
+for use with the SaltProc v1.0 to encourage further research in this area.
 
 \section{Stage 4: Prototype design for the Xe removal system}
 As the model becomes capable of incorporating user-parametrized components 
@@ -269,8 +272,8 @@ These simulations motivate future work in modeling advanced liquid-fueled
 To establish a feasible system design for molten salt fuel reprocessing, a 
 more advanced model of the \gls{TAP} \gls{MSR} system with adjustable core 
 geometry and realistically achievable extraction efficiencies will be 
-developed. Extended SaltProc v2.0+ will realistically capture the dynamics of 
-fuels salt composition changes with higher accuracy. SaltProc v2.0+ will also 
+developed. Extended SaltProc v1.0 will realistically capture the dynamics of 
+fuels salt composition changes with higher accuracy. SaltProc v1.0 will also 
 be employed to simulate the \gls{TAP} \gls{MSR} behavior in short-term 
 transients to determine the feasibility of load following. Additionally, input 
 parameters such as flow rates, bubble size, and the void fraction will be 

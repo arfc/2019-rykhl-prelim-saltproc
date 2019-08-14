@@ -1,17 +1,17 @@
 \chapter[Code demonstration and validation]{Code demonstration and validation}
 
 After refactoring, redesign, and implementation of the new capabilities 
-mentioned in Chapter 3, SaltProc v2.0+ will be tested for the \gls{TAP} 
+mentioned in Chapter 3, SaltProc v1.0 will be tested for the \gls{TAP} 
 \gls{MSR}. I selected the \gls{TAP} concept because it is well analyzed in the 
 literature; thus, cross-code verification with ChemTRITON/SCALE is possible 
 \cite{betzler_assessment_2017}. The demonstration will be performed for two 
 timescales:
 \paragraph{Long-term.} The reactor lifetime-long (e.g., 40 years) depletion 
 simulation will be performed with moderate time resolution (e.g., 30-day 
-depletion step). The results obtained with SaltProc v2.0+ will be compared 
+depletion step). The results obtained with SaltProc v1.0 will be compared 
 with recent efforts discussed in Chapter 2, more specifically with Betzler 
 \emph{et al.}  \cite{betzler_assessment_2017}. That validation effort will 
-help to ensure that SaltProc v2.0+ solution is correct for the case with ideal 
+help to ensure that SaltProc v1.0 solution is correct for the case with ideal 
 extraction efficiency.
 \paragraph{Short-term (transient).} The 7-day-long depletion simulation with 
 changing, load following core power will be performed with the fine time 
@@ -20,7 +20,7 @@ resolution (e.g., 5-min depletion step). The depletion calculation for the
 poisoning and evaluate the benefit of using an online gas removal system.
 
 Additionally, a compatible \textit{.json} database with input examples of 
-various fuel reprocessing system configurations for use with SaltProc v2.0+ 
+various fuel reprocessing system configurations for use with SaltProc v1.0 
 will be released to encourage research efforts in online reprocessing 
 simulations for various \gls{MSR} designs.
 
@@ -429,14 +429,14 @@ table~\ref{tab:reprocessing_list} will be used in the fuel reprocessing model.
 I thoroughly analyzed the original \gls{TAP} reprocessing system design 
 (figure~\ref{fig:tap-reproc}) and neutron poisons removal rates  
 (table~\ref{tab:reprocessing_list}) to determine suitable reprocessing 
-scheme for SaltProc v2.0+ demonstration (figure~\ref{fig:demo-repro-scheme}). 
+scheme for SaltProc v1.0 demonstration (figure~\ref{fig:demo-repro-scheme}). 
 That demonstration case assumed fixed, non-ideal ($<100$\%) removal 
 efficiencies and static geometry with constant \gls{SVF} during 13 years of 
 operation.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.93\textwidth]{demo_reprocessing_scheme.png}
-	\caption{\gls{TAP} reprocessing scheme flowchart used for SaltProc v2.0+ 
+	\caption{\gls{TAP} reprocessing scheme flowchart used for SaltProc v1.0 
 		demonstration. Arrows represent material flows; percents - fraction of 
 		total mass flow rate; ellipses - fuel reprocessing system components; 
 		diamonds - waste streams; box shows refuel material flow.}
@@ -477,7 +477,7 @@ time was selected based on Betzler \emph{et al.} timestep refinement study
 Figures~\ref{fig:keff}, \ref{fig:keff-zoomed}, \ref{fig:keff-zoomed-2} 
 demonstrate 
 the effective 
-multiplication factors  obtained using SaltProc v2.0+ and Serpent. I obtained 
+multiplication factors  obtained using SaltProc v1.0 and Serpent. I obtained 
 the effective multiplication factors after removing fission products 
 and adding feed material at the end of each depletion step (3 days for this 
 work). The $k_{eff}$ fluctuates significantly as a result of the batch-wise 
@@ -524,7 +524,7 @@ state after 10 years of operation. Overall, the effective multiplication
 factor gradually decreases from 1.018 to 0.88 for the 19.79\% \gls{LEU} feed 
 and 0.86 for the 5\% \gls{LEU} feed, which indicates problems with operating 
 this nuclear reactor design. I will try to overcome this issue by adding 
-dynamic \gls{SVF} functionality to SaltProc v2.0+.
+dynamic \gls{SVF} functionality to SaltProc v1.0.
 
 \subsection{Neutron spectrum}
 Figure~\ref{fig:spectrum} shows the normalized neutron flux spectrum for the 
@@ -564,7 +564,7 @@ critical.
 	\label{fig:u-pu}
 \end{figure}
 
-I checked correctness of SaltProc v2.0+ by comparing mass of important 
+I checked correctness of SaltProc v1.0 by comparing mass of important 
 for load-following operation isotopes ($^{135}$Xe, $^{135}$I) to expected 
 mass after each depletion step (figure~\ref{fig:xe-i}). For $^{135}$Xe 
 expected mass was calculated as follows:
@@ -585,13 +585,13 @@ m_{before} &= \mbox{mass of the isotope right before  reprocessing}
 	\includegraphics[width=\textwidth]{xe_i_mass.png}
 	\caption{Mass of major neutron poison, $^{135}$Xe, and its main precursor, 
 		$^{135}$I, during 13 years of reactor operation before and after 
-		performing reprocessing in SaltProc v2.0+.}
+		performing reprocessing in SaltProc v1.0.}
 	\label{fig:xe-i}
 \end{figure}
 
 For the iodine approach is similar, but the extraction efficiency of iodine in 
-the nickel filter is only 5\%. Figure~\ref{fig:xe-i} shows that SaltProc v2.0+ 
+the nickel filter is only 5\%. Figure~\ref{fig:xe-i} shows that SaltProc v1.0 
 extraction module correctly removes target isotopes with specified extraction 
 efficiency: SaltProc and expected mass match. Notably, the \gls{TAP} fuel 
-reprocessing system simulated with SaltProc v2.0+ allows keeping $^{135}$Xe 
+reprocessing system simulated with SaltProc v1.0 allows keeping $^{135}$Xe 
 inventory in the core during operation on 100\% power as low as 1g.

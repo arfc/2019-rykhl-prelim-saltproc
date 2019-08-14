@@ -66,12 +66,14 @@ helium bubble size by changing the throat width in the bubble generator.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{xe_diagram.pdf}
-	\caption{Schematic $^{135}$Xe circulation diagram in a generic \gls{MSR}. 
-	The $\epsilon_m$ is the migration efficiency of $^{135}$Xe to the helium 
-	bubbles and $\epsilon_{es}$ is the gas separation efficiency in the 
-	entrainment separator. The orange color represents the active core region, 
-	the blue color represents the gas separation system, and the gray color is 
-	moderator in the core. Fission yields listed for $^{235}$U.}
+	\caption{Schematic of $^{135}$Xe circulation in a generic \gls{MSR}. The 
+	$x$ is fraction of fuel salt flow from the pump discharge redirected to 
+	the gas removal system, the $\epsilon_m$ is the migration efficiency of 
+	$^{135}$Xe to the helium bubbles and $\epsilon_{es}$ is the gas separation 
+	efficiency in the entrainment separator. The orange color represents the 
+	fuel salt in the primary loop,	the blue color represents the gas 
+	separation system, and the gray color is moderator in the core. Fission 
+	yields listed for $^{235}$U.}
 	\label{fig:xe_diagram}
 \end{figure}
 \begin{figure}[htp!] % replace 't' with 'b' to 
@@ -330,14 +332,14 @@ composition evolution, taking into account an online reprocessing system
 was developed in 2018 as a part of M.S. thesis \cite{rykhlevskii_advanced_2018,
 	rykhlevskii_arfc/saltproc_2018}. The tool was designed to 
 expand Serpent 2 depletion capabilities for modeling liquid-fueled \gls{MSR} 
-with online fuel reprocessing system. SaltProc v1 uses HDF5 
+with online fuel reprocessing system. SaltProc v0.1 uses HDF5 
 \cite{the_hdf_group_hierarchical_1997} to store 
 data and uses the PyNE Nuclear Engineering Toolkit \cite{scopatz_pyne_2012}
-for Serpent 2 output file parsing and nuclide naming. SaltProc v1 is an 
+for Serpent 2 output file parsing and nuclide naming. SaltProc v0.1 is an 
 open-source Python package that uses a batch-wise approach to simulate 
 continuous feeds and removals in \glspl{MSR}. 
 
-SaltProc v1 only allows 100\% separation efficiency for either specific 
+SaltProc v0.1 only allows 100\% separation efficiency for either specific 
 elements or groups of elements at the end of the specific ``cycle 
 time''\footnote{The \gls{MSBR} program defined ``cycle time'' as the time 
 required to remove 100\% of a target nuclide from a fuel salt 
@@ -345,29 +347,29 @@ required to remove 100\% of a target nuclide from a fuel salt
 working with the Monte Carlo software Serpent 2, were demonstrated using the 
 full-core MSBR design for a simplified case with ideal removal efficiency 
 (100\% of mass for target elements removed) \cite{rykhlevskii_modeling_2019}. 
-The SaltProc v1 architecture and the principal structure was not designed for 
-flexible implementation of sophisticated online reprocessing systems, 
+The SaltProc v0.1 architecture and the principal structure was not designed 
+for flexible implementation of sophisticated online reprocessing systems, 
 including realistic variable extraction efficiencies. 
 
-For the proposed work, SaltProc v1 will be completely refactored using 
+For the proposed work, SaltProc v0.1 will be completely refactored using 
 \gls{OOP} to create a comprehensive generic tool to realistically model 
 complex \gls{MSR} fuel reprocessing system while taking into account 
 variable extraction efficiencies, time-dependent core geometry, the mass 
 balance between the core and the reprocessing plant.
 
 \subsection{Proposed software architecture}
-The SaltProc v2.0+ Python toolkit will couple directly with Serpent 2 input 
+The SaltProc v1.0 Python toolkit will couple directly with Serpent 2 input 
 and output files, to allow the reprocessing system couples to depletion 
 calculation. Existing PyNE interfaces will be employed for Serpent output 
 parsing as well as newly developed interfaces for input and output handling. 
 Python 3 \gls{OOP} standard features will be used to create a flexible, 
 user-friendly tool with great potential for further improvement and 
 collaboration. Figure~\ref{fig:saltproc_class} shows the proposed SaltProc 
-v2.0+ class structure which includes 4 main classes:
+v1.0 class structure which includes 4 main classes:
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
 	\includegraphics[width=1.03\textwidth]{saltproc_class_diagram.png}
 	\vspace{-0.15in}
-	\caption{SaltProc v2.0+ python package class diagram in UML notation 
+	\caption{SaltProc v1.0 python package class diagram in UML notation 
 		and examples of object instances.}
 	\label{fig:saltproc_class}
 \end{figure}
@@ -416,12 +418,12 @@ methods and contribute back to the code package using GitHub
 
 \subsection{Tentative flowchart}
 Figure~\ref{fig:saltproc_flow} illustrates the proposed online reprocessing 
-simulation algorithm coupling SaltProc v2.0+ and Serpent. To perform a 
-depletion step, SaltProc v2.0+ reads a user-defined Serpent template file. 
+simulation algorithm coupling SaltProc v1.0 and Serpent. To perform a 
+depletion step, SaltProc v1.0 reads a user-defined Serpent template file. 
 This file contains input parameters such as geometry, material, isotopic 
 composition, neutron population, criticality cycles, total heating power, and 
-boundary conditions. SaltProc v2.0+ fills in the template file and runs 
-Serpent single-step depletion. After the depletion calculation, SaltProc v2.0+ 
+boundary conditions. SaltProc v1.0 fills in the template file and runs 
+Serpent single-step depletion. After the depletion calculation, SaltProc v1.0 
 reads the depleted fuel composition file into \textit{MaterialFlow} object  
 (\textit{core\textunderscore outlet} in figure~\ref{fig:saltproc_flow}). This 
 object contains an isotopic composition vector, total volume of material, 
@@ -435,14 +437,14 @@ extraction efficiency. Afterward, the removed material mass is compensated by
 fresh fuel salt to maintain the salt inventory in a primary loop. 
 Finally, resulting isotopic composition after reprocessing is stored in 
 HDF5 database and dumped in a new composition file for the next 
-Serpent depletion run. SaltProc v2.0+ also stores in database isotopic  
+Serpent depletion run. SaltProc v1.0 also stores in database isotopic  
 composition before reprocessing and waste stream from each fuel processing 
 component. 
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
 	\centering
 	\includegraphics[width=1.05\textwidth]{saltproc_flowchart.pdf}
 	\vspace{-0.15in}
-	\caption{Tentative generic flow chart for SaltProc v2.0+ python package.}
+	\caption{Tentative generic flow chart for SaltProc v1.0 python package.}
 	\label{fig:saltproc_flow}
 \end{figure}
 
@@ -466,12 +468,12 @@ SaltProc will only store and edit the isotopic composition of the fuel stream,
 which makes it a flexible tool to model any geometry: an infinite medium, a 
 unit cell, a multi-zone simplified assembly, or a full core. This flexibility 
 allows the user to perform simulations of varying fidelity and computational 
-intensity. SaltProc v2.0+ is an open-source tool (but a user needs Serpent 
-2.1.31 installed to use SaltProc v2.0+), available on Github. It leverage unit 
+intensity. SaltProc v1.0 is an open-source tool (but a user needs Serpent 
+2.1.31 installed to use SaltProc v1.0), available on Github. It leverage unit 
 and continuous tests  crucial for sustainable development  
 \cite{krekel_pytest_2004}. It will also have documentation generated through 
 Sphinx, a documentation generator, for ease of use \cite{brandl_sphinx_2009}. 
-In summary, the development approach of SaltProc v2.0+ is focused on producing 
+In summary, the development approach of SaltProc v1.0 is focused on producing 
 a generic, flexible and expandable tool to give the Serpent 2 Monte Carlo code 
 the ability to conduct advanced in-reactor fuel cycle analysis as well as 
 simulate many online refueling and fuel reprocessing systems.
@@ -570,8 +572,8 @@ maintain the initial mass fraction of $^{232}$Th.
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Figures~\ref{fig:keff} and \ref{fig:keff_zoomed} show the effective 
-multiplication factors obtained using SaltProc and Serpent. The effective 
+Figures~\ref{fig:keff_msbr} and \ref{fig:keff_zoomed_msbr} show the effective 
+multiplication factors obtained using SaltProc v0.1 and Serpent. The effective 
 multiplication factors were calculated after removing fission products listed 
 in Table~\ref{tab:reprocessing_list_msbr} and adding the fertile material at 
 the end of cycle time (3 days for this work). The effective multiplication 
@@ -579,18 +581,18 @@ factor fluctuates significantly as a result of the batch-wise nature of this
 online reprocessing strategy. 
 \begin{figure}[ht!] 
 	\centering
-	\includegraphics[width=0.9\textwidth]{keff.png}
+	\includegraphics[width=0.9\textwidth]{keff_msbr.png}
 	\caption{Effective multiplication factor dynamics for full-core \gls{MSBR} 
 		model over a 60-year reactor operation lifetime (reproduced from 
 		\cite{rykhlevskii_modeling_2019}).}
-	\label{fig:keff}
+	\label{fig:keff_msbr}
 \end{figure}
 \begin{figure}[ht!] 
 	\centering
 	\includegraphics[width=\textwidth]{keff_zoomed.png}
 	\caption{Zoomed effective multiplication factor for 150-EFPD time interval 
 		(reproduced from \cite{rykhlevskii_modeling_2019}).}
-	\label{fig:keff_zoomed}
+	\label{fig:keff_zoomed_msbr}
 \end{figure}
 
 First, Serpent calculates the effective multiplication factor for the 
