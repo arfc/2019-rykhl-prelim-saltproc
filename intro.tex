@@ -171,32 +171,41 @@ challenge since it requires adding a term to the Bateman equations. In
 SCALE/TRITON, ORIGEN \cite{gauld_isotopic_2011} solves a set of the Bateman 
 equations using one-group averaged fluxes and cross sections obtained from a 
 transport calculation. The Bateman equations describe the rate of change of 
-each isotope, $i$, due to neutron induced reactions and decay processes thus 
-\cite{aufiero_extended_2013}:
+each isotope, $i$, due to neutron induced reactions and decay processes
+\cite{tsoulfanidis_nuclear_2013}:
 \begin{align} \label{eq:bateman}
-\frac{dN_i}{dt} &= \bar{\Phi}\sum\limits_{j}N_{j}\sigma_{j \rightarrow 		i} 
-- \bar{\Phi}\sum\limits_{j}N_{i}\sigma_{i \rightarrow j} + 
-\sum					\limits_{j}	N_{j}\lambda_{j}b_{j \rightarrow i} - 
-N_{i}\lambda_{i} \\
-& \qquad\qquad (1) \qquad\qquad\quad (2) \qquad\quad\qquad (3) \qquad\qquad 
-(4) \nonumber
-\intertext{where} 
-N_i &= \mbox{number density of isotope i} \nonumber \\
-N_j &= \mbox{number density of isotope j} \nonumber \\
-\bar{\Phi} &= \mbox {average in the space and energy neutron flux} \nonumber \\
-\sigma_{j \rightarrow i} &= \mbox{microscopic one-group transmutation cross 
-section} \nonumber \\
-\lambda_i &= \mbox{decay constant of nuclide i} \nonumber \\
-\lambda_j &= \mbox{decay constant of nuclide j} \nonumber \\
-b_{j \to i} &= \mbox{branching fractions of radioactive decay from nuclide j.} 
+\frac{dN_i}{dt} &= \sum_{m=1}^{M}l_{im}\lambda_mN_m + 
+\phi\sum_{m=1}^{M}f_{im}\sigma_mN_m - (\lambda_i + \phi\sigma_i + r_i - 
+f_i)N_i + F_i\Big|{i\in [1,M]}\\
+& \qquad\qquad (1) \qquad\qquad\qquad (2) \qquad\qquad(3) \quad (4)  \quad 
+(5) \quad (6)
 \nonumber
+\intertext{where}
+N_i &= \mbox{atom density of nuclide i} \nonumber \\
+M &= \mbox{number of nuclides} \nonumber \\
+l_{im} &= \mbox{fraction of decays of nuclide m that result in formation of 
+nuclide i}\nonumber \\
+\lambda_i &= \mbox{radioactive decay constant of nuclide i} \nonumber \\
+\phi &= \mbox{neutron flux, averaged over position and energy} \nonumber \\
+f_{im} &= \mbox{fraction of neutron absorption by nuclide m leading to the 
+formation of nuclide i} \nonumber \\
+\sigma_m &= \mbox{average neutron absorption cross section of nuclide m} 
+\nonumber \\
+r_i &= \mbox{continuous removal rate of nuclide i from the system} \nonumber \\
+f_i &= \mbox{continuous feed rate of nuclide i} \nonumber \\
+F_i &= \mbox{production rate of nuclide i directly from fission}\nonumber
 \end{align}
 The four terms on the right-hand side of the equation represent:
 \begin{enumerate}[label=(\arabic*)]
-	\item production rate of nuclide $i$ from irradiation;
-	\item loss rate of nuclide $i$ due to irradiation;
-	\item decay rate of nuclide $j$ into nuclide $i$;
-	\item loss rate of nuclide $i$ due to decay.
+	\item production of species $i$ as a result of the decay of all the 
+	nuclides present;
+	\item production of species $i$ as a result of neutron capture by all 
+	nuclides present;
+	\item loss of nuclide $i$ through its own decay;
+	\item loss of nuclide $i$ as a result of neutron capture;
+	\item loss of nuclide $i$ through continuous removal from the system;
+	\item gain of nuclide $i$ as a result of continuous feed to the 
+	system.
 \end{enumerate} 
 
 Recently, Nuttin \emph{et al.} developed in-house depletion code REM which 
