@@ -2,8 +2,9 @@
 
 After refactoring, redesign, and implementation of the new capabilities 
 mentioned in Chapter 3, SaltProc v1.0 will be tested for the \gls{TAP} 
-\gls{MSR}. I selected the \gls{TAP} concept because it is well analyzed in the 
-literature; thus, cross-code verification with ChemTRITON/SCALE is possible 
+\gls{MSR}. The \gls{TAP} concept was selected because it is well analyzed in 
+the literature\cite{betzler_two-dimensional_2017, betzler_assessment_2017}; 
+thus, cross-code verification with ChemTRITON/SCALE is possible 
 \cite{betzler_assessment_2017}. The demonstration will be performed for two 
 timescales:
 \paragraph{Long-term.} The reactor lifetime-long (e.g., 40 years) depletion 
@@ -430,12 +431,16 @@ Table~\ref{tab:reprocessing_list} will be used in the fuel reprocessing model.
 \section{Preliminary results} \label{sec:stage2-demo}
 An extended version of SaltProc online reprocessing simulation package is 
 demonstrated for the \gls{TAP} \gls{MSR} with static core geometry and 5\% 
-\gls{LEU} in startup fuel salt composition. Three following fuelingscenarios 
+\gls{LEU} in startup fuel salt composition. Three following fueling
+scenarios 
 were considered: (1) no \gls{FP} removal or feed (Serpent only); (2) a 5\% 
-\gls{LEU} online feed; and (3)a 19.79\% \gls{LEU} online feed. 
-The neutron population per cycle and the number of active/inactive cycleswere 
+\gls{LEU} online feed; and (3)
+a 19.79\% \gls{LEU} online feed. 
+The neutron population per cycle and the number of active/inactive cycles
+were 
 chosen to obtain a balance between reasonable uncertainty for a transport 
-problem(28 $pcm$ for effective multiplication factor) and computational time. 
+problem
+(28 $pcm$ for effective multiplication factor) and computational time. 
 \subsection{TAP long-term demonstration case} 
 The simulations already conducted in this work thoroughly analyzed the 
 original \gls{TAP} reprocessing system design (figure~\ref{fig:tap-reproc}) 
@@ -448,9 +453,9 @@ non-ideal ($<100$\%) removal efficiencies and static geometry with constant
 	\centering
 	\includegraphics[width=0.93\textwidth]{demo_reprocessing_scheme.png}
 	\caption{\gls{TAP} reprocessing scheme flowchart used for demonstration of 
-	extended SaltProc. Arrow represents material flow; percent represents  
-		fraction of total mass flow rate; ellipse represents fuel reprocessing 
-		system component; diamond represents waste stream; the box shows 
+	extended SaltProc. Arrows represent material flow; percents represent 
+	fraction of total mass flow rates; ellipses represent fuel reprocessing 
+		system components; diamonds represent waste streams; the box shows 
 		refuel material flow.}
 	\label{fig:demo-repro-scheme}
 \end{figure}
@@ -475,12 +480,13 @@ Lanthanides and other non-noble metals generally have a lower capture
 cross section and absorb fewer neutrons than gases and noble metals. These 
 elements can be removed via a liquid-metal/molten salt extraction process with 
 relatively low removal rates (cycle time $> 50$ days). This is accomplished 
-by directing small fraction of the salt mass flow out of the nickel mesh 
-filter (10\%) to the liquid-metal/molten salt component of reprocessing 
-system, where lanthanides are removed with a specific extraction efficiency to 
-match the  required cycle time (table~\ref{tab:reprocessing_list}). The rest 
-90\% of the salt mass flow is directed from the nickel filter to heat 
-exchanger without performing any fuel salt treatment.
+by directing a small fraction of the salt mass flow leaving the nickel mesh 
+filter (10\%). That fraction then flows to the liquid-metal/molten salt 
+component of the reprocessing system, where lanthanides are removed with a 
+specific extraction efficiency to match the  required cycle time 
+(table~\ref{tab:reprocessing_list}). The rest 90\% of the salt mass flow is 
+directed from the nickel filter to heat exchanger without performing any fuel 
+salt treatment.
 
 The removal rates vary among nuclides in this reactor concept, which dictate 
 the necessary resolution of depletion calculations. To compromise, a 3-day 
