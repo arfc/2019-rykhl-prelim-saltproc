@@ -1,6 +1,15 @@
 \subsection{Molten Salt Reactors}
 
 \begin{frame}
+\frametitle{Potential Generation IV reactor systems \cite{abram_generation-iv_2008}}
+\begin{figure}[t]
+	\vspace*{-0.1in}
+	\includegraphics[height=0.7\textwidth]{./images/6_types.png}
+\end{figure}            
+\end{frame}
+
+
+\begin{frame}
 \frametitle{MSR (Molten Salt Reactor) types}
 \begin{overlayarea}{\linewidth}{20\baselineskip}
 \begin{block}{Stationary Fuel}<1-4>
@@ -21,7 +30,7 @@
 		clean salt (PB-FHR)
 		\item<3-4> Non-circulating liquid fuel salt (TerraPower \gls{MCFR}) 
 		\item<4> \textbf{Circulating liquid fuel salt} which also works 
-		as coolant (\gls{MSBR}, \gls{MSFR})
+		as coolant (\gls{MSBR})
 	\end{enumerate}
 \end{block}
 \end{overlayarea}
@@ -33,7 +42,7 @@
 \begin{figure}[t]
 	\hspace*{-0.35in}
 	\includegraphics[height=0.63\textwidth]{./images/solid_fuel.jpg}
-	\caption{TRISO fuel particle (top) and FHR fuel designs (bottom). Source \cite{forsberg_basis_2016-1}.}
+	\caption{TRISO fuel particle (top) and FHR fuel designs (bottom). Source \cite{forsberg_basis_2016}.} 
 \end{figure}   
 \end{frame}
 
@@ -62,7 +71,7 @@
 
 \begin{frame}
 \frametitle{Why Molten Salt Reactors with circulating fuel?}
-\begin{block}{Liquid-fueled \glsfirst{MSR} 
+\begin{block}{Liquid-fueled MSR 
 		designs have following \textbf{potential} advantages:}
 	\begin{enumerate}
 		\itemsep1em
@@ -81,23 +90,103 @@
 
 \end{frame}
 
+\begin{frame}
+\frametitle{On-line fuel processing and online refueling pros and cons}
+\begin{block}{Advantages}
+	\begin{enumerate}
+		\item Improved neutrons economy
+		\item Better fuel utilization
+		\item Smaller excess reactivity
+		\item Ability to maintain criticality without shutdown
+	\end{enumerate}
+\end{block}
+
+\begin{block}{Disadvantages}
+	\begin{enumerate}
+		\item Chemical separation is challenging
+		\item Fuel salt balance in a primary loop complicates operation
+		\item Hard to model using most contemporary burnup software
+	\end{enumerate}
+\end{block}
+
+\end{frame}
 
 \begin{frame}
-  \frametitle{Challenges in \gls{MSR} Simulation}
+\frametitle{Continuous vs batch-wise fuel processing  and refueling (1/3)}
+		\vspace{-7mm}
+\begin{block}{Classical Bateman equation}
+	%Core material is circulated to or from the core at specific intervals:
+	\begin{align}
+	\frac{dN_i}{dt} &= \sum_{m=1}^{M}l_{im}\lambda_mN_m + 
+	\phi\sum_{m=1}^{M}f_{im}\sigma_mN_m - (\lambda_i + \phi\sigma_i)N_i + F_i\Big|{i\in [1,M]} \nonumber\\
+		N_i &= \mbox{atom density of nuclide i} \nonumber \\
+	M &= \mbox{number of nuclides} \nonumber \\
+	l_{im} &= \mbox{fraction of decays of nuclide m that result in formation of 
+		nuclide i}\nonumber \\
+	\lambda_i &= \mbox{radioactive decay constant of nuclide i} \nonumber \\
+	\phi &= \mbox{neutron flux, averaged over position and energy} \nonumber \\
+	f_{im} &= \mbox{fraction of neutron absorption by nuclide m leading to the 
+		formation of nuclide i} \nonumber \\
+	\sigma_m &= \mbox{average neutron absorption cross section of nuclide m} 
+	\nonumber \\
+	F_i &= \mbox{production rate of nuclide i directly from fission}\nonumber
+	\end{align}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Continuous vs batch-wise fuel processing  and refueling (2/3)}
+\begin{block}{Bateman equation with continuous removals and feed}
+	\hspace{-0.4in}
+	\begin{align}
+	\frac{dN_i}{dt} &= \sum_{m=1}^{M}l_{im}\lambda_mN_m + 
+	\phi\sum_{m=1}^{M}f_{im}\sigma_mN_m - (\lambda_i + \phi\sigma_i + \textcolor{red}{r_i - 
+	f_i})N_i + F_i\Big|{i\in [1,M]} \nonumber \\
+	N_i &= \mbox{atom density of nuclide i} \nonumber \\
+	M &= \mbox{number of nuclides} \nonumber \\
+	l_{im} &= \mbox{fraction of decays of nuclide m that result in formation of 
+		nuclide i}\nonumber \\
+	\lambda_i &= \mbox{radioactive decay constant of nuclide i} \nonumber \\
+	\phi &= \mbox{neutron flux, averaged over position and energy} \nonumber \\
+	f_{im} &= \mbox{fraction of neutron absorption by nuclide m leading to the 
+		formation of nuclide i} \nonumber \\
+	\sigma_m &= \mbox{average neutron absorption cross section of nuclide m} 
+	\nonumber \\
+	\textcolor{red}{r_i} & \mkern4mu \textcolor{red}{=} \mbox{\space \textcolor{red}{continuous removal rate of nuclide i from the system}} \nonumber \\
+	\textcolor{red}{f_i} & \mkern4mu  \textcolor{red}{=} \mbox{\space \textcolor{red}{continuous feed rate of nuclide i}} \nonumber \\
+	F_i &= \mbox{production rate of nuclide i directly from fission}\nonumber
+	\end{align}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Continuous vs batch-wise fuel processing and refueling (3/3)}
+	\begin{block}{Batch-wise approach}
+		Core material is circulated to or from the core at specific intervals		
+	\end{block}
+           \begin{figure}[t]
+	\includegraphics[height=0.45\textwidth]{./images/batch-wise.png}
+	\caption{Typical flowchart for batch-wise reprocessing and refueling (figure reproduced from Li et al.\cite{li_optimization_2018}).}
+			\end{figure}               
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Fuel salt burnup and reprocessing}
                   \vspace*{-0.05in}
                \begin{enumerate}
-                \item Contemporary burnup codes cannot treat fuel movement
-                \item Neutron precursor location is hard to estimate
-                \item Operational and safety parameters change during reactor operation
-                \item Power generation strongly depends on fuel temperature and vica versa
+               	\item Gaseous fission products (Kr, Xe) escape from the fuel salt
+               	\item Noble metals (Mo, Tc) plate out on surfaces
+               	\item Rare earth metals should be removed by chemical processing
+                \item Most of burnup codes cannot treat fuel movement
                \end{enumerate}
 
            \begin{figure}[t]
-                \vspace*{-0.05in}
 			\hspace*{-0.2in}
-                \includegraphics[height=0.47\textwidth]{./images/coupled_physics.png}
+                \includegraphics[height=0.48\textwidth]{../figures/periodic_map.png}
 		\vspace*{-0.05in}
-		\caption{Challenges in simulating \glspl{MSR} (Image courtesy of Manuele Aufiero,2012).}
+		\caption{Processing options for MSR fuels (figure reproduced from Ahmed et al.\cite{ahmad_neutronics_2015}).}
      	 \end{figure}               
 \end{frame}
 
