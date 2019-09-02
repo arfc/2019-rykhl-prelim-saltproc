@@ -5,6 +5,7 @@
 \begin{figure}[t]
 	\vspace*{-0.1in}
 	\includegraphics[height=0.7\textwidth]{./images/6_types.png}
+	\caption{\gls{MSR} design}
 \end{figure}            
 \end{frame}
 
@@ -36,6 +37,7 @@
 \end{overlayarea}
 \end{frame}
 
+
 \begin{frame}
 \frametitle{Stationary and Mobile Solid fuel}
 \vspace*{-0.1in}
@@ -57,7 +59,8 @@
 
 \end{frame}
 
-\begin{frame}
+
+\begin{frame} % Add another slide with red rectangular around reprocessing system
 \frametitle{Mobile, Circulating, Liquid Fuel}
 \begin{figure}[t]
 \includegraphics[height=0.58\textwidth]{./images/msbr_scheme.png}
@@ -66,13 +69,9 @@
 
 \end{frame}
 
-\subsection{Motivation}
-
-
 \begin{frame}
 \frametitle{Why Molten Salt Reactors with circulating fuel?}
-\begin{block}{Liquid-fueled MSR 
-		designs have following \textbf{potential} advantages:}
+\begin{block}{Liquid-fueled \gls{MSR} designs have following \textbf{potential} advantages:}
 	\begin{enumerate}
 		\itemsep1em
 		\item High coolant temperature (600-750$^{\circ}$C) 
@@ -90,6 +89,10 @@
 
 \end{frame}
 
+
+\subsection{Background}
+
+
 \begin{frame}
 \frametitle{On-line fuel processing and online refueling pros and cons}
 \begin{block}{Advantages}
@@ -105,21 +108,89 @@
 	\begin{enumerate}
 		\item Chemical separation is challenging
 		\item Fuel salt balance in a primary loop complicates operation
-		\item Hard to model using most contemporary burnup software
+		\item \textbf{Hard to model using most contemporary burnup software}
 	\end{enumerate}
 \end{block}
 
 \end{frame}
 
+
+\begin{frame}
+\frametitle{Fuel salt burnup and reprocessing}
+\vspace*{-0.05in}
+\begin{enumerate}
+	\item Gaseous fission products escape (50\% removal efficiency) from the fuel salt
+	\item Noble metals (Mo, Tc) plate out on surfaces
+	\item Rare earth metals should be removed by chemical processing
+	\item Most of burnup codes cannot treat fuel movement
+\end{enumerate}
+
+\begin{figure}[t]
+	\hspace*{-0.2in}
+	\includegraphics[height=0.48\textwidth]{../figures/periodic_map.png}
+	\vspace*{-0.05in}
+	\caption{Processing options for MSR fuels (figure reproduced from Ahmed et al. \cite{ahmad_neutronics_2015}).}
+\end{figure}               
+\end{frame}
+
+
+\begin{frame}
+\frametitle{On-line fuel salt reprocessing system functions}
+\begin{block}{Removal poisonous fission products from the salt}
+	\begin{itemize}
+		\item Enhance noble gases escape (e.g., by ejecting helium or using centrifugal gas separator)
+		\item Improve noble metals removal (e.g., nickel filter with large metal surface)
+		\item Remove rare earths using difference in chemical potentials
+		\item Ideally, 100\% of target element but realistically - 30-90\%
+		\item Some rare metals (Rh,Pd) might be economically recovered from waste stream %Rh - $5000, Pd - $1500, Pl - $900, Ir - $1480
+	\end{itemize}
+\end{block}
+
+\begin{block}{Feed (inject) fresh fuel to the salt}
+	\begin{itemize}
+		\item Inject fissile material ($^{233}$U, $^{235}$U, $^{239}$Pu)
+		\item Inject fertile material ($^{232}$Th, $^{238}$U)
+		\item Maintain fuel salt inventory in the primary loop
+		\item Maintain the reactor critical (ideally, $k_{eff}=1.0$)
+	\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Fuel salt reprocessing approaches}
+
+Fuel salt is circulated throughout fuel reprocessing system:
+\\
+\begin{enumerate}
+	\itemsep2em
+	\item Continuously:
+	\begin{itemize}
+		\item removal and feed terms are added to the Bateman equation
+		\item relatively coarse burnup timesteps needed
+	\end{itemize}
+	\item At specific intervals (batch-wise): 
+	\begin{itemize}
+		\item theburn-up simulation stops at a given time and restarts with a newliquid fuel composition (after removal of discarded materials and
+		addition of fissile/fertile materials)
+		\item very fine burnup timesteps needed
+	\end{itemize}
+\end{enumerate}
+
+
+\end{frame}
+
+
 \begin{frame}
 \frametitle{Continuous vs batch-wise fuel processing  and refueling (1/3)}
-		\vspace{-7mm}
-\begin{block}{Classical Bateman equation}
+\vspace{-7mm}
+\begin{block}{Classic Bateman equation}
 	%Core material is circulated to or from the core at specific intervals:
 	\begin{align}
 	\frac{dN_i}{dt} &= \sum_{m=1}^{M}l_{im}\lambda_mN_m + 
 	\phi\sum_{m=1}^{M}f_{im}\sigma_mN_m - (\lambda_i + \phi\sigma_i)N_i + F_i\Big|{i\in [1,M]} \nonumber\\
-		N_i &= \mbox{atom density of nuclide i} \nonumber \\
+	N_i &= \mbox{atom density of nuclide i} \nonumber \\
 	M &= \mbox{number of nuclides} \nonumber \\
 	l_{im} &= \mbox{fraction of decays of nuclide m that result in formation of 
 		nuclide i}\nonumber \\
@@ -133,6 +204,7 @@
 	\end{align}
 \end{block}
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Continuous vs batch-wise fuel processing  and refueling (2/3)}
@@ -171,24 +243,79 @@
 			\end{figure}               
 \end{frame}
 
+\begin{frame}
+\frametitle{Published work in online reprocessing and modeling}
+
+  \begin{textblock*}{12.5cm}(0.1cm,1.9cm) % {block width} (coords)
+	\begin{table}[t]
+	\fontsize{6}{9}\selectfont
+	\caption{Tools and methods for liquid-fueled \glspl{MSR} fuel salt depletion 
+		analysis.}
+	\begin{tabularx}{\textwidth}{X X X X p{3cm}} 
+		\hline 
+		&Nuttin \emph{et al.}, 2005 \cite{nuttin_potential_2005}& Aufiero \emph{et al.}, 
+		2013 \cite{aufiero_extended_2013} & Betzler \emph{et al.}, 2018 
+		\cite{betzler_fuel_2018}&Proposed work \\ 
+		\hline
+		Neutron transport software & \gls{MCNP} & Serpent 2 & SCALE6.2 & Serpent 2 \\ 
+		Neutron transport method & \multicolumn{2}{c}{Monte Carlo continuous energy} & 
+		Deterministic discrete ordinates & Monte Carlo continuous energy \\
+		Burnup software & REM & Serpent 2 & ORIGEN-S & Serpent 2 \\ 
+		Geometry model & unit cell & full-core 3D & unit cell & full-core 3D\\ [12pt]
+		Removal/feed  & continuous &continuous & batch-wise & batch-wise\\ 
+		Separation efficiency &\multicolumn{3}{c}{fixed, must be defined by user 
+			before simulation} & variable of many parameters \\
+		Fuel reprocessing plant & \multicolumn{3}{c}{single component, ``black'' box 
+			model} & realistic multi-component model \\
+		Reactivity control & \multicolumn{2}{c}{continuous adjustment of fissile 
+			material injection} & batch injection of fissile material & periodical 
+		adjustment of geometry and fissile material injection\\
+		\hline
+	\end{tabularx}
+	\label{tab:msr_codes}
+\end{table}
+\end{textblock*}
+
+\end{frame}
+
 
 \begin{frame}
-  \frametitle{Fuel salt burnup and reprocessing}
-                  \vspace*{-0.05in}
-               \begin{enumerate}
-               	\item Gaseous fission products (Kr, Xe) escape from the fuel salt
-               	\item Noble metals (Mo, Tc) plate out on surfaces
-               	\item Rare earth metals should be removed by chemical processing
-                \item Most of burnup codes cannot treat fuel movement
-               \end{enumerate}
-
-           \begin{figure}[t]
-			\hspace*{-0.2in}
-                \includegraphics[height=0.48\textwidth]{../figures/periodic_map.png}
-		\vspace*{-0.05in}
-		\caption{Processing options for MSR fuels (figure reproduced from Ahmed et al.\cite{ahmad_neutronics_2015}).}
-     	 \end{figure}               
+\frametitle{Past published work shortcomings}
+\vspace{-0.2in}
+\begin{block}{Static ``black'' box assumptions}
+	\begin{equation*}
+	{\tiny  
+		\setlength{\abovedisplayskip}{6pt}
+		\setlength{\belowdisplayskip}{\abovedisplayskip}
+		\setlength{\abovedisplayshortskip}{0pt}
+		\setlength{\belowdisplayshortskip}{3pt}
+	\begin{aligned}
+	\begin{bmatrix}
+	N^{in}_{0} \\ \vdots \\ N^{in}_{e} \\ \vdots \\ N^{in}_{E} \\
+	\end{bmatrix} 
+	\times
+	\begin{bmatrix}
+	\epsilon_{0} \\ \vdots \\ \epsilon_{e} \\ \vdots \\ \epsilon_{E} \\
+	\end{bmatrix} =
+	\begin{bmatrix}
+	N^{out}_{0}\\ \vdots \\ N^{out}_{e} \\ \vdots \\N^{out}_{E}  \\
+	\end{bmatrix}
+	\end{aligned}
+	}
+	\end{equation*}
+	\begin{itemize}
+		\item \textbf{Time-independent separation efficiency vector.} Realistically, 
+		long-term reactor operation will require a time-dependent extraction efficiency vector.
+		\item \textbf{The separation efficiency is independent of the reactor operational 
+		parameters.} In reality the extraction efficiency depends on temperature, 
+		power level, current fuel salt isotopic composition, and material flow rate.
+		\item \textbf{All components are treated as a single ``black 
+		box'' component.} The salt in a reprocessing plant undergoes 
+		many separate components which target specific elements. Some of these components can be connected in series, parallel, or both. 
+	\end{itemize}
+\end{block}
 \end{frame}
+
 
 \begin{frame}
   \frametitle{Research objectives}
