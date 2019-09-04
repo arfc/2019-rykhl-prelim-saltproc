@@ -104,7 +104,8 @@
 
 
 \begin{frame}
-\frametitle{On-line fuel processing and online refueling pros and cons}
+\frametitle{On-line fuel processing and on-line refueling pros and 
+cons}
 \begin{block}{Advantages}
 	\begin{enumerate}
 		\item Improved neutrons economy
@@ -258,7 +259,7 @@ Fuel salt is circulated throughout fuel reprocessing system:
 \end{frame}
 
 \begin{frame}
-\frametitle{Published work in online reprocessing and modeling}
+\frametitle{Published work in on-line reprocessing and modeling}
 
   \begin{textblock*}{12.5cm}(0.1cm,1.4cm) % {block width} (coords)
 	\begin{table}[t]
@@ -278,21 +279,27 @@ Fuel salt is circulated throughout fuel reprocessing system:
 		energy} & 
 		Deterministic discrete ordinates & Monte Carlo continuous energy 
 		\\
-		Burnup software & REM & Serpent 2 & ORIGEN-S & Serpent 2 \\[5pt]
-		Geometry model & unit cell & full-core 3D & unit cell & full-core 3D\\ 
-		[5pt]
-		Removal/feed  & continuous &continuous & batch-wise & batch-wise\\[5pt]
+		Burnup software & REM & Serpent 2 & ORIGEN-S & Serpent 2 
+		\\[3pt]
+		Geometry model & unit cell & full-core 3D & unit cell & 
+		full-core 3D\\ [3pt]
+		Removal/feed  & continuous &continuous & batch-wise & 
+		batch-wise\\[3pt]
 		Separation efficiency &\multicolumn{3}{c}{fixed, must be defined by user 
-			before simulation} & variable of many parameters \\[5pt]
+			before simulation} & \color{red}{variable of many 
+			parameters} \\[3pt]
 		Fuel reprocessing plant & \multicolumn{3}{c}{single component, ``black'' box 
-			model} & realistic multi-component model \\[5pt]
+			model} & \color{red}{realistic multi-component model} 
+			\\[3pt]
 		Reactivity control & \multicolumn{2}{c}{continuous adjustment of 
 		fissile material injection} & batch injection of fissile material & 
-		periodical adjustment of geometry and fissile material injection\\[5pt]
+		\color{red}{periodical adjustment of geometry and fissile 
+		material injection}\\[3pt]
 		Thermal feedback evolution & Doppler only & Not considered & 
-		Doppler only & Doppler$+$density$+$thermal expansion\\[5pt]
+		Doppler only & Doppler$+$\color{red}{density+thermal 
+		expansion}\\[3pt]
 		Evolution of control rod worth & \multicolumn{3}{c}{Not considered} & 
-		For single rod and all rods \\
+		\color{red}{For single rod and all rods} \\
 		\hline
 	\end{tabularx}
 	\label{tab:msr_codes}
@@ -345,34 +352,37 @@ Fuel salt is circulated throughout fuel reprocessing system:
 \begin{frame}
   \frametitle{Research objectives of purposed work}
                   \vspace*{-0.05in}
-      The main objective of the proposed work is to develop the online 
+      The main objective of the proposed work is to develop the 
+      on-line 
       reprocessing simulation package, SaltProc, which couples with Monte 
       Carlo depletion calculation code, Serpent 2, for liquid-fueled MSR 
       depletion simulations.
-     \begin{block}{SaltProc desired capabilities:}
+     \begin{block}{SaltProc desired capabilities:}<1-3>
          \begin{enumerate}
          		%\itemsep1em
-                \item \textbf{Realistic} multi-component fuel reprocessing 
+                \item \textbf{Realistic} multi-component fuel 
+                reprocessing 
                 system modeling
                 \item \textbf{Variable} extraction efficiency support
-                \item Storing material flows in compressible database (HDF5)
-                \item Reactivity control by changing geometry of the core 
-                during simulation
-                \item Open-source with continuous tests and automatic 
-                documentation system 
+                \item Storing material flows in compressible database 
+                (HDF5)
+                \item<2-3> Reactivity control by changing geometry of 
+                the core during simulation
+                \item<3> Open-source with continuous tests and 
+                automatic documentation system 
          \end{enumerate}
       \end{block}
             \vspace{-0.1in}
-	\begin{block}{SaltProc demonstration and validation}
+	\begin{block}{SaltProc demonstration and validation}<4-6>
 		\begin{enumerate}
-			\item Simulate lifetime-long (60 years) fuel salt depletion with 
-			ideal/realistic extraction efficiency and compare with recent 
-			efforts in the literature
-			\item Simulate short-term (3-7 days) fuel salt depletion for the 
-			\gls{TAP} concept during load-following
-			\item Analyze safety and operational parameters (thermal feedback 
-			coefficient, control rod worth, power axial offset) evolution 
-			during operation 
+			\item<4-6> Simulate lifetime-long (60 years) fuel salt 
+			depletion with ideal/realistic extraction efficiency and 
+			compare with recent efforts in the literature
+			\item<5-6> Simulate short-term (3-7 days) fuel salt 
+			depletion for the \gls{TAP} concept during load-following
+			\item<6> Analyze safety and operational parameters 
+			(thermal feedback coefficient, control rod worth, power 
+			axial offset) evolution during operation 
 		\end{enumerate}
 	\end{block}
 \end{frame}
