@@ -15,12 +15,17 @@
 %\usepackage{epsfig}  % for figures
 \usepackage{graphicx}  % another package that works for figures
 \usepackage{multirow}
+\usepackage{enumitem}
 \usepackage{placeins}
 \usepackage{caption}  % allows center figures caption
 \usepackage{booktabs} % nice rules (thick lines) for tables
 \usepackage{array}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+%\captionsetup{width=1.0\textwidth,font={normalsize},skip=0.3cm,within=none,justification=centering}
 \usepackage{rotating}
 \usepackage{tabularx}
+\usepackage{amsmath}
+\allowdisplaybreaks
 \newcolumntype{b}{>{\hsize=1.0\hsize}X}
 \newcolumntype{s}{>{\hsize=.5\hsize}X}
 \newcolumntype{m}{>{\hsize=.75\hsize}X}
@@ -32,7 +37,9 @@
 %\usepackage{amssymb}  % for math spacing
 %\usepackage{url}  % Hyphenation of URLs.
 \usepackage{lscape}  % Useful for wide tables or figures.
-\usepackage[justification=raggedright]{caption}	% makes captions ragged right - thanks to Bryce Lobdell
+\usepackage[justification=raggedright]{caption}	% makes captions ragged right 
+%- thanks to Bryce Lobdell
+\interfootnotelinepenalty=10000
 \usepackage[acronym,toc]{glossaries}  % acronyms inclusion
 \usepackage{color,soul}
 \makeglossary
@@ -43,7 +50,7 @@
 %\otherdoctorate[abbrev]{Title of Degree}
 %\othermasters[abbrev]{Title of Degree}
 
-\title{Molten salt reactor tool for online reprocessing modeling}
+\title{Fuel processing simulation tool for liquid-fueled nuclear reactors}
 \author{Andrei Rykhlevskii}
 \department{Nuclear, Plasma, and Radiological Engineering}
 \degreeyear{2019}
@@ -110,7 +117,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LIST OF FIGURES
 %
-% The List of Figures is not strictly necessary. Omitting the List of Figures will
+% The List of Figures is not strictly necessary. Omitting the List of Figures 
+%will
 % simplify the thesis check and reduce the number of corrections.
 %\listoffigures
 
@@ -130,10 +138,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LIST OF SYMBOLS
-%
-%\begin{symbollist}[0.7in]
-%\item[$\tau$] Time taken to drink one cup of coffee.
-%\end{symbollist}
+\chapter{LIST OF SYMBOLS}
+\begin{symbollist}[0.7in]
+%\item[$\nu$] Fission neutron yield
+\item[$\Sigma_f$] Macroscopic fission cross section ($cm^{-1}$)
+\item[$\phi$] Neutron flux ($\frac{neutron}{cm^2\times s}$)
+\item[$\gamma_{_i}$] Fission yield of $i^{th}$ nuclide
+\end{symbollist}
 
 \mainmatter
 
@@ -141,9 +152,9 @@
 % INSERT REAL CONTENT HERE
 %
 \include{intro}	% for INTRODUCTION in "intro.tex"
-\include{litreview}
 \include{approach}
 \include{demo}
+\include{safety}
 \include{concl}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
