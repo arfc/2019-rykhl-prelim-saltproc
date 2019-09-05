@@ -1,4 +1,4 @@
-manuscript = arfc-pres
+manuscript = prelim_presentation
 references = $(wildcard *.bib)
 latexopt   = -halt-on-error -file-line-error -shell-escape
 
