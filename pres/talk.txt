@@ -1,0 +1,6 @@
+(6) Usually neutronics people assumes that chemical reprocessing plant is a static "black box". But it consist of many complex system, each in charge for removing group of elements. So, they usually overpredict core peroformance. To adecuately model the plant we need tool, which would be able to handle such multi-component system.
+(9) Even without any reprocessing about 50% of gases escape from the salt; some fraction of noble metals plate out on surfaces.
+(16) Assumes constant epsilon vector. It will changes with time because many operation parameters changes: fuel conposition, power level, temperature. Also, it loses dynamics and make impossible to track waste feed from each component.
+(21) Another part of processing plant is liquid metal extraction system for Rare Earths removal. As you can see, it is very complex and based on separating element with different chemical potentials.
+(23) From neutronics prospective, these rates are the reactor designer's best initial guess.
+(24) SaltProc using Object-Oriented Programming and has modular structure. Multiple instances of MaterialFlow class for two-fluid design. Many Processes instances enable to model very complex systems.

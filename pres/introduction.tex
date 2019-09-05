@@ -38,16 +38,16 @@
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Stationary and Mobile Solid fuel}
-\vspace*{-0.1in}
-\begin{figure}[t]
-	\hspace*{-0.35in}
-	\includegraphics[height=0.63\textwidth]{./images/solid_fuel.jpg}
-	\caption{TRISO fuel particle (top) and FHR fuel designs (bottom) 
-	\cite{forsberg_basis_2016}.} 
-\end{figure}   
-\end{frame}
+%\begin{frame}
+%\frametitle{Stationary and Mobile Solid fuel}
+%\vspace*{-0.1in}
+%\begin{figure}[t]
+%	\hspace*{-0.35in}
+%	\includegraphics[height=0.63\textwidth]{./images/solid_fuel.jpg}
+%	\caption{TRISO fuel particle (top) and FHR fuel designs (bottom) 
+%	\cite{forsberg_basis_2016}.} 
+%\end{figure}   
+%\end{frame}
 
 \begin{frame}
 \frametitle{Mobile, Non-Circulating, Liquid Fuel}
@@ -110,7 +110,7 @@ cons}
 	\begin{enumerate}
 		\item Neutron economy
 		\item Fuel utilization
-		\item Smaller excess reactivity
+		\item Reduced excess reactivity
 		\item Refuelling without outages
 	\end{enumerate}
 \end{block}
@@ -119,7 +119,7 @@ cons}
 	\begin{enumerate}
 		\item Chemical separation is challenging
 		\item Fuel salt balance in the primary loop complicates operation
-		\item \textbf{Hard to model with existing software}
+		\item \textbf{Existing burnup calculation software cannot model it}
 	\end{enumerate}
 \end{block}
 
@@ -128,20 +128,13 @@ cons}
 
 \begin{frame}
 \frametitle{Fuel salt burnup and reprocessing}
-\vspace*{-0.05in}
-\begin{enumerate}
-	\item Gaseous fission products escape (50\% removal efficiency) from the fuel salt
-	\item Noble metals (Mo, Tc) plate out on surfaces
-	\item Rare earth metals should be removed by chemical processing
-	\item Existing depletion codes cannot treat fuel movement
-\end{enumerate}
-
-\begin{figure}[t]
-	\hspace*{-0.2in}
-	\includegraphics[height=0.48\textwidth]{../figures/periodic_map.png}
-	\vspace*{-0.05in}
-	\caption{Processing options for MSR fuels (figure reproduced from Ahmed et al. \cite{ahmad_neutronics_2015}).}
-\end{figure}               
+		\vspace{-5mm}
+	\begin{figure}[t]
+		\hspace*{-0.2in}
+			\includegraphics[height=0.6\textwidth]{../figures/periodic_map.png}
+		\vspace*{-0.05in}
+		\caption{Processing options for MSR fuels (figure reproduced from Ahmed \emph{et al.}  \cite{ahmad_neutronics_2015}).}
+	\end{figure}               
 \end{frame}
 
 
@@ -149,9 +142,9 @@ cons}
 \frametitle{On-line fuel salt reprocessing system functions}
 \begin{block}{Removing poisonous fission products}
 	\begin{itemize}
-		\item Noble gases (e.g., by ejecting helium or using centrifugal gas separator)
-		\item Noble metals (e.g., nickel filter with large metal surface)
-                \item Rare earth elements (chemical removal)
+		\item Noble gas (e.g., by ejecting helium or using centrifugal gas separator)
+		\item Noble metal (e.g., nickel filter with large metal surface)
+        \item Rare earth metal (chemical removal)
 		%\item Ideally, remove 100\% of target element but realistically, 30-90\%
 		\item Some valuable rare metals (Rh,Pd) may be recovered %%Rh - $5000, Pd - $1500, Pl - $900, Ir - $1480
 	\end{itemize}
@@ -182,7 +175,7 @@ cons}
 	\end{itemize}
 	\item At specific intervals (batch-wise): 
 	\begin{itemize}
-		\item burn-up simulation stops and restarts with a new fuel composition
+		\item burnup simulation stops and restarts with a new fuel composition
                 \item composition calculation models removals and feeds at each 
                         stop/start
 		\item requires very fine burnup timesteps
@@ -201,7 +194,7 @@ cons}
 	%Core material is circulated to or from the core at specific intervals:
 	\begin{align}
 	\frac{dN_i}{dt} &= \sum_{m=1}^{M}l_{im}\lambda_mN_m + 
-	\phi\sum_{m=1}^{M}f_{im}\sigma_mN_m - (\lambda_i + \phi\sigma_i)N_i + F_i\Big|{i\in [1,M]} \nonumber\\
+	\phi\sum_{m=1}^{M}f_{im}\sigma_mN_m - (\lambda_i + \phi\sigma_i)N_i + F_i\Big|\quad{i\in [1,M]} \nonumber\\
 	N_i &= \mbox{atom density of nuclide i} \nonumber \\
 	M &= \mbox{number of nuclides} \nonumber \\
 	l_{im} &= \mbox{fraction of decays of nuclide m that result in formation of 
@@ -225,7 +218,7 @@ cons}
 	\begin{align}
 	\frac{dN_i}{dt} &= \sum_{m=1}^{M}l_{im}\lambda_mN_m + 
 	\phi\sum_{m=1}^{M}f_{im}\sigma_mN_m - (\lambda_i + \phi\sigma_i + \textcolor{red}{r_i - 
-	f_i})N_i + F_i\Big|{i\in [1,M]} \nonumber \\
+	f_i})N_i + F_i\Big|\quad{i\in [1,M]} \nonumber \\
 	N_i &= \mbox{atom density of nuclide i} \nonumber \\
 	M &= \mbox{number of nuclides} \nonumber \\
 	l_{im} &= \mbox{fraction of decays of nuclide m that result in formation of 
@@ -250,7 +243,8 @@ cons}
 		Core material is circulated to or from the core at specific intervals		
 	\end{block}
            \begin{figure}[t]
-	\includegraphics[height=0.45\textwidth]{./images/batch-wise.png}
+           		\hspace{3mm}
+	\includegraphics[height=0.4\textwidth]{./images/batch-wise.png}
 	\caption{Typical flowchart for batch-wise reprocessing and refueling (figure reproduced from Li et al.\cite{li_optimization_2018}).}
 			\end{figure}               
 \end{frame}
@@ -258,28 +252,26 @@ cons}
 \begin{frame}
 \frametitle{Published work in on-line reprocessing and modeling}
 
-  \begin{textblock*}{12.5cm}(0.1cm,1.4cm) % {block width} (coords)
+  \begin{textblock*}{12.5cm}(0.1cm,1.6cm) % {block width} (coords)
 	\begin{table}[t]
-	\fontsize{6}{9}\selectfont
+	\fontsize{7}{9}\selectfont
 	\caption{Tools and methods for liquid-fueled \gls{MSR} fuel depletion analysis.}
-		\vspace{-2mm}
-	\begin{tabularx}{\textwidth}{X X X X p{3cm}} 
+	\begin{tabularx}{\textwidth}{p{2.5cm} X X X p{3cm}} 
 		\hline 
 		&Nuttin \emph{et al.}, 2005 \cite{nuttin_potential_2005}& Aufiero \emph{et al.}, 
 		2013 \cite{aufiero_extended_2013} & Betzler \emph{et al.}, 2018 
 		\cite{betzler_fuel_2018}&Proposed work \\ 
 		\hline
 		Neutronics & \gls{MCNP} & Serpent 2 & SCALE6.2 & Serpent 2 \\
-		software         & REM &           & ORIGEN-S &  \\
-	                            & stochastic & stochastic & deterministic & stochastic\\[3pt]
+		software   & REM &           & ORIGEN-S &  \\
+	               & stochastic & stochastic & deterministic & stochastic\\ [3pt]
 		Geometry  & unit cell & full-core 3D & unit cell & full-core 3D\\ [3pt]
-		Removal/feed  & continuous &continuous & batch-wise & batch-wise\\[3pt]
-                Separation efficiency & fixed & fixed & fixed & \color{red}{function of many parameters} \\[3pt]
-                Fuel reprocessing plant & ``black box'' & ``black box'' & ``black box'' & \color{red}{realistic multi-component model} \\[3pt]
-                Reactivity & continuous& continuous & batch feed & \color{red}{periodic adjustment of geometry}\\ 
-                control  & feed adjustment & feed adjustment & adjustment & \color{red}{and fissile material injection}\\[3pt]
-		Thermal feedback & Doppler only & Not considered & Doppler only & Doppler$+$\color{red}{density+thermal expansion}\\[3pt]
-		Control rod worth & \multicolumn{3}{c}{Not considered} & \color{red}{For single rod and all rods} \\
+		Removal/feed  & continuous &continuous & batch-wise & batch-wise\\ [3pt]
+        Separation efficiency & fixed & fixed & fixed & \textcolor{red}{function of many parameters} \\[3pt]
+        Fuel reprocessing plant & ``black box'' & ``black box'' & ``black box'' & \textcolor{red}{realistic multi-component model} \\[3pt]
+        Reactivity control & continuous& continuous & batch feed & \textcolor{red}{periodic adjustment of geometry and fissile material injection}\\[3pt]
+		Thermal feedback & Doppler only & Not considered & Doppler only & Doppler$+$\textcolor{red}{density+thermal expansion}\\[3pt]
+		Control rod worth & \multicolumn{3}{c}{Not considered} & \textcolor{red}{For single rod and all rods} \\[3pt]
 		\hline
 	\end{tabularx}
 	\label{tab:msr_codes}
@@ -290,7 +282,7 @@ cons}
 
 
 \begin{frame}
-\frametitle{Past published work shortcomings}
+\frametitle{Technical gap in the state of the art}
 \vspace{-0.2in}
 \begin{block}{Static ``black'' box assumptions in the literature}
 	\begin{equation*}
@@ -314,15 +306,11 @@ cons}
 	}
 	\end{equation*}
 	\begin{itemize}
-		\item \textbf{Time-independent separation efficiency vector.} Realistically, 
-		long-term reactor operation will require a time-dependent extraction efficiency vector.
-		\item \textbf{The separation efficiency is independent of the reactor operational 
-		parameters.} In reality the extraction efficiency depends on temperature, 
-		power level, current fuel salt isotopic composition, and material flow rate.
-		\item \textbf{All components are lumped in a single ``black 
-		box'' component.} But the reprocessing plant consist of many separate 
-		components which target specific elements. The components can be 
-		connected in series, parallel, or both. 
+		\item \textbf{Assume time-independent separation efficiency ($\epsilon_e$).} Realistically, 
+		it is \textbf{time-dependent}.
+		\item \textbf{Assume $\epsilon_e$ is independent of the reactor operational 
+		parameters.} But $\epsilon_e$ depends on \textbf{temperature, power level, current fuel salt isotopic composition, and material flow rate}.
+		\item \textbf{Processing plant is lumped in a single ``black	box'' component.} But the system contains many components connected in series, parallel, or both. 
 	\end{itemize}
 \end{block}
 \end{frame}
@@ -332,37 +320,27 @@ cons}
 \begin{frame}
   \frametitle{Research objectives of purposed work}
                   \vspace*{-0.05in}
-      The main objective of the proposed work is to develop the 
-      on-line 
-      reprocessing simulation package, SaltProc, which couples with Monte 
-      Carlo depletion calculation code, Serpent 2, for liquid-fueled MSR 
-      depletion simulations.
-     \begin{block}{SaltProc desired capabilities:}<1-3>
+      The main objective of the proposed work is to develop the on-line  reprocessing simulation package, SaltProc, for liquid-fueled MSR depletion simulations.
+     \begin{block}{SaltProc desired capabilities:}<1-6>
          \begin{enumerate}
          		%\itemsep1em
                 \item \textbf{Realistic} multi-component fuel 
                 reprocessing 
                 system modeling
                 \item \textbf{Variable} extraction efficiency support
-                \item Storing material flows in compressible database 
-                (HDF5)
-                \item<2-3> Reactivity control by changing geometry of 
+                \item<2-6> Reactivity control by \textbf{changing geometry} of 
                 the core during simulation
-                \item<3> Open-source with continuous tests and 
+                \item<3-6> \textbf{Open-source} with continuous tests and 
                 automatic documentation system 
          \end{enumerate}
       \end{block}
             \vspace{-0.1in}
 	\begin{block}{SaltProc demonstration and validation}<4-6>
 		\begin{enumerate}
-			\item<4-6> Simulate lifetime-long (60 years) fuel salt 
-			depletion with ideal/realistic extraction efficiency and 
-			compare with recent efforts in the literature
-			\item<5-6> Simulate short-term (3-7 days) fuel salt 
-			depletion for the \gls{TAP} concept during load-following
-			\item<6> Analyze safety and operational parameters 
-			(thermal feedback coefficient, control rod worth, power 
-			axial offset) evolution during operation 
+			\item<4-6> \textbf{Lifetime-long (60 years)} depletion with ideal/realistic $\epsilon_e$
+			\item<5-6> Short-term (3-7 days) depletion for the \gls{TAP} concept \textbf{during load-following}
+			\item<6> Safety parameters (thermal feedback coefficient, control rod worth, power 
+			axial offset) \textbf{evolution during operation}
 		\end{enumerate}
 	\end{block}
 \end{frame}
