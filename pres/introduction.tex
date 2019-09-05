@@ -88,11 +88,11 @@
 		$\Rightarrow$ potentially high thermal efficiency, process 
 		heat for chemical industry
 		\item Fuel diversity ($^{235}$U, $^{233}$U, Thorium, U/Pu)
-		\item Strong negative temperature feedback of liquid fuel
+		\item Strong negative fuel temperature feedback 
 		\item Passive safety $\Rightarrow$ fuel drains into tanks 
 		in emergency
-		\item High fuel utilization $\Rightarrow$ less nuclear 
-		waste generated
+		\item High fuel utilization $\Rightarrow$ reduced spent fuel 
+		generation
 		\item<2> \textbf{On-line (continuous) fuel reprocessing and refueling}
 	\end{enumerate}
 \end{block}
@@ -108,18 +108,18 @@
 cons}
 \begin{block}{Advantages}
 	\begin{enumerate}
-		\item Improved neutrons economy
-		\item Better fuel utilization
+		\item Neutron economy
+		\item Fuel utilization
 		\item Smaller excess reactivity
-		\item Ability to maintain criticality without shutdown
+		\item Refuelling without outages
 	\end{enumerate}
 \end{block}
 
 \begin{block}{Disadvantages}
 	\begin{enumerate}
 		\item Chemical separation is challenging
-		\item Fuel salt balance in a primary loop complicates operation
-		\item \textbf{Hard to model using most contemporary burnup software}
+		\item Fuel salt balance in the primary loop complicates operation
+		\item \textbf{Hard to model with existing software}
 	\end{enumerate}
 \end{block}
 
@@ -133,7 +133,7 @@ cons}
 	\item Gaseous fission products escape (50\% removal efficiency) from the fuel salt
 	\item Noble metals (Mo, Tc) plate out on surfaces
 	\item Rare earth metals should be removed by chemical processing
-	\item Most of burnup codes cannot treat fuel movement
+	\item Existing depletion codes cannot treat fuel movement
 \end{enumerate}
 
 \begin{figure}[t]
@@ -147,23 +147,22 @@ cons}
 
 \begin{frame}
 \frametitle{On-line fuel salt reprocessing system functions}
-\begin{block}{Removal poisonous fission products from the salt}
+\begin{block}{Removing poisonous fission products}
 	\begin{itemize}
-		\item Enhance noble gases escape (e.g., by ejecting helium or using centrifugal gas separator)
-		\item Improve noble metals removal (e.g., nickel filter with large metal surface)
-		\item Remove rare earths using difference in chemical potentials
-		\item Ideally, remove 100\% of target element but realistically - 
-		30-90\%
-		\item Some rare metals (Rh,Pd) might be economically recovered from waste stream %Rh - $5000, Pd - $1500, Pl - $900, Ir - $1480
+		\item Noble gases (e.g., by ejecting helium or using centrifugal gas separator)
+		\item Noble metals (e.g., nickel filter with large metal surface)
+                \item Rare earth elements (chemical removal)
+		%\item Ideally, remove 100\% of target element but realistically, 30-90\%
+		\item Some valuable rare metals (Rh,Pd) may be recovered %%Rh - $5000, Pd - $1500, Pl - $900, Ir - $1480
 	\end{itemize}
 \end{block}
 
-\begin{block}{Feed (inject) fresh fuel to the salt}
+\begin{block}{Injecting fresh fuel}
 	\begin{itemize}
-		\item Inject fissile material ($^{233}$U, $^{235}$U, $^{239}$Pu)
-		\item Inject fertile material ($^{232}$Th, $^{238}$U)
+		\item Fissile material ($^{233}$U, $^{235}$U, $^{239}$Pu)
+		\item Fertile material ($^{232}$Th, $^{238}$U)
 		\item Maintain fuel salt inventory in the primary loop
-		\item Maintain the reactor critical (ideally, $k_{eff}=1.0$)
+		\item Maintain reactor criticality (ideally, $k_{eff}=1.0$)
 	\end{itemize}
 \end{block}
 
@@ -173,23 +172,21 @@ cons}
 \begin{frame}
 \frametitle{Fuel salt reprocessing approaches}
 
-Fuel salt is circulated throughout fuel reprocessing system:
-\\
 \begin{enumerate}
 	\itemsep2em
-	\item Continuously:
+	\item Continuous:
 	\begin{itemize}
 		\item removal and feed terms are added to the Bateman equation
-		\item relatively coarse burnup timesteps needed
-		\item sophisticated algorithm needed to balance the salt mass
+		\item requires coarse burnup timesteps
+		\item requires a sophisticated algorithm rebalancing the salt mass 
 	\end{itemize}
 	\item At specific intervals (batch-wise): 
 	\begin{itemize}
-		\item burn-up simulation stops at a given time and restarts with a new 
-		liquid fuel composition (after removal of discarded materials and
-		addition of fissile/fertile materials)
-		\item very fine burnup timesteps needed
-		\item easy to balance the salt mass in a primary loop
+		\item burn-up simulation stops and restarts with a new fuel composition
+                \item composition calculation models removals and feeds at each 
+                        stop/start
+		\item requires very fine burnup timesteps
+		\item easy to balance the salt mass in the primary loop
 	\end{itemize}
 \end{enumerate}
 
@@ -264,8 +261,7 @@ Fuel salt is circulated throughout fuel reprocessing system:
   \begin{textblock*}{12.5cm}(0.1cm,1.4cm) % {block width} (coords)
 	\begin{table}[t]
 	\fontsize{6}{9}\selectfont
-	\caption{Tools and methods for liquid-fueled \glspl{MSR} fuel salt depletion 
-		analysis.}
+	\caption{Tools and methods for liquid-fueled \gls{MSR} fuel depletion analysis.}
 		\vspace{-2mm}
 	\begin{tabularx}{\textwidth}{X X X X p{3cm}} 
 		\hline 
@@ -273,33 +269,17 @@ Fuel salt is circulated throughout fuel reprocessing system:
 		2013 \cite{aufiero_extended_2013} & Betzler \emph{et al.}, 2018 
 		\cite{betzler_fuel_2018}&Proposed work \\ 
 		\hline
-		Neutron transport software & \gls{MCNP} & Serpent 2 & SCALE6.2 & 
-		Serpent 2 \\
-		Neutron transport method & \multicolumn{2}{c}{Monte Carlo continuous 
-		energy} & 
-		Deterministic discrete ordinates & Monte Carlo continuous energy 
-		\\
-		Burnup software & REM & Serpent 2 & ORIGEN-S & Serpent 2 
-		\\[3pt]
-		Geometry model & unit cell & full-core 3D & unit cell & 
-		full-core 3D\\ [3pt]
-		Removal/feed  & continuous &continuous & batch-wise & 
-		batch-wise\\[3pt]
-		Separation efficiency &\multicolumn{3}{c}{fixed, must be defined by user 
-			before simulation} & \color{red}{variable of many 
-			parameters} \\[3pt]
-		Fuel reprocessing plant & \multicolumn{3}{c}{single component, ``black'' box 
-			model} & \color{red}{realistic multi-component model} 
-			\\[3pt]
-		Reactivity control & \multicolumn{2}{c}{continuous adjustment of 
-		fissile material injection} & batch injection of fissile material & 
-		\color{red}{periodical adjustment of geometry and fissile 
-		material injection}\\[3pt]
-		Thermal feedback evolution & Doppler only & Not considered & 
-		Doppler only & Doppler$+$\color{red}{density+thermal 
-		expansion}\\[3pt]
-		Evolution of control rod worth & \multicolumn{3}{c}{Not considered} & 
-		\color{red}{For single rod and all rods} \\
+		Neutronics & \gls{MCNP} & Serpent 2 & SCALE6.2 & Serpent 2 \\
+		software         & REM &           & ORIGEN-S &  \\
+	                            & stochastic & stochastic & deterministic & stochastic\\[3pt]
+		Geometry  & unit cell & full-core 3D & unit cell & full-core 3D\\ [3pt]
+		Removal/feed  & continuous &continuous & batch-wise & batch-wise\\[3pt]
+                Separation efficiency & fixed & fixed & fixed & \color{red}{function of many parameters} \\[3pt]
+                Fuel reprocessing plant & ``black box'' & ``black box'' & ``black box'' & \color{red}{realistic multi-component model} \\[3pt]
+                Reactivity & continuous& continuous & batch feed & \color{red}{periodic adjustment of geometry}\\ 
+                control  & feed adjustment & feed adjustment & adjustment & \color{red}{and fissile material injection}\\[3pt]
+		Thermal feedback & Doppler only & Not considered & Doppler only & Doppler$+$\color{red}{density+thermal expansion}\\[3pt]
+		Control rod worth & \multicolumn{3}{c}{Not considered} & \color{red}{For single rod and all rods} \\
 		\hline
 	\end{tabularx}
 	\label{tab:msr_codes}
