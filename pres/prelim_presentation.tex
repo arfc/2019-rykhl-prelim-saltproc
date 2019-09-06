@@ -83,6 +83,8 @@
 \addtolength{\highlightheight}{\highlightdepth}
 \newcommand*{\Highlight}{\rlap{\textcolor{HighlightBackground}{\rule[-\highlightdepth]{\linewidth}{\highlightheight}}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Total slides number manual
+%\def\inserttotalframenumber{41}
 %%--------------------------------%%
 \begin{withoutheadline}
 \frame{
@@ -102,16 +104,18 @@
 \input{introduction}
 \section{Methodology}
 \input{demo}
-\section{Preliminary results}
+\section{Proposed work and preliminary results}
 \input{safety}
-\section{Future work}
-\input{proposal}
+%\section{Future work}
+%\input{proposal}
+\section{Conclusion}
+\input{concl}
 %%--------------------------------%%
 %%--------------------------------%%
 \begin{frame}[allowframebreaks]
   \frametitle{References}
   \bibliographystyle{unsrt}
-  {\footnotesize \bibliography{../thesisrefs.bib} }
+  {\footnotesize \bibliography{../thesisrefs} }
 
 \end{frame}
 

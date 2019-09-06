@@ -4,3 +4,8 @@
 (21) Another part of processing plant is liquid metal extraction system for Rare Earths removal. As you can see, it is very complex and based on separating element with different chemical potentials.
 (23) From neutronics prospective, these rates are the reactor designer's best initial guess.
 (24) SaltProc using Object-Oriented Programming and has modular structure. Multiple instances of MaterialFlow class for two-fluid design. Many Processes instances enable to model very complex systems.
+(41) Many tasks already been done. I have working tool in hand, which still have too be improved and some additional capabilities have to be added. The model of target reactor also completed, so, I need to perform large amount of depletion computations. After I would be able to use obtained data for analysis, such as determining gas separation system design parameters and Safety analysis.
+
+
+
+exclusion, exception
